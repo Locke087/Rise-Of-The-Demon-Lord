@@ -18,7 +18,9 @@ public class TileSets : MonoBehaviour {
         CurrentTileSetReward = new List<GameObject>();
         forestTileSet = gameObject.GetComponent<ForestTileSet>();
 	}
-	
+	/// <summary>
+    /// Tile Allotments: Objective: 2, Gap: 1, Reward: 3, Clean: 6, Wall: 3, 15 total areas
+    /// </summary>
 	// Update is called once per frame
 	void Update () {
 		
@@ -32,5 +34,8 @@ public class TileSets : MonoBehaviour {
     public void LoadForestSet()
     {
         CurrentTileSetClean = forestTileSet.cleanTiles;
+        CurrentTileSetGap = forestTileSet.gapTiles;
+        CurrentTileSetWall = forestTileSet.wallTiles;
+        CurrentTileSetReward = forestTileSet.rewardTiles;
     }
 }
