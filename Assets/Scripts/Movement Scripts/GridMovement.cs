@@ -50,7 +50,15 @@ public class GridMovement : MonoBehaviour
 
     public void GetCurrentTile()
     {
-        currentTile = GetTargetTile(gameObject);
+        //changed
+        RaycastHit hit;
+
+        if (Physics.Raycast(gameObject.transform.position, -Vector3.up, out hit, 3))
+        {
+            currentTile = hit.collider.GetComponent<GridTiles>();
+        }
+       
+        //currentTile = GetTargetTile(gameObject);
         currentTile.current = true;
     }
 
@@ -165,8 +173,10 @@ public class GridMovement : MonoBehaviour
 
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
-                CalculateHeading(target);
-                SetHorizotalVelocity();
+                heading = target - transform.position;
+                heading.Normalize();
+
+                velocity = heading * moveSpeed;
                 //Locomotion
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
@@ -211,7 +221,7 @@ public class GridMovement : MonoBehaviour
         attackTile.Clear();
     }
 
-    void CalculateHeading(Vector3 target)
+   /* void CalculateHeading(Vector3 target)
     {
         heading = target - transform.position;
         heading.Normalize();
@@ -220,7 +230,7 @@ public class GridMovement : MonoBehaviour
     void SetHorizotalVelocity()
     {
         velocity = heading * moveSpeed;
-    }
+    }*/
 
     protected GridTiles FindLowestF(List<GridTiles> list)
     {
@@ -270,8 +280,7 @@ public class GridMovement : MonoBehaviour
         GetCurrentTile();
 
         List<GridTiles> openList = new List<GridTiles>();
-        List<GridTiles> closedList = new List<GridTiles>();
-
+       
         openList.Add(currentTile);
         //currentTile.parent = ??
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
@@ -280,8 +289,6 @@ public class GridMovement : MonoBehaviour
         while (openList.Count > 0)
         {
             GridTiles t = FindLowestF(openList);
-
-            closedList.Add(t);
 
             if (t == target)
             {
@@ -292,11 +299,7 @@ public class GridMovement : MonoBehaviour
 
             foreach (GridTiles tile in t.adjacencyList)
             {
-                if (closedList.Contains(tile))
-                {
-                    //Do nothing, already processed
-                }
-                else if (openList.Contains(tile))
+                if (openList.Contains(tile))
                 {
                     float tempG = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
 
