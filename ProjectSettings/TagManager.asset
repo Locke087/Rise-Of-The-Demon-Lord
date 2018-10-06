@@ -3,35 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - HouseTiles
-  - Walls
-  - Grass
-  - Dirt
-  - Bridge
-  - Street
-  - River270
-  - River90
-  - Mountain
-  - Forest
-  - Rivers
-  - RiverH
-  - NPC
-  - Gap
-  - River0
-  - River180
-  - Tile
-  - River
-  - Ramp
-  - NW
-  - NE
-  - SE
-  - SW
-  - N
-  - S
-  - W
-  - E
-  - Center
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -41,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 
