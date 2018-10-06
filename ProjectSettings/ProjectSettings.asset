@@ -125,6 +125,7 @@ PlayerSettings:
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   xboxOneEnable7thCore: 1
+  isWsaHolographicRemotingEnabled: 0
   vrSettings:
     cardboard:
       depthFormat: 0
@@ -626,7 +627,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 85477afe-b9c4-4b9a-97b0-5c43f8ccb8c0
-  projectName: 
+  projectName: Rise Of The Demon Lord
   organizationId: corbin-4464013
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
