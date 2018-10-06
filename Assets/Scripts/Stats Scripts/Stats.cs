@@ -45,7 +45,7 @@ public class Stats : Weapon
     void Start()
     {
 
-
+        currentHp = hp;
         //                                    spd|str|def|skl|Hp |order
         allNatures.Add(new TheNatures("Nimble", 2, 1, 0, 1, 1, 0)); //+spd -def 
         allNatures.Add(new TheNatures("Tough", 0, 1, 2, 1, 1, 1)); //+def -spd 
@@ -65,7 +65,7 @@ public class Stats : Weapon
         skill += skillMod;
         movement += movementMod;
 
-        Booster();
+      
         if (gameObject.GetComponent<MCMove>() != null)
             gridMove = gameObject.GetComponent<MCMove>();
         else if (gameObject.GetComponent<PlayerUnit>() != null)
@@ -113,7 +113,7 @@ public class Stats : Weapon
     }
 
 
-    void Booster()
+    public void Booster()
     {
 
         if (levelBoost > 0)

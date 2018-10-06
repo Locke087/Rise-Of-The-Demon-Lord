@@ -243,7 +243,7 @@ public class MenuScript
     [MenuItem("Tools/GenerateNewMap")]
     public static void SetNewTile()
     {
-        GameObject maps = GameObject.Find("TyrisCopy");
+        GameObject maps = GameObject.Find("Template50x50test");
         Rows[] allRows = maps.GetComponentsInChildren<Rows>();
         int i = 0;
         GameObject map = new GameObject();

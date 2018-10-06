@@ -20,7 +20,7 @@ public class EnemyMove : GridMovement
     void Start()
     {
         moveSwitch = moveSwitch = GameObject.FindObjectOfType<MoveSwitch>();
-
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

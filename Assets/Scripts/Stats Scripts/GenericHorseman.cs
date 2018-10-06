@@ -12,8 +12,9 @@ public class GenericHorseman : Stats
         def = 4;
         spd = 6;
         skill = 10;
-
+        level = 1;
         movement = 5;
+        levelBoost = 10;
     }
 
     // Update is called once per frame

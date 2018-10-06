@@ -32,7 +32,7 @@ public class MainPlayerParty : MonoBehaviour
 
         foreach (string name in newPartyList)
         {
-            GameObject partyMate = GameObject.Find(name);
+            GameObject partyMate = Resources.Load<GameObject>(name);
             if (partyMate != null)
                 mainMCParty.Add(partyMate);
         }

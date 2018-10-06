@@ -11,6 +11,7 @@ public class PlayerUnit : GridMovement
     void Start()
     {
         moveSwitch = moveSwitch = GameObject.FindObjectOfType<MoveSwitch>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
     public bool activePlayer = false;
     public bool activeOnBoard = false;

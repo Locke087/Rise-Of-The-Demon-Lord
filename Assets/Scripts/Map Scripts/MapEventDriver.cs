@@ -63,7 +63,7 @@ public class MapEventDriver : MonoBehaviour
             Instantiate(playerUnitParty.friendlyUnits[i], GameObject.Find(newPlayerLocations[i]).transform.position + Vector3.up + Vector3.up, setQuaterRotation(0, 0, 0));
         }
         goodGo = false;
-        yield return new WaitUntil(() => playerUnitParty.friendlyUnits[0].activeInHierarchy == true);
+        yield return new WaitForSeconds(0.5f);
         mapLocation.assignBoardPieces();
     }
 

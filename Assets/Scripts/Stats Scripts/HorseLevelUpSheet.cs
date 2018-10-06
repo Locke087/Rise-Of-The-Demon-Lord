@@ -23,6 +23,7 @@ public class HorseLevelUpSheet : MonoBehaviour
         stats.GetMyNature(nature);
         MySheet();
         stats.GetMySheet(cs);
+        stats.Booster();
     }
 
     // Update is called once per frame

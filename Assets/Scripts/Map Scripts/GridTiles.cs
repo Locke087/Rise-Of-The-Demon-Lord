@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class GridTiles : MonoBehaviour
+public class GridTiles : MonoBehaviour, IPointerClickHandler
 {
     public bool walkable;
     public bool current = false;
@@ -100,6 +101,16 @@ public class GridTiles : MonoBehaviour
         CheckTile(Vector3.right, jumpHeight, target);
         CheckTile(-Vector3.right, jumpHeight, target);
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (selectable)
+        {
+           MapManager manager = GameObject.FindObjectOfType<MapManager>();
+           
+        }
+    }
+
 
 
     private void OnCollisionEnter(Collision collision)

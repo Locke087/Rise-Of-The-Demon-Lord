@@ -13,7 +13,7 @@ public class MCMove : GridMovement
     void Start()
     {
         moveSwitch = moveSwitch = GameObject.FindObjectOfType<MoveSwitch>();
-
+        rb = gameObject.GetComponent<Rigidbody>();
         //startPoint = transform.position;
     }
     public bool activePlayer = false;
@@ -81,8 +81,8 @@ public class MCMove : GridMovement
             if (rb.IsSleeping()) rb.WakeUp();
             rb.drag = 0;
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-            Debug.DrawRay(transform.position, transform.forward);
-
+           // Debug.DrawRay(transform.position, transform.forward);
+            
             if (!isPlayerPhase || freeze)
             {
                 return;
@@ -100,7 +100,7 @@ public class MCMove : GridMovement
                     tileActive = false;
                     RemoveSelectableTiles();
                 }
-
+ 
                 CheckMouse();
 
 
@@ -200,7 +200,7 @@ public class MCMove : GridMovement
     }
 
 
-    IEnumerator MenuMovement()
+    /*IEnumerator MenuMovement()
     {
         Debug.Log("yes");
         yield return new WaitForSeconds(0.3f);
@@ -336,7 +336,7 @@ public class MCMove : GridMovement
             }
         }
 
-    }
+    }*/
 
     //heavy mixed
     void CheckMouse()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoveSwitch : MonoBehaviour
 {
     public bool prepOn = false;
-    public bool gridOn = false;
+    public bool gridOn = true;
     public Button button;
     // Use this for initialization
     void Start()

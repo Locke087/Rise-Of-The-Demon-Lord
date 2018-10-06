@@ -51,14 +51,7 @@ public class GridMovement : MonoBehaviour
     public void GetCurrentTile()
     {
         //changed
-        RaycastHit hit;
-
-        if (Physics.Raycast(gameObject.transform.position, -Vector3.up, out hit, 3))
-        {
-            currentTile = hit.collider.GetComponent<GridTiles>();
-        }
-       
-        //currentTile = GetTargetTile(gameObject);
+        currentTile = GetTargetTile(gameObject);
         currentTile.current = true;
     }
 
@@ -221,7 +214,7 @@ public class GridMovement : MonoBehaviour
         attackTile.Clear();
     }
 
-   /* void CalculateHeading(Vector3 target)
+    void CalculateHeading(Vector3 target)
     {
         heading = target - transform.position;
         heading.Normalize();
@@ -230,7 +223,7 @@ public class GridMovement : MonoBehaviour
     void SetHorizotalVelocity()
     {
         velocity = heading * moveSpeed;
-    }*/
+    }
 
     protected GridTiles FindLowestF(List<GridTiles> list)
     {
@@ -282,7 +275,6 @@ public class GridMovement : MonoBehaviour
         List<GridTiles> openList = new List<GridTiles>();
        
         openList.Add(currentTile);
-        //currentTile.parent = ??
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
         currentTile.f = currentTile.h;
 
