@@ -28,15 +28,16 @@ public class MapManager : MonoBehaviour {
 
     public void PlayerMove(GameObject tile)
     {
+        if (currentUser != null) currentUser.GetComponent<MapPlayerMove>().GoMove(tile.GetComponent<GridTiles>());        
+    }
+
+    public void PlayerAttack(GameObject tile, GameObject enemy)
+    {
         if (currentUser != null)
         {
-            if (tile.GetComponent<GridTiles>().selectable)
-            {
-
-              
-                currentUser.GetComponent<MapPlayerMove>().
-            }
-            else if (tile.GetComponent<GridTiles>().attack)
+            enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>());
+            currentUser.GetComponent<MapPlayerAttack>().attack(tile.GetComponent<GridTiles>());
         }
+        
     }
 }

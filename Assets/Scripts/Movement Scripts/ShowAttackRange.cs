@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridMovement : MonoBehaviour
-{
+public class ShowAttackRange : MonoBehaviour {
+
+    // Use this for initialization
     //mine
-
-    public bool isPlayerPhase;
-    public bool isEnemyPhase;
-    public bool freeze;
-    public bool enemyIsFinished;
-    public bool enemyAccounted;
-    public bool pause = false;
-
-    //not mine
 
     List<GridTiles> selectableTiles = new List<GridTiles>();
     List<GameObject> tiles = new List<GameObject>();
@@ -22,7 +14,7 @@ public class GridMovement : MonoBehaviour
     List<GridTiles> attackTile = new List<GridTiles>();
 
     public bool isMoving = false;
-    public int move = 5;
+    public int attackRange = 3;
     public float jumpHeight = 3;
     public float moveSpeed = 2;
 
@@ -37,14 +29,6 @@ public class GridMovement : MonoBehaviour
     {
 
         AssignArray(tiles);
-        //mine
-        if (gameObject.GetComponent<EnemyMove>() == null) isPlayerPhase = true;
-        else isPlayerPhase = false;
-        isEnemyPhase = false;
-        freeze = false;
-        enemyIsFinished = false;
-        enemyAccounted = false;
-        //not mine
         halfHeight = GetComponent<Collider>().bounds.extents.y;
     }
 
@@ -84,7 +68,7 @@ public class GridMovement : MonoBehaviour
     }
 
 
-    public void FindSelectableTiles()
+    public void FindAttackTiles()
     {
         ComputeAdjacencyLists(jumpHeight, null);
         GetCurrentTile();
@@ -100,45 +84,29 @@ public class GridMovement : MonoBehaviour
         while (process.Count > 0)
         {
             GridTiles t = process.Dequeue();
-            selectableTiles.Add(t);
-            t.selectable = true;
+            attackTile.Add(t);
+            t.attack = true;
 
-            if (t.distance < move)
+            if (t.distance < attackRange)
             {
-                foreach (GridTiles tile in t.adjacencyList)
-                {
-                    if (!tile.visited)
-                    {
-
-                        tile.parent = t;
-                        tile.visited = true;
-                        tile.distance = 1 + t.distance;
-                        process.Enqueue(tile);
-                    }
-                }
-
-               /* foreach (GridTiles tile in t.attackList)
-                {
-                    if (!tile.visited)
-                    {
-                        attackTile.Add(tile);
-                        tile.parent = t;
-                        tile.visited = true;
-                        tile.distance = 1 + t.distance;
-                        tile.selectable = false;
-                        tile.attack = true;
-                    }
-                }*/
-
-
-
+                 foreach (GridTiles tile in t.attackList)
+                 {
+                     if (!tile.visited)
+                     {
+                         attackTile.Add(tile);
+                         tile.parent = t;
+                         tile.visited = true;
+                         tile.distance = 1 + t.distance;
+                         tile.selectable = false;
+                         tile.attack = true;
+                     }
+                 }
             }
 
 
 
         }
     }
-
 
     public void MoveToTile(GridTiles tile)
     {
@@ -253,13 +221,13 @@ public class GridMovement : MonoBehaviour
             next = next.parent;
         }
 
-        if (tempPath.Count <= move)
+        if (tempPath.Count <= attackRange)
         {
             return t.parent;
         }
 
         GridTiles endTile = null;
-        for (int i = 0; i <= move; i++)
+        for (int i = 0; i <= attackRange; i++)
         {
             endTile = tempPath.Pop();
         }
@@ -273,7 +241,7 @@ public class GridMovement : MonoBehaviour
         GetCurrentTile();
 
         List<GridTiles> openList = new List<GridTiles>();
-       
+
         openList.Add(currentTile);
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
         currentTile.f = currentTile.h;
@@ -321,6 +289,5 @@ public class GridMovement : MonoBehaviour
         GameObject.FindObjectOfType<MoveSwitch>().gridOn = false;
         Debug.Log("Make A Better Map you nit wit");
     }
-
 
 }

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapPlayerMove : GridMovement {
+public class MapPlayerAttack : ShowAttackRange {
 
     // Use this for initialization
-    public bool busy = false;
-    MapPlayerAttack playerAttack;
-	void Start () {
-      playerAttack = gameObject.GetComponent<MapPlayerAttack>();
-	}
-	
+    public bool inUse = false;
+    MapPlayerMove playerMove;
+    void Start()
+    {
+        playerMove = gameObject.GetComponent<MapPlayerMove>();
+    }
+
+    // Update is called once per frame
+ 
+
     public void AssignMe()
     {
         MapManager manager = GameObject.FindObjectOfType<MapManager>();
@@ -23,30 +27,27 @@ public class MapPlayerMove : GridMovement {
         manager.UserRemove();
     }
 
-    public void ShowMove()
+
+    public void ShowAttack()
     {
-        if (!playerAttack.inUse)
+        if (!playerMove.busy)
         {
-            busy = true;
+            inUse = true;
             AssignMe();
-            FindSelectableTiles();
+            FindAttackTiles();
+            
         }
     }
 
-   
-    public void HideMove()
+    public void HideAttack()
     {
-        busy = false;
+        inUse = false;
         RemoveMe();
         RemoveSelectableTiles();
     }
 
-   
-
-    public void GoMove(GridTiles tile)
+    public void attack(GridTiles tile)
     {
-        HideMove();
-        MoveToTile(tile);
+        HideAttack();
     }
-
 }

@@ -107,7 +107,12 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
         if (selectable)
         {
            MapManager manager = GameObject.FindObjectOfType<MapManager>();
-           
+           manager.PlayerMove(gameObject);
+        }
+        else if (attack)
+        {
+            MapManager manager = GameObject.FindObjectOfType<MapManager>();
+            manager.PlayerAttack(gameObject, unit);
         }
     }
 
@@ -171,31 +176,50 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
             if (tile != null && tile.walkable && tile.name[0] + tile.name[1] == gameObject.name[0] + gameObject.name[1])
             {
                 RaycastHit hit;
-
                 if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 3) || (tile == target))
                 {
-                    if (gameObject.transform.position.y == tile.transform.position.y) adjacencyList.Add(tile);
+                    if (gameObject.transform.position.y == tile.transform.position.y)
+                    {
+                        adjacencyList.Add(tile);
+                        attackList.Add(tile);
+                    }
                     else if (gameObject.tag == "Ramp")
                     {
                         if (gameObject.transform.localRotation.eulerAngles.y == 0f || gameObject.transform.localRotation.eulerAngles.y == 360f)// <--
                         {
-                            if (gameObject.transform.localPosition.x > tile.transform.localPosition.x) adjacencyList.Add(tile);
+                            if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 90f) // A
                         {
 
-                            if (gameObject.transform.position.z < tile.transform.position.z) adjacencyList.Add(tile);
+                            if (gameObject.transform.position.z < tile.transform.position.z)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
 
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 180f) //-->
                         {
                             //Debug.Log("Im Here");
-                            if (gameObject.transform.localPosition.x < tile.transform.localPosition.x) adjacencyList.Add(tile);
+                            if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 270f) //V
                         {
                             // Debug.Log("Im Here");
-                            if (gameObject.transform.position.z > tile.transform.position.z) adjacencyList.Add(tile);
+                            if (gameObject.transform.position.z > tile.transform.position.z)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                     }
                     else if (tile.tag == "Ramp")
@@ -203,19 +227,35 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
 
                         if (tile.transform.localRotation.eulerAngles.y == 0f || tile.transform.localRotation.eulerAngles.y == 360f)// <--
                         {
-                            if (gameObject.transform.localPosition.x < tile.transform.localPosition.x) adjacencyList.Add(tile);
+                            if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                         else if (tile.transform.localRotation.eulerAngles.y == 90f) // A
                         {
-                            if (gameObject.transform.position.z > tile.transform.position.z) adjacencyList.Add(tile);
+                            if (gameObject.transform.position.z > tile.transform.position.z)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                         else if (tile.transform.localRotation.eulerAngles.y == 180f) //-->
                         {
-                            if (gameObject.transform.localPosition.x > tile.transform.localPosition.x) adjacencyList.Add(tile);
+                            if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                         else if (tile.transform.localRotation.eulerAngles.y == 270f) //V
                         {
-                            if (gameObject.transform.position.z < tile.transform.position.z) adjacencyList.Add(tile);
+                            if (gameObject.transform.position.z < tile.transform.position.z)
+                            {
+                                adjacencyList.Add(tile);
+                                attackList.Add(tile);
+                            }
                         }
                     }
 
@@ -225,15 +265,7 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
 
                     if (gameObject.transform.position.y == tile.transform.position.y)
                     {
-                        if (phaseSwitcher.playerPhase)
-                        {
-                            if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                        }
-                        else if (phaseSwitcher.enemyPhase)
-                        {
-                            if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                            else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                        }
+                        attackList.Add(tile);
                     }
                     else if (gameObject.tag == "Ramp")
                     {
@@ -241,125 +273,64 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
                         {
                             if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
-
-
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 90f) // A
                         {
+
                             if (gameObject.transform.position.z < tile.transform.position.z)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
+
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 180f) //-->
                         {
+                            //Debug.Log("Im Here");
                             if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
-                            {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
-                            };
+                            {;
+                                attackList.Add(tile);
+                            }
                         }
                         else if (gameObject.transform.localRotation.eulerAngles.y == 270f) //V
                         {
+                            // Debug.Log("Im Here");
                             if (gameObject.transform.position.z > tile.transform.position.z)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
                         }
                     }
                     else if (tile.tag == "Ramp")
                     {
-                        if (gameObject.transform.localRotation.eulerAngles.y == 0f || gameObject.transform.localRotation.eulerAngles.y == 360f)// <--
+
+                        if (tile.transform.localRotation.eulerAngles.y == 0f || tile.transform.localRotation.eulerAngles.y == 360f)// <--
                         {
                             if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
                         }
-                        else if (gameObject.transform.localRotation.eulerAngles.y == 90f) // A
+                        else if (tile.transform.localRotation.eulerAngles.y == 90f) // A
                         {
                             if (gameObject.transform.position.z > tile.transform.position.z)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
                         }
-                        else if (gameObject.transform.localRotation.eulerAngles.y == 180f) //-->
+                        else if (tile.transform.localRotation.eulerAngles.y == 180f) //-->
                         {
                             if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
                         }
-                        else if (gameObject.transform.localRotation.eulerAngles.y == 270f) //V
+                        else if (tile.transform.localRotation.eulerAngles.y == 270f) //V
                         {
                             if (gameObject.transform.position.z < tile.transform.position.z)
                             {
-                                if (phaseSwitcher.playerPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
-                                }
-                                else if (phaseSwitcher.enemyPhase)
-                                {
-                                    if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
-                                    else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
-                                }
+                                attackList.Add(tile);
                             }
                         }
                     }
@@ -370,3 +341,155 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
         }
     }
 }
+
+
+         /* if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 3) || (tile == target))
+            {
+
+
+            }//Attacks
+            else if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 3))
+            {
+
+                if (gameObject.transform.position.y == tile.transform.position.y)
+                {
+                    if (phaseSwitcher.playerPhase)
+                    {
+                        if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                    }
+                    else if (phaseSwitcher.enemyPhase)
+                    {
+                        if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                        else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                    }
+                }
+                else if (gameObject.tag == "Ramp")
+                {
+                    if (gameObject.transform.localRotation.eulerAngles.y == 0f || gameObject.transform.localRotation.eulerAngles.y == 360f)// <--
+                    {
+                        if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+
+
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 90f) // A
+                    {
+                        if (gameObject.transform.position.z < tile.transform.position.z)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 180f) //-->
+                    {
+                        if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        };
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 270f) //V
+                    {
+                        if (gameObject.transform.position.z > tile.transform.position.z)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                }
+                else if (tile.tag == "Ramp")
+                {
+                    if (gameObject.transform.localRotation.eulerAngles.y == 0f || gameObject.transform.localRotation.eulerAngles.y == 360f)// <--
+                    {
+                        if (gameObject.transform.localPosition.x < tile.transform.localPosition.x)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 90f) // A
+                    {
+                        if (gameObject.transform.position.z > tile.transform.position.z)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 180f) //-->
+                    {
+                        if (gameObject.transform.localPosition.x > tile.transform.localPosition.x)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                    else if (gameObject.transform.localRotation.eulerAngles.y == 270f) //V
+                    {
+                        if (gameObject.transform.position.z < tile.transform.position.z)
+                        {
+                            if (phaseSwitcher.playerPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<EnemyMove>() != null) attackList.Add(tile);
+                            }
+                            else if (phaseSwitcher.enemyPhase)
+                            {
+                                if (hit.collider.gameObject.GetComponent<MCMove>() != null) attackList.Add(tile);
+                                else if (hit.collider.gameObject.GetComponent<PlayerUnit>() != null) attackList.Add(tile);
+                            }
+                        }
+                    }
+                }
+
+            }*/
