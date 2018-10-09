@@ -23,13 +23,13 @@ public class GridMovement : MonoBehaviour
 
     public bool isMoving = false;
     public int move = 5;
-    public float jumpHeight = 3;
+    public float jumpHeight = 0;
     public float moveSpeed = 2;
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
-    float halfHeight = 0;
+    public float halfHeight = 1.4f;
 
     public GridTiles actualTargetTile;
 
@@ -38,19 +38,18 @@ public class GridMovement : MonoBehaviour
 
         AssignArray(tiles);
         //mine
-        if (gameObject.GetComponent<EnemyMove>() == null) isPlayerPhase = true;
-        else isPlayerPhase = false;
-        isEnemyPhase = false;
-        freeze = false;
-        enemyIsFinished = false;
-        enemyAccounted = false;
+       // if (gameObject.GetComponent<EnemyMove>() == null) isPlayerPhase = true;
+       // else isPlayerPhase = false;
+       // isEnemyPhase = false;
+       // freeze = false;
+       // enemyIsFinished = false;
+       // enemyAccounted = false;
         //not mine
-        halfHeight = GetComponent<Collider>().bounds.extents.y;
+       // halfHeight = gameObject.GetComponent<Collider>().bounds.extents.y;
     }
 
     public void GetCurrentTile()
     {
-        //changed
         currentTile = GetTargetTile(gameObject);
         currentTile.current = true;
     }
@@ -62,7 +61,16 @@ public class GridMovement : MonoBehaviour
 
         if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 3))
         {
-            tile = hit.collider.GetComponent<GridTiles>();
+            if (hit.collider.GetComponent<GridTiles>() == null)
+            {
+
+                Debug.Log("thudfdjs");
+                tile = hit.collider.GetComponentInParent<GridTiles>();
+            }
+            else
+            {
+                tile = hit.collider.GetComponent<GridTiles>();
+            }
         }
 
         return tile;
@@ -79,8 +87,7 @@ public class GridMovement : MonoBehaviour
     {
         GridTiles[] mapTiles = GameObject.FindObjectsOfType<GridTiles>();
         foreach (GridTiles obj in mapTiles)
-            if (obj.mapLocation != null)
-                if (obj.mapLocation.inMap == true) list.Add(obj.gameObject);
+            list.Add(obj.gameObject);
     }
 
 
@@ -117,7 +124,7 @@ public class GridMovement : MonoBehaviour
                     }
                 }
 
-               /* foreach (GridTiles tile in t.attackList)
+               /*foreach (GridTiles tile in t.attackList)
                 {
                     if (!tile.visited)
                     {
@@ -145,8 +152,10 @@ public class GridMovement : MonoBehaviour
         path.Clear();
         tile.target = true;
         isMoving = true;
-
+        
+        
         GridTiles next = tile;
+       
         while (next != null)
         {
             path.Push(next);
@@ -160,16 +169,14 @@ public class GridMovement : MonoBehaviour
         {
             GridTiles t = path.Peek();
             Vector3 target = t.transform.position;
-
+          
             //Calculate the unit's position on top of the target tile
-            target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
-
+            target.y += halfHeight; //+ t.GetComponent<Collider>().bounds.extents.y;
+           
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
-                heading = target - transform.position;
-                heading.Normalize();
-
-                velocity = heading * moveSpeed;
+                CalculateHeading(target);
+                SetHorizotalVelocity();
                 //Locomotion
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
@@ -273,14 +280,18 @@ public class GridMovement : MonoBehaviour
         GetCurrentTile();
 
         List<GridTiles> openList = new List<GridTiles>();
-       
+        List<GridTiles> closedList = new List<GridTiles>();
+
         openList.Add(currentTile);
+        //currentTile.parent = ??
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
         currentTile.f = currentTile.h;
 
         while (openList.Count > 0)
         {
             GridTiles t = FindLowestF(openList);
+
+            closedList.Add(t);
 
             if (t == target)
             {
@@ -291,7 +302,11 @@ public class GridMovement : MonoBehaviour
 
             foreach (GridTiles tile in t.adjacencyList)
             {
-                if (openList.Contains(tile))
+                if (closedList.Contains(tile))
+                {
+                    //Do nothing, already processed
+                }
+                else if (openList.Contains(tile))
                 {
                     float tempG = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
 

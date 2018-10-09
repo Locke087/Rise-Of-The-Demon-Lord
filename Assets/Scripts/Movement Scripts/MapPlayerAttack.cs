@@ -30,6 +30,7 @@ public class MapPlayerAttack : ShowAttackRange {
 
     public void ShowAttack()
     {
+        Debug.Log("okay why");
         if (!playerMove.busy)
         {
             inUse = true;

@@ -7,12 +7,12 @@ public class PlayerUnitMenu : MonoBehaviour {
 
     // Use this for initialization
     GameObject unitfFor;
-    GameObject unitMenu;
+    public GameObject unitMenu;
     Button move;
     Button attack;
     Button endTurn;
     public bool menuActive = false;
-
+   
     void Start () {
         unitMenu = GameObject.Find("UnitMenu1");
         move = GameObject.Find("Move").GetComponent<Button>();
@@ -42,34 +42,39 @@ public class PlayerUnitMenu : MonoBehaviour {
 
     public void ActiveMenu()
     {
-        menuActive = true;
-        unitMenu.SetActive(true);
-        move = GameObject.Find("Move").GetComponent<Button>();
-        attack = GameObject.Find("Attack").GetComponent<Button>();
-        endTurn = GameObject.Find("End Turn").GetComponent<Button>();
-        move.onClick.AddListener(Move);
-        attack.onClick.AddListener(Attack);
-        endTurn.onClick.AddListener(EndTurn);
+        if (!menuActive)
+        {
+            Debug.Log("why");
+            menuActive = true;
+            unitMenu.SetActive(true);
+        }
+     
     }
 
     public void DeactiveMenu()
     {
-        menuActive = false;
-        unitMenu.SetActive(false);
+        if (menuActive)
+        {
+            menuActive = false;
+            unitMenu.SetActive(false);
+        }
     }
 
     void Move()
     {
+        Debug.Log("in move");
         if (unitfFor != null) unitfFor.GetComponent<MapPlayerMove>().ShowMove();
     }
 
     void Attack()
     {
+        Debug.Log("in attack");
         if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
     }
 
     void EndTurn()
     {
+        GameObject.FindObjectOfType<SpeedCenterTurns>().AdvanceTurn();
         DeactiveMenu();
         //Other Things When Turn Are Done
     }

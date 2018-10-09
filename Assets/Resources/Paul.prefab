@@ -22,12 +22,15 @@ GameObject:
   - component: {fileID: 33420303524251362}
   - component: {fileID: 136222196275400148}
   - component: {fileID: 23552475563828510}
-  - component: {fileID: 114753149066745794}
+  - component: {fileID: 114916031663540610}
+  - component: {fileID: 114977774173558774}
+  - component: {fileID: 114090037251440488}
   - component: {fileID: 114624910874002718}
   - component: {fileID: 114972176937120974}
   - component: {fileID: 114838382381017738}
   - component: {fileID: 114337701544834368}
   - component: {fileID: 114131602903461450}
+  - component: {fileID: 114051431982468910}
   - component: {fileID: 54673451383737544}
   m_Layer: 0
   m_Name: Paul
@@ -43,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627190126754576}
   m_LocalRotation: {x: -0.000964853, y: 0.0001360881, z: 0.00006437061, w: 0.9999995}
-  m_LocalPosition: {x: 86.55, y: 1.4, z: -62.57}
+  m_LocalPosition: {x: 60.4, y: 1.4, z: -62.67}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +67,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: f37e466218d16a14e854751b6a4390d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +109,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114051431982468910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389aa4d75fec5d2459fcc8e826ce1f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
+  rb: {fileID: 0}
+  moveSwitch: {fileID: 0}
+  activePlayer: 0
+  tileActive: 0
+  moved: 0
+  attackState: 0
+  playerStats: {fileID: 0}
+  activeOnBoard: 0
+  OnHighGround: 0
+--- !u!114 &114090037251440488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e1224de5697f4488bf7501d1398c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTurn: 0
 --- !u!114 &114131602903461450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,37 +229,7 @@ MonoBehaviour:
   weaponMight: 0
   weaponHit: 0
   nature: 
---- !u!114 &114753149066745794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627190126754576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389aa4d75fec5d2459fcc8e826ce1f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerPhase: 0
-  isEnemyPhase: 0
-  freeze: 0
-  enemyIsFinished: 0
-  enemyAccounted: 0
-  pause: 0
-  isMoving: 0
-  move: 9
-  jumpHeight: 4
-  moveSpeed: 2
-  actualTargetTile: {fileID: 0}
-  rb: {fileID: 0}
-  moveSwitch: {fileID: 0}
-  activePlayer: 0
-  tileActive: 0
-  moved: 0
-  attackState: 0
-  playerStats: {fileID: 0}
-  activeOnBoard: 0
-  OnHighGround: 0
+  skip: 0
 --- !u!114 &114838382381017738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,6 +244,29 @@ MonoBehaviour:
   mainMCParty: []
   newPartyList: []
   unitParty: {fileID: 114972176937120974}
+--- !u!114 &114916031663540610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377764a6123b8fa4b9495da6c9dc1823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
+  busy: 0
 --- !u!114 &114972176937120974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +282,23 @@ MonoBehaviour:
   enemyUnits: []
   partyList: []
   levelUP: 0
+--- !u!114 &114977774173558774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84febc6e57a6f274c913d993a962a98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  attackRange: 3
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
+  inUse: 0
 --- !u!136 &136222196275400148
 CapsuleCollider:
   m_ObjectHideFlags: 1

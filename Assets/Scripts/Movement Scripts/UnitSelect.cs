@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class UnitSelect : MonoBehaviour, IPointerClickHandler
+public class UnitSelect : MonoBehaviour
 {
     PlayerUnitMenu unitMenu;
     bool twice = false;
+    public bool isTurn = false;
 	// Use this for initialization
 	void Start () {
         unitMenu = GameObject.FindObjectOfType<PlayerUnitMenu>();
@@ -17,19 +17,13 @@ public class UnitSelect : MonoBehaviour, IPointerClickHandler
 		
 	}
 
-    public void OnPointerClick(PointerEventData eventData)
+    public IEnumerator Menu()
     {
-        if (!unitMenu.menuActive)
-        {
-            unitMenu.AssignUnit(gameObject);
-            unitMenu.ActiveMenu();
+        Debug.Log("Why??????");
+        unitMenu.AssignUnit(gameObject);
+        yield return new WaitForSeconds(0.01f);
+        unitMenu.ActiveMenu();
 
-        }
-        else if (unitMenu.menuActive && twice)
-        {
-            unitMenu.RemoveUnit();
-            unitMenu.DeactiveMenu();
-        }
     }
 
 }

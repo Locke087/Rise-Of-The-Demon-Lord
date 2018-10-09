@@ -24,7 +24,6 @@ public class MapLocation : MonoBehaviour
     {
         Map = gameObject;
         moveSwitch = moveSwitch = GameObject.FindObjectOfType<MoveSwitch>();
-        phaseSwitcher = gameObject.GetComponent<PhaseSwitcher>();
         present = false;
         offset = (Vector3.right * rightPush) + (Vector3.up * upPush) + (Vector3.forward * forwardPush) + (Vector3.down * downPush);
         allRows = Map.GetComponentsInChildren<Rows>();
@@ -34,11 +33,11 @@ public class MapLocation : MonoBehaviour
     void FixedUpdate()
     {
         checkBoard();
-        if (moveSwitch.gridOn == true && inMap == true)
+        /*if (moveSwitch.gridOn == true && inMap == true)
         {
             tactCamera.transform.position = Map.transform.position + offset;
-        }
-        else if (moveSwitch.gridOn == false) setDownBoard();
+        }*/
+        //else if (moveSwitch.gridOn == false) setDownBoard();
     }
 
 

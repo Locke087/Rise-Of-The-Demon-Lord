@@ -16,7 +16,7 @@ public class EnemyMove : GridMovement
     public MoveSwitch moveSwitch;
     public Rigidbody rb;
     Rows row;
-    // Use this for initialization
+    /* Use this for initialization
     void Start()
     {
         moveSwitch = moveSwitch = GameObject.FindObjectOfType<MoveSwitch>();
@@ -146,5 +146,5 @@ public class EnemyMove : GridMovement
         }
 
         target = nearest;
-    }
+    }*/
 }

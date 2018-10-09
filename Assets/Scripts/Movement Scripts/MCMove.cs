@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MCMove : GridMovement
 {
-    //mine
+   //mine
     public Rigidbody rb;
     public MoveSwitch moveSwitch;
     //public Vector3 startPoint;
@@ -25,7 +25,7 @@ public class MCMove : GridMovement
     public bool activeOnBoard = false;
     public bool OnHighGround = false;
 
-    public bool up = false;
+    /*public bool up = false;
     public bool down = false;
     public bool right = false;
     public bool left = false;
@@ -37,7 +37,7 @@ public class MCMove : GridMovement
     public bool amIBusy = false;
     public GameObject currentButton;
     public GameObject colorBox;
-    // Update is called once per frame
+    //Update is called once per frame
     void FixedUpdate()
     {
 
@@ -53,7 +53,7 @@ public class MCMove : GridMovement
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
-           /* if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 if (rb.transform.position.y <= 1.4)
                 {
@@ -66,7 +66,7 @@ public class MCMove : GridMovement
                     else if (rb.transform.position.y <= 3.4) jumpUp();
                     else if (rb.transform.position.y <= 4.3) jumpUp();
                 }
-            }*/
+            }
 
 
 
@@ -76,12 +76,12 @@ public class MCMove : GridMovement
         }
         else if (moveSwitch.gridOn == true)
         {
-            //Heavily Mixed
+          
 
             if (rb.IsSleeping()) rb.WakeUp();
             rb.drag = 0;
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-           // Debug.DrawRay(transform.position, transform.forward);
+    
             
             if (!isPlayerPhase || freeze)
             {
@@ -137,7 +137,7 @@ public class MCMove : GridMovement
                     newEnemy.attacked(playerStats);
                     attackState = false;
                 }
-                //mabye add end turn command here
+           
             }
 
         }
@@ -145,7 +145,7 @@ public class MCMove : GridMovement
 
     }
 
-    //Mine
+
 
     void AssignArray(List<GameObject> list)
     {
@@ -181,7 +181,7 @@ public class MCMove : GridMovement
         else if (moveHorizontal < 0) rb.AddForce(Vector3.left * 30 + Vector3.up * 120);
         else if (moveHorizontal > 0) rb.AddForce(Vector3.right * 30 + Vector3.up * 120);
         else rb.AddForce(Vector3.up * 150);
-    }*/
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -200,7 +200,7 @@ public class MCMove : GridMovement
     }
 
 
-    /*IEnumerator MenuMovement()
+    IEnumerator MenuMovement()
     {
         Debug.Log("yes");
         yield return new WaitForSeconds(0.3f);
@@ -336,7 +336,7 @@ public class MCMove : GridMovement
             }
         }
 
-    }*/
+    }
 
     //heavy mixed
     void CheckMouse()
@@ -375,6 +375,6 @@ public class MCMove : GridMovement
             }
         }
 
-    }
+    }*/
 
 }

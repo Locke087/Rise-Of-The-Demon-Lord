@@ -7,9 +7,14 @@ public class MapPlayerMove : GridMovement {
     // Use this for initialization
     public bool busy = false;
     MapPlayerAttack playerAttack;
+    Rigidbody rb;
 	void Start () {
       playerAttack = gameObject.GetComponent<MapPlayerAttack>();
-	}
+      rb = gameObject.GetComponent<Rigidbody>();
+        if (rb.IsSleeping()) rb.WakeUp();
+        rb.drag = 0;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+    }
 	
     public void AssignMe()
     {
@@ -25,10 +30,12 @@ public class MapPlayerMove : GridMovement {
 
     public void ShowMove()
     {
+        Debug.Log("nowWhat");
         if (!playerAttack.inUse)
         {
             busy = true;
             AssignMe();
+          
             FindSelectableTiles();
         }
     }
@@ -43,10 +50,18 @@ public class MapPlayerMove : GridMovement {
 
    
 
-    public void GoMove(GridTiles tile)
+    public IEnumerator GoMove(GridTiles tile)
     {
-        HideMove();
+        isMoving = true;
         MoveToTile(tile);
+        Move();
+        do
+        {
+            Move();
+            yield return new WaitForSeconds(0.01f);
+        } while (isMoving);
+
+        HideMove();
     }
 
 }

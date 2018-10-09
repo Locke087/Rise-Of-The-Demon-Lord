@@ -27,9 +27,10 @@ GameObject:
   - component: {fileID: 114784440128482610}
   - component: {fileID: 54895456745192970}
   - component: {fileID: 114654390303967754}
+  - component: {fileID: 114438688873979940}
   m_Layer: 0
   m_Name: Horse
-  m_TagString: NPC
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +137,28 @@ MonoBehaviour:
   activeCheck: 0
   moveSwitch: {fileID: 0}
   rb: {fileID: 0}
+--- !u!114 &114438688873979940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086589313470060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b091fde7a1c68534894083a3d8fcbba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
 --- !u!114 &114654390303967754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +203,7 @@ MonoBehaviour:
   weaponMight: 0
   weaponHit: 0
   nature: 
+  skip: 0
 --- !u!114 &114784054840752592
 MonoBehaviour:
   m_ObjectHideFlags: 1

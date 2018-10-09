@@ -23,7 +23,7 @@ public class PlayerUnit : GridMovement
 
     Rows row;
 
-    // Update is called once per frame
+    /* Update is called once per frame
     void FixedUpdate()
     {
 
@@ -147,5 +147,5 @@ public class PlayerUnit : GridMovement
                 }
             }
         }
-    }
+    }*/
 }

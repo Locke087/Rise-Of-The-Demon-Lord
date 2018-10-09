@@ -41,6 +41,8 @@ public class Stats : Weapon
     public int weaponHit = 0;
     public string nature;
 
+    public bool skip = false;
+
     // Use this for initialization
     void Start()
     {
@@ -83,7 +85,7 @@ public class Stats : Weapon
     void FixedUpdate()
     {
 
-        if (gameObject.GetComponent<MCMove>() != null)
+        /*if (gameObject.GetComponent<MCMove>() != null)
             if (gameObject.GetComponent<MCMove>().activePlayer == true)
                 if (showHp != null) showHp.text = currentHp.ToString();
 
@@ -96,7 +98,7 @@ public class Stats : Weapon
                 if (gameObject.GetComponent<EnemyMove>().activeEnemy == true)
                     if (showHp != null) showHp.text = currentHp.ToString();
 
-        if (promote == true) classChange();
+        if (promote == true) classChange();*/
 
 
     }

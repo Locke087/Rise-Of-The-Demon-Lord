@@ -27,6 +27,9 @@ GameObject:
   - component: {fileID: 114308595549008444}
   - component: {fileID: 114716786575329848}
   - component: {fileID: 114772377754868234}
+  - component: {fileID: 114135501528358394}
+  - component: {fileID: 114629853986773788}
+  - component: {fileID: 114583396343451834}
   m_Layer: 0
   m_Name: John
   m_TagString: Player
@@ -102,7 +105,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &114103451563660580
 MonoBehaviour:
@@ -148,6 +151,30 @@ MonoBehaviour:
   weaponMight: 0
   weaponHit: 0
   nature: 
+  skip: 0
+--- !u!114 &114135501528358394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457248672922468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377764a6123b8fa4b9495da6c9dc1823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
+  busy: 0
 --- !u!114 &114308595549008444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +205,35 @@ MonoBehaviour:
   moved: 0
   attackState: 0
   playerStats: {fileID: 0}
+--- !u!114 &114583396343451834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457248672922468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e1224de5697f4488bf7501d1398c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTurn: 0
+--- !u!114 &114629853986773788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457248672922468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84febc6e57a6f274c913d993a962a98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  attackRange: 3
+  jumpHeight: 3
+  moveSpeed: 2
+  actualTargetTile: {fileID: 0}
+  inUse: 0
 --- !u!114 &114716786575329848
 MonoBehaviour:
   m_ObjectHideFlags: 1
