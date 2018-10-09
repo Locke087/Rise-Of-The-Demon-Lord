@@ -46,7 +46,7 @@ public class ShowAttackRange : MonoBehaviour {
 
         if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 3))
         {
-            tile = hit.collider.GetComponent<GridTiles>();
+            tile = hit.collider.GetComponentInParent<GridTiles>();
         }
 
         return tile;
@@ -63,8 +63,7 @@ public class ShowAttackRange : MonoBehaviour {
     {
         GridTiles[] mapTiles = GameObject.FindObjectsOfType<GridTiles>();
         foreach (GridTiles obj in mapTiles)
-            if (obj.mapLocation != null)
-                if (obj.mapLocation.inMap == true) list.Add(obj.gameObject);
+           list.Add(obj.gameObject);
     }
 
 

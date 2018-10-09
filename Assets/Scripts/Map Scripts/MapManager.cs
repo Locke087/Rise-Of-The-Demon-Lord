@@ -28,7 +28,7 @@ public class MapManager : MonoBehaviour {
 
     public void PlayerMove(GameObject tile)
     {
-        if (currentUser != null) currentUser.GetComponent<MapPlayerMove>().GoMove(tile.GetComponent<GridTiles>());        
+        if (currentUser != null) StartCoroutine(currentUser.GetComponent<MapPlayerMove>().GoMove(tile.GetComponent<GridTiles>()));        
     }
 
     public void PlayerAttack(GameObject tile, GameObject enemy)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class MenuScript
 {
@@ -210,6 +211,58 @@ public class MenuScript
 
     }
 
+    [MenuItem("Tools/CreatUIOverlay")]
+    public static void CreateUIOverlay()
+    {
+
+        GameObject map = GameObject.Find("NewMap");
+        Rows[] allRows = map.GetComponentsInChildren<Rows>();
+        int r = 0;
+        foreach (Rows row in allRows)
+        {
+            int f = 0;
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+            //
+        
+            foreach (GridTiles tile in allTiles)
+            {
+                GameObject uiOveraly = GameObject.Instantiate(Resources.Load("UIoverlay")) as GameObject;
+                uiOveraly.transform.parent = tile.transform;
+                uiOveraly.transform.localPosition = new Vector3(0, 0.53f, 0);
+
+
+            }
+            r++;
+        }
+
+
+    }
+
+    [MenuItem("Tools/RemoveUIOverlay")]
+    public static void RemoveUIOverlay()
+    {
+
+        GameObject map = GameObject.Find("NewMap");
+        Rows[] allRows = map.GetComponentsInChildren<Rows>();
+        int r = 0;
+        foreach (Rows row in allRows)
+        {
+            int f = 0;
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+            //
+
+            foreach (GridTiles tile in allTiles)
+            {
+             
+
+            }
+            r++;
+        }
+
+
+    }
 
     [MenuItem("Tools/CraveOutTileSizes")]
     public static void CraveOutTileSizes()

@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class GridTiles : MonoBehaviour, IPointerClickHandler
-{
+
+public class GridTiles : MonoBehaviour { 
     public bool walkable;
     public bool current = false;
     public bool target = false;
@@ -102,12 +101,15 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
         CheckTile(-Vector3.right, jumpHeight, target);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+   
+    public void SendInfo()
     {
+        Debug.Log("hi");
+        Debug.Log(gameObject.name);
         if (selectable)
         {
-           MapManager manager = GameObject.FindObjectOfType<MapManager>();
-           manager.PlayerMove(gameObject);
+            MapManager manager = GameObject.FindObjectOfType<MapManager>();
+            manager.PlayerMove(gameObject);
         }
         else if (attack)
         {
@@ -115,8 +117,6 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
             manager.PlayerAttack(gameObject, unit);
         }
     }
-
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -172,7 +172,17 @@ public class GridTiles : MonoBehaviour, IPointerClickHandler
         Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtents);
         foreach (Collider item in colliders)
         {
-            GridTiles tile = item.GetComponent<GridTiles>();
+            GridTiles tile = null;
+
+            if (item.GetComponent<GridTiles>() != null)
+            {
+               tile = item.GetComponent<GridTiles>();
+            }
+            else
+            {
+               tile = item.GetComponentInParent<GridTiles>();
+            }
+
             if (tile != null && tile.walkable && tile.name[0] + tile.name[1] == gameObject.name[0] + gameObject.name[1])
             {
                 RaycastHit hit;
