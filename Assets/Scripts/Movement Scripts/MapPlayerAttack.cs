@@ -6,6 +6,7 @@ public class MapPlayerAttack : ShowAttackRange {
 
     // Use this for initialization
     public bool inUse = false;
+    public bool attacked = false;
     MapPlayerMove playerMove;
     void Start()
     {
@@ -49,6 +50,7 @@ public class MapPlayerAttack : ShowAttackRange {
 
     public void attack(GridTiles tile)
     {
+        GameObject.FindObjectOfType<PlayerUnitMenu>().attackDoubleClick = false;
         HideAttack();
     }
 }

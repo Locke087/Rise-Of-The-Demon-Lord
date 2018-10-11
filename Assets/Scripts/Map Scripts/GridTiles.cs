@@ -9,6 +9,7 @@ public class GridTiles : MonoBehaviour {
     public bool target = false;
     public bool selectable = false;
     public bool attack = false;
+    public bool overTile = false;
     public bool hit = false;
     public bool onTile = false;
     public MapLocation mapLocation;
@@ -54,6 +55,11 @@ public class GridTiles : MonoBehaviour {
         {
             if (GetComponent<Renderer>() != null)
                 GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if (overTile)
+        {
+            if (GetComponent<Renderer>() != null)
+                GetComponent<Renderer>().material.color = Color.cyan;
         }
         else if (selectable)
         {

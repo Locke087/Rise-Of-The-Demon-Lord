@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour {
 
@@ -28,7 +29,12 @@ public class MapManager : MonoBehaviour {
 
     public void PlayerMove(GameObject tile)
     {
-        if (currentUser != null) StartCoroutine(currentUser.GetComponent<MapPlayerMove>().GoMove(tile.GetComponent<GridTiles>()));        
+        if (currentUser != null)
+        {
+            GameObject.FindObjectOfType<PlayerUnitMenu>().movedFinished = true;
+            GameObject.FindObjectOfType<PlayerUnitMenu>().move.gameObject.GetComponent<Image>().color = Color.gray;
+            StartCoroutine(currentUser.GetComponent<MapPlayerMove>().GoMove(tile.GetComponent<GridTiles>()));
+        }
     }
 
     public void PlayerAttack(GameObject tile, GameObject enemy)
@@ -36,7 +42,10 @@ public class MapManager : MonoBehaviour {
         if (currentUser != null)
         {
             enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>());
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attackFinished = true;
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attack.gameObject.GetComponent<Image>().color = Color.gray;
             currentUser.GetComponent<MapPlayerAttack>().attack(tile.GetComponent<GridTiles>());
+            
         }
         
     }

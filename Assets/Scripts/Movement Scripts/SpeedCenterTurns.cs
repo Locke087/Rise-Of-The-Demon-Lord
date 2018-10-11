@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeedCenterTurns : MonoBehaviour {
 
@@ -63,16 +64,37 @@ public class SpeedCenterTurns : MonoBehaviour {
 
     public void StartTurn()
     {
+        int temp = upNext;
         Debug.Log(unitOrder[upNext].name);
         if (unitOrder[upNext].tag == "Player")
         {
             Debug.Log("KILHBBBV");
+            GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+            if (temp + 1 >= unitOrder.Count)
+            {
+                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
+            }
+            else
+            {
+                int temp1 = upNext;
+                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+            }
             unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
             StartCoroutine(unitOrder[upNext].GetComponent<UnitSelect>().Menu());
 
         }
         else if (unitOrder[upNext].tag == "Enemy")
         {
+            GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+            if (temp + 1 >= unitOrder.Count)
+            {
+                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
+            }
+            else
+            {
+                int temp1 = upNext;
+                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+            }
             StartCoroutine(unitOrder[upNext].GetComponent<MapEnemyMove>().GoTime());
         }
     }

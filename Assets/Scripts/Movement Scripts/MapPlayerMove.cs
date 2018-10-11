@@ -61,6 +61,7 @@ public class MapPlayerMove : GridMovement {
             yield return new WaitForSeconds(0.01f);
         } while (isMoving);
 
+        GameObject.FindObjectOfType<PlayerUnitMenu>().moveDoubleClick = false;
         HideMove();
     }
 

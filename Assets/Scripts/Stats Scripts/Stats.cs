@@ -114,6 +114,23 @@ public class Stats : Weapon
         nature = n;
     }
 
+    public void OnMouseEnter()
+    {
+        GameObject.Find("SumHp").GetComponent<Text>().text = currentHp.ToString();
+        GameObject.Find("SumDef").GetComponent<Text>().text = def.ToString();
+        GameObject.Find("SumAtk").GetComponent<Text>().text = str.ToString();
+        GameObject.Find("SumSpd").GetComponent<Text>().text = spd.ToString();
+        GameObject.Find("SumSkl").GetComponent<Text>().text = skill.ToString();
+    }
+
+    public void OnMouseExit()
+    {
+        GameObject.Find("SumHp").GetComponent<Text>().text = "0";
+        GameObject.Find("SumDef").GetComponent<Text>().text = "0";
+        GameObject.Find("SumAtk").GetComponent<Text>().text = "0";
+        GameObject.Find("SumSpd").GetComponent<Text>().text = "0";
+        GameObject.Find("SumSkl").GetComponent<Text>().text = "0";
+    }
 
     public void Booster()
     {
@@ -135,6 +152,8 @@ public class Stats : Weapon
 
     public void attacked(Stats attacker)
     {
+        GameObject.Find("AtkHp").GetComponent<Text>().text = attacker.currentHp.ToString();
+        GameObject.Find("DefHp").GetComponent<Text>().text = currentHp.ToString();
         PlayerDamaged(attacker);
         EnemyDamaged(attacker);
         if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3)

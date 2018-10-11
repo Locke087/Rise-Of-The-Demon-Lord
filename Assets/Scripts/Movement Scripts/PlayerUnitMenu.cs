@@ -8,10 +8,14 @@ public class PlayerUnitMenu : MonoBehaviour {
     // Use this for initialization
     GameObject unitfFor;
     public GameObject unitMenu;
-    Button move;
-    Button attack;
-    Button endTurn;
+    public Button move;
+    public Button attack;
+    public Button endTurn;
     public bool menuActive = false;
+    public bool attackFinished = false;
+    public bool movedFinished = false;
+    public bool attackDoubleClick = false;
+    public bool moveDoubleClick = false;
    
     void Start () {
         unitMenu = GameObject.Find("UnitMenu1");
@@ -48,6 +52,7 @@ public class PlayerUnitMenu : MonoBehaviour {
             menuActive = true;
             unitMenu.SetActive(true);
         }
+        
      
     }
 
@@ -58,24 +63,74 @@ public class PlayerUnitMenu : MonoBehaviour {
             menuActive = false;
             unitMenu.SetActive(false);
         }
+        
     }
 
     void Move()
     {
-        Debug.Log("in move");
-        if (unitfFor != null) unitfFor.GetComponent<MapPlayerMove>().ShowMove();
+        if (moveDoubleClick)
+        {
+            moveDoubleClick = false;
+            unitfFor.GetComponent<MapPlayerMove>().HideMove();
+        }
+        else if (attackDoubleClick)
+        {
+            attackDoubleClick = false;
+            unitfFor.GetComponent<MapPlayerAttack>().HideAttack();
+            if (!movedFinished)
+            {
+                moveDoubleClick = true;
+                Debug.Log("in move");
+                if (unitfFor != null) unitfFor.GetComponent<MapPlayerMove>().ShowMove();
+            }
+        }
+        else if (!movedFinished)
+        {
+            moveDoubleClick = true;
+            Debug.Log("in move");
+            if (unitfFor != null) unitfFor.GetComponent<MapPlayerMove>().ShowMove();
+        }
     }
 
     void Attack()
     {
-        Debug.Log("in attack");
-        if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+        if (attackDoubleClick)
+        {
+            attackDoubleClick = false;
+            unitfFor.GetComponent<MapPlayerAttack>().HideAttack();
+        }
+        else if (moveDoubleClick)
+        {
+            moveDoubleClick = false;
+            unitfFor.GetComponent<MapPlayerMove>().HideMove();
+            if (!attackFinished)
+            {
+                Debug.Log("in attack");
+                if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+                attackDoubleClick = true;
+            }
+        }
+        else if (!attackFinished)
+        {
+            attackDoubleClick = true;
+            Debug.Log("in attack");
+            if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+        
+        }
+        
     }
 
     void EndTurn()
     {
-        GameObject.FindObjectOfType<SpeedCenterTurns>().AdvanceTurn();
-        DeactiveMenu();
+        if (!attackDoubleClick && !moveDoubleClick)
+        {
+            attackFinished = false;
+            movedFinished = false;
+            move.gameObject.GetComponent<Image>().color = Color.white;
+            attack.gameObject.GetComponent<Image>().color = Color.white;
+            GameObject.FindObjectOfType<SpeedCenterTurns>().AdvanceTurn();
+            DeactiveMenu();
+        }
         //Other Things When Turn Are Done
     }
 }
