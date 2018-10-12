@@ -74230,6 +74230,9 @@ GameObject:
   - component: {fileID: 1218453393}
   - component: {fileID: 1218453392}
   - component: {fileID: 1218453391}
+  - component: {fileID: 1218453399}
+  - component: {fileID: 1218453398}
+  - component: {fileID: 1218453397}
   m_Layer: 0
   m_Name: NewMap
   m_TagString: Untagged
@@ -74318,7 +74321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allUnits: []
   unitOrder: []
+  playerUnits: []
+  enemyUnits: []
   upNext: 0
+  enemyRouted: 0
+  stopped: 0
 --- !u!114 &1218453395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74379,6 +74386,40 @@ Transform:
   m_Father: {fileID: 1113644676}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1218453397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218453390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7870b567ba3f4ea3c21da84028c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whichOne: rout
+--- !u!114 &1218453398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218453390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7c3efd21e6a6540b21061a9dbb14d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1218453399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218453390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7dda39a29a38d4a8a0ee18b40d272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1218625954
 GameObject:
   m_ObjectHideFlags: 0

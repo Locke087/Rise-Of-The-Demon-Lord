@@ -116,20 +116,27 @@ public class Stats : Weapon
 
     public void OnMouseEnter()
     {
-        GameObject.Find("SumHp").GetComponent<Text>().text = currentHp.ToString();
-        GameObject.Find("SumDef").GetComponent<Text>().text = def.ToString();
-        GameObject.Find("SumAtk").GetComponent<Text>().text = str.ToString();
-        GameObject.Find("SumSpd").GetComponent<Text>().text = spd.ToString();
-        GameObject.Find("SumSkl").GetComponent<Text>().text = skill.ToString();
+        if (!GameObject.FindObjectOfType<SpeedCenterTurns>().stopped)
+        {
+            GameObject.Find("SumHp").GetComponent<Text>().text = currentHp.ToString();
+            GameObject.Find("SumDef").GetComponent<Text>().text = def.ToString();
+            GameObject.Find("SumAtk").GetComponent<Text>().text = str.ToString();
+            GameObject.Find("SumSpd").GetComponent<Text>().text = spd.ToString();
+            GameObject.Find("SumSkl").GetComponent<Text>().text = skill.ToString();
+        }
     }
 
     public void OnMouseExit()
     {
-        GameObject.Find("SumHp").GetComponent<Text>().text = "0";
-        GameObject.Find("SumDef").GetComponent<Text>().text = "0";
-        GameObject.Find("SumAtk").GetComponent<Text>().text = "0";
-        GameObject.Find("SumSpd").GetComponent<Text>().text = "0";
-        GameObject.Find("SumSkl").GetComponent<Text>().text = "0";
+
+        if (!GameObject.FindObjectOfType<SpeedCenterTurns>().stopped)
+        {
+            GameObject.Find("SumHp").GetComponent<Text>().text = "0";
+            GameObject.Find("SumDef").GetComponent<Text>().text = "0";
+            GameObject.Find("SumAtk").GetComponent<Text>().text = "0";
+            GameObject.Find("SumSpd").GetComponent<Text>().text = "0";
+            GameObject.Find("SumSkl").GetComponent<Text>().text = "0";
+        }
     }
 
     public void Booster()
@@ -165,6 +172,17 @@ public class Stats : Weapon
 
     }
 
+
+    public void Death()
+    {
+        GameObject.Destroy(gameObject);
+    }
+
+    public void OnDestroy()
+    {
+        GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
+    }
+
     public void PlayerDamaged(Stats attacker)
     {
         //total atk includes weapons
@@ -180,6 +198,8 @@ public class Stats : Weapon
         if (damage > 0)
             currentHp = currentHp - damage;
         else currentHp = currentHp - 1;
+
+        if (currentHp < 0) Death();
     }
 
 
@@ -196,8 +216,10 @@ public class Stats : Weapon
 
         Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         if (enemyDamage > 0)
-            currentHp = currentHp - enemyDamage;
-        else currentHp = currentHp - 1;
+            attacker.currentHp = attacker.currentHp - enemyDamage;
+        else attacker.currentHp = attacker.currentHp - 1;
+
+        if (attacker.currentHp < 0) attacker.Death();
     }
 
     public void SetMeleetWeaponStats(int hit, int might, int weight)

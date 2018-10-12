@@ -138,6 +138,11 @@ public class GridTiles : MonoBehaviour {
         unit = null;
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.GetComponent<MCMove>() != null)

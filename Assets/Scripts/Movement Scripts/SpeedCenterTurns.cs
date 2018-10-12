@@ -8,22 +8,123 @@ public class SpeedCenterTurns : MonoBehaviour {
     // Use this for initialization
     public List<GameObject> allUnits;
     public List<GameObject> unitOrder;
+    public List<GameObject> playerUnits;
+    public List<GameObject> enemyUnits;
     public int upNext = 0;
+    public bool enemyRouted = false;
+    public bool stopped = false;
+    public GameObject activeUnit;
+    public GameObject nextUnit;
 	void Start () {
         allUnits = new List<GameObject>();
         unitOrder = new List<GameObject>();
-       
+        playerUnits = new List<GameObject>();
+        enemyUnits = new List<GameObject>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
+    public void UpdateList()
+    {
+        allUnits.Clear();
+        playerUnits.Clear();
+        enemyUnits.Clear();
+        upNext = 0;
+        if (GameObject.FindGameObjectsWithTag("Player") != null)
+        {
+
+            allUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+            playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+        }
+        else
+        {
+            stopped = true;
+            FindObjectOfType<GameOver>().GameEnd();
+
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Enemy") != null)
+        {
+            allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+            enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        }
+        else
+        {
+            if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+        }
+
+        if (!stopped)
+        {
+            GameObject highest;
+            int highestNum = 0;
+            int highestUnitIndex = 0;
+            do
+            {
+                for (int i = 0; i < allUnits.Count; i++)
+                {
+                    if (!allUnits[i].GetComponent<Stats>().skip)
+                    {
+                        if (allUnits[i].GetComponent<Stats>().spd > highestNum)
+                        {
+                            highest = allUnits[i];
+                            highestUnitIndex = i;
+                            highestNum = allUnits[i].GetComponent<Stats>().spd;
+                        }
+                        else if (allUnits[i].GetComponent<Stats>().spd == highestNum && allUnits[i].tag == "Player")
+                        {
+                            highest = allUnits[i];
+                            highestUnitIndex = i;
+                            highestNum = allUnits[i].GetComponent<Stats>().spd;
+                        }
+                    }
+                }
+
+                highestNum = 0;
+                allUnits[highestUnitIndex].GetComponent<Stats>().skip = true;
+                unitOrder.Add(allUnits[highestUnitIndex]);
+            } while (allUnits.Count != unitOrder.Count);
+
+            foreach (GameObject unit in allUnits)
+            {
+                unit.GetComponent<Stats>().skip = false;
+            }
+
+            ResumeTurns();
+        }
+    }
+
+    void ResumeTurns()
+    {
+       if (activeUnit != null)
+       {
+            do
+            {
+                upNext++;
+            } while (activeUnit != unitOrder[upNext]);
+       }
+       else if (nextUnit != null)
+       {
+            do
+            {
+                upNext++;
+            } while (nextUnit != unitOrder[upNext]);
+            StartTurn();
+       }
+        else
+        {
+            upNext = 0;
+            StartTurn();
+        }
+    }
+
+
 
     public void Ordering()
     {
+
         allUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+        playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         GameObject highest;
         int highestNum = 0;
         int highestUnitIndex = 0;
@@ -64,60 +165,70 @@ public class SpeedCenterTurns : MonoBehaviour {
 
     public void StartTurn()
     {
-        int temp = upNext;
-        Debug.Log(unitOrder[upNext].name);
-        if (unitOrder[upNext].tag == "Player")
+        if (!stopped)
         {
-            Debug.Log("KILHBBBV");
-            GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
-            if (temp + 1 >= unitOrder.Count)
+            activeUnit = unitOrder[upNext];
+            int temp = upNext;
+            Debug.Log(unitOrder[upNext].name);
+            if (unitOrder[upNext].tag == "Player")
             {
-                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
-            }
-            else
-            {
-                int temp1 = upNext;
-                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
-            }
-            unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
-            StartCoroutine(unitOrder[upNext].GetComponent<UnitSelect>().Menu());
+                GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+                if (temp + 1 >= unitOrder.Count)
+                {
+                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
+                    nextUnit = unitOrder[0];
+                }
+                else
+                {
+                    int temp1 = upNext;
+                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+                    nextUnit = unitOrder[temp1 + 1];
+                }
+                unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
+                StartCoroutine(unitOrder[upNext].GetComponent<UnitSelect>().Menu());
 
-        }
-        else if (unitOrder[upNext].tag == "Enemy")
-        {
-            GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
-            if (temp + 1 >= unitOrder.Count)
-            {
-                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
             }
-            else
+            else if (unitOrder[upNext].tag == "Enemy")
             {
-                int temp1 = upNext;
-                GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+                GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+                if (temp + 1 >= unitOrder.Count)
+                {
+                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
+                    nextUnit = unitOrder[0];
+                }
+                else
+                {
+                    int temp1 = upNext;
+                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+                    nextUnit = unitOrder[0];
+                }
+                StartCoroutine(unitOrder[upNext].GetComponent<MapEnemyMove>().GoTime());
             }
-            StartCoroutine(unitOrder[upNext].GetComponent<MapEnemyMove>().GoTime());
         }
     }
 
     public void AdvanceTurn()
     {
-        if (unitOrder[upNext].tag == "Player")
+        if (!stopped)
         {
-            unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
-        }
-        int check = upNext + 1;
-        if (check < unitOrder.Count)
-        {
-            upNext++;
-        }
-        else upNext = 0;
+            if (unitOrder[upNext].tag == "Player")
+            {
+                unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
+            }
+            int check = upNext + 1;
+            if (check < unitOrder.Count)
+            {
+                upNext++;
+            }
+            else upNext = 0;
 
-        if (unitOrder[upNext].tag == "Player")
-        {
-            unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
-        }
+            if (unitOrder[upNext].tag == "Player")
+            {
+                unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
+            }
 
-        StartTurn();
+            StartTurn();
+        }
     }
 
 
