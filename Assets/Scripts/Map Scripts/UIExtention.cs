@@ -19,6 +19,10 @@ public class UIExtention : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         gameObject.GetComponentInParent<GridTiles>().overTile = true;
+        if (gameObject.GetComponentInParent<GridTiles>().attack)
+        {
+
+        }
     }
 
 
