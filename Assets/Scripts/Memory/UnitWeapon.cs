@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UnitEquipment {
+public class UnitWeapon {
 
-    // Use this for initialization
     public string weapon;
-    public string accessory;
+    public bool inSlot;
+    public bool equipped;
 
-    public UnitEquipment()
+    public UnitWeapon()
     {
         weapon = "";
-        accessory = "";
-
+        inSlot = false;
+        equipped = false;
     }
-
- 
-
 }

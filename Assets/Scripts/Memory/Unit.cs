@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
 
-    public UnitEquipment equipment;
+    public UnitInventory inventory;
     public UnitItems items;
     public UnitInfo unitInfo;
     public UnitProgress progress;
@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour {
     public string unitID;
 	public Unit()
     {
-        equipment = new UnitEquipment();
+        inventory = new UnitInventory();
         items = new UnitItems();
         unitInfo = new UnitInfo();
         progress = new UnitProgress();

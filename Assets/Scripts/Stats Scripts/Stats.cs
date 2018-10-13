@@ -12,6 +12,8 @@ public class Stats : Weapon
     public int def;
     public int spd;
     public int skill;
+    public int mag;
+    public int will;
     public int movement;
     public float FinalHit;
     public int currentHp;
