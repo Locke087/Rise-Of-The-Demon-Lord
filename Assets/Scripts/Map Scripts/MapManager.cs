@@ -41,12 +41,25 @@ public class MapManager : MonoBehaviour {
     {
         if (currentUser != null)
         {
-            enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>());
-            GameObject.FindObjectOfType<PlayerUnitMenu>().attackFinished = true;
-            GameObject.FindObjectOfType<PlayerUnitMenu>().attack.gameObject.GetComponent<Image>().color = Color.gray;
-            currentUser.GetComponent<MapPlayerAttack>().attack(tile.GetComponent<GridTiles>());
-            
+            enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>()); 
         }
         
+    }
+
+    public void PlayerAttackTrue()
+    {
+        if (currentUser != null)
+        {
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attackFinished = true;
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attack.gameObject.GetComponent<Image>().color = Color.gray;
+            currentUser.GetComponent<MapPlayerAttack>().attack();
+
+        }
+
+    }
+
+    public void AttackFalse()
+    {
+        currentUser.GetComponent<MapPlayerAttack>().attack();
     }
 }

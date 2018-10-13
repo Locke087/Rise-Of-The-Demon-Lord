@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
 
     public void weaponStats()
     {
-        stats.SetMeleetWeaponStats(0, 0, 0);
+        stats.SetMeleetWeaponStats(0, 0, 0, 0, 0);
 
     }
 

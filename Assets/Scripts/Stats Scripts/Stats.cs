@@ -15,7 +15,7 @@ public class Stats : Weapon
     public int mag;
     public int will;
     public int movement;
-    public float FinalHit;
+    public float finalHit;
     public int currentHp;
     public Text showHp;
     public int weight;
@@ -37,18 +37,27 @@ public class Stats : Weapon
     public int skillMod;
     public int movementMod;
     public List<TheNatures> allNatures;
-
+    public static Random rng = new Random();
     public int weaponWeight = 0;
     public int weaponMight = 0;
     public int weaponHit = 0;
+    public float weaponCritRate = 0;
+    public int weaponCritChance = 0;
     public string nature;
-
+    public int critChance = 0;
+    public float critRate = 0;
     public bool skip = false;
-
+    public bool done = false;
+    public bool go = false;
+    public Button confirm;
+    public Button cancel;
     // Use this for initialization
     void Start()
     {
-
+        confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
+        cancel = GameObject.Find("AttackCancel").GetComponent<Button>();
+        confirm.onClick.AddListener(ButtonTrue);
+        cancel.onClick.AddListener(ButtonFalse);
         currentHp = hp;
         //                                    spd|str|def|skl|Hp |order
         allNatures.Add(new TheNatures("Nimble", 2, 1, 0, 1, 1, 0)); //+spd -def 
@@ -80,6 +89,9 @@ public class Stats : Weapon
         gridMove.move += movement;
         movement = gridMove.move;
         weaponStats();
+
+        confirm.gameObject.SetActive(false);
+        cancel.gameObject.SetActive(false);
 
     }
 
@@ -161,8 +173,12 @@ public class Stats : Weapon
 
     public void attacked(Stats attacker)
     {
-        GameObject.Find("AtkHp").GetComponent<Text>().text = attacker.currentHp.ToString();
-        GameObject.Find("DefHp").GetComponent<Text>().text = currentHp.ToString();
+
+        AttackPreview(attacker);
+    }
+
+    public void AttackContinue(Stats attacker)
+    {
         PlayerDamaged(attacker);
         EnemyDamaged(attacker);
         if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3)
@@ -171,7 +187,7 @@ public class Stats : Weapon
         }
         else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3) EnemyDamaged(attacker);
 
-
+        GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
 
 
@@ -185,6 +201,143 @@ public class Stats : Weapon
         GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
     }
 
+
+    public void AttackPreview(Stats attacker)
+    {
+        int eDamage = EnemyAttack(attacker);
+        int pDamage = PlayerAttack(attacker);
+        int eHit = EnemyHit(attacker);
+        int pHit = PlayerHit(attacker);
+        int eCritC = EnemyCritChance(attacker);
+        int pCritC = PlayerCritChance(attacker);
+        float eCrit = EnemyCrit(attacker);
+        float pCrit = PlayerCrit(attacker);
+
+        GameObject.Find("AtkHp").GetComponentInChildren<Text>().text = currentHp.ToString();
+        GameObject.Find("DefHp").GetComponentInChildren<Text>().text = attacker.currentHp.ToString();
+        GameObject.Find("AtkAtk").GetComponentInChildren<Text>().text = pDamage.ToString();
+        GameObject.Find("DefAtk").GetComponentInChildren<Text>().text = eDamage.ToString();
+        GameObject.Find("AtkHit").GetComponentInChildren<Text>().text = pHit.ToString();
+        GameObject.Find("DefHit").GetComponentInChildren<Text>().text = eHit.ToString();
+        GameObject.Find("AtkCC").GetComponentInChildren<Text>().text = pCritC.ToString();
+        GameObject.Find("DefCC").GetComponentInChildren<Text>().text = eCritC.ToString();
+        GameObject.Find("AtkCR").GetComponentInChildren<Text>().text = pCrit.ToString();
+        GameObject.Find("DefCR").GetComponentInChildren<Text>().text = eCrit.ToString();
+
+        confirm.gameObject.SetActive(true);
+        cancel.gameObject.SetActive(true);
+        StartCoroutine(WaitTilConfirm(attacker));
+
+    }
+
+    private IEnumerator WaitTilConfirm(Stats attacker)
+    {
+        yield return new WaitUntil(() => done == true);
+        if (go)
+        {
+            done = false;
+            AttackContinue(attacker);
+        }
+        else
+        {
+            done = false;
+            ExitAttack();
+        }
+    }
+
+    public void ExitAttack()
+    {
+        GameObject.FindObjectOfType<MapManager>().AttackFalse();
+    }
+
+    public void ButtonFalse()
+    {
+       done = true;
+       go = false;
+       confirm.gameObject.SetActive(false);
+       cancel.gameObject.SetActive(false);
+    }
+
+    public void ButtonTrue()
+    {
+        done = true;
+        go = true;
+        confirm.gameObject.SetActive(false);
+        cancel.gameObject.SetActive(false);
+    }
+
+
+    public int EnemyHit(Stats attacker)
+    {
+        int hitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
+        return hitRate;
+
+    }
+
+    public int EnemyCritChance(Stats attacker)
+    {
+        int crit = attacker.weaponCritChance + attacker.critChance;
+        return crit;
+
+    }
+
+    public float EnemyCrit(Stats attacker)
+    {
+        float crit = attacker.weaponCritRate + attacker.critRate;
+        return crit;
+
+    }
+
+    public int EnemyAttack(Stats attacker)
+    {
+        int totalAtk = str + weaponMight;
+        int tempEnemyDamage = totalAtk - attacker.def;
+        return tempEnemyDamage;     
+    }
+
+    public int PlayerAttack(Stats attacker)
+    {
+        int totalAtk = attacker.str + attacker.weaponMight;
+        int tempDamage = totalAtk - def;
+        return tempDamage;
+
+    }
+
+    public int PlayerHit(Stats attacker)
+    {
+
+        int hitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
+        return hitRate;
+
+    }
+
+    public float PlayerCrit(Stats attacker)
+    {
+        float newDamage = weaponCritRate + critRate;
+        return newDamage;
+
+    }
+
+    public int PlayerCritChance(Stats attacker)
+    {
+        int newDamage = weaponCritChance + critChance;
+        return newDamage;
+
+    }
+
+    public int CalcCrit(float hurt, float rate, int chance)
+    {
+        if (Random.Range(0, 101) <= chance)
+        {
+            float critNum = hurt * rate;
+            int final = (int)critNum;
+            return final;
+        }
+        return (int)hurt;
+    }
+
+
+
     public void PlayerDamaged(Stats attacker)
     {
         //total atk includes weapons
@@ -193,7 +346,7 @@ public class Stats : Weapon
         int totalAtk = attacker.str + attacker.weaponMight;
         damage = totalAtk - def;
         float hurt = damage * CalcFinalHit(enemyHitRate);
-        int newDamage = (int)hurt;
+        int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
 
         Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
@@ -201,7 +354,7 @@ public class Stats : Weapon
             currentHp = currentHp - damage;
         else currentHp = currentHp - 1;
 
-        if (currentHp < 0) Death();
+        if (currentHp <= 0) Death();
     }
 
 
@@ -213,10 +366,10 @@ public class Stats : Weapon
         int totalAtk = str + weaponMight;
         enemyDamage = totalAtk - attacker.def;
         float hurt = enemyDamage * CalcFinalHit(playerHitRate);
-        int newDamage = (int)hurt;
+        int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance); 
         enemyDamage = newDamage;
-
         Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+
         if (enemyDamage > 0)
             attacker.currentHp = attacker.currentHp - enemyDamage;
         else attacker.currentHp = attacker.currentHp - 1;
@@ -224,11 +377,13 @@ public class Stats : Weapon
         if (attacker.currentHp < 0) attacker.Death();
     }
 
-    public void SetMeleetWeaponStats(int hit, int might, int weight)
+    public void SetMeleetWeaponStats(int hit, int might, int weight, int chance, float rate)
     {
         weaponHit = hit;
         weaponMight = might;
         weaponWeight = weight;
+        weaponCritChance = chance;
+        weaponCritRate = rate;
     }
 
     public float CalcEnemyHitRate(int enemySkill, int enemyWeaponHit)
@@ -253,90 +408,87 @@ public class Stats : Weapon
 
     public float CalcFinalHit(int hitRate)
     {
-        FinalHit = 0;
+        finalHit = 0;
 
         if (hitRate > 80)
         {
-
-            int number = Random.Range(0, 100);
-            if (number <= hitRate) FinalHit = 1;
-            else if (Random.Range(0, 100) <= hitRate)
+            Debug.Log("is this Random " + Random.Range(0, 101));
+            Debug.Log("is this Random1 " + Random.Range(0, 101));
+            Debug.Log("is this Random2 " + Random.Range(0, 101));
+            Debug.Log("is this Random3 " + Random.Range(0, 101));
+            Debug.Log("is this Random4 " + Random.Range(0, 101));
+          
+            if (Random.Range(0, 101) <= hitRate) finalHit = 1;
+            if (Random.Range(0, 101) <= hitRate) finalHit = 1;
+            if (Random.Range(0, 101) <= hitRate)
             {
-                FinalHit = 1;
-            }
-            else if (Random.Range(0, 100) <= hitRate)
-            {
-                FinalHit = 1;
+                finalHit = 1;
             }
             else
             {
-                number = Random.Range(0, 100);
-                if (number <= 80) FinalHit = 0.75f;
-                else if (Random.Range(0, 100) <= 80)
-                {
-                    FinalHit = 1;
-                }
+                if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
                 else
                 {
-                    number = Random.Range(0, 100);
-                    if (number <= 60) FinalHit = 0.50f;
+                    if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
                     else
                     {
-                        number = Random.Range(0, 100);
-                        if (number <= 40) FinalHit = 0.25f;
-                        else FinalHit = 0;
+                        if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+                        else finalHit = 0;
                     }
                 }
             }
         }
         else if (hitRate > 60)
         {
-            int number = Random.Range(0, 100);
-            if (number <= hitRate) FinalHit = 0.75f;
-            else if (Random.Range(0, 100) <= hitRate)
+            if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
+            if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
+            if (Random.Range(0, 101) <= hitRate)
             {
-                FinalHit = 1;
+                finalHit = 0.75f;
             }
             else
             {
-                number = Random.Range(0, 100);
-                if (number <= 60) FinalHit = 0.50f;
+              
+                if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
                 else
                 {
-                    number = Random.Range(0, 100);
-                    if (number <= 40) FinalHit = 0.25f;
-                    else FinalHit = 0;
+                    if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+                    else finalHit = 0;
                 }
             }
         }
         else if (hitRate > 40)
         {
-            int number = Random.Range(0, 100);
-            if (number <= hitRate) FinalHit = 0.50f;
-            else if (Random.Range(0, 100) <= hitRate)
+            if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
+            else if (Random.Range(0, 101) <= hitRate)
             {
-                FinalHit = 1;
+                finalHit = 0.50f;
+            }
+            else if (Random.Range(0, 101) <= hitRate)
+            {
+                finalHit = 0.50f;
             }
             else
             {
-                number = Random.Range(0, 100);
-                if (number <= 40) FinalHit = 0.25f;
-                else FinalHit = 0;
+                if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+                else finalHit = 0;
             }
         }
         else if (hitRate > 20)
         {
-            int number = Random.Range(0, 100);
-            if (number <= hitRate) FinalHit = 0.25f;
-            else FinalHit = 0;
+            int number = Random.Range(0, 101);
+            if (number <= hitRate) finalHit = 0.25f;
+            if (number <= hitRate) finalHit = 0.25f;
+            if (number <= hitRate) finalHit = 0.25f;
+            else finalHit = 0;
         }
         else
         {
-            int number = Random.Range(0, 100);
-            if (number <= hitRate) FinalHit = 0.10f;
-            else FinalHit = 0;
+            int number = Random.Range(0, 101);
+            if (number <= hitRate) finalHit = 0.10f;
+            else finalHit = 0;
         }
-        return FinalHit;
+        return finalHit;
     }
 
     void levelUp()

@@ -48,7 +48,7 @@ public class MapPlayerAttack : ShowAttackRange {
         RemoveSelectableTiles();
     }
 
-    public void attack(GridTiles tile)
+    public void attack()
     {
         GameObject.FindObjectOfType<PlayerUnitMenu>().attackDoubleClick = false;
         HideAttack();
