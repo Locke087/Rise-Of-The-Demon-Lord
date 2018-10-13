@@ -19,7 +19,6 @@ public class UnitSelect : MonoBehaviour
 
     public IEnumerator Menu()
     {
-        Debug.Log("Why??????");
         unitMenu.AssignUnit(gameObject);
         yield return new WaitForSeconds(0.01f);
         unitMenu.ActiveMenu();
