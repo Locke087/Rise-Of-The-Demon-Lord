@@ -302,9 +302,10 @@ public class Stats : MonoBehaviour
                 GameObject.FindObjectOfType<SpeedCenterTurns>().AdvanceTurn();
             }
         }
-      
+
         //GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
-    
+        gameObject.tag = "Dead";
+
         StartCoroutine(DeathTimer());
     }
 
