@@ -208,11 +208,14 @@ public class SpeedCenterTurns : MonoBehaviour {
             }
         }
     }
-
+    public IEnumerator ClearUp()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject.FindObjectOfType<Stats>().CleanTextBoxs();
+    }
     public void AdvanceTurn()
     {
 
-        GameObject.FindObjectOfType<Stats>().CleanTextBoxs();
 
         if (GameObject.FindGameObjectsWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
         if (GameObject.FindGameObjectsWithTag("Enemy") == null)
