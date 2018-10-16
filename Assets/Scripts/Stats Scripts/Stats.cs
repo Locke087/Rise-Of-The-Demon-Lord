@@ -270,13 +270,15 @@ public class Stats : MonoBehaviour
     public void attacked(Stats attacker)
     {
         //AttackPreview(attacker);
+
         PlayerDamaged(attacker);
-        EnemyDamaged(attacker);
-        if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3)
+        if (currentHp > 0 && attacker.currentHp > 0) EnemyDamaged(attacker);
+
+        if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3 && currentHp > 0 && attacker.currentHp > 0)
         {
             PlayerDamaged(attacker);
         }
-        else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3) EnemyDamaged(attacker);
+        else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3 && currentHp > 0 && attacker.currentHp > 0) EnemyDamaged(attacker);
 
        //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
@@ -310,6 +312,16 @@ public class Stats : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
+    }
+
+    public void UnitsLiving()
+    {
+        List<GameObject> deadp = new List<GameObject>();
+        deadp.AddRange(GameObject.FindGameObjectsWithTag("Dead"));
+        List<GameObject> enemyp = new List<GameObject>();
+        enemyp.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        List<GameObject> enemyp = new List<GameObject>();
+        enemyp.AddRange(GameObject.FindGameObjectsWithTag("Player"));
     }
 
     public void AttackPreview(Stats attacker)
@@ -455,7 +467,24 @@ public class Stats : MonoBehaviour
     }
   
 
+    public void CleanTextBoxs()
+    {
 
+        GameObject.Find("AtkHp").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefHp").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("AtkAtk").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefAtk").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("AtkHit").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefHit").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("AtkCC").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefCC").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("AtkCR").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefCR").GetComponentInChildren<Text>().text = "0";
+        GameObject.Find("DefTD").GetComponent<Text>().text = "0";
+        GameObject.Find("DefTD2").GetComponent<Text>().text = "0";
+        GameObject.Find("AtkTD").GetComponent<Text>().text = "0";
+        GameObject.Find("AtkTD2").GetComponent<Text>().text = "0";
+    }
 
     public void PlayerDamaged(Stats attacker)
     {
@@ -467,11 +496,27 @@ public class Stats : MonoBehaviour
         float hurt = damage * CalcFinalHit(enemyHitRate);
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
-        GameObject.Find("DefTD").GetComponent<Text>().text = damage.ToString();
+       
         Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         if (damage > 0)
             currentHp = currentHp - damage;
-        else currentHp = currentHp - 1;
+        else
+        {
+            damage = 1;
+            currentHp = currentHp - damage;
+        }
+
+        if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("AtkTD2").GetComponent<Text>().text = damage.ToString();
+        }
+        else
+        {
+            GameObject.Find("AtkTD").GetComponent<Text>().text = damage.ToString();
+        }
+
+        GameObject.Find("AtkHp").GetComponentInChildren<Text>().text = currentHp.ToString();
+        
 
         if (currentHp <= 0) Death();
     }
@@ -485,14 +530,34 @@ public class Stats : MonoBehaviour
         int totalAtk = str + weaponMight;
         enemyDamage = totalAtk - attacker.def;
         float hurt = enemyDamage * CalcFinalHit(playerHitRate);
-        int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance); 
-        enemyDamage = newDamage;
-        GameObject.Find("AtkTD").GetComponent<Text>().text = enemyDamage.ToString();
+        if (hurt < 0)
+        {
+            int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance);
+            enemyDamage = newDamage;
+        }
+        
+       
+     
         Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
 
         if (enemyDamage > 0)
             attacker.currentHp = attacker.currentHp - enemyDamage;
-        else attacker.currentHp = attacker.currentHp - 1;
+        else
+        {
+            enemyDamage = 1;
+            attacker.currentHp = attacker.currentHp - enemyDamage;
+        }
+
+        if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("DefTD2").GetComponent<Text>().text = enemyDamage.ToString();
+        }
+        else
+        {
+            GameObject.Find("DefTD").GetComponent<Text>().text = enemyDamage.ToString();
+        }
+
+        GameObject.Find("DefHp").GetComponentInChildren<Text>().text = attacker.currentHp.ToString();
 
         if (attacker.currentHp < 0) attacker.Death();
     }

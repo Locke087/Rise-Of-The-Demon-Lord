@@ -27,7 +27,8 @@ public class MainPlayerParty : MonoBehaviour
 
     void BuildPartyList()
     {
-        string[] names = { "Paul", "John" };
+        //  string[] names = { "Paul", "John", "BlastMan", "AcidMan", "BlockMan", "TundraMan", "TorchMan" };
+        string[] names = { "Paul", "John", "BlastMan", "AcidMan", "TundraMan"};
         for (int i = 0; i < names.Length; i++) newPartyList.Add(names[i]);
 
         foreach (string name in newPartyList)

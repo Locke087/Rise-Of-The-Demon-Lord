@@ -101,15 +101,7 @@ public class MapEnemyMove : GridMovement {
 
     void AssignArray(List<GameObject> list)
     {
-        MCMove MCtarget = GameObject.FindObjectOfType<MCMove>();
-        PlayerUnit[] playerTargets = GameObject.FindObjectsOfType<PlayerUnit>();
-        //if (MCtarget.activeOnBoard == true) 
-        list.Add(MCtarget.gameObject);
-        foreach (PlayerUnit obj in playerTargets)
-        {
-            //if (obj.activeOnBoard == true) 
-            list.Add(obj.gameObject);
-        }
+        list.AddRange(GameObject.FindGameObjectsWithTag("Player"));
     }
 
 }

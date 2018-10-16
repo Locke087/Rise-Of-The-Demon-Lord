@@ -54,13 +54,13 @@ public class MapEventDriver : MonoBehaviour
         for (int j = 0; j < enemyUnitParty.enemyUnits.Count; j++)
         {
 
-            Instantiate(enemyUnitParty.enemyUnits[j], GameObject.Find(newEnemyLocations[j]).transform.position + new Vector3(0,1.5f,0), setQuaterRotation(0, 0, 0));
+            Instantiate(enemyUnitParty.enemyUnits[j], GameObject.Find(newEnemyLocations[j]).transform.position + new Vector3(0,1.4f,0), setQuaterRotation(0, 0, 0));
             enemyUnitParty.enemyUnits[j].GetComponent<Stats>().levelBoost = enemyUnitParty.levelUP;
         }
 
         for (int i = 0; i < playerUnitParty.friendlyUnits.Count; i++)
         {
-            Instantiate(playerUnitParty.friendlyUnits[i], GameObject.Find(newPlayerLocations[i]).transform.position + new Vector3(0, 1.5f, 0), setQuaterRotation(0, 0, 0));
+            Instantiate(playerUnitParty.friendlyUnits[i], GameObject.Find(newPlayerLocations[i]).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
         }
         goodGo = false;
         yield return new WaitForSeconds(0.5f);

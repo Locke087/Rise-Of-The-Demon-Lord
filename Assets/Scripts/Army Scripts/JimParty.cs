@@ -26,7 +26,7 @@ public class JimParty : MonoBehaviour
     void BuildPartyList()
     {
 
-        string[] names = { "Jim", "Cavailer", "Warrior", "Cavailer", "Warrior" };
+        string[] names = { "Jim", "Cavailer", "Warrior", "Warrior" };
         for (int i = 0; i < names.Length; i++) newPartyList.Add(names[i]);
 
         foreach (string name in newPartyList)

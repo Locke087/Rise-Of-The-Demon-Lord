@@ -211,9 +211,30 @@ public class SpeedCenterTurns : MonoBehaviour {
 
     public void AdvanceTurn()
     {
+
+        GameObject.FindObjectOfType<Stats>().CleanTextBoxs();
+
+        if (GameObject.FindGameObjectsWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
+        if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+        {
+            if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+        }
+    
+
         if (!stopped)
         {
-            // if (unitOrder[upNext].activeInHierarchy)
+         
+            if (unitOrder[upNext].tag == "Player")
+            {
+                unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
+            }
+            int check = upNext + 1;
+            if (check < unitOrder.Count)
+            {
+                upNext++;
+            }
+            else upNext = 0;
+
             for (int i = 0; i < unitOrder.Count; i++)
             {
                 if (unitOrder[upNext].tag == "Dead")
@@ -233,20 +254,9 @@ public class SpeedCenterTurns : MonoBehaviour {
                 {
                     i = unitOrder.Count;
                 }
-               
-            }
 
-            if (unitOrder[upNext].tag == "Player")
-            {
-                unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
             }
-            int check = upNext + 1;
-            if (check < unitOrder.Count)
-            {
-                upNext++;
-            }
-            else upNext = 0;
-
+          
             if (unitOrder[upNext].tag == "Player")
             {
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
