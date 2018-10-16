@@ -326,7 +326,7 @@ public class Stats : MonoBehaviour
                 if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
             }
 
-            if (GameObject.FindGameObjectsWithTag("Player") != null) return;
+            if (GameObject.FindGameObjectWithTag("Player") != null) return;
             else
             {
                 GameObject.FindObjectOfType<GameOver>().GameEnd();
