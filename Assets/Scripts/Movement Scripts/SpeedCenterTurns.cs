@@ -215,7 +215,7 @@ public class SpeedCenterTurns : MonoBehaviour {
     }
     public void AdvanceTurn()
     {
-
+        StartCoroutine(ClearUp());
 
         if (GameObject.FindGameObjectsWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
         if (GameObject.FindGameObjectsWithTag("Enemy") == null)

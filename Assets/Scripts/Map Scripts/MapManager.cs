@@ -41,6 +41,7 @@ public class MapManager : MonoBehaviour {
     {
         if (currentUser != null)
         {
+            
             enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>());
             GameObject.FindObjectOfType<PlayerUnitMenu>().attackFinished = true;
             GameObject.FindObjectOfType<PlayerUnitMenu>().attack.gameObject.GetComponent<Image>().color = Color.gray;
