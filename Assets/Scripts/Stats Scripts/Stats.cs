@@ -260,10 +260,10 @@ public class Stats : MonoBehaviour
         will = (int)gtemp;
 
         float defTemp = baseDef;
-        float strTemp = strMod;
+        float strTemp = str;
         Debug.Log(defTemp + " " + strTemp);
         float fbtemp = Mathf.Round((strTemp / 1.5f) + (defTemp / 1.5f));
-        hp = 20 + (int)fbtemp;
+        hp = (int)fbtemp;
         currentHp = hp;
     }
 
@@ -304,32 +304,60 @@ public class Stats : MonoBehaviour
         }
         gameObject.tag = "Dead";
         //GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
-
+    
         StartCoroutine(DeathTimer());
     }
 
     public IEnumerator DeathTimer()
     {
+        UnitsLiving();
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 
     public void UnitsLiving()
     {
-        List<GameObject> deadp = new List<GameObject>();
-        deadp.AddRange(GameObject.FindGameObjectsWithTag("Dead"));
-        List<GameObject> enemyp = new List<GameObject>();
-        enemyp.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        List<GameObject> enemyp = new List<GameObject>();
-        enemyp.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+
+        if (GameObject.FindGameObjectsWithTag("Enemy") != null)
+        {
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 1) { }
+            else
+            {
+                if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+            }
+
+            if (GameObject.FindGameObjectsWithTag("Player") != null) return;
+            else
+            {
+                GameObject.FindObjectOfType<GameOver>().GameEnd();
+            }
+        }
+        else
+        {
+            if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+        }
+
+       
+     
+       
+        
+
+
+
     }
 
     public void AttackPreview(Stats attacker)
     {
         int eDamage = EnemyAttack(attacker);
+        if (eDamage <= 0) eDamage = 1;
         int pDamage = PlayerAttack(attacker);
+        if (pDamage <= 0) pDamage = 1;
         int eHit = EnemyHit(attacker);
+        if (eHit > 100) eHit = 100;
+        else if (eHit < 0) eHit = 0;
         int pHit = PlayerHit(attacker);
+        if (pHit > 100) pHit = 100;
+        else if (pHit < 0) pHit = 0;
         int eCritC = EnemyCritChance(attacker);
         int pCritC = PlayerCritChance(attacker);
         float eCrit = EnemyCrit(attacker);
@@ -595,14 +623,9 @@ public class Stats : MonoBehaviour
     {
         finalHit = 0;
 
-        if (hitRate > 80)
+        if (hitRate >= 100) finalHit = 1;
+        else if (hitRate > 80)
         {
-            Debug.Log("is this Random " + Random.Range(0, 101));
-            Debug.Log("is this Random1 " + Random.Range(0, 101));
-            Debug.Log("is this Random2 " + Random.Range(0, 101));
-            Debug.Log("is this Random3 " + Random.Range(0, 101));
-            Debug.Log("is this Random4 " + Random.Range(0, 101));
-          
             if (Random.Range(0, 101) <= hitRate) finalHit = 1;
             if (Random.Range(0, 101) <= hitRate) finalHit = 1;
             if (Random.Range(0, 101) <= hitRate)
