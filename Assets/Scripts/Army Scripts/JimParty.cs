@@ -14,7 +14,7 @@ public class JimParty : MonoBehaviour
         unitParty.FriendOrFoe(false);
         BuildPartyList();
         unitParty.CurrentParty(jimParty);
-        unitParty.EnemyLevel(20);
+        unitParty.EnemyLevel(5);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class JimParty : MonoBehaviour
     void BuildPartyList()
     {
 
-        string[] names = { "Jim", "Horse", "Horse", "Horse" };
+        string[] names = { "Jim", "Cavailer", "Warrior", "Cavailer", "Warrior" };
         for (int i = 0; i < names.Length; i++) newPartyList.Add(names[i]);
 
         foreach (string name in newPartyList)

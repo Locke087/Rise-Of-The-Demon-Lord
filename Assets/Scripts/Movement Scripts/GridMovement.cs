@@ -23,7 +23,7 @@ public class GridMovement : MonoBehaviour
 
     public bool isMoving = false;
     public int move = 5;
-    public float jumpHeight = 0;
+    public float jumpHeight = 3;
     public float moveSpeed = 2;
 
     Vector3 velocity = new Vector3();

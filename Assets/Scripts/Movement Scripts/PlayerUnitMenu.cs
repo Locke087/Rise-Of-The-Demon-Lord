@@ -120,7 +120,7 @@ public class PlayerUnitMenu : MonoBehaviour {
         
     }
 
-    void EndTurn()
+    public void EndTurn()
     {
         if (!attackDoubleClick && !moveDoubleClick)
         {

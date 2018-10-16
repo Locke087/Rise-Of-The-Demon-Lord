@@ -7,11 +7,22 @@ public class Weapon : MonoBehaviour
 
 
     public Stats stats;
-    public bool weaponUsed = false;
+    public int might;
+    public int hitrate;
+    public int weight;
+    public float critrate;
+    public int critchance;
+    public bool weaponUsed = true;
+    public string weapon = "";
+    public List<WeaponEquipped> allWeapons;
     // Use this for initialization
     void Start()
     {
-
+        stats = gameObject.GetComponent<Stats>();
+        allWeapons = new List<WeaponEquipped>();
+        allWeapons.Add(new WeaponEquipped("Sword", "Long Sword", 8, 90, 5, 1.5f, 5));
+        allWeapons.Add(new WeaponEquipped("Axe", "Battle Axe", 8, 70, 9, 2, 5));
+        weaponStats();
     }
 
     // Update is called once per frame
@@ -20,14 +31,23 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void statAssign(Stats newStats)
-    {
-        stats = newStats;
-    }
-
     public void weaponStats()
     {
-        stats.SetMeleetWeaponStats(0, 0, 0, 0, 0);
+        int key = 0;
+        int count = 0;
+        foreach (WeaponEquipped w in allWeapons)
+        {
+            if (w.weaponName == weapon) key = count;
+            count++;
+        }
+        if (key > 1) key = 1;
+        might = allWeapons[key].isMight;
+        hitrate = allWeapons[key].isHit;
+        weight = allWeapons[key].isWeight;
+        critchance = allWeapons[key].isCritChance;
+        critrate = allWeapons[key].isCritRate;
+
+        stats.SetMeleetWeaponStats(hitrate, might, weight, critchance, critrate);
 
     }
 
@@ -36,22 +56,22 @@ public class Weapon : MonoBehaviour
     {
 
         // Use this for initialization
-        public bool isSpd;
-        public bool isStr;
-        public bool isDef;
-        public bool isSkill;
-        public bool isHp;
-        public bool visited = false;
-        public int level = 0;
-        public WeaponEquipped(bool spd, bool str, bool def, bool skl, bool hp)
+        public string weaponType;
+        public string weaponName;
+        public int isMight;
+        public int isHit;
+        public int isWeight;
+        public float isCritRate;
+        public int isCritChance;
+        public WeaponEquipped(string wt, string wn, int m, int h, int w, float cr, int cc)
         {
-            level++;
-            isSpd = spd;
-            isStr = str;
-            isDef = def;
-            visited = false;
-            isSkill = skl;
-            isHp = hp;
+            weaponType = wt;
+            weaponName = wn;
+            isMight = m;
+            isHit = h;
+            isWeight = w;
+            isCritRate = cr;
+            isCritChance = cc;
         }
 
 

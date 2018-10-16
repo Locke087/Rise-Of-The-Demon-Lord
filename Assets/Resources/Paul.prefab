@@ -22,16 +22,16 @@ GameObject:
   - component: {fileID: 33420303524251362}
   - component: {fileID: 136222196275400148}
   - component: {fileID: 23552475563828510}
-  - component: {fileID: 114916031663540610}
   - component: {fileID: 114977774173558774}
   - component: {fileID: 114090037251440488}
-  - component: {fileID: 114624910874002718}
   - component: {fileID: 114972176937120974}
   - component: {fileID: 114838382381017738}
-  - component: {fileID: 114337701544834368}
-  - component: {fileID: 114131602903461450}
   - component: {fileID: 114051431982468910}
   - component: {fileID: 54673451383737544}
+  - component: {fileID: 114734656016449752}
+  - component: {fileID: 114876399313637714}
+  - component: {fileID: 114735547243450344}
+  - component: {fileID: 114775926259942670}
   m_Layer: 0
   m_Name: Paul
   m_TagString: Player
@@ -46,8 +46,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627190126754576}
   m_LocalRotation: {x: -0.000964853, y: 0.0001360881, z: 0.00006437061, w: 0.9999995}
-  m_LocalPosition: {x: 60.4, y: 1.4, z: -62.67}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalPosition: {x: 60.399994, y: 1.3999939, z: -62.67}
+  m_LocalScale: {x: 0.8999995, y: 0.9, z: 0.8999995}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,7 +107,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 92
   m_CollisionDetection: 0
 --- !u!114 &114051431982468910
 MonoBehaviour:
@@ -130,6 +130,7 @@ MonoBehaviour:
   move: 5
   jumpHeight: 3
   moveSpeed: 2
+  halfHeight: 1.4
   actualTargetTile: {fileID: 0}
   rb: {fileID: 0}
   moveSwitch: {fileID: 0}
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTurn: 0
---- !u!114 &114131602903461450
+--- !u!114 &114734656016449752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,91 +161,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1627190126754576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9ed7b4d0250ae48a6ea68bfc09c237, type: 3}
+  m_Script: {fileID: 11500000, guid: 99551dc978571004ba132bc0a745ad3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  classHp: 8
-  classStr: 10
-  classDef: 5
-  classSpd: 7
-  classSkill: 10
-  classMovement: 1
-  stats: {fileID: 114624910874002718}
---- !u!114 &114337701544834368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627190126754576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4336761a2c134d644961b07d93550d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cs: []
-  allNatures: []
-  stats: {fileID: 114624910874002718}
-  nature: 
---- !u!114 &114624910874002718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627190126754576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 114624910874002718}
-  weaponUsed: 0
-  hp: 20
-  str: 8
-  def: 5
-  spd: 10
-  skill: 10
-  movement: 0
-  FinalHit: 0
-  currentHp: 0
-  showHp: {fileID: 0}
+  stats: {fileID: 0}
+  might: 0
+  hitrate: 0
   weight: 0
-  level: 1
-  levelBoost: 20
-  promote: 0
-  enemyDamage: 0
-  damage: 0
-  enemyHitRate: 0
-  playerHitRate: 0
-  baseEnemyHit: 0
-  basePlayerHit: 0
-  characterSheet: []
-  hpMod: 0
-  strMod: 0
-  defMod: 0
-  spdMod: 0
-  skillMod: 0
-  movementMod: 0
-  allNatures: []
-  weaponWeight: 0
-  weaponMight: 0
-  weaponHit: 0
-  nature: 
-  skip: 0
---- !u!114 &114838382381017738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627190126754576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4c83addf98e3742bf793818fa8eae8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMCParty: []
-  newPartyList: []
-  unitParty: {fileID: 114972176937120974}
---- !u!114 &114916031663540610
+  critrate: 0
+  critchance: 0
+  weaponUsed: 1
+  weapon: 
+  allWeapons: []
+--- !u!114 &114735547243450344
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,8 +194,104 @@ MonoBehaviour:
   move: 5
   jumpHeight: 3
   moveSpeed: 2
+  halfHeight: 1.4
   actualTargetTile: {fileID: 0}
   busy: 0
+--- !u!114 &114775926259942670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ec26f7855b7a948a933c8f92adf68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allNature: []
+--- !u!114 &114838382381017738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4c83addf98e3742bf793818fa8eae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMCParty: []
+  newPartyList: []
+  unitParty: {fileID: 114972176937120974}
+--- !u!114 &114876399313637714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627190126754576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  str: 0
+  def: 0
+  spd: 0
+  skill: 0
+  magic: 0
+  will: 0
+  baseHp: 0
+  baseStr: 0
+  baseDef: 0
+  baseSpd: 0
+  baseSkill: 0
+  baseMagic: 0
+  baseWill: 0
+  movement: 0
+  finalHit: 0
+  currentHp: 0
+  showHp: {fileID: 0}
+  weight: 0
+  level: 0
+  levelBoost: 1
+  enemyDamage: 0
+  damage: 0
+  enemyHitRate: 0
+  playerHitRate: 0
+  baseEnemyHit: 0
+  basePlayerHit: 0
+  characterSheet: []
+  hpMod: 0
+  strMod: 0
+  defMod: 0
+  spdMod: 0
+  skillMod: 0
+  willMod: 0
+  magicMod: 0
+  allNatures: []
+  weaponWeight: 0
+  weaponMight: 0
+  weaponHit: 0
+  weaponCritRate: 0
+  weaponCritChance: 0
+  nature: 
+  critChance: 0
+  critRate: 0
+  skip: 0
+  done: 0
+  go: 0
+  currentClass: Cavalier
+  allClassesBase: []
+  allClassesMods: []
+  allClassesMaster: []
+  calcHp: 0
+  calcStr: 0
+  calcDef: 0
+  calcSpd: 0
+  calcSkill: 0
+  calcMagic: 0
+  calcWill: 0
 --- !u!114 &114972176937120974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +324,7 @@ MonoBehaviour:
   moveSpeed: 2
   actualTargetTile: {fileID: 0}
   inUse: 0
+  attacked: 0
 --- !u!136 &136222196275400148
 CapsuleCollider:
   m_ObjectHideFlags: 1

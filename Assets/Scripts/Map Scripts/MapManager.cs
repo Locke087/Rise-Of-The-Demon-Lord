@@ -41,12 +41,16 @@ public class MapManager : MonoBehaviour {
     {
         if (currentUser != null)
         {
-            enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>()); 
+            enemy.GetComponent<Stats>().attacked(currentUser.GetComponent<Stats>());
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attackFinished = true;
+            GameObject.FindObjectOfType<PlayerUnitMenu>().attack.gameObject.GetComponent<Image>().color = Color.gray;
+            currentUser.GetComponent<MapPlayerAttack>().attack();
+
         }
-        
+
     }
 
-    public void PlayerAttackTrue()
+   /* public void PlayerAttackTrue()
     {
         if (currentUser != null)
         {
@@ -61,5 +65,5 @@ public class MapManager : MonoBehaviour {
     public void AttackFalse()
     {
         currentUser.GetComponent<MapPlayerAttack>().attack();
-    }
+    }*/
 }

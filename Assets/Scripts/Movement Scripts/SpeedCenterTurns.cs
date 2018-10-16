@@ -94,7 +94,7 @@ public class SpeedCenterTurns : MonoBehaviour {
 
     void ResumeTurns()
     {
-       if (activeUnit != null)
+      /* if (activeUnit != null)
        {
             do
             {
@@ -113,7 +113,9 @@ public class SpeedCenterTurns : MonoBehaviour {
         {
             upNext = 0;
             StartTurn();
-        }
+        }*/
+         upNext = 0;
+         StartTurn();
     }
 
 
@@ -211,6 +213,29 @@ public class SpeedCenterTurns : MonoBehaviour {
     {
         if (!stopped)
         {
+            // if (unitOrder[upNext].activeInHierarchy)
+            for (int i = 0; i < unitOrder.Count; i++)
+            {
+                if (unitOrder[upNext].tag == "Dead")
+                {
+                    int what = upNext + 1;
+                    if (what < unitOrder.Count)
+                    {
+                        upNext++;
+                    }
+                    else upNext = 0;
+                }
+                else if (unitOrder[upNext].tag == "Player")
+                {
+                    i = unitOrder.Count;
+                }
+                else if (unitOrder[upNext].tag == "Enemy")
+                {
+                    i = unitOrder.Count;
+                }
+               
+            }
+
             if (unitOrder[upNext].tag == "Player")
             {
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
@@ -226,6 +251,8 @@ public class SpeedCenterTurns : MonoBehaviour {
             {
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
             }
+
+            
 
             StartTurn();
         }

@@ -21,7 +21,11 @@ public class UIExtention : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         gameObject.GetComponentInParent<GridTiles>().overTile = true;
         if (gameObject.GetComponentInParent<GridTiles>().attack)
         {
-
+            if (gameObject.GetComponentInParent<GridTiles>().unit != null)
+            {
+                gameObject.GetComponentInParent<GridTiles>().unit.GetComponent<Stats>().AttackPreview(GameObject.FindObjectOfType<SpeedCenterTurns>().activeUnit.GetComponent<Stats>());
+            }
+           
         }
     }
 

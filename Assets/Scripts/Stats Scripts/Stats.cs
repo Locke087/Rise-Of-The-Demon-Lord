@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Stats : Weapon
+public class Stats : MonoBehaviour
 {
 
     public int hp;
@@ -12,32 +12,39 @@ public class Stats : Weapon
     public int def;
     public int spd;
     public int skill;
-    public int mag;
+    public int magic;
     public int will;
+    public int baseHp;
+    public int baseStr;
+    public int baseDef;
+    public int baseSpd;
+    public int baseSkill;
+    public int baseMagic;
+    public int baseWill;
+
     public int movement;
     public float finalHit;
     public int currentHp;
     public Text showHp;
     public int weight;
     public int level;
-    public int levelBoost;
-    public bool promote = false;
+    public int levelBoost = 10;
     public int enemyDamage;
     public int damage;
     public int enemyHitRate;
     public int playerHitRate;
     public int baseEnemyHit;
     public int basePlayerHit;
-    GridMovement gridMove;
     public List<CharacterSheet> characterSheet;
-    public int hpMod;
-    public int strMod;
-    public int defMod;
-    public int spdMod;
-    public int skillMod;
-    public int movementMod;
+    public float hpMod;
+    public float strMod;
+    public float defMod;
+    public float spdMod;
+    public float skillMod;
+    public float willMod;
+    public float magicMod;
+ 
     public List<TheNatures> allNatures;
-    public static Random rng = new Random();
     public int weaponWeight = 0;
     public int weaponMight = 0;
     public int weaponHit = 0;
@@ -49,73 +56,110 @@ public class Stats : Weapon
     public bool skip = false;
     public bool done = false;
     public bool go = false;
-    public Button confirm;
-    public Button cancel;
+    public bool dead = false;
+    public bool friend = false;
+    public bool foe = false;
+  //  public Button confirm;
+    //public Button cancel;
+    /* public int hpModStat;
+     public int strModStat;
+     public int defModStat;
+     public int spdModStat;
+     public int skillModStat;
+     public int willModStat;
+     public int magicModStat;
+     public int movementMod;*/
+    /// <summary>
+    /// class Stuff
+    /// </summary>
     // Use this for initialization
+
+    public string currentClass;
+    public List<TheClassesBase> allClassesBase;
+    // public List<TheClassesInc> allClassesInc;
+    public List<TheClassesMod> allClassesMods;
+    public List<TheClassesMaster> allClassesMaster;
+    public int calcHp;
+    public int calcStr;
+    public int calcDef;
+    public int calcSpd;
+    public int calcSkill;
+    public int calcMagic;
+    public int calcWill;
+
     void Start()
     {
-        confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
-        cancel = GameObject.Find("AttackCancel").GetComponent<Button>();
-        confirm.onClick.AddListener(ButtonTrue);
-        cancel.onClick.AddListener(ButtonFalse);
+       // confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
+       // cancel = GameObject.Find("AttackCancel").GetComponent<Button>();
+      //  confirm.onClick.AddListener(ButtonTrue);
+     //   cancel.onClick.AddListener(ButtonFalse);
         currentHp = hp;
-        //                                    spd|str|def|skl|Hp |order
-        allNatures.Add(new TheNatures("Nimble", 2, 1, 0, 1, 1, 0)); //+spd -def 
-        allNatures.Add(new TheNatures("Tough", 0, 1, 2, 1, 1, 1)); //+def -spd 
-        allNatures.Add(new TheNatures("Strong", 0, 2, 1, 1, 1, 2)); //+str -spd 
-        allNatures.Add(new TheNatures("Aggressive", 1, 2, 1, 0, 1, 3)); //+str -def 
-        allNatures.Add(new TheNatures("Handy", 1, 1, 1, 2, 0, 4)); //+skl -hp 
-        allNatures.Add(new TheNatures("Hardy", 0, 1, 1, 1, 2, 5)); //+hp -spd
-        Debug.Log("good day");
-        promote = false;
-        if (nature == null) nature = "neutral";
-        statAssign(this);
+        //                                    spd|str|def|skl|Hp|Mag|Will |order
+        allNatures.Add(new TheNatures("Nimble", 3, 1, 0, 1, 1, 1, 1)); //+spd -def 
+        allNatures.Add(new TheNatures("Tough", 0, 1, 3, 1, 1, 1, 1)); //+def -spd 
+        allNatures.Add(new TheNatures("Strong", 0, 2, 1, 1, 1, 1, 1)); //+str -spd 
+        allNatures.Add(new TheNatures("Aggressive", 1, 3, 1, 0, 1, 1, 1)); //+str -def 
+        allNatures.Add(new TheNatures("Handy", 1, 1, 1, 3, 0, 1, 1)); //+skl -hp 
+        allNatures.Add(new TheNatures("Heathly", 0, 1, 1, 1, 3, 1, 1)); //+hp -sp
+        allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
+        if (nature == null) nature = "Neutral";
         currentHp = hp;
-        hp += hpMod;
-        def += defMod;
-        str += strMod;
-        spd += spdMod;
-        skill += skillMod;
-        movement += movementMod;
+        gameObject.GetComponent<ARandomNature>().PickANature();
+        startClassesUp();
 
-      
-        if (gameObject.GetComponent<MCMove>() != null)
-            gridMove = gameObject.GetComponent<MCMove>();
-        else if (gameObject.GetComponent<PlayerUnit>() != null)
-            gridMove = gameObject.GetComponent<PlayerUnit>();
-        else if (gameObject.GetComponent<EnemyMove>() != null)
-            gridMove = gameObject.GetComponent<EnemyMove>();
-        gameObject.GetComponent<GridMovement>();
-        gridMove.move += movement;
-        movement = gridMove.move;
-        weaponStats();
 
-        confirm.gameObject.SetActive(false);
-        cancel.gameObject.SetActive(false);
+        Debug.Log("hsfsifhdj");
+        if (gameObject.GetComponent<MapPlayerMove>() != null)
+        {
+            friend = true;
+            gameObject.GetComponent<MapPlayerMove>().move = movement;
+        }
+        else if (gameObject.GetComponent<MapEnemyMove>() != null)
+        {
+            foe = true;
+            gameObject.GetComponent<MapEnemyMove>().move = movement;
+        }
 
+
+        // gameObject.GetComponent<Weapon>().weaponStats();
+
+        //confirm.gameObject.SetActive(false);
+        //cancel.gameObject.SetActive(false);
+        FindStats();
+        ReflectStat();
+        // Booster();
+        StartCoroutine(RefreshStat());
+    }
+
+
+  
+    public IEnumerator RefreshStat()
+    {
+        yield return new WaitForSeconds(0.5f);
+        FindStats();
+        ReflectStat();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void StartingBases(int h, int a, int d, int sp, int sk, int m, int w, int mo)
     {
+        int key = 0;
+        int count = 0;
+        foreach (TheNatures n in allNatures)
+        {
+            if (nature == n.natures) key = count;
+            count++;
+        }
+        baseHp = h + allNatures[key].isHp;
+        baseStr = a + allNatures[key].isStr;
+        baseDef = d + allNatures[key].isDef;
+        baseSpd = sp + allNatures[key].isSpd;
+        baseSkill = sk + allNatures[key].isSkill;
+        baseMagic = m + allNatures[key].isMag;
+        baseWill = w + allNatures[key].isWill;
+        movement = mo;  
+    } 
 
-        /*if (gameObject.GetComponent<MCMove>() != null)
-            if (gameObject.GetComponent<MCMove>().activePlayer == true)
-                if (showHp != null) showHp.text = currentHp.ToString();
-
-        if (gameObject.GetComponent<PlayerUnit>() != null)
-            if (gameObject.GetComponent<PlayerUnit>().activePlayer == true)
-                if (showHp != null) showHp.text = currentHp.ToString();
-
-        if (gameObject.GetComponent<EnemyMove>() != null)
-            if (gameObject.GetComponent<EnemyMove>().activeOnBoard == true)
-                if (gameObject.GetComponent<EnemyMove>().activeEnemy == true)
-                    if (showHp != null) showHp.text = currentHp.ToString();
-
-        if (promote == true) classChange();*/
-
-
-    }
 
     public void GetMySheet(List<CharacterSheet> ch)
     {
@@ -153,7 +197,27 @@ public class Stats : Weapon
         }
     }
 
-    public void Booster()
+
+   /* public void UpdateModsStat(int a, int d, int sp, int sk, int m, int w)
+    {
+        skillModStat = sk;
+        strModStat = a;
+        spdModStat = sp;
+        defModStat = d;
+        magicModStat = m;
+        willModStat = w;
+    }*/
+
+    public void UpdateMods(float a, float d, float sp, float sk, float m, float w)
+    {
+        skillMod = sk;
+        strMod = a;
+        spdMod = sp;
+        defMod = d;
+        magicMod = m;
+        willMod = w;
+    }
+   /* public void Booster()
     {
 
         if (levelBoost > 0)
@@ -161,7 +225,8 @@ public class Stats : Weapon
 
             for (int i = 0; i < levelBoost; i++)
             {
-                levelUp();
+                FindStats();
+                ReflectStat();
                 level++;
             }
             levelBoost = 0;
@@ -169,16 +234,42 @@ public class Stats : Weapon
                 currentHp = hp;
         }
 
+    }*/
+
+    public void ReflectStat()
+    {
+        Debug.Log("hello");
+        //baseStr = baseStr + strModStat;
+        float temp = baseStr * strMod;
+        str = (int)temp;
+        Debug.Log(str);
+        //baseDef = baseDef + defModStat;
+        float ntemp = baseDef * defMod;
+        def = (int)ntemp;
+        //baseSkill = baseSkill + defModStat;
+        float stemp = baseSkill * defMod;
+        skill = (int)stemp;
+        //baseSpd = baseSpd + spdModStat;
+        float ftemp = baseSpd * spdMod;
+        spd = (int)ftemp;
+        //baseMagic = baseMagic + magicModStat;
+        float jtemp = baseMagic * magicMod;
+        magic = (int)jtemp;
+        //baseWill = baseWill + willModStat;
+        float gtemp = baseWill * willMod;
+        will = (int)gtemp;
+
+        float defTemp = baseDef;
+        float strTemp = strMod;
+        Debug.Log(defTemp + " " + strTemp);
+        float fbtemp = Mathf.Round((strTemp / 1.5f) + (defTemp / 1.5f));
+        hp = 20 + (int)fbtemp;
+        currentHp = hp;
     }
 
     public void attacked(Stats attacker)
     {
-
-        AttackPreview(attacker);
-    }
-
-    public void AttackContinue(Stats attacker)
-    {
+        //AttackPreview(attacker);
         PlayerDamaged(attacker);
         EnemyDamaged(attacker);
         if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3)
@@ -187,20 +278,39 @@ public class Stats : Weapon
         }
         else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3) EnemyDamaged(attacker);
 
-        GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
+       //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
 
 
     public void Death()
     {
-        GameObject.Destroy(gameObject);
+        dead = true;
+
+        if (gameObject.tag == "Player")
+        {
+            if (GameObject.FindObjectOfType<SpeedCenterTurns>().activeUnit == gameObject)
+            {
+                GameObject.FindObjectOfType<PlayerUnitMenu>().EndTurn();
+            } 
+        }
+        else
+        {
+            if (GameObject.FindObjectOfType<SpeedCenterTurns>().activeUnit == gameObject)
+            {
+                GameObject.FindObjectOfType<SpeedCenterTurns>().AdvanceTurn();
+            }
+        }
+        gameObject.tag = "Dead";
+        //GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
+
+        StartCoroutine(DeathTimer());
     }
 
-    public void OnDestroy()
+    public IEnumerator DeathTimer()
     {
-        GameObject.FindObjectOfType<SpeedCenterTurns>().UpdateList();
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
-
 
     public void AttackPreview(Stats attacker)
     {
@@ -224,13 +334,19 @@ public class Stats : Weapon
         GameObject.Find("AtkCR").GetComponentInChildren<Text>().text = pCrit.ToString();
         GameObject.Find("DefCR").GetComponentInChildren<Text>().text = eCrit.ToString();
 
-        confirm.gameObject.SetActive(true);
-        cancel.gameObject.SetActive(true);
-        StartCoroutine(WaitTilConfirm(attacker));
+     /*   if (gameObject.tag == "Enemy")
+        {
+            StartCoroutine(WaitABit(attacker));
+        }
+        else
+        {
+           
+            StartCoroutine(WaitTilConfirm(attacker));
+        }*/
 
     }
 
-    private IEnumerator WaitTilConfirm(Stats attacker)
+  /*  private IEnumerator WaitTilConfirm(Stats attacker)
     {
         yield return new WaitUntil(() => done == true);
         if (go)
@@ -245,6 +361,12 @@ public class Stats : Weapon
         }
     }
 
+    private IEnumerator WaitABit(Stats attacker)
+    {
+        yield return new WaitForSeconds(2f);
+       
+    }
+
     public void ExitAttack()
     {
         GameObject.FindObjectOfType<MapManager>().AttackFalse();
@@ -254,17 +376,13 @@ public class Stats : Weapon
     {
        done = true;
        go = false;
-       confirm.gameObject.SetActive(false);
-       cancel.gameObject.SetActive(false);
     }
 
     public void ButtonTrue()
     {
         done = true;
         go = true;
-        confirm.gameObject.SetActive(false);
-        cancel.gameObject.SetActive(false);
-    }
+    }*/
 
 
     public int EnemyHit(Stats attacker)
@@ -335,6 +453,7 @@ public class Stats : Weapon
         }
         return (int)hurt;
     }
+  
 
 
 
@@ -348,7 +467,7 @@ public class Stats : Weapon
         float hurt = damage * CalcFinalHit(enemyHitRate);
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
-
+        GameObject.Find("DefTD").GetComponent<Text>().text = damage.ToString();
         Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         if (damage > 0)
             currentHp = currentHp - damage;
@@ -368,6 +487,7 @@ public class Stats : Weapon
         float hurt = enemyDamage * CalcFinalHit(playerHitRate);
         int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance); 
         enemyDamage = newDamage;
+        GameObject.Find("AtkTD").GetComponent<Text>().text = enemyDamage.ToString();
         Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
 
         if (enemyDamage > 0)
@@ -491,75 +611,122 @@ public class Stats : Weapon
         return finalHit;
     }
 
-    void levelUp()
+   
+
+
+    
+    /// <summary>
+    /// Class Section
+    /// </summary>
+    public void startClassesUp()
     {
-        foreach (CharacterSheet ch in characterSheet)
+        //  TheClassesBase(string cas, int spd, int str, int def, int skl, int hp, int mag, int will, int mo)
+        // string cas, float spd, float str, float def, float skl, float mag, float will)
+        // h, a, d, sp, sk, m, w                     // h, a  d  sp,sk,m, w  mo
+        // gameObject.GetComponent<Stats>().StartingBases(15, 8, 8, 7, 6, 3, 4, 7);
+        // sp,a, d, sk, hp, m, w, mo
+        allClassesBase = new List<TheClassesBase>();
+        //allClassesInc = new List<TheClassesInc>();
+        allClassesMods = new List<TheClassesMod>();
+        allClassesMaster = new List<TheClassesMaster>();
+
+        StatRange(7, 5, 3, 5, 2, 1);
+        allClassesBase.Add(new TheClassesBase("Warrior", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
+        //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
+        allClassesMods.Add(new TheClassesMod("Warrior", Warrior.ModList()));
+        StatRange(6, 6, 5, 4, 1, 2);
+        allClassesBase.Add(new TheClassesBase("Cavalier", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
+        //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
+        allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
+
+        for (int i = 0; i < 2; i++)
         {
-            if (ch.level == level)
+            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i].theClass, allClassesBase[i], allClassesMods[i]));
+        }
+
+        FindStats();
+
+    }
+
+    public void FindStats()
+    {
+        Debug.Log("gotHere");
+        foreach (TheClassesMaster mas in allClassesMaster)
+        {
+            if (mas.className == currentClass)
             {
-                int modStr = 0;
-                int modSpd = 0;
-                int modHp = 0;
-                int modDef = 0;
-                int modSkl = 0;
-                foreach (TheNatures na in allNatures)
+                if (currentClass == "Warrior")
                 {
-                    if (na.natures == nature)
-                    {
-                        modStr = na.isStr;
-                        modDef = na.isDef;
-                        modHp = na.isHp;
-                        modSpd = na.isSpd;
-                        modSkl = na.isSkill;
-                    }
+                    WarriorClass();
+                }
+                else if (currentClass == "Cavalier")
+                {
+                    CavalierClass();
                 }
 
-                if (ch.isStr) str += Random.Range(0, 3) + modStr;
-                if (ch.isSpd) spd += Random.Range(0, 3) + modSpd;
-                if (ch.isHp) hp += Random.Range(0, 3) + modHp;
-                if (ch.isDef) def += Random.Range(0, 3) + modDef;
-                if (ch.isSkill) skill += Random.Range(0, 3) + modSkl;
+                if (gameObject.GetComponent<Stats>() != null)
+                {
+                    StartingBases(mas.baseClass.isHp, mas.baseClass.isStr, mas.baseClass.isDef, mas.baseClass.isSpd, mas.baseClass.isSkill, mas.baseClass.isMag, mas.baseClass.isWill, mas.baseClass.isMove);
+                    UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
+                    //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
+                }
+                else
+                {
+                    Debug.Log("but Why");
+                }
+
+
             }
-
-
         }
-    }
-
-    void classChange()
-    {
-        classSearch();
-        level = 1;
-        levelBoost = 0;
-        hp += hpMod;
-        def += defMod;
-        str += strMod;
-        spd += spdMod;
-        skill = skillMod;
-        movement += movementMod;
-        gridMove.move = movement;
-
-
-        promote = false;
 
     }
 
-    void classSearch()
+    public void StatRange(int a, int d, int sp, int sk, int m, int w)
     {
-        if (gameObject.GetComponent<MCLeaderClassModifer>() != null)
+        int max = 45;
+        int min = 30;
+        int temp = 0;
+        int range = 4;
+        bool done = false;
+        do
         {
-            gameObject.AddComponent<MCGeneralClassMod>();
-            gameObject.GetComponent<MCGeneralClassMod>().stats = this;
-            Destroy(gameObject.GetComponent<MCLeaderClassModifer>());
-        }
-        else if (gameObject.GetComponent<HorseClassModifers>() != null)
-        {
-            gameObject.AddComponent<WarHorseClassMod>();
-            gameObject.AddComponent<WarHorseClassMod>().stats = this;
-            Destroy(gameObject.GetComponent<HorseClassModifers>());
-        }
+            int aTemp = a;
+            calcStr = Random.Range(a, aTemp + range);
+            aTemp = d;
+            calcDef = Random.Range(d, aTemp + range);
+            aTemp = sp;
+            calcSpd = Random.Range(sp, aTemp + range);
+            aTemp = sk;
+            calcSkill = Random.Range(sk, aTemp + range);
+            aTemp = m;
+            calcMagic = Random.Range(m, aTemp + range);
+            aTemp = w;
+            calcWill = Random.Range(m, aTemp + range);
+            temp = calcStr + calcDef + calcSpd + calcSkill + calcMagic + calcWill;
+
+            if (temp > min && temp < max)
+            {
+                done = true;
+            }
+        } while (!done);
 
 
+    }
 
+
+    public void WarriorClass()
+    {
+
+        gameObject.GetComponent<Weapon>().weapon = "Long Sword";
+       // Warrior.LevelUp();
+
+    }
+
+    public void CavalierClass()
+    {
+
+        gameObject.GetComponent<Weapon>().weapon = "Battle Axe";
+      //  Cavalier.LevelUp();
     }
 
     [System.Serializable]
@@ -570,10 +737,12 @@ public class Stats : Weapon
         public int isDef;
         public int isSkill;
         public int isHp;
+        public int isMag;
+        public int isWill;
         public string natures;
-        public int listedOrder;
 
-        public TheNatures(string n, int spd, int str, int def, int skl, int hp, int ord)
+
+        public TheNatures(string n, int spd, int str, int def, int skl, int hp, int mag, int will)
         {
             natures = n;
             isSpd = spd;
@@ -581,10 +750,13 @@ public class Stats : Weapon
             isDef = def;
             isSkill = skl;
             isHp = hp;
-            listedOrder = ord;
+            isMag = mag;
+            isWill = will;
+
         }
 
     }
+
     [System.Serializable]
     public class CharacterSheet
     {
@@ -610,6 +782,81 @@ public class Stats : Weapon
 
 
     }
+
+    [System.Serializable]
+    public class TheClassesMod
+    {
+        public float isSpd = 0;
+        public float isStr = 0;
+        public float isDef = 0;
+        public float isSkill = 0;
+        public float isMag = 0;
+        public float isWill = 0;
+        public string theClass = "";
+
+        public TheClassesMod(string cas, List<float> list)
+        {
+            theClass = cas;
+            isStr = list[0];
+            isDef = list[1];
+            isSpd = list[2];
+            isSkill = list[3];
+            isMag = list[4];
+            isWill = list[5];
+        }
+    }
+
+    [System.Serializable]
+    public class TheClassesBase
+    {
+
+        public int isSpd = 0;
+        public int isStr = 0;
+        public int isDef = 0;
+        public int isSkill = 0;
+        public int isHp = 0;
+        public int isMag = 0;
+        public int isWill = 0;
+        public int isMove = 0;
+        public string theClass = "";
+
+        public TheClassesBase(string cas, int str, int def, int spd, int skl, int mag, int will, int hp, int mo)
+        {
+            theClass = cas;
+            isSpd = spd;
+            isStr = str;
+            isDef = def;
+            isSkill = skl;
+            isHp = hp;
+            isMag = mag;
+            isWill = will;
+            isMove = mo;
+        }
+
+
+    }
+
+
+    [System.Serializable]
+    public class TheClassesMaster
+    {
+        public string className;
+        public TheClassesBase baseClass;
+        // public TheClassesInc incClass;
+        public TheClassesMod modClass;
+
+        public TheClassesMaster(string n, TheClassesBase b, TheClassesMod m)
+        {
+            baseClass = b;
+            className = b.theClass;
+            modClass = m;
+            //  i = incClass;
+
+        }
+
+
+    }
+
 
 }
 

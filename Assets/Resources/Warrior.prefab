@@ -9,38 +9,38 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1086589313470060}
+  m_RootGameObject: {fileID: 1616754640039934}
   m_IsPrefabAsset: 1
---- !u!1 &1086589313470060
+--- !u!1 &1616754640039934
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4117348780569578}
-  - component: {fileID: 33893560191783342}
-  - component: {fileID: 136059214849099094}
-  - component: {fileID: 23704381896810810}
-  - component: {fileID: 114083454512468904}
-  - component: {fileID: 114784054840752592}
-  - component: {fileID: 114784440128482610}
-  - component: {fileID: 54895456745192970}
-  - component: {fileID: 114654390303967754}
-  - component: {fileID: 114438688873979940}
+  - component: {fileID: 4713040122074300}
+  - component: {fileID: 33593001320595694}
+  - component: {fileID: 136696370737445886}
+  - component: {fileID: 23777217412173842}
+  - component: {fileID: 114677117808810628}
+  - component: {fileID: 54844546001505334}
+  - component: {fileID: 114080706109261370}
+  - component: {fileID: 114268865246006972}
+  - component: {fileID: 114652645835275938}
+  - component: {fileID: 114618305516433854}
   m_Layer: 0
-  m_Name: Horse
+  m_Name: Warrior
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4117348780569578
+--- !u!4 &4713040122074300
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 99.33, y: 1.4, z: -77.43}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
@@ -48,12 +48,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23704381896810810
+--- !u!23 &23777217412173842
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,19 +83,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33893560191783342
+--- !u!33 &33593001320595694
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54895456745192970
+--- !u!54 &54844546001505334
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -105,44 +105,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114083454512468904
+--- !u!114 &114080706109261370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d82b9eb1f2b69e94fadb1bb09710fab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerPhase: 0
-  isEnemyPhase: 0
-  freeze: 0
-  enemyIsFinished: 0
-  enemyAccounted: 0
-  pause: 0
-  isMoving: 0
-  move: 5
-  jumpHeight: 3
-  moveSpeed: 2
-  actualTargetTile: {fileID: 0}
-  moved: 0
-  attackState: 0
-  playerStats: {fileID: 0}
-  thePlayer: 0
-  setup: 1
-  activeOnBoard: 0
-  activeEnemy: 0
-  activeCheck: 0
-  moveSwitch: {fileID: 0}
-  rb: {fileID: 0}
---- !u!114 &114438688873979940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b091fde7a1c68534894083a3d8fcbba2, type: 3}
@@ -158,31 +126,59 @@ MonoBehaviour:
   move: 5
   jumpHeight: 3
   moveSpeed: 2
+  halfHeight: 1.4
   actualTargetTile: {fileID: 0}
---- !u!114 &114654390303967754
+--- !u!114 &114268865246006972
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99551dc978571004ba132bc0a745ad3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  might: 0
+  hitrate: 0
+  weight: 0
+  critrate: 0
+  critchance: 0
+  weaponUsed: 1
+  weapon: Long Sword
+  allWeapons: []
+--- !u!114 &114618305516433854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616754640039934}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  weaponUsed: 0
-  hp: 20
-  str: 10
-  def: 8
-  spd: 5
-  skill: 8
-  movement: 6
-  FinalHit: 0
-  currentHp: 20
+  hp: 0
+  str: 0
+  def: 0
+  spd: 0
+  skill: 0
+  magic: 0
+  will: 0
+  baseHp: 0
+  baseStr: 0
+  baseDef: 0
+  baseSpd: 0
+  baseSkill: 0
+  baseMagic: 0
+  baseWill: 0
+  movement: 0
+  finalHit: 0
+  currentHp: 0
   showHp: {fileID: 0}
   weight: 0
-  level: 1
+  level: 0
   levelBoost: 10
   promote: 0
   enemyDamage: 0
@@ -197,52 +193,92 @@ MonoBehaviour:
   defMod: 0
   spdMod: 0
   skillMod: 0
+  willMod: 0
+  magicMod: 0
+  hpModStat: 0
+  strModStat: 0
+  defModStat: 0
+  spdModStat: 0
+  skillModStat: 0
+  willModStat: 0
+  magicModStat: 0
   movementMod: 0
   allNatures: []
   weaponWeight: 0
   weaponMight: 0
   weaponHit: 0
+  weaponCritRate: 0
+  weaponCritChance: 0
   nature: 
+  critChance: 0
+  critRate: 0
   skip: 0
---- !u!114 &114784054840752592
+  done: 0
+  go: 0
+  confirm: {fileID: 0}
+  cancel: {fileID: 0}
+  currentClass: Warrior
+  allClassesBase: []
+  allClassesMods: []
+  allClassesMaster: []
+  calcHp: 0
+  calcStr: 0
+  calcDef: 0
+  calcSpd: 0
+  calcSkill: 0
+  calcMagic: 0
+  calcWill: 0
+--- !u!114 &114652645835275938
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1734629f9757244a86f72eb1886e9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 78ec26f7855b7a948a933c8f92adf68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cs: []
-  allNatures: []
-  stats: {fileID: 0}
-  nature: 
---- !u!114 &114784440128482610
+  allNature: []
+--- !u!114 &114677117808810628
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc500f7d031a6c6428479e460c9773cb, type: 3}
+  m_Script: {fileID: 11500000, guid: d82b9eb1f2b69e94fadb1bb09710fab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  classHp: 3
-  classStr: 5
-  classDef: 2
-  classSpd: 7
-  classSkill: 10
-  classMovement: 1
-  stats: {fileID: 0}
---- !u!136 &136059214849099094
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  halfHeight: 1.4
+  actualTargetTile: {fileID: 0}
+  moved: 0
+  attackState: 0
+  playerStats: {fileID: 0}
+  thePlayer: 0
+  setup: 1
+  activeOnBoard: 0
+  activeEnemy: 0
+  activeCheck: 0
+  moveSwitch: {fileID: 0}
+  rb: {fileID: 0}
+--- !u!136 &136696370737445886
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086589313470060}
+  m_GameObject: {fileID: 1616754640039934}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

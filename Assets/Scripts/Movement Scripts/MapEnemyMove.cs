@@ -25,7 +25,10 @@ public class MapEnemyMove : GridMovement {
         FindNearestTarget();
         CalculatePath();
         FindSelectableTiles();
-        actualTargetTile.target = true;
+        if (actualTargetTile != null)
+        {
+            actualTargetTile.target = true;
+        }
         Move();
 
         do

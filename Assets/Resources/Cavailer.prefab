@@ -9,53 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1347844580881592}
+  m_RootGameObject: {fileID: 1653255678321042}
   m_IsPrefabAsset: 1
---- !u!1 &1347844580881592
+--- !u!1 &1653255678321042
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4633626808127378}
-  - component: {fileID: 33416561585287772}
-  - component: {fileID: 136544742839414138}
-  - component: {fileID: 23075812911742306}
-  - component: {fileID: 114419710183634154}
-  - component: {fileID: 114275977897294706}
-  - component: {fileID: 114489949037326866}
-  - component: {fileID: 54049290461097684}
-  - component: {fileID: 114418813515273310}
-  - component: {fileID: 114066756182249236}
-  - component: {fileID: 114266730761885992}
-  - component: {fileID: 114799566233228648}
+  - component: {fileID: 4229598037463100}
+  - component: {fileID: 33703280347728888}
+  - component: {fileID: 136823945048013796}
+  - component: {fileID: 23802193581516412}
+  - component: {fileID: 114183234070075696}
+  - component: {fileID: 54557443058085272}
+  - component: {fileID: 114857505177476880}
+  - component: {fileID: 114124728041615300}
+  - component: {fileID: 114920606572439756}
+  - component: {fileID: 114658907062008378}
   m_Layer: 0
-  m_Name: Jim
+  m_Name: Cavailer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4633626808127378
+--- !u!4 &4229598037463100
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 76.39, y: 1.4, z: -78.66}
+  m_LocalPosition: {x: 99.33, y: 1.4, z: -77.43}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23075812911742306
+--- !u!23 &23802193581516412
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,19 +83,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33416561585287772
+--- !u!33 &33703280347728888
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54049290461097684
+--- !u!54 &54557443058085272
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -105,34 +103,59 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114066756182249236
+--- !u!114 &114124728041615300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99551dc978571004ba132bc0a745ad3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 78ec26f7855b7a948a933c8f92adf68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  might: 0
-  hitrate: 0
-  weight: 0
-  critrate: 0
-  critchance: 0
-  weaponUsed: 1
-  weapon: 
-  allWeapons: []
---- !u!114 &114266730761885992
+  allNature: []
+--- !u!114 &114183234070075696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82b9eb1f2b69e94fadb1bb09710fab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerPhase: 0
+  isEnemyPhase: 0
+  freeze: 0
+  enemyIsFinished: 0
+  enemyAccounted: 0
+  pause: 0
+  isMoving: 0
+  move: 5
+  jumpHeight: 3
+  moveSpeed: 2
+  halfHeight: 1.4
+  actualTargetTile: {fileID: 0}
+  moved: 0
+  attackState: 0
+  playerStats: {fileID: 0}
+  thePlayer: 0
+  setup: 1
+  activeOnBoard: 0
+  activeEnemy: 0
+  activeCheck: 0
+  moveSwitch: {fileID: 0}
+  rb: {fileID: 0}
+--- !u!114 &114658907062008378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653255678321042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
@@ -196,7 +219,7 @@ MonoBehaviour:
   go: 0
   confirm: {fileID: 0}
   cancel: {fileID: 0}
-  currentClass: Warrior
+  currentClass: Cavalier
   allClassesBase: []
   allClassesMods: []
   allClassesMaster: []
@@ -207,42 +230,15 @@ MonoBehaviour:
   calcSkill: 0
   calcMagic: 0
   calcWill: 0
---- !u!114 &114275977897294706
+--- !u!114 &114857505177476880
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5acbec797b57fd549ba70cc1a1d92a74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  friendlyUnits: []
-  enemyUnits: []
-  partyList: []
-  levelUP: 0
---- !u!114 &114418813515273310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ec26f7855b7a948a933c8f92adf68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allNature: []
---- !u!114 &114419710183634154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d82b9eb1f2b69e94fadb1bb09710fab6, type: 3}
+  m_Script: {fileID: 11500000, guid: b091fde7a1c68534894083a3d8fcbba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerPhase: 0
@@ -257,59 +253,32 @@ MonoBehaviour:
   moveSpeed: 2
   halfHeight: 1.4
   actualTargetTile: {fileID: 0}
-  moved: 0
-  attackState: 0
-  playerStats: {fileID: 0}
-  thePlayer: 0
-  setup: 1
-  activeOnBoard: 0
-  activeEnemy: 0
-  activeCheck: 0
-  moveSwitch: {fileID: 0}
-  rb: {fileID: 0}
---- !u!114 &114489949037326866
+--- !u!114 &114920606572439756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33645977f5e01d045b28dd0e5344ee42, type: 3}
+  m_Script: {fileID: 11500000, guid: 99551dc978571004ba132bc0a745ad3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jimParty: []
-  newPartyList: []
-  unitParty: {fileID: 0}
---- !u!114 &114799566233228648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b091fde7a1c68534894083a3d8fcbba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerPhase: 0
-  isEnemyPhase: 0
-  freeze: 0
-  enemyIsFinished: 0
-  enemyAccounted: 0
-  pause: 0
-  isMoving: 0
-  move: 5
-  jumpHeight: 0
-  moveSpeed: 2
-  halfHeight: 1.4
-  actualTargetTile: {fileID: 0}
---- !u!136 &136544742839414138
+  stats: {fileID: 0}
+  might: 0
+  hitrate: 0
+  weight: 0
+  critrate: 0
+  critchance: 0
+  weaponUsed: 1
+  weapon: 
+  allWeapons: []
+--- !u!136 &136823945048013796
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347844580881592}
+  m_GameObject: {fileID: 1653255678321042}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
