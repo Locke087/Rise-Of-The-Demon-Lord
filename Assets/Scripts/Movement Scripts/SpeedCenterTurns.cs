@@ -216,13 +216,12 @@ public class SpeedCenterTurns : MonoBehaviour {
     public void AdvanceTurn()
     {
         StartCoroutine(ClearUp());
-
+      
         if (GameObject.FindGameObjectWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
         }
-    
 
         if (!stopped)
         {
@@ -265,7 +264,7 @@ public class SpeedCenterTurns : MonoBehaviour {
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;
             }
 
-            
+            activeUnit = unitOrder[upNext];
 
             StartTurn();
         }

@@ -22,12 +22,14 @@ public class MapEnemyMove : GridMovement {
 
     public IEnumerator GoTime()
     {
+        GameObject tile = null;
         FindNearestTarget();
         CalculatePath();
         FindSelectableTiles();
         if (actualTargetTile != null)
         {
             actualTargetTile.target = true;
+            tile = actualTargetTile.gameObject;
         }
         Move();
 
@@ -36,6 +38,10 @@ public class MapEnemyMove : GridMovement {
             Move();
             yield return new WaitForSeconds(0.01f);
         } while (isMoving);
+        if (tile != null)
+        {
+            if (gameObject.transform.localRotation != tile.transform.localRotation) gameObject.transform.localRotation = tile.transform.localRotation;
+        }
 
         float nextTo = 1;
         float thePlayer = Vector3.Distance(transform.position, target.transform.position);

@@ -60,7 +60,7 @@ public class MapPlayerMove : GridMovement {
             Move();
             yield return new WaitForSeconds(0.01f);
         } while (isMoving);
-
+        if (gameObject.transform.localRotation != tile.transform.localRotation) gameObject.transform.localRotation = tile.transform.localRotation;
         GameObject.FindObjectOfType<PlayerUnitMenu>().moveDoubleClick = false;
         HideMove();
     }

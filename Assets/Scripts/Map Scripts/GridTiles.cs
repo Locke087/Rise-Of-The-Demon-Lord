@@ -63,7 +63,8 @@ public class GridTiles : MonoBehaviour {
         }
         else if (selectable)
         {
-            if (GetComponent<Renderer>() != null)
+            if (gameObject.tag == "Ramp") selectable = false;
+            else if (GetComponent<Renderer>() != null)
                 GetComponent<Renderer>().material.color = Color.blue;
         }
         else if (attack)
@@ -76,6 +77,7 @@ public class GridTiles : MonoBehaviour {
             if (GetComponent<Renderer>() != null)
                 GetComponent<Renderer>().material.color = Color.white;
         }
+
     }
 
     public void Reset()
@@ -128,7 +130,7 @@ public class GridTiles : MonoBehaviour {
     {
         if (collision.gameObject.GetComponent<MCMove>() != null)
             onTile = true;
-
+        
     }
     private void OnCollisionExit(Collision collision)
     {
