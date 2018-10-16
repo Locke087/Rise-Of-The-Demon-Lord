@@ -217,8 +217,8 @@ public class SpeedCenterTurns : MonoBehaviour {
     {
         StartCoroutine(ClearUp());
 
-        if (GameObject.FindGameObjectsWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
-        if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+        if (GameObject.FindGameObjectWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
+        if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
         }

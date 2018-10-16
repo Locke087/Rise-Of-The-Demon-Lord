@@ -271,14 +271,14 @@ public class Stats : MonoBehaviour
     {
         //AttackPreview(attacker);
 
-        PlayerDamaged(attacker);
-        if (currentHp > 0 && attacker.currentHp > 0) EnemyDamaged(attacker);
+        DefenderDamaged(attacker);
+        if (currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
 
-        if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3 && currentHp > 0 && attacker.currentHp > 0)
+        if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3 && currentHp >= 0 && attacker.currentHp >= 0)
         {
-            PlayerDamaged(attacker);
+            DefenderDamaged(attacker);
         }
-        else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3 && currentHp > 0 && attacker.currentHp > 0) EnemyDamaged(attacker);
+        else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3 && currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
 
        //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
@@ -310,7 +310,7 @@ public class Stats : MonoBehaviour
 
     public IEnumerator DeathTimer()
     {
-        UnitsLiving();
+        //UnitsLiving();
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
@@ -512,7 +512,7 @@ public class Stats : MonoBehaviour
         GameObject.Find("AtkTD2").GetComponent<Text>().text = "0";
     }
 
-    public void PlayerDamaged(Stats attacker)
+    public void DefenderDamaged(Stats attacker)
     {
         //total atk includes weapons
         enemyHitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
@@ -522,8 +522,8 @@ public class Stats : MonoBehaviour
         float hurt = damage * CalcFinalHit(enemyHitRate);
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
-       
-        Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log("Is Now This Much HP: " + attacker.currentHp);
+      
         if (damage > 0)
             currentHp = currentHp - damage;
         else
@@ -532,6 +532,8 @@ public class Stats : MonoBehaviour
             currentHp = currentHp - damage;
         }
 
+        Debug.Log(attacker.gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log("Is Now This Much HP: " + currentHp);
         if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
         {
             GameObject.Find("AtkTD2").GetComponent<Text>().text = damage.ToString();
@@ -548,7 +550,7 @@ public class Stats : MonoBehaviour
     }
 
 
-    public void EnemyDamaged(Stats attacker)
+    public void AttackerDamaged(Stats attacker)
     {
 
         playerHitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
@@ -561,10 +563,9 @@ public class Stats : MonoBehaviour
             int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance);
             enemyDamage = newDamage;
         }
-        
-       
-     
-        Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+
+
+        Debug.Log("Had This Much HP: " + attacker.currentHp);
 
         if (enemyDamage > 0)
             attacker.currentHp = attacker.currentHp - enemyDamage;
@@ -574,6 +575,9 @@ public class Stats : MonoBehaviour
             attacker.currentHp = attacker.currentHp - enemyDamage;
         }
 
+      
+        Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log("Is Now This Much HP: " + attacker.currentHp);
         if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
         {
             GameObject.Find("DefTD2").GetComponent<Text>().text = enemyDamage.ToString();
@@ -585,7 +589,7 @@ public class Stats : MonoBehaviour
 
         GameObject.Find("DefHp").GetComponentInChildren<Text>().text = attacker.currentHp.ToString();
 
-        if (attacker.currentHp < 0) attacker.Death();
+        if (attacker.currentHp <= 0) attacker.Death();
     }
 
     public void SetMeleetWeaponStats(int hit, int might, int weight, int chance, float rate)
