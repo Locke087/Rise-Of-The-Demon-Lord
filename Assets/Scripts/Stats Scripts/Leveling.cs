@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Leveling : MonoBehaviour {
 
-    public int count = 50;
+    public int count;
     // Use this for initialization
     void Start ()
     {

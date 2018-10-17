@@ -167,6 +167,18 @@ public class SpeedCenterTurns : MonoBehaviour {
 
     public void StartTurn()
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0)
+        {
+            Debug.Log("You Lose");
+            GameObject.FindObjectOfType<GameOver>().GameEnd();
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            Debug.Log("You Win");
+            if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+        }
+
         if (!stopped)
         {
             activeUnit = unitOrder[upNext];
@@ -216,10 +228,16 @@ public class SpeedCenterTurns : MonoBehaviour {
     public void AdvanceTurn()
     {
         StartCoroutine(ClearUp());
-        
-        if (GameObject.FindGameObjectsWithTag("Player") == null) GameObject.FindObjectOfType<GameOver>().GameEnd();
-        if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0)
         {
+            Debug.Log("You Lose");
+            GameObject.FindObjectOfType<GameOver>().GameEnd();
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            Debug.Log("You Win");
             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
         }
 

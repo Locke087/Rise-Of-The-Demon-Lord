@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b5aafcef91dd646ace38e1ccf58934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 30
+  count: 5
 --- !u!114 &253049526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc4866737f698b47a078dccd9df6e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 2
+  count: 50
 --- !u!1 &286312985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,16 +2552,6 @@ Prefab:
       propertyPath: moveSwitch
       value: 
       objectReference: {fileID: 253049522}
-    - target: {fileID: 114266730761885992, guid: 87e8d9cf9c8fd3e48a3f4832ef7fe206,
-        type: 2}
-      propertyPath: levelBoost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114266730761885992, guid: 87e8d9cf9c8fd3e48a3f4832ef7fe206,
-        type: 2}
-      propertyPath: currentClass
-      value: WarriorE
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87e8d9cf9c8fd3e48a3f4832ef7fe206, type: 2}
   m_IsPrefabAsset: 0
@@ -4727,11 +4717,6 @@ Prefab:
     - target: {fileID: 4621019214108070, guid: 538c68c4575a5414e9f7cc2513f96def, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114876399313637714, guid: 538c68c4575a5414e9f7cc2513f96def,
-        type: 2}
-      propertyPath: levelBoost
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 538c68c4575a5414e9f7cc2513f96def, type: 2}

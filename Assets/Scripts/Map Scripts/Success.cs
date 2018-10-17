@@ -17,6 +17,6 @@ public class Success : MonoBehaviour {
     public void Win()
     {
         GameObject.Find("Menus").SetActive(false);
-        GameObject tiles = GameObject.Instantiate(Resources.Load("GameOverScreen")) as GameObject;
+        GameObject tiles = GameObject.Instantiate(Resources.Load("WinScreen")) as GameObject;
     }
 }
