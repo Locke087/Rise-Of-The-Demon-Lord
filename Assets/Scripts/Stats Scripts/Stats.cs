@@ -125,7 +125,7 @@ public class Stats : MonoBehaviour
 
         //confirm.gameObject.SetActive(false);
         //cancel.gameObject.SetActive(false);
-        FindStats();
+       // FindStats();
         ReflectStat();
         // Booster();
         StartCoroutine(RefreshStat());
@@ -135,8 +135,8 @@ public class Stats : MonoBehaviour
   
     public IEnumerator RefreshStat()
     {
-        yield return new WaitForSeconds(0.5f);
-        FindStats();
+        yield return new WaitForSeconds(4f);
+        classesRefresh();
         ReflectStat();
     }
 
@@ -729,13 +729,42 @@ public class Stats : MonoBehaviour
         allClassesBase.Add(new TheClassesBase("Cavalier", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
         //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
         allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
+        StatRange(7, 5, 3, 5, 2, 1);
+        allClassesBase.Add(new TheClassesBase("WarriorE", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
+        //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
+        allClassesMods.Add(new TheClassesMod("WarriorE", WarriorE.ModList()));
+        StatRange(6, 6, 5, 4, 1, 2);
+        allClassesBase.Add(new TheClassesBase("CavalierE", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
+        //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
+        allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
             allClassesMaster.Add(new TheClassesMaster(allClassesBase[i].theClass, allClassesBase[i], allClassesMods[i]));
         }
 
         FindStats();
+
+    }
+    public void classesRefresh()
+    {
+        allClassesMods.Clear();
+        allClassesMaster.Clear();
+      
+        allClassesMods.Add(new TheClassesMod("Warrior", Warrior.ModList()));
+        
+        allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
+        
+        allClassesMods.Add(new TheClassesMod("WarriorE", WarriorE.ModList()));
+       
+        allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));
+
+        for (int i = 0; i < 4; i++)
+        {
+            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i].theClass, allClassesBase[i], allClassesMods[i]));
+        }
+
+        FinishStats();
 
     }
 
@@ -754,10 +783,58 @@ public class Stats : MonoBehaviour
                 {
                     CavalierClass();
                 }
+                else if (currentClass == "WarriorE")
+                {
+                    WarriorClass();
+                }
+                else if (currentClass == "CavalierE")
+                {
+                    CavalierClass();
+                }
 
                 if (gameObject.GetComponent<Stats>() != null)
                 {
                     StartingBases(mas.baseClass.isHp, mas.baseClass.isStr, mas.baseClass.isDef, mas.baseClass.isSpd, mas.baseClass.isSkill, mas.baseClass.isMag, mas.baseClass.isWill, mas.baseClass.isMove);
+                    UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
+                    //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
+                }
+                else
+                {
+                    Debug.Log("but Why");
+                }
+
+
+            }
+        }
+
+    }
+
+    public void FinishStats()
+    {
+        Debug.Log("gotHere");
+        foreach (TheClassesMaster mas in allClassesMaster)
+        {
+            if (mas.className == currentClass)
+            {
+                if (currentClass == "Warrior")
+                {
+                    WarriorClass();
+                }
+                else if (currentClass == "Cavalier")
+                {
+                    CavalierClass();
+                }
+                else if (currentClass == "WarriorE")
+                {
+                    WarriorClass();
+                }
+                else if (currentClass == "CavalierE")
+                {
+                    CavalierClass();
+                }
+
+                if (gameObject.GetComponent<Stats>() != null)
+                {
                     UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
                     //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
                 }

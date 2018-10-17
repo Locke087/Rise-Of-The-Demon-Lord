@@ -209,7 +209,7 @@ MonoBehaviour:
   dead: 0
   friend: 0
   foe: 0
-  currentClass: Warrior
+  currentClass: WarriorE
   allClassesBase: []
   allClassesMods: []
   allClassesMaster: []

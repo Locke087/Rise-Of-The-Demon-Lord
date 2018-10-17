@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrior : MonoBehaviour {
+public class WarriorE : MonoBehaviour {
 
     public static double finalHp;
     public static float baseStrModifer = 3;
@@ -18,31 +18,29 @@ public class Warrior : MonoBehaviour {
     public static float magicModifer = 2;
     public static float willModifer = 2;
     public static int level = 0;
-   /* public static int strStatIncrease = 0;
-    public static int defStatIncrease = 0;
-    public static int skillStatIncrease = 0;
-    public static int spdStatIncrease = 0;
-    public static int magicStatIncrease = 0;
-    public static int willStatIncrease = 0;
-    public static int strAmount = 0;
-    public static int defAmount = 0;
-    public static int skillAmount = 0;
-    public static int spdAmount = 0;
-    public static int magicAmount = 0;
-    public static int willAmount = 0;*/
+    /* public static int strStatIncrease = 0;
+     public static int defStatIncrease = 0;
+     public static int skillStatIncrease = 0;
+     public static int spdStatIncrease = 0;
+     public static int magicStatIncrease = 0;
+     public static int willStatIncrease = 0;
+     public static int strAmount = 0;
+     public static int defAmount = 0;
+     public static int skillAmount = 0;
+     public static int spdAmount = 0;
+     public static int magicAmount = 0;
+     public static int willAmount = 0;*/
     public static float increaseStr = 0;
     public static float increaseDef = 0;
     public static float increaseSkill = 0;
     public static float increaseSpd = 0;
     public static float increaseMagic = 0;
     public static float increaseWill = 0;
-   
     // Use this for initialization
     void Start()
     {
-        
+       
     }
-
     // Update is called once per frame
     public static void LevelUp()
     {

@@ -35,11 +35,12 @@ public class Cavalier : MonoBehaviour {
     public static float increaseSpd = 0;
     public static float increaseMagic = 0;
     public static float increaseWill = 0;
-
+    public int amount = 10;
+    public int finalLevel;
     // Use this for initialization
     void Start()
     {
-
+      
     }
 
     // Update is called once per frame
@@ -47,6 +48,7 @@ public class Cavalier : MonoBehaviour {
     {
         level = level + 1;
         IncreaseStats();
+        
     }
 
     /*public static List<int> IncList()

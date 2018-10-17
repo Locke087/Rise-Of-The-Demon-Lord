@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leveler : MonoBehaviour {
+public class Leveling : MonoBehaviour {
 
+    public int count = 50;
     // Use this for initialization
-    public int levels = 5;
-	void Start () {
-		for (int i = 0; i < levels; i++)
+    void Start ()
+    {
+        for (int i = 0; i < count; i++)
         {
             Warrior.LevelUp();
             Cavalier.LevelUp();
         }
-	}
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
 }

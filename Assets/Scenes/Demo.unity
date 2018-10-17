@@ -964,6 +964,7 @@ GameObject:
   - component: {fileID: 253049522}
   - component: {fileID: 253049524}
   - component: {fileID: 253049523}
+  - component: {fileID: 253049526}
   - component: {fileID: 253049525}
   m_Layer: 0
   m_Name: AttachmentHaven
@@ -1021,6 +1022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697b5c97fdb3d9043b9022fceb39bfea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 10
+  finalLevel: 0
 --- !u!114 &253049524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,10 +1043,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 253049519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a8d429b3e133fb48803ffb0ff67bcb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 89b5aafcef91dd646ace38e1ccf58934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: 5
+  count: 30
+--- !u!114 &253049526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253049519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4866737f698b47a078dccd9df6e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 2
 --- !u!1 &286312985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2556,11 @@ Prefab:
         type: 2}
       propertyPath: levelBoost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266730761885992, guid: 87e8d9cf9c8fd3e48a3f4832ef7fe206,
+        type: 2}
+      propertyPath: currentClass
+      value: WarriorE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87e8d9cf9c8fd3e48a3f4832ef7fe206, type: 2}

@@ -211,7 +211,7 @@ MonoBehaviour:
   dead: 0
   friend: 0
   foe: 0
-  currentClass: Cavalier
+  currentClass: CavalierE
   allClassesBase: []
   allClassesMods: []
   allClassesMaster: []
