@@ -274,8 +274,8 @@ public class MenuScript
         foreach (Rows row in allRows)
         {
             int f = 0;
-            int maxR = 23;
-            int maxf = 23;
+            int maxR = 11;
+            int maxf = 7;
             if (r > maxR) GameObject.DestroyImmediate(GameObject.Find(row.name));
             else
             {
