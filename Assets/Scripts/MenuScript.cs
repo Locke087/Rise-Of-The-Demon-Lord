@@ -113,6 +113,16 @@ public class MenuScript
             }
         }
 
+        tiles = GameObject.FindGameObjectsWithTag("LongWall");
+        material = Resources.Load<Material>("LongWall");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<Renderer>().material = material;
+            }
+        }
+
         tiles = GameObject.FindGameObjectsWithTag("Dirt");
         material = Resources.Load<Material>("Dirt");
         if (tiles != null)
@@ -296,13 +306,13 @@ public class MenuScript
     [MenuItem("Tools/GenerateNewMap")]
     public static void SetNewTile()
     {
-        GameObject maps = GameObject.Find("Template50x50test");
+        GameObject maps = GameObject.Find("Area1");
         Rows[] allRows = maps.GetComponentsInChildren<Rows>();
         int i = 0;
         GameObject map = new GameObject();
         map.AddComponent<MapLocation>();
         map.AddComponent<PhaseSwitcher>();
-        map.transform.position = new Vector3(57.4f, 0, -83.5f);
+        map.transform.position = new Vector3(34.22f, 0, -83.5f);
         foreach (Rows row in allRows)
         {
             int j = 0;
@@ -543,6 +553,19 @@ public class MenuScript
                         tiles.tag = "Ramp";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = true;
+
+                        if (tile.transform.position.y > 0.9f)
+                        {
+                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            tilesn.transform.parent = newRow.transform;
+                            tilesn.GetComponent<Renderer>().material = material;
+                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                            tilesn.transform.parent = tiles.transform;
+                        }
+
                     }
                     else if (tile.transform.position.y > 0.9f)
                     {
@@ -735,6 +758,16 @@ public class MenuScript
                         tiles.tag = "Ramp";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = true;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f, 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+
+
                     }
                     else if (tile.transform.position.y > 0.9f)
                     {
@@ -747,6 +780,8 @@ public class MenuScript
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = true;
+                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y/2, 0);
                     }
                     else
                     {
@@ -772,7 +807,7 @@ public class MenuScript
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.transform.localScale = new Vector3(1, 3, 1);
+                        tiles.transform.localScale = new Vector3(1, 3 + tile.transform.position.y, 1);
                         tiles.transform.position += Vector3.up;
                         tiles.GetComponent<GridTiles>().walkable = false;
                     }
@@ -791,6 +826,37 @@ public class MenuScript
                     }
 
 
+
+                }
+                else if (tile.tag == "LongWall")
+                {
+
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        Material material = Resources.Load<Material>("LongWall");
+                        tiles.GetComponent<Renderer>().material = material;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.tag = "Tile";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 3), 1);
+                        tiles.transform.localPosition = new Vector3(j, (tile.transform.position.y / 3) + 0.5f, 0);
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        Material material = Resources.Load<Material>("LongWall");
+                        tiles.GetComponent<Renderer>().material = material;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0);
+                        tiles.tag = "Tile";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.transform.localScale = new Vector3(1, 3, 1);
+                        tiles.transform.position += Vector3.up;
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
 
                 }
                 j++;

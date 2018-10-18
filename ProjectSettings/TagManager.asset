@@ -10,6 +10,23 @@ TagManager:
   - NPC
   - Enemy
   - Dead
+  - Mountain
+  - Dirt
+  - HouseTiles
+  - Walls
+  - Rivers
+  - Forest
+  - Street
+  - Bridge
+  - Grass
+  - RiverH
+  - Gap
+  - River180
+  - LongWall
+  - RiverC
+  - River0
+  - River90
+  - River270
   layers:
   - Default
   - TransparentFX
