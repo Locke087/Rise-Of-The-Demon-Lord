@@ -5,8 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class UnitClass {
 
-	public UnitClass()
+    public UnitMainClass main;
+    public UnitSubClass sub;
+    
+    public UnitClass()
     {
+        main = new UnitMainClass();
+        sub = new UnitSubClass();
 
     }
 }

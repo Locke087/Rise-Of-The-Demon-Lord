@@ -20,8 +20,8 @@ public class Weapon : MonoBehaviour
     {
         stats = gameObject.GetComponent<Stats>();
         allWeapons = new List<WeaponEquipped>();
-        allWeapons.Add(new WeaponEquipped("Sword", "Long Sword", 8, 90, 5, 1.5f, 5));
-        allWeapons.Add(new WeaponEquipped("Axe", "Battle Axe", 8, 70, 9, 2, 5));
+        allWeapons.Add(new WeaponEquipped("Sword", "Long Sword", 8, 60, 5, 1.5f, 5));
+        allWeapons.Add(new WeaponEquipped("Axe", "Battle Axe", 8, 60, 9, 2, 5));
         weaponStats();
     }
 

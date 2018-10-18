@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class UnitStoreroom : MonoBehaviour {
 
-    public List<Unit> units = new List<Unit>();
+public static class UnitStoreroom {
 
-	public void AddUnit(Unit u)
+    public static List<Unit> units = new List<Unit>();
+
+	public static void AddUnit(Unit u)
     {
         units.Add(u);
     }
 
-    public Unit findUnit(string id)
+    public static Unit findUnit(string id)
     {
         int i = 0;
 

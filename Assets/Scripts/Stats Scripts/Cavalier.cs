@@ -120,17 +120,17 @@ public class Cavalier : MonoBehaviour {
 
     public static void StrIncrease()
     {
-        strModifer = increaseStr;
+        strModifer = baseStrModifer + (Mathf.Round(level / baseStrModifer) * .1f) + 1;
     }
 
     public static void DefIncrease()
     {
-        defModifer = increaseDef;
+        defModifer = baseDefModifer + (Mathf.Round(level / baseDefModifer) * .1f) + 1;
     }
 
     public static void SkillIncrease()
     {
-        skillModifer = increaseSkill;
+        skillModifer = baseDefModifer + (Mathf.Round(level / baseSkillModifer) * .1f) + 1;
     }
 
     public static void SpdIncrease()

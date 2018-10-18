@@ -259,18 +259,27 @@ public class GridMovement : MonoBehaviour
             tempPath.Push(next);
             next = next.parent;
         }
-
+        
         if (tempPath.Count <= move)
         {
+            if (t.parent.gameObject.tag == "Ramp")
+            {
+                GridTiles temp = t.parent;
+                return temp.parent;
+            }
             return t.parent;
         }
 
         GridTiles endTile = null;
         for (int i = 0; i <= move; i++)
         {
+           
             endTile = tempPath.Pop();
         }
-
+        if (endTile.gameObject.tag == "Ramp")
+        {
+            return endTile.parent;
+        }
         return endTile;
     }
 
@@ -333,7 +342,7 @@ public class GridMovement : MonoBehaviour
 
 
 
-        GameObject.FindObjectOfType<MoveSwitch>().gridOn = false;
+       // GameObject.FindObjectOfType<MoveSwitch>().gridOn = false;
         Debug.Log("Make A Better Map you nit wit");
     }
 

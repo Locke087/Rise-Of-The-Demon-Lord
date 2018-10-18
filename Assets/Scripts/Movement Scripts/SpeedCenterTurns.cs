@@ -178,7 +178,7 @@ public class SpeedCenterTurns : MonoBehaviour {
             Debug.Log("You Win");
             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
         }
-
+       
         if (!stopped)
         {
             activeUnit = unitOrder[upNext];
@@ -219,15 +219,16 @@ public class SpeedCenterTurns : MonoBehaviour {
                 StartCoroutine(unitOrder[upNext].GetComponent<MapEnemyMove>().GoTime());
             }
         }
+        StartCoroutine(ClearUp());
     }
     public IEnumerator ClearUp()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         GameObject.FindObjectOfType<Stats>().CleanTextBoxs();
     }
     public void AdvanceTurn()
     {
-        StartCoroutine(ClearUp());
+      
 
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0)
         {

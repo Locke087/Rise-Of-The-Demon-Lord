@@ -5,14 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class UnitWeapon {
 
-    public string weapon;
     public bool inSlot;
     public bool equipped;
+    public UnitWeaponDetails details;
 
     public UnitWeapon()
     {
-        weapon = "";
         inSlot = false;
         equipped = false;
+        details = new UnitWeaponDetails();
     }
 }

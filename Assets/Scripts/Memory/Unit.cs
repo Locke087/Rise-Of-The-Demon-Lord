@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour {
+[System.Serializable]
+public class Unit {
 
     public UnitInventory inventory;
     public UnitItems items;

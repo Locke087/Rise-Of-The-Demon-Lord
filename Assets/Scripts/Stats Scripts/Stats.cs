@@ -270,15 +270,17 @@ public class Stats : MonoBehaviour
     public void attacked(Stats attacker)
     {
         //AttackPreview(attacker);
-
+        int aAttackSpeed = spd - weaponWeight;
+        int dAttackSpeed = attacker.spd - attacker.weaponWeight;
         DefenderDamaged(attacker);
-        if (currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
-
-        if ((attacker.spd - weaponWeight) - (spd - weaponWeight) >= 3 && currentHp >= 0 && attacker.currentHp >= 0)
+        if ((aAttackSpeed) < 0) aAttackSpeed = 0;
+        if ((dAttackSpeed) < 0) dAttackSpeed = 0;
+        //Double Attack if: (Attack Speed – enemy Attack Speed) >= 4
+        if ( (aAttackSpeed - dAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
         {
             DefenderDamaged(attacker);
         }
-        else if ((spd - weaponWeight) - (attacker.spd - weaponWeight) >= 3 && currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
+        else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
 
        //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
@@ -316,7 +318,7 @@ public class Stats : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void UnitsLiving()
+   /* public void UnitsLiving()
     {
 
         if (GameObject.FindGameObjectsWithTag("Enemy") != null)
@@ -343,7 +345,7 @@ public class Stats : MonoBehaviour
 
 
 
-    }
+    }*/
 
     public void AttackPreview(Stats attacker)
     {
@@ -464,6 +466,7 @@ public class Stats : MonoBehaviour
     {
 
         int hitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
+
         return hitRate;
 
     }
@@ -486,13 +489,28 @@ public class Stats : MonoBehaviour
     {
         if (Random.Range(0, 101) <= chance)
         {
+            GameObject.Find("AtkCritS").GetComponent<Text>().text = "Crit!";
             float critNum = hurt * rate;
             int final = (int)critNum;
             return final;
         }
         return (int)hurt;
     }
-  
+
+
+    public int CalcCritE(float hurt, float rate, int chance)
+    {
+        if (Random.Range(0, 101) <= chance)
+        {
+            GameObject.Find("DefCritS").GetComponent<Text>().text = "Crit!";
+            
+            float critNum = hurt * rate;
+            int final = (int)critNum;
+            return final;
+        }
+        return (int)hurt;
+    }
+
 
     public void CleanTextBoxs()
     {
@@ -511,6 +529,13 @@ public class Stats : MonoBehaviour
         GameObject.Find("DefTD2").GetComponent<Text>().text = "0";
         GameObject.Find("AtkTD").GetComponent<Text>().text = "0";
         GameObject.Find("AtkTD2").GetComponent<Text>().text = "0";
+        GameObject.Find("AtkHitP").GetComponent<Text>().text = "0";
+        GameObject.Find("AtkHitP2").GetComponent<Text>().text = "0";
+        GameObject.Find("DefHitP").GetComponent<Text>().text = "0";
+        GameObject.Find("DefHitP2").GetComponent<Text>().text = "0";
+        GameObject.Find("DefCritS").GetComponent<Text>().text = "";
+        GameObject.Find("AtkCritS").GetComponent<Text>().text = "";
+
     }
 
     public void DefenderDamaged(Stats attacker)
@@ -520,7 +545,8 @@ public class Stats : MonoBehaviour
         baseEnemyHit = enemyHitRate;
         int totalAtk = attacker.str + attacker.weaponMight;
         damage = totalAtk - def;
-        float hurt = damage * CalcFinalHit(enemyHitRate);
+        float reduce = CalcFinalHit(enemyHitRate); 
+        float hurt = damage * reduce;
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
@@ -533,7 +559,7 @@ public class Stats : MonoBehaviour
             currentHp = currentHp - damage;
         }
 
-        Debug.Log(attacker.gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         Debug.Log("Is Now This Much HP: " + currentHp);
         if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
         {
@@ -542,6 +568,15 @@ public class Stats : MonoBehaviour
         else
         {
             GameObject.Find("AtkTD").GetComponent<Text>().text = damage.ToString();
+        }
+
+        if (GameObject.Find("AtkHitP").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("AtkHitP2").GetComponent<Text>().text = reduce.ToString();
+        }
+        else
+        {
+            GameObject.Find("AtkHitP").GetComponent<Text>().text = reduce.ToString();
         }
 
         GameObject.Find("AtkHp").GetComponentInChildren<Text>().text = currentHp.ToString();
@@ -558,9 +593,11 @@ public class Stats : MonoBehaviour
         basePlayerHit = playerHitRate;
         int totalAtk = str + weaponMight;
         enemyDamage = totalAtk - attacker.def;
-        float hurt = enemyDamage * CalcFinalHit(playerHitRate);
+        float reduce = CalcFinalHit(playerHitRate);
+        float hurt = enemyDamage * reduce;
         if (hurt < 0)
         {
+            
             int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance);
             enemyDamage = newDamage;
         }
@@ -577,7 +614,7 @@ public class Stats : MonoBehaviour
         }
 
       
-        Debug.Log(gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
         if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
         {
@@ -586,6 +623,15 @@ public class Stats : MonoBehaviour
         else
         {
             GameObject.Find("DefTD").GetComponent<Text>().text = enemyDamage.ToString();
+        }
+
+        if (GameObject.Find("DefHitP").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("DefHitP2").GetComponent<Text>().text = reduce.ToString();
+        }
+        else
+        {
+            GameObject.Find("DefHitP").GetComponent<Text>().text = reduce.ToString();
         }
 
         GameObject.Find("DefHp").GetComponentInChildren<Text>().text = attacker.currentHp.ToString();
@@ -630,75 +676,40 @@ public class Stats : MonoBehaviour
         else if (hitRate > 80)
         {
             if (Random.Range(0, 101) <= hitRate) finalHit = 1;
-            if (Random.Range(0, 101) <= hitRate) finalHit = 1;
-            if (Random.Range(0, 101) <= hitRate)
-            {
-                finalHit = 1;
-            }
-            else
-            {
-                if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
-                else
-                {
-                    if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
-                    else
-                    {
-                        if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
-                        else finalHit = 0;
-                    }
-                }
-            }
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 1;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+            else finalHit = 0;
         }
         else if (hitRate > 60)
         {
             if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
-            if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
-            if (Random.Range(0, 101) <= hitRate)
-            {
-                finalHit = 0.75f;
-            }
-            else
-            {
-              
-                if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
-                else
-                {
-                    if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
-                    else finalHit = 0;
-                }
-            }
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.75f;
+            else if(Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+            else finalHit = 0;
         }
         else if (hitRate > 40)
         {
             if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
-            else if (Random.Range(0, 101) <= hitRate)
-            {
-                finalHit = 0.50f;
-            }
-            else if (Random.Range(0, 101) <= hitRate)
-            {
-                finalHit = 0.50f;
-            }
-            else
-            {
-                if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
-                else finalHit = 0;
-            }
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.50f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+            else finalHit = 0;
         }
         else if (hitRate > 20)
         {
-            int number = Random.Range(0, 101);
-            if (number <= hitRate) finalHit = 0.25f;
-            if (number <= hitRate) finalHit = 0.25f;
-            if (number <= hitRate) finalHit = 0.25f;
+            if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
+            else if (Random.Range(0, 101) <= hitRate) finalHit = 0.25f;
             else finalHit = 0;
         }
         else
         {
-            int number = Random.Range(0, 101);
-            if (number <= hitRate) finalHit = 0.10f;
+            if (Random.Range(0, 101) <= hitRate) finalHit = 0.10f;
             else finalHit = 0;
         }
+
         return finalHit;
     }
 
@@ -854,7 +865,7 @@ public class Stats : MonoBehaviour
         int max = 45;
         int min = 30;
         int temp = 0;
-        int range = 4;
+        int range = 3;
         bool done = false;
         do
         {
