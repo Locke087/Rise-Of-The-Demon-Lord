@@ -19,14 +19,21 @@ TagManager:
   - Street
   - Bridge
   - Grass
-  - RiverH
   - Gap
-  - River180
   - LongWall
   - RiverC
+  - LakeC
+  - LakeS
+  - LakeM
+  - RiverH
   - River0
+  - River180
   - River90
   - River270
+  - Door
+  - Chest
+  - DoorC
+  - ChestC
   layers:
   - Default
   - TransparentFX
