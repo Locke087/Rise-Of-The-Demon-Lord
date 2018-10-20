@@ -33,43 +33,57 @@ public class MenuScript
     public static void ColorIT()
     {
 
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("HouseTiles");
-        Material material = Resources.Load<Material>("HouseTile");
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Normal");
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
-                t.GetComponent<Renderer>().material = material;
-
+                t.GetComponent<GridTiles>().ColorSelf();
             }
         }
+
         tiles = GameObject.FindGameObjectsWithTag("Rivers");
-        material = Resources.Load<Material>("Rivers");
+        Material material = Resources.Load<Material>("Rivers");
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
+                
                 t.GetComponent<Renderer>().material = material;
 
             }
         }
+
         tiles = GameObject.FindGameObjectsWithTag("RiverC");
         material = Resources.Load<Material>("Rivers");
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
         }
-    
+        tiles = GameObject.FindGameObjectsWithTag("RiverH");
+        material = Resources.Load<Material>("Rivers");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
         tiles = GameObject.FindGameObjectsWithTag("LakeC");
         material = Resources.Load<Material>("Rivers");
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
@@ -80,16 +94,90 @@ public class MenuScript
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
         }
+
+        tiles = GameObject.FindGameObjectsWithTag("LavaR");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+        tiles = GameObject.FindGameObjectsWithTag("LavaH");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+              
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+        tiles = GameObject.FindGameObjectsWithTag("LavaRC");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+               
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
+        tiles = GameObject.FindGameObjectsWithTag("LavaLC");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+        tiles = GameObject.FindGameObjectsWithTag("LavaLM");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
+
+        tiles = GameObject.FindGameObjectsWithTag("LavaLS");
+        material = Resources.Load<Material>("Lava");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
+
         tiles = GameObject.FindGameObjectsWithTag("ChestC");
         material = Resources.Load<Material>("Treasure");
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
@@ -101,6 +189,19 @@ public class MenuScript
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
+        tiles = GameObject.FindGameObjectsWithTag("DoorC");
+        material = Resources.Load<Material>("Door");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
@@ -112,71 +213,45 @@ public class MenuScript
         {
             foreach (GameObject t in tiles)
             {
+                t.GetComponent<GridTiles>().TurnSelf();
+                t.GetComponent<Renderer>().material = material;
+
+            }
+        }
+
+        tiles = GameObject.FindGameObjectsWithTag("RampE");
+        material = Resources.Load<Material>("Yellow");
+        if (tiles != null)
+        {
+            foreach (GameObject t in tiles)
+            {
+                t.GetComponent<GridTiles>().TurnSelf();
                 t.GetComponent<Renderer>().material = material;
 
             }
         }
 
         tiles = GameObject.FindGameObjectsWithTag("Walls");
-        material = Resources.Load<Material>("Wall");
+     
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
-                t.GetComponent<Renderer>().material = material;
+                t.GetComponent<GridTiles>().ColorSelf();
             }
         }
 
         tiles = GameObject.FindGameObjectsWithTag("LongWall");
-        material = Resources.Load<Material>("LongWall");
+  
         if (tiles != null)
         {
             foreach (GameObject t in tiles)
             {
-                t.GetComponent<Renderer>().material = material;
+                t.GetComponent<GridTiles>().ColorSelf();
             }
         }
 
-        tiles = GameObject.FindGameObjectsWithTag("Dirt");
-        material = Resources.Load<Material>("Dirt");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-
-            }
-        }
-
-        tiles = GameObject.FindGameObjectsWithTag("Grass");
-        material = Resources.Load<Material>("Grass");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-            }
-        }
-
-        tiles = GameObject.FindGameObjectsWithTag("Bridge");
-        material = Resources.Load<Material>("Bridge");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-            }
-        }
-
-        tiles = GameObject.FindGameObjectsWithTag("Street");
-        material = Resources.Load<Material>("Street");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-            }
-        }
+      
         tiles = GameObject.FindGameObjectsWithTag("Gap");
         material = Resources.Load<Material>("Gap");
         if (tiles != null)
@@ -187,25 +262,6 @@ public class MenuScript
             }
         }
 
-        tiles = GameObject.FindGameObjectsWithTag("Forest");
-        material = Resources.Load<Material>("Forest");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-            }
-        }
-
-        tiles = GameObject.FindGameObjectsWithTag("Mountain");
-        material = Resources.Load<Material>("Mountain");
-        if (tiles != null)
-        {
-            foreach (GameObject t in tiles)
-            {
-                t.GetComponent<Renderer>().material = material;
-            }
-        }
 
     }
 
@@ -320,7 +376,7 @@ public class MenuScript
     [MenuItem("Tools/GenerateNewMap")]
     public static void SetNewTile()
     {
-        GameObject maps = GameObject.Find("Area4");
+        GameObject maps = GameObject.Find("Area5");
         Rows[] allRows = maps.GetComponentsInChildren<Rows>();
         int i = 0;
         GameObject map = new GameObject();
@@ -529,10 +585,234 @@ public class MenuScript
                         tiles.tag = "River";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = false;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
                     }
                     else
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("MidLake")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+
+
+                if (tile.tag == "LavaR")
+                {
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.position.y, 0);
+                        // tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, 0, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+                if (tile.tag == "LavaH")
+                {
+                    if (tile.transform.position.y > 0.9f)
+                    {
+
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("LavaGround");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+
+                //
+                //  __  ___
+                // |90  180|
+                //   WaterCorner Directions
+                // |0   270|
+                //  --  ---  
+                else if (tile.tag == "LavaRC")
+                {
+
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverCorner")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("LavaGround");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverCorner")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+                    }
+                }
+
+                else if (tile.tag == "LavaLC")
+                {
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaCorner")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("LavaGround");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaCorner")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+                else if (tile.tag == "LavaLS")
+                {
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaSide")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("LavaGround");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaSide")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+                else if (tile.tag == "LavaLM")
+                {
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaMid")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("LavaGround");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("LavaMid")) as GameObject;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
@@ -550,13 +830,14 @@ public class MenuScript
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.GetComponentInChildren<GridTiles>().SearchColor(tile.TileColor());
                         tiles.tag = "Door";
                        // tiles.AddComponent<GridTiles>();
                        // tiles.GetComponent<GridTiles>().walkable = false;
 
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
-                        Material material = Resources.Load<Material>("HouseTile");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tilesn.GetComponent<Renderer>().material = material;
                         tilesn.transform.localPosition = new Vector3(j, 1, 0);
                         tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
@@ -571,8 +852,9 @@ public class MenuScript
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Door";
-                       // tiles.AddComponent<GridTiles>();
-                       // tiles.GetComponent<GridTiles>().walkable = false;
+                        tiles.GetComponentInChildren<GridTiles>().SearchColor(tile.TileColor());
+                        // tiles.AddComponent<GridTiles>();
+                        // tiles.GetComponent<GridTiles>().walkable = false;
 
                     }
                 }
@@ -585,13 +867,15 @@ public class MenuScript
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y + 0.75f, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.GetComponentInChildren<GridTiles>().SearchColor(tile.TileColor());
+
                         tiles.tag = "Chest";
-                        //tiles.AddComponent<GridTiles>();
-                       // tiles.GetComponent<GridTiles>().walkable = false;
+                  
+                        tiles.GetComponent<GridTiles>().walkable = false;
 
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
-                        Material material = Resources.Load<Material>("HouseTile");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tilesn.GetComponent<Renderer>().material = material;
                         tilesn.transform.localPosition = new Vector3(j, 1, 0);
                         tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
@@ -606,8 +890,8 @@ public class MenuScript
                         tiles.transform.localPosition = new Vector3(j, 0.75f, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Chest";
-                       // tiles.AddComponent<GridTiles>();
-                       // tiles.GetComponent<GridTiles>().walkable = false;
+                        tiles.GetComponentInChildren<GridTiles>().SearchColor(tile.TileColor());
+                     
 
                     }
                 }
@@ -618,59 +902,88 @@ public class MenuScript
                 //<- 0     180-> (Lip)
                 //      270
                 //       V
-                else if (tile.tag == "Grass")
+                else if (tile.tag == "Normal")
                 {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Grass");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-                    }
-                    else if (tile.transform.position.y > 0.9f)
+                   
+                    if (tile.transform.position.y > 0.9f)
                     {
 
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Grass");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
+                        if (!tile.hazard)
+                        {
+                            tiles.GetComponent<GridTiles>().walkable = true;
+                            tiles.GetComponent<GridTiles>().distance = 5;
+                        }
+                        else
+                        {
+                            tiles.GetComponent<GridTiles>().walkable = false;
+                            tiles.GetComponent<GridTiles>().distance = 5;
+                        }
                         tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
                     }
                     else
                     {
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Grass");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
+                        if (!tile.hazard)
+                        {
+                            tiles.GetComponent<GridTiles>().walkable = true;
+                            tiles.GetComponent<GridTiles>().distance = 5;
+                        }
+                        else
+                        {
+                            tiles.GetComponent<GridTiles>().walkable = false;
+                            tiles.GetComponent<GridTiles>().distance = 5;
+                        }
                     }
                 }
+                else if (tile.tag == "RampE")
+                {
+                    GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
+                    tiles.transform.parent = newRow.transform;
+                    tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                    tiles.transform.localRotation = tile.transform.localRotation;
+                    Material material = Resources.Load<Material>(tile.TileColor());
+                    tiles.GetComponent<Renderer>().material = material;
+                    tiles.tag = "Ramp";
+                    tiles.AddComponent<GridTiles>();
+
+                    if (!tile.hazard)
+                    {
+                        tiles.GetComponent<GridTiles>().walkable = true;
+                        tiles.GetComponent<GridTiles>().distance = 5;
+                    }
+                    else
+                    {
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                        tiles.GetComponent<GridTiles>().distance = 5;
+                    }
+
+                    if (tile.transform.position.y > 0.9f)
+                    {
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                }
+
                 else if (tile.tag == "Gap")
                 {
 
@@ -697,334 +1010,13 @@ public class MenuScript
                         tiles.GetComponent<BoxCollider>().transform.localScale += new Vector3(0, 10, 0);
                     }
                 }
-                else if (tile.tag == "Dirt")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Dirt");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Dirt");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Dirt");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                    }
-                }
-                else if (tile.tag == "Street")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Street");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Street");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Street");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                    }
-                }
-                else if (tile.tag == "HouseTiles")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("HouseTile");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("HouseTile");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("HouseTile");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                    }
-                }
-                else if (tile.tag == "Forest")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Forest");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Forest");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Forest");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                    }
-                }
-                else if (tile.tag == "Bridge")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Bridge");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-
-                        }
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Bridge");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y / 2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Bridge");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                    }
-                }
-                else if (tile.tag == "Mountain")
-                {
-                    if (tile.transform.localPosition.z == 0.5f)
-                    {
-                        GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.transform.localRotation = tile.transform.localRotation;
-                        Material material = Resources.Load<Material>("Mountain");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.tag = "Ramp";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-
-                        if (tile.transform.position.y > 0.9f)
-                        {
-                            GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            tilesn.transform.parent = newRow.transform;
-                            tilesn.GetComponent<Renderer>().material = material;
-                            tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
-                            tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.position.y + 1), 0);
-                            tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
-                        }
-
-                    }
-                    else if (tile.transform.position.y > 0.9f)
-                    {
-
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Mountain");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                        tiles.GetComponent<GridTiles>().distance = 5;
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y/2, 0);
-                    }
-                    else
-                    {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Mountain");
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().walkable = true;
-                    }
-                }
                 else if (tile.tag == "Walls")
                 {
 
                     if (tile.transform.position.y > 0.9f)
                     {
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Wall");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
@@ -1037,7 +1029,7 @@ public class MenuScript
                     else
                     {
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("Wall");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
@@ -1057,20 +1049,20 @@ public class MenuScript
                     if (tile.transform.position.y > 0.9f)
                     {
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("LongWall");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 3), 1);
-                        tiles.transform.localPosition = new Vector3(j, (tile.transform.position.y / 3) + 0.5f, 0);
+                        tiles.transform.localScale = new Vector3(1, (tile.transform.position.y + 2), 1);
+                        tiles.transform.localPosition = new Vector3(j, (tile.transform.position.y / 2) + 0.5f, 0);
                         tiles.GetComponent<GridTiles>().walkable = false;
                     }
                     else
                     {
                         GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>("LongWall");
+                        Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
                         tiles.transform.localPosition = new Vector3(j, 0, 0);

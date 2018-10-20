@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GridTiles : MonoBehaviour { 
+public class GridTiles : MonoBehaviour {
+
     public bool walkable;
     public bool current = false;
     public bool target = false;
@@ -15,6 +16,55 @@ public class GridTiles : MonoBehaviour {
     public MapLocation mapLocation;
     public Rows rows;
     public PhaseSwitcher phaseSwitcher;
+
+
+    public bool houseTile = false;
+    public bool grass = false;
+    public bool vine = false;
+    public bool lavaGround = false;
+    public bool forest = false;
+    public bool brigde = false;
+    public bool cobbleStone = false;
+    public bool mountain = false;
+    public bool overGrownWall = false;
+    public bool stoneWall = false;
+    public bool graniteWall = false;
+    public bool stonePathway = false;
+    public bool street = false;
+    public bool dirt = false;
+    public bool coloredHT = false;
+    public bool dungeonTile = false;
+    public bool brick = false;
+    public bool carpet = false;
+    public bool lava = false;
+    public bool water = false;
+    public bool snow = false;
+    public bool snowyWall = false;
+    public bool snowyRock = false;
+    public bool snowyMountain = false;
+    public bool ice = false;
+    public bool sand = false;
+    public bool sandyGrass = false;
+    public bool sandstone = false;
+    public bool sandstoneWall = false;
+    public bool roughRoad = false;
+    public bool roof = false;
+    public bool mossyRock = false;
+    public bool limestone = false;
+    public bool quartz = false;
+    public bool obsidian = false;
+    public bool otherCarpet = false;
+
+    public bool NEorN = false;
+    public bool NWorE = false;
+    public bool SEorS = false;
+    public bool SWorW = false;
+
+    public bool hazard = false;
+
+    /// <summary>
+    /// from a Iso view is the Z axis is North
+    /// </summary>
 
     public List<GameObject> marked = new List<GameObject>();
     public int counter = 0;
@@ -78,6 +128,159 @@ public class GridTiles : MonoBehaviour {
                 GetComponent<Renderer>().material.color = Color.white;
         }
 
+    }
+  
+
+    public string TileColor()
+    {
+        string name = "Tile";
+        if (street) return name = "Street";
+        else if (dirt) return name = "Dirt";
+        else if (houseTile) return name = "HouseTile";
+        else if (dungeonTile) return name = "DungeonTile";
+        else if (coloredHT) return name = "ColoredHouseTile";
+        else if (cobbleStone) return name = "Cobblestone";
+        else if (brigde) return name = "Bridge";
+        else if (forest) return name = "Forest";
+        else if (mountain) return name = "Mountain";
+        else if (stonePathway) return name = "StonePathway";
+        else if (vine) return name = "Vine";
+        else if (grass) return name = "Grass";
+        else if (lavaGround) return name = "LavaGround";
+        else if (brick) return name = "Bricks";
+        else if (overGrownWall) return name = "OverGrownWall";
+        else if (stoneWall) return name = "StoneWall";
+        else if (graniteWall) return name = "GraniteWall";
+        else if (water) return name = "Rivers";
+        else if (lava) return name = "Lava";
+        else if (carpet) return name = "Carpet";
+        else if (snow) return name = "Snow";
+        else if (snowyWall) return name = "SnowyWall";
+        else if (snowyRock) return name = "SnowyRock";
+        else if (snowyMountain) return name = "SnowyMountain";
+        else if (ice) return name = "Ice";
+        else if (sand) return name = "Sand";
+        else if (sandyGrass) return name = "SandyGrass";
+        else if (sandstone) return name = "SandStone";
+        else if (sandstoneWall) return name = "SandStoneWall";
+        else if (roughRoad) return name = "roughRoad";
+        else if (roof) return name = "Roof";
+        else if (mossyRock) return name = "MossyRock";
+        else if (limestone) return name = "Limestone";
+        else if (quartz) return name = "Quartz";
+        else if (obsidian) return name = "Obsidian";
+        else if (otherCarpet) return name = "OtherCarpet";
+
+        return name;
+   /* 
+   snow
+   snowyWall 
+   snowyRock 
+   snowyMountain
+   ice 
+   sand 
+   sandyGrass 
+   sandstone 
+   sandstoneWal
+   roughRoad
+   roof 
+   mossyRock
+   limestone
+   quartz
+   obsidian
+   otherCarpet */
+    }
+
+    public void SearchColor(string color)
+    {
+        string name = "Tile";
+        if ("Street" == color) name = "Street";
+        else if ("Dirt" == color) name = "Dirt";
+        else if ("HouseTile" == color) name = "HouseTile";
+        else if ("DungeonTile" == color) name = "DungeonTile";
+        else if ("ColoredHouseTile" == color) name = "ColoredHouseTile";
+        else if ("Cobblestone" == color) name = "Cobblestone";
+        else if ("Bridge" == color) name = "Bridge";
+        else if ("Forest" == color) name = "Forest";
+        else if ("Mountain" == color) name = "Mountain";
+        else if ("StonePathway" == color) name = "StonePathway";
+        else if ("Vine" == color) name = "Vine";
+        else if ("Grass" == color) name = "Grass";
+        else if ("LavaGround" == color) name = "LavaGround";
+        else if ("Bricks" == color) name = "Bricks";
+        else if ("StoneWall" == color) name = "StoneWall";
+        else if ("GraniteWall" == color) name = "GraniteWall";
+        else if ("OverGrownWall" == color) name = "OverGrownWall";
+        else if ("Lava" == color) name = "Lava";
+        else if ("Rivers" == color) name = "Rivers";
+        else if ("Carpet" == color) name = "Carpet";
+        else if ("Snow" == color) name = "Snow";
+        else if ("SnowyWall" == color) name = "SnowWall";
+        else if ("SnowyRock" == color) name = "SnowRock";
+        else if ("SnowyMountain" == color) name = "SnowMountain";
+        else if ("Ice" == color) name = "Ice";
+        else if ("Sand" == color) name = "Sand";
+        else if ("SandyGrass" == color) name = "SandyGrass";
+        else if ("SandStone" == color) name = "SandStone";
+        else if ("SandStoneWall" == color) name = "SandStoneWall";
+        else if ("roughRoad" == color) name = "roughRoad";
+        else if ("Roof" == color) name = "Roof";
+        else if ("MossyRock" == color) name = "MossyRock";
+        else if ("Limestone" == color) name = "Limestone";
+        else if ("Quartz" == color) name = "Quartz";
+        else if ("Obsidian" == color) name = "Obsidian";
+        else if ("OtherCarpet" == color) name = "OtherCarpet";
+
+        Material material = Resources.Load<Material>(name);
+        gameObject.GetComponent<Renderer>().material = material;
+    }
+
+    public void TurnSelf()
+    {
+        gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        if (gameObject.tag == "RampE")
+        {
+            if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+            else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
+            else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+        }
+        else if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC")
+        {
+            if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+            else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
+            else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+            else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (gameObject.tag == "LakeS" || gameObject.tag == "LavaLS")
+        {
+            if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
+            else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+            else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+            else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (gameObject.tag == "DoorC")
+        {
+            if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
+            else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+            else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+        }
+        if (gameObject.tag == "ChestC")
+        {
+            if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+            else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
+            else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+        }
+       
+
+    }
+    public void ColorSelf()
+    {
+        Material material = Resources.Load<Material>(TileColor());
+        gameObject.GetComponent<Renderer>().material = material;
     }
 
     public void Reset()
