@@ -17,7 +17,7 @@ public class GridTiles : MonoBehaviour {
     public Rows rows;
     public PhaseSwitcher phaseSwitcher;
 
-
+    
     public bool houseTile = false;
     public bool grass = false;
     public bool vine = false;
@@ -71,6 +71,7 @@ public class GridTiles : MonoBehaviour {
     public List<GridTiles> adjacencyList = new List<GridTiles>();
     public List<GridTiles> attackList = new List<GridTiles>();
 
+    public bool highlighted = false;
     //Needed BFS (breadth first search)
     public bool visited = false;
     public GridTiles parent = null;
@@ -172,67 +173,167 @@ public class GridTiles : MonoBehaviour {
         else if (otherCarpet) return name = "OtherCarpet";
 
         return name;
-   /* 
-   snow
-   snowyWall 
-   snowyRock 
-   snowyMountain
-   ice 
-   sand 
-   sandyGrass 
-   sandstone 
-   sandstoneWal
-   roughRoad
-   roof 
-   mossyRock
-   limestone
-   quartz
-   obsidian
-   otherCarpet */
+ 
     }
 
-    public void SearchColor(string color)
+    public void TransferColor(string color)
     {
-        string name = "Tile";
-        if ("Street" == color) name = "Street";
-        else if ("Dirt" == color) name = "Dirt";
-        else if ("HouseTile" == color) name = "HouseTile";
-        else if ("DungeonTile" == color) name = "DungeonTile";
-        else if ("ColoredHouseTile" == color) name = "ColoredHouseTile";
-        else if ("Cobblestone" == color) name = "Cobblestone";
-        else if ("Bridge" == color) name = "Bridge";
-        else if ("Forest" == color) name = "Forest";
-        else if ("Mountain" == color) name = "Mountain";
-        else if ("StonePathway" == color) name = "StonePathway";
-        else if ("Vine" == color) name = "Vine";
-        else if ("Grass" == color) name = "Grass";
-        else if ("LavaGround" == color) name = "LavaGround";
-        else if ("Bricks" == color) name = "Bricks";
-        else if ("StoneWall" == color) name = "StoneWall";
-        else if ("GraniteWall" == color) name = "GraniteWall";
-        else if ("OverGrownWall" == color) name = "OverGrownWall";
-        else if ("Lava" == color) name = "Lava";
-        else if ("Rivers" == color) name = "Rivers";
-        else if ("Carpet" == color) name = "Carpet";
-        else if ("Snow" == color) name = "Snow";
-        else if ("SnowyWall" == color) name = "SnowWall";
-        else if ("SnowyRock" == color) name = "SnowRock";
-        else if ("SnowyMountain" == color) name = "SnowMountain";
-        else if ("Ice" == color) name = "Ice";
-        else if ("Sand" == color) name = "Sand";
-        else if ("SandyGrass" == color) name = "SandyGrass";
-        else if ("SandStone" == color) name = "SandStone";
-        else if ("SandStoneWall" == color) name = "SandStoneWall";
-        else if ("roughRoad" == color) name = "roughRoad";
-        else if ("Roof" == color) name = "Roof";
-        else if ("MossyRock" == color) name = "MossyRock";
-        else if ("Limestone" == color) name = "Limestone";
-        else if ("Quartz" == color) name = "Quartz";
-        else if ("Obsidian" == color) name = "Obsidian";
-        else if ("OtherCarpet" == color) name = "OtherCarpet";
-
-        Material material = Resources.Load<Material>(name);
+        Material material = Resources.Load<Material>(color);
         gameObject.GetComponent<Renderer>().material = material;
+    }
+
+    public void CheckWithText(string color)
+    {
+        if ("Street" == color) street = true;
+        else if ("Dirt" == color) dirt = true;
+        else if ("HouseTile" == color) houseTile = true;
+        else if ("DungeonTile" == color) dungeonTile = true;
+        else if ("ColoredHouseTile" == color) coloredHT = true;
+        else if ("Cobblestone" == color) cobbleStone = true;
+        else if ("Bridge" == color) brigde = true;
+        else if ("Forest" == color) forest = true;
+        else if ("Mountain" == color) mountain = true;
+        else if ("StonePathway" == color) stonePathway = true;
+        else if ("Vine" == color) vine = true;
+        else if ("Grass" == color) grass = true;
+        else if ("LavaGround" == color) lavaGround = true;
+        else if ("Bricks" == color) brick = true;
+        else if ("StoneWall" == color) stoneWall = true;
+        else if ("GraniteWall" == color) graniteWall = true;
+        else if ("OverGrownWall" == color) overGrownWall = true;
+        else if ("Lava" == color) lava = true;
+        else if ("Rivers" == color) water = true;
+        else if ("Carpet" == color) carpet = true;
+        else if ("Snow" == color) snow = true;
+        else if ("SnowyWall" == color) snowyWall = true;
+        else if ("SnowyRock" == color) snowyRock = true;
+        else if ("SnowyMountain" == color) snowyMountain = true;
+        else if ("Ice" == color) ice = true;
+        else if ("Sand" == color) sand = true;
+        else if ("SandyGrass" == color) sandyGrass = true;
+        else if ("SandStone" == color) sandstone = true;
+        else if ("SandStoneWall" == color) sandstoneWall = true;
+        else if ("roughRoad" == color) roughRoad = true;
+        else if ("Roof" == color) roof = true;
+        else if ("MossyRock" == color) mossyRock = true;
+        else if ("Limestone" == color) limestone = true;
+        else if ("Quartz" == color) quartz = true;
+        else if ("Obsidian" == color) obsidian = true;
+        else if ("OtherCarpet" == color) otherCarpet = true;
+
+        Material material = Resources.Load<Material>(color);
+        gameObject.GetComponent<Renderer>().material = material;
+     
+    }
+
+    public void UnCheckWithText(string type)
+    {
+        if ("Street" == type) street = false;
+        else if ("Dirt" == type) dirt = false;
+        else if ("HouseTile" == type) houseTile = false;
+        else if ("DungeonTile" == type) dungeonTile = false;
+        else if ("ColoredHouseTile" == type) coloredHT = false;
+        else if ("Cobblestone" == type) cobbleStone = false;
+        else if ("Bridge" == type) brigde = false;
+        else if ("Forest" == type) forest = false;
+        else if ("Mountain" == type) mountain = false;
+        else if ("StonePathway" == type) stonePathway = false;
+        else if ("Vine" == type) vine = false;
+        else if ("Grass" == type) grass = false;
+        else if ("LavaGround" == type) lavaGround = false;
+        else if ("Bricks" == type) brick = false;
+        else if ("StoneWall" == type) stoneWall = false;
+        else if ("GraniteWall" == type) graniteWall = false;
+        else if ("OverGrownWall" == type) overGrownWall = false;
+        else if ("Lava" == type) lava = false;
+        else if ("Rivers" == type) water = false;
+        else if ("Carpet" == type) carpet = false;
+        else if ("Snow" == type) snow = false;
+        else if ("SnowyWall" == type) snowyWall = false;
+        else if ("SnowyRock" == type) snowyRock = false;
+        else if ("SnowyMountain" == type) snowyMountain = false;
+        else if ("Ice" == type) ice = false;
+        else if ("Sand" == type) sand = false;
+        else if ("SandyGrass" == type) sandyGrass = false;
+        else if ("SandStone" == type) sandstone = false;
+        else if ("SandStoneWall" == type) sandstoneWall = false;
+        else if ("roughRoad" == type) roughRoad = false;
+        else if ("Roof" == type) roof = false;
+        else if ("MossyRock" == type) mossyRock = false;
+        else if ("Limestone" == type) limestone = false;
+        else if ("Quartz" == type) quartz = false;
+        else if ("Obsidian" == type) obsidian = false;
+        else if ("OtherCarpet" == type) otherCarpet = false;
+        else if ("N" == type) NEorN = false;
+        else if ("E" == type) NWorE = false;
+        else if ("S" == type) SEorS = false;
+        else if ("W" == type) SWorW = false;
+        else if ("NE" == type) NEorN = false;
+        else if ("NW" == type) NWorE = false;
+        else if ("SE" == type) SEorS = false;
+        else if ("SW" == type) SWorW = false;
+        else if ("Hazard" == type) hazard = false;
+
+    }
+
+    public void CheckSpecialorTurnText(string type)
+    {
+  
+        if ("NEorN" == type) NEorN = true;
+        else if ("NWorE" == type) NWorE = true;
+        else if ("SEorS" == type) SEorS = true;
+        else if ("SWorW" == type) SWorW = true;
+        else if ("Hazard" == type) hazard = true;
+    }
+
+    public void Clean ()
+    {
+        street = false;
+        dirt = false;
+        houseTile = false;
+        dungeonTile = false;
+        coloredHT = false;
+        cobbleStone = false;
+        brigde = false;
+        forest = false;
+        mountain = false;
+        stonePathway = false;
+        vine = false;
+        grass = false;
+        lavaGround = false;
+        brick = false;
+        stoneWall = false;
+        graniteWall = false;
+        overGrownWall = false;
+        lava = false;
+        water = false;
+        carpet = false;
+        snow = false;
+        snowyWall = false;
+        snowyRock = false;
+        snowyMountain = false;
+        ice = false;
+        sand = false;
+        sandyGrass = false;
+        sandstone = false;
+        sandstoneWall = false;
+        roughRoad = false;
+        roof = false;
+        mossyRock = false;
+        limestone = false;
+        quartz = false;
+        obsidian = false;
+        otherCarpet = false;
+        NEorN = false;
+        NWorE = false;
+        SEorS = false;
+        SWorW = false;
+        hazard = false;
+        highlighted = false;
+        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, 0, gameObject.transform.localPosition.z);
+        Material material = Resources.Load<Material>("Tile");
+        gameObject.GetComponent<Renderer>().material = material;
+        gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void TurnSelf()
@@ -341,11 +442,6 @@ public class GridTiles : MonoBehaviour {
             onTile = false;
 
         unit = null;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        
     }
 
     private void OnCollisionStay(Collision collision)
