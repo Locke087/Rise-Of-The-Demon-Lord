@@ -142,10 +142,9 @@ public class MiddleManStorage : MonoBehaviour {
                         tile.CheckSpecialorTurnText(rotate);
                         tile.TurnSelf();
                     }
-
-                    
+                   
                     if (height != 0) tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, height, tile.transform.localPosition.z);
-                    
+                    tile.GetComponentInChildren<UIEditorExtention>().gameObject.GetComponent<Image>().color = Color.grey;
                     Debug.Log(tile.tag + " this is the tag");
                 }
             }
@@ -166,7 +165,7 @@ public class MiddleManStorage : MonoBehaviour {
             {
                 tile.Clean();
                 tile.GetComponentInChildren<UIEditorExtention>().taken = false;
-
+                tile.GetComponentInChildren<UIEditorExtention>().gameObject.GetComponent<Image>().color = Color.blue;
             }
         }
 
