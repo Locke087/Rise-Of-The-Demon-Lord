@@ -103,6 +103,7 @@ public class UIEditorExtention : MonoBehaviour, IPointerClickHandler, IPointerEn
         yield return new WaitForSeconds(0.01f);
         GameObject.FindObjectOfType<LiveMapGenerator>().Generate(GameObject.FindObjectOfType<MiddleManStorage>().area);
         taken = false;
+        gameObject.GetComponent<Image>().color = Color.blue;
     }
 
     /*private void OnMouseOver()
