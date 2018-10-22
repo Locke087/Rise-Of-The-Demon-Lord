@@ -12,7 +12,7 @@ public class UIEditorExtention : MonoBehaviour, IPointerClickHandler, IPointerEn
 	// Use this for initialization
 	void Start()
     {
-
+        gameObject.GetComponent<Image>().color = Color.blue;
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class UIEditorExtention : MonoBehaviour, IPointerClickHandler, IPointerEn
                 gameObject.GetComponent<Image>().color = Color.magenta;
                 // gameObject.GetComponent
             }
-            if (Input.GetButton("Deselect"))
+            if (Input.GetButton("Deselect") || Input.GetButton("Remove"))
             {
                 gameObject.GetComponentInParent<GridTiles>().highlighted = false;
                 gameObject.GetComponent<Image>().color = Color.blue;
@@ -86,11 +86,23 @@ public class UIEditorExtention : MonoBehaviour, IPointerClickHandler, IPointerEn
         {
            // Debug.Log("why me tyrtyhh??");
             gameObject.GetComponentInParent<GridTiles>().highlighted = false;
-            
+          StartCoroutine(removePiece());
            // GameObject.FindObjectOfType<LiveMapGenerator>().Remove(GameObject.FindObjectOfType<MiddleManStorage>().area);
             //gameObject.GetComponent<Image>().color = Color.blue;
         }
 
+    }
+
+
+    public IEnumerator removePiece()
+    {
+        gameObject.GetComponentInParent<GridTiles>().Clean();
+        gameObject.GetComponentInParent<GridTiles>().tag = "Tile";
+        GameObject maps = GameObject.Find("Area" + GameObject.FindObjectOfType<MiddleManStorage>().area.ToString());
+        Destroy(maps);
+        yield return new WaitForSeconds(0.01f);
+        GameObject.FindObjectOfType<LiveMapGenerator>().Generate(GameObject.FindObjectOfType<MiddleManStorage>().area);
+        taken = false;
     }
 
     /*private void OnMouseOver()

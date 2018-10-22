@@ -12049,8 +12049,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 230}
-  m_SizeDelta: {x: 130, y: 200}
+  m_AnchoredPosition: {x: -1, y: 246}
+  m_SizeDelta: {x: 135, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758338198
 MonoBehaviour:
@@ -12073,7 +12073,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -12084,8 +12084,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "While Hovering\nOver a Tile\nPress E To \nSelect It\nPress Q To\nDeselect
-    It\nYou can click on as well for a toggle effect"
+  m_Text: While Passing Over a Tile Press and Hold E To Select It, Press and Hold
+    Q or R To Deselect It. You can click on as well for a toggle selection. If you
+    click on a grey piece can can delete that piece.
 --- !u!222 &758338199
 CanvasRenderer:
   m_ObjectHideFlags: 0
