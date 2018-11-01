@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MapManager : MonoBehaviour {
 
     // Use this for initialization
-
+   
     public GameObject currentUser;
 	void Start () {
 		
@@ -19,11 +19,13 @@ public class MapManager : MonoBehaviour {
 
     public void UserSet(GameObject user)
     {
+    
         currentUser = user;
     }
 
     public void UserRemove()
     {
+      
         currentUser = null;
     }
 

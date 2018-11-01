@@ -10,6 +10,7 @@ public class SpeedCenterTurns : MonoBehaviour {
     public List<GameObject> unitOrder;
     public List<GameObject> playerUnits;
     public List<GameObject> enemyUnits;
+    public GameObject cam;
     public int upNext = 0;
     public bool enemyRouted = false;
     public bool stopped = false;
@@ -181,6 +182,8 @@ public class SpeedCenterTurns : MonoBehaviour {
        
         if (!stopped)
         {
+            unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.green;
+            cam.transform.position = new Vector3(unitOrder[upNext].transform.position.x, cam.transform.position.y, unitOrder[upNext].transform.position.z);
             activeUnit = unitOrder[upNext];
             int temp = upNext;
             Debug.Log(unitOrder[upNext].name);
@@ -244,10 +247,16 @@ public class SpeedCenterTurns : MonoBehaviour {
 
         if (!stopped)
         {
-         
+            cam.transform.position = new Vector3(cam.GetComponent<CameraMover>().startX, cam.transform.position.y, cam.GetComponent<CameraMover>().startZ);
+
             if (unitOrder[upNext].tag == "Player")
             {
+                unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.blue;
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
+            }
+            else
+            {
+                unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.red;
             }
             int check = upNext + 1;
             if (check < unitOrder.Count)
