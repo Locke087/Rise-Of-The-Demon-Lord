@@ -30,6 +30,7 @@ public class GridTiles : MonoBehaviour {
     public bool stoneWall = false;
     public bool graniteWall = false;
     public bool stonePathway = false;
+    public bool swamp = false;
     public bool street = false;
     public bool dirt = false;
     public bool coloredHT = false;
@@ -38,18 +39,26 @@ public class GridTiles : MonoBehaviour {
     public bool carpet = false;
     public bool lava = false;
     public bool water = false;
+    public bool poison = false;
     public bool snow = false;
     public bool snowyWall = false;
     public bool snowyRock = false;
     public bool snowyMountain = false;
     public bool ice = false;
     public bool sand = false;
+    public bool orangeRedRock = false;
+    public bool darkRedRock = false;
+    public bool redRock = false;
+    public bool redRockWall = false;
+    public bool moltenRock = false;
     public bool sandyGrass = false;
     public bool sandstone = false;
     public bool sandstoneWall = false;
+    public bool rusty = false;
     public bool roughRoad = false;
     public bool roof = false;
     public bool mossyRock = false;
+    public bool mossyPuddle = false;
     public bool limestone = false;
     public bool quartz = false;
     public bool obsidian = false;
@@ -170,7 +179,15 @@ public class GridTiles : MonoBehaviour {
         else if (limestone) return name = "Limestone";
         else if (quartz) return name = "Quartz";
         else if (obsidian) return name = "Obsidian";
-        else if (otherCarpet) return name = "OtherCarpet";
+        else if (poison) return name = "PoisonWater";
+        else if (swamp) return name = "Swamp";
+        else if (redRock) return name = "RedRock";
+        else if (redRockWall) return name = "RedRockWall";
+        else if (darkRedRock) return name = "DarkRockWall";
+        else if (orangeRedRock) return name = "OrangeRedRock";
+        else if (moltenRock) return name = "MoltenRock";
+        else if (mossyPuddle) return name = "MossyPuddle";
+        else if (rusty) return name = "Rusty";
 
         return name;
  
@@ -220,6 +237,15 @@ public class GridTiles : MonoBehaviour {
         else if ("Quartz" == color) quartz = true;
         else if ("Obsidian" == color) obsidian = true;
         else if ("OtherCarpet" == color) otherCarpet = true;
+        else if ("PoisonWater" == color) poison = true;
+        else if ("Swamp" == color) swamp = true;
+        else if ("RedRock" == color) redRock = true;
+        else if ("RedRockWall" == color) redRockWall = true;
+        else if ("DarkRockWall" == color) darkRedRock = true;
+        else if ("OrangeRedRock" == color) orangeRedRock = true;
+        else if ("MoltenRock" == color) moltenRock = true;
+        else if ("MossyPuddle" == color) mossyPuddle = true;
+        else if ("Rusty" == color) rusty = true;
 
         Material material = Resources.Load<Material>(color);
         gameObject.GetComponent<Renderer>().material = material;
@@ -264,6 +290,15 @@ public class GridTiles : MonoBehaviour {
         else if ("Quartz" == type) quartz = false;
         else if ("Obsidian" == type) obsidian = false;
         else if ("OtherCarpet" == type) otherCarpet = false;
+        else if ("PoisonWater" == type) poison = false;
+        else if ("Swamp" == type) swamp = false;
+        else if ("RedRock" == type) redRock = false;
+        else if ("RedRockWall" == type) redRockWall = false;
+        else if ("DarkRockWall" == type) darkRedRock = false;
+        else if ("OrangeRedRock" == type) orangeRedRock = false;
+        else if ("MoltenRock" == type) moltenRock = false;
+        else if ("MossyPuddle" == type) mossyPuddle = false;
+        else if ("Rusty" == type) rusty = false;
         else if ("N" == type) NEorN = false;
         else if ("E" == type) NWorE = false;
         else if ("S" == type) SEorS = false;
@@ -284,6 +319,27 @@ public class GridTiles : MonoBehaviour {
         else if ("SEorS" == type) SEorS = true;
         else if ("SWorW" == type) SWorW = true;
         else if ("Hazard" == type) hazard = true;
+    }
+
+    public string FindSpecialorTurnText()
+    {
+        if (NEorN == true) return "NEorN";
+        else if (NWorE == true) return "NWorE";
+        else if (SEorS == true) return "SEorS";
+        else if (SWorW == true) return "SWorW";
+        else if (hazard == true) return "Hazard";
+        return "";
+    }
+
+    public void ReflectMe(TileHolder tile)
+    {
+        gameObject.tag = tile.type;
+        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, tile.height, gameObject.transform.localPosition.z);
+        CheckWithText(tile.material);
+        CheckSpecialorTurnText(tile.turnOrSpecial);
+        ColorSelf();
+        TurnSelf();
+        TagColor();
     }
 
     public void Clean ()
@@ -324,16 +380,26 @@ public class GridTiles : MonoBehaviour {
         quartz = false;
         obsidian = false;
         otherCarpet = false;
+        poison = false;
+        swamp = false;
+        redRock = false;
+        redRockWall = false;
+        darkRedRock = false;
+        orangeRedRock = false;
+        moltenRock = false;
+        mossyPuddle = false;
         NEorN = false;
         NWorE = false;
         SEorS = false;
         SWorW = false;
         hazard = false;
         highlighted = false;
+     
         gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, 0, gameObject.transform.localPosition.z);
         Material material = Resources.Load<Material>("Tile");
         gameObject.GetComponent<Renderer>().material = material;
         gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        gameObject.tag = "Tile";
     }
 
     public void TurnSelf()
@@ -353,6 +419,7 @@ public class GridTiles : MonoBehaviour {
             else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
             else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, -90f, 0);
             else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
         }
         else if (gameObject.tag == "LakeS" || gameObject.tag == "LavaLS")
         {
@@ -376,6 +443,39 @@ public class GridTiles : MonoBehaviour {
             else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
         }
        
+
+    }
+
+    public void TagColor()
+    {
+      
+        if (gameObject.tag == "RiverC" || gameObject.tag == "RiverH"|| gameObject.tag == "Rivers" || gameObject.tag == "LakeC" || gameObject.tag == "LakeS" || gameObject.tag == "LakeM")
+        {
+            Material material = Resources.Load<Material>("Rivers");
+            gameObject.GetComponent<Renderer>().material = material;
+        }
+        else if ( gameObject.tag == "LavaLS" || gameObject.tag == "LavaLC" || gameObject.tag == "LavaLM" || gameObject.tag == "LavaR" || gameObject.tag == "LavaRC" || gameObject.tag == "LavaH")
+        {
+            Material material = Resources.Load<Material>("Lava");
+            gameObject.GetComponent<Renderer>().material = material;
+        }
+        else if (gameObject.tag == "Gap")
+        {
+            Material material = Resources.Load<Material>("Gap");
+            gameObject.GetComponent<Renderer>().material = material;
+        }
+        else if (gameObject.tag == "DoorC")
+        {
+            Material material = Resources.Load<Material>("Door");
+            gameObject.GetComponent<Renderer>().material = material;
+        }
+        if (gameObject.tag == "ChestC")
+        {
+            Material material = Resources.Load<Material>("Treasure");
+            gameObject.GetComponent<Renderer>().material = material;
+        }
+        
+
 
     }
     public void ColorSelf()

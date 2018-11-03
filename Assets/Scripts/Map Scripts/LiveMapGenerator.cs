@@ -646,7 +646,7 @@ public class LiveMapGenerator : MonoBehaviour {
                         tiles.tag = "Door";
                         // tiles.AddComponent<GridTiles>();
                         // tiles.GetComponent<GridTiles>().walkable = false;
-
+                        tiles.GetComponentInChildren<GridTiles>().walkable = false;
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
                         Material material = Resources.Load<Material>(tile.TileColor());
@@ -667,6 +667,7 @@ public class LiveMapGenerator : MonoBehaviour {
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Door";
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
+                        tiles.GetComponentInChildren<GridTiles>().walkable = false;
                         // tiles.AddComponent<GridTiles>();
                         // tiles.GetComponent<GridTiles>().walkable = false;
 
@@ -687,7 +688,7 @@ public class LiveMapGenerator : MonoBehaviour {
 
                         tiles.tag = "Chest";
 
-                        tiles.GetComponent<GridTiles>().walkable = false;
+                        tiles.GetComponentInChildren<GridTiles>().walkable = false;
 
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
@@ -707,6 +708,7 @@ public class LiveMapGenerator : MonoBehaviour {
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Chest";
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
+                        tiles.GetComponentInChildren<GridTiles>().walkable = false;
 
 
                     }

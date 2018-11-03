@@ -17,12 +17,10 @@ public class TileMaterialSelector : MonoBehaviour, IPointerClickHandler, IPointe
     void Start()
     {
         scroll.content = textMeshPro.GetComponent<RectTransform>();
-        textMeshPro.text = "";
         textMeshPro.text += "<link=Dirt>Dirt</link>";
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=Street>Street</link>";
         textMeshPro.text += "\n";
-        textMeshPro.text += "Tile"; 
         textMeshPro.text += "<link=HouseTile>House Tile</link>";
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=DungeonTile>Dungeon Tile</link>";
@@ -91,7 +89,26 @@ public class TileMaterialSelector : MonoBehaviour, IPointerClickHandler, IPointe
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=OtherCarpet>Dark Carpet</link>";
         textMeshPro.text += "\n";
-     
+        textMeshPro.text += "<link=Poison>Poison</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=Swamp>Swamp</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=MoltenRock>Molten Rock</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=MossyPuddle>Mossy Puddle</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=Rusty>Rusty</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=RedRock>Red Rock</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=RedRockWall>Red Rock Wall</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=DarkRedRock>Dark Red Rock</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=DarkRedRock>Dark Red Rock</link>";
+        textMeshPro.text += "\n";
+        textMeshPro.text += "<link=OrangeRedRock>Orange Red Rock</link>";
+        textMeshPro.text += "\n";
     }
 
    

@@ -17,7 +17,6 @@ public class TileShapeSelector : MonoBehaviour, IPointerClickHandler, IPointerEn
     void Start()
     {
         scroll.content = textMeshPro.GetComponent<RectTransform>();
-        textMeshPro.text = "";
         textMeshPro.text += "<link=Normal>Normal Tile</link>";
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=RampE>Ramp</link>";

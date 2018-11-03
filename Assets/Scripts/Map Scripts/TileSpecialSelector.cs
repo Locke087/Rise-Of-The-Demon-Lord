@@ -16,7 +16,6 @@ public class TileSpecialSelector : MonoBehaviour, IPointerClickHandler, IPointer
 	// Use this for initialization
 	void Start () {
         scroll.content = textMeshPro.GetComponent<RectTransform>();
-        textMeshPro.text = "";
         textMeshPro.text += "<link=Hazard>Hazard</link>";
         textMeshPro.text += "\n";
     }

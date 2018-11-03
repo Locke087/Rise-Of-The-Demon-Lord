@@ -18,7 +18,6 @@ public class TileRotateSelection : MonoBehaviour, IPointerClickHandler, IPointer
     void Start()
     {
         scroll.content = textMeshPro.GetComponent<RectTransform>();
-        textMeshPro.text = "";
         textMeshPro.text += "<link=NEorN>Up Right or Up</link>";
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=NWorE>Up Left or Right</link>";
