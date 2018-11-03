@@ -2105,6 +2105,7 @@ public class MenuScript
         GroupingOrganizer organizer = map.GetComponent<GroupingOrganizer>();
         Rows[] allRows = map.GetComponentsInChildren<Rows>();
         List<GridTiles> everyTile = new List<GridTiles>();
+        bool complete = false;
         foreach (Rows row in allRows)
         {
             GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
@@ -2118,61 +2119,58 @@ public class MenuScript
 
         List<AreaDirector> list = new List<AreaDirector>();
         list = TempDisplayer.overGrownLabyrinthPerm.rout.allAreas.areaDirectors;
-
-        for (int i = 0; i < list.Count; i++)
+        do
         {
-            if (organizer.redo)
+            for (int i = 0; i < list.Count; i++)
             {
-                organizer.redo = false;
-                i = 0;
-            }
-            bool done = false;
-
-            do
-            {
-                int num = Random.Range(0, list[i].areas.Count);
-                if (organizer.Checklist(list[i].areas[num].id))
-                {
-                    organizer.resetAInRows = 0;
-                    done = true;
-                    foreach (RowHolder otherRow in list[i].areas[num].rows)
-                    {
-                        foreach (TileHolder tiler in otherRow.tiles)
-                        {
-                            foreach (GridTiles tile in everyTile)
-                            {
-                                if (tile.name == tiler.id) tile.ReflectMe(tiler);
-                            }
-                        }
-
-                    }
-                }
-
+                complete = true;
                 if (organizer.redo)
                 {
-                    
-                    for (int j = 0; j < list.Count; j++)
+                    Debug.Log("DoOver");
+                    organizer.redo = false;
+                    i = 0;
+                }
+                bool done = false;
+
+                do
+                {
+                    int num = Random.Range(0, list[i].areas.Count);
+                    if (organizer.Checklist(list[i].areas[num].id))
                     {
-                        for (int k = 0; k < list[j].areas.Count; k++)
+                        organizer.resetAInRows = 0;
+                        done = true;
+                        foreach (RowHolder otherRow in list[i].areas[num].rows)
                         {
-                            foreach (RowHolder otherRow in list[j].areas[k].rows)
+                            foreach (TileHolder tiler in otherRow.tiles)
                             {
                                 foreach (GridTiles tile in everyTile)
                                 {
-                                    tile.Clean();
+                                    if (tile.name == tiler.id) tile.ReflectMe(tiler);
                                 }
-
                             }
+
                         }
                     }
-                }
+
+                    if (organizer.redo)
+                    {
+                        foreach (GridTiles tile in everyTile)
+                        {
+                            tile.Clean();
+                        }
+                    }
 
 
-            } while (!done && !organizer.stop && !organizer.redo);
-            if (organizer.stop) Debug.Log("deleted");
-          
+                } while (!done && !organizer.stop && !organizer.redo);
+                if (organizer.stop) Debug.Log("deleted");
 
-        }
+
+            }
+            foreach (GridTiles tile in everyTile)
+            {
+                if (tile.tag == "Tile") complete = false;
+            }
+        } while (!complete);
         //int m = 0;
        // GameObject TheRecord = new GameObject();
         
