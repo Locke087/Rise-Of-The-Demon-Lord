@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public static class UnitStoreroom {
+[System.Serializable]
+public class UnitStoreroom : MonoBehaviour
+{
 
     public static List<Unit> units = new List<Unit>();
 

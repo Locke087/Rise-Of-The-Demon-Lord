@@ -1217,6 +1217,7 @@ public class MenuScript
             }
             i++;
             r++;
+            f = 0;
         }
 
     }
@@ -2071,6 +2072,7 @@ public class MenuScript
                 
                 tileset.rout.allAreas.areaDirectors[k].areas.Add(new AreaHolder());
                 tileset.rout.allAreas.areaDirectors[k].areas[c].id = maps.GetComponent<AreaInfo>().tileType;
+                tileset.rout.allAreas.areaDirectors[k].areas[c].indent = maps.GetComponent<AreaInfo>().tileName;
                 Debug.Log(tileset.rout.allAreas.areaDirectors[k].areas[c].id);
                 u++;
                 foreach (Rows row in allRows)
@@ -2081,7 +2083,7 @@ public class MenuScript
                     GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
                     foreach (GridTiles tile in allTiles)
                     {
-                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecialorTurnText(), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name));
+                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name));
                         //tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         j++;
                     }
@@ -2119,8 +2121,10 @@ public class MenuScript
 
         List<AreaDirector> list = new List<AreaDirector>();
         list = TempDisplayer.overGrownLabyrinthPerm.rout.allAreas.areaDirectors;
+        organizer.StartUp();
         do
         {
+            organizer.taken.Clear();
             for (int i = 0; i < list.Count; i++)
             {
                 complete = true;
@@ -2134,28 +2138,36 @@ public class MenuScript
 
                 do
                 {
+                   
                     int num = Random.Range(0, list[i].areas.Count);
-                    if (organizer.Checklist(list[i].areas[num].id))
+                    
+                    if (organizer.IsItTaken(list[i].areas[num].indent))
                     {
-                        organizer.resetAInRows = 0;
-                        done = true;
-                        foreach (RowHolder otherRow in list[i].areas[num].rows)
+                        organizer.taken.Add(list[i].areas[num].indent);
+                        if (organizer.Checklist(list[i].areas[num].id))
                         {
-                            foreach (TileHolder tiler in otherRow.tiles)
+                            organizer.resetAInRows = 0;
+                            done = true;
+                            foreach (RowHolder otherRow in list[i].areas[num].rows)
                             {
-                                foreach (GridTiles tile in everyTile)
+                                foreach (TileHolder tiler in otherRow.tiles)
                                 {
-                                    if (tile.name == tiler.id) tile.ReflectMe(tiler);
+                                    foreach (GridTiles tile in everyTile)
+                                    {
+                                        if (tile.name == tiler.id) tile.ReflectMe(tiler);
+                                    }
                                 }
-                            }
 
+                            }
                         }
                     }
 
                     if (organizer.redo)
                     {
+                        organizer.taken.Clear();
                         foreach (GridTiles tile in everyTile)
                         {
+                           
                             tile.Clean();
                         }
                     }
@@ -2194,10 +2206,6 @@ public class MenuScript
             r++;
 
         }
-
-        //int m = 0;
-        GameObject TheRecord = new GameObject();
-
     }
 
     [MenuItem("Tools/RenameMap")]
@@ -2257,6 +2265,10 @@ public class MenuScript
             }
         }
     }
+
+    
 }
+
+
           
 

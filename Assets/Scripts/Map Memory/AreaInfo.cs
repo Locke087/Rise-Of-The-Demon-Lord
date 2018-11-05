@@ -5,5 +5,5 @@ using UnityEngine;
 public class AreaInfo : MonoBehaviour {
 
     public string tileType;
-	
+    public string tileName;
 }

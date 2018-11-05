@@ -16,6 +16,13 @@ public class GridTiles : MonoBehaviour {
     public MapLocation mapLocation;
     public Rows rows;
     public PhaseSwitcher phaseSwitcher;
+    public bool playerSpawn = false;
+    public bool enemySpawn = false;
+    public bool bossSpawn = false;
+    public bool reinforcementSpawn = false;
+    public bool recuitSpawn = false;
+    public bool objectivePoint = false;
+    public bool taken = false;
 
     
     public bool houseTile = false;
@@ -68,7 +75,7 @@ public class GridTiles : MonoBehaviour {
     public bool NWorE = false;
     public bool SEorS = false;
     public bool SWorW = false;
-
+   
     public bool hazard = false;
 
     /// <summary>
@@ -318,6 +325,7 @@ public class GridTiles : MonoBehaviour {
         else if ("NWorE" == type) NWorE = true;
         else if ("SEorS" == type) SEorS = true;
         else if ("SWorW" == type) SWorW = true;
+        
         else if ("Hazard" == type) hazard = true;
     }
 
@@ -329,6 +337,43 @@ public class GridTiles : MonoBehaviour {
         else if (SWorW == true) return "SWorW";
         else if (hazard == true) return "Hazard";
         return "";
+    }
+
+
+    public string FindSpecOrTT(GameObject map)
+    {
+      
+        if (SEorS == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "NWorE";
+        else if (SWorW == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "NEorN";
+        else if (NEorN == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "SWorW";
+        else if (NWorE == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "SEorS";
+
+        else if (SEorS == true && map.transform.localScale.z == -1) return "NEorN";
+        else if (SWorW == true && map.transform.localScale.z == -1) return "NWorE";
+        else if (NEorN == true && map.transform.localScale.z == -1) return "SEorS";
+        else if (NWorE == true && map.transform.localScale.z == -1) return "SWorW";
+
+        else if (NEorN == true && map.transform.localScale.x == -1 && IsACorner()) return "NWorE";
+        else if (NWorE == true && map.transform.localScale.x == -1) return "NEorN";
+        else if (SEorS == true && map.transform.localScale.x == -1 && IsACorner()) return "SWorW";
+        else if (SWorW == true && map.transform.localScale.x == -1) return "SEorS";
+
+        else if (NEorN == true) return "NEorN";
+        else if (NWorE == true) return "NWorE";
+        else if (SEorS == true) return "SEorS";
+        else if (SWorW == true) return "SWorW";
+        else if (hazard == true) return "Hazard";
+        return "";
+    }
+
+    public bool IsACorner()
+    {
+        if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC")
+        {
+            return true;
+        }
+        return false;
+
     }
 
     public void ReflectMe(TileHolder tile)
@@ -445,6 +490,8 @@ public class GridTiles : MonoBehaviour {
        
 
     }
+
+    
 
     public void TagColor()
     {

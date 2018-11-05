@@ -84,4 +84,21 @@ public class EventDriver : MonoBehaviour
         return tiles;
     }
 
+
+    public List<GridTiles> FindPlayerSpawns()
+    {
+        MapLocation map = FindMap();
+        List<GridTiles> tiles = new List<GridTiles>();
+
+        foreach (Rows row in map.allRows)
+        {
+            map.allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in map.allTiles)
+            {
+                if (tile.playerSpawn && tile.walkable) tiles.Add(tile);
+            }
+        }
+        return tiles;
+    }
+
 }

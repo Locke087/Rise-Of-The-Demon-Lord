@@ -16,7 +16,8 @@ public class GroupingOrganizer : MonoBehaviour {
     public int totalBreak;
     public bool redo = false;
     public bool stop = false;
-
+    public List<string> taken;
+    public int nothingElse;
 	void Start () {
 		
 	}
@@ -26,6 +27,10 @@ public class GroupingOrganizer : MonoBehaviour {
 		
 	}
 
+    public void StartUp()
+    {
+        taken = new List<string>();
+    }
 
     //public void
 
@@ -53,6 +58,29 @@ public class GroupingOrganizer : MonoBehaviour {
         }
 
         return false;
+    }
+
+
+    public bool IsItTaken(string myName)
+    {
+        foreach (string idx in taken)
+        {
+            if (nothingElse > 15)
+            {
+                nothingElse = 0;
+                return true;
+            }
+
+            if (idx == myName && nothingElse < 15)
+            {
+                nothingElse++;
+                return false;
+            }
+
+        }
+
+        nothingElse = 0;
+        return true;
     }
 
     public void reload()
