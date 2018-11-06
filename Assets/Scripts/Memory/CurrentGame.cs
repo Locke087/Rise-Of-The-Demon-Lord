@@ -8,9 +8,13 @@ public class CurrentGame
 
     public static CurrentGame game;
     public UnitStoreroom storeroom;
-
+    public Character fileName;
+    public OverGrownLabyrinthTileSet overGrown;
     public CurrentGame()
     {
+        fileName = new Character();
         storeroom = new UnitStoreroom();
+        overGrown = new OverGrownLabyrinthTileSet();
+
     }
 }

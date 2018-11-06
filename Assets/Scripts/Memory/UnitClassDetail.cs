@@ -7,6 +7,7 @@ using UnityEngine;
 public class UnitClassDetail {
 
     public int level;
+    public List<float> modifiers;
     public UnitClassSkill pickSkill;
     public UnitClassDetail()
     {

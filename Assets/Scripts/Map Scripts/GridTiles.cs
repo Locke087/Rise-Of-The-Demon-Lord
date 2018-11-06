@@ -343,9 +343,9 @@ public class GridTiles : MonoBehaviour {
     public string FindSpecOrTT(GameObject map)
     {
       
-        if (SEorS == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "NWorE";
+        if (SEorS == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "NWorE";
         else if (SWorW == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "NEorN";
-        else if (NEorN == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "SWorW";
+        else if (NEorN == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "SWorW";
         else if (NWorE == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "SEorS";
 
         else if (SEorS == true && map.transform.localScale.z == -1) return "NEorN";

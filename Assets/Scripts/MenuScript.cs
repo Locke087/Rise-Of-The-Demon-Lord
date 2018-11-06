@@ -2034,8 +2034,10 @@ public class MenuScript
     {
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
         TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
-       
-      
+
+        GameObject preFab = new GameObject();
+        preFab.AddComponent<TempDisplayer>();
+        preFab.name = "LoadMaps";
         //int m = 0;
        // GameObject TheRecord = new GameObject();
       //  TheRecord.AddComponent<TempDisplayer>();
@@ -2095,6 +2097,7 @@ public class MenuScript
         }
        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
         TempDisplayer.overGrownLabyrinthPerm = tileset;
+        preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
     }
 
     [MenuItem("Tools/RiptoMap")]

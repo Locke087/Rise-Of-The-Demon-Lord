@@ -1916,6 +1916,11 @@ Prefab:
       propertyPath: m_Name
       value: NewMap
       objectReference: {fileID: 0}
+    - target: {fileID: 114890486054150288, guid: b67dc411b986a84408082b1d46bd10ad,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2048841990}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b67dc411b986a84408082b1d46bd10ad, type: 2}
   m_IsPrefabAsset: 0

@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour {
 	public enum Menu {
 		MainMenu,
 		NewGame,
-		Continue
+		Continue,
+        Delete
 	}
 
 	public Menu currentMenu;
@@ -27,7 +28,7 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Space(10);
 
 			if(GUILayout.Button("New Game")) {
-				Game.current = new Game();
+                CurrentGame.game = new CurrentGame();
 				currentMenu = Menu.NewGame;
 			}
 
@@ -36,7 +37,13 @@ public class MainMenu : MonoBehaviour {
 				currentMenu = Menu.Continue;
 			}
 
-			if(GUILayout.Button("Quit")) {
+            if (GUILayout.Button("Delete Save"))
+            {
+                SaveLoad.Load();
+                currentMenu = Menu.Delete;
+            }
+
+            if (GUILayout.Button("Quit")) {
 				Application.Quit();
 			}
 		}
@@ -46,18 +53,16 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Box("Name Your Characters");
 			GUILayout.Space(10);
 
-			GUILayout.Label("Knight");
-			Game.current.knight.name = GUILayout.TextField(Game.current.knight.name, 20);
-			GUILayout.Label("Rogue");
-			Game.current.rogue.name = GUILayout.TextField(Game.current.rogue.name, 20);
-			GUILayout.Label("Wizard");
-			Game.current.wizard.name = GUILayout.TextField(Game.current.wizard.name, 20);
+			GUILayout.Label("File Name");
+			CurrentGame.game.fileName.name = GUILayout.TextField(CurrentGame.game.fileName.name, 20);
+            CurrentGame.game.overGrown = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().overGrownLabyrinth;
 
 			if(GUILayout.Button("Save")) {
 				//Save the current Game as a new saved Game
 				SaveLoad.Save();
                 //Move on to game...=
-                SceneManager.LoadScene(SceneManager.GetSceneByName("Demo").buildIndex);
+  
+                SceneManager.LoadScene("Town");
 
             }
 
@@ -73,12 +78,12 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Box("Select Save File");
 			GUILayout.Space(10);
 			
-			foreach(Game g in SaveLoad.savedGames) {
-				if(GUILayout.Button(g.knight.name + " - " + g.rogue.name + " - " + g.wizard.name)) {
-					Game.current = g;
+			foreach(CurrentGame g in SaveLoad.savedGames) {
+				if(GUILayout.Button(g.fileName.name)) {
+					CurrentGame.game = g;
                     //Move on to game...
-                    
-                    SceneManager.LoadScene(SceneManager.GetSceneByName("Demo").buildIndex);
+
+                    SceneManager.LoadScene("Town");
                 }
 
             }
@@ -90,7 +95,28 @@ public class MainMenu : MonoBehaviour {
 			
 		}
 
-		GUILayout.FlexibleSpace();
+        else if (currentMenu == Menu.Delete)
+        {
+
+            foreach (CurrentGame g in SaveLoad.savedGames)
+            {
+                if (GUILayout.Button(g.fileName.name))
+                {
+                    SaveLoad.Deleted();
+                }
+
+            }
+
+            GUILayout.Space(10);
+            if (GUILayout.Button("Cancel"))
+            {
+                currentMenu = Menu.MainMenu;
+            }
+
+        }
+
+
+        GUILayout.FlexibleSpace();
 		GUILayout.EndVertical();
 		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal();

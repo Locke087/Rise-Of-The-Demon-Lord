@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UnitStoreroom : MonoBehaviour
+public class UnitStoreroom 
 {
 
-    public static List<Unit> units = new List<Unit>();
+    public List<Unit> units;
 
-	public static void AddUnit(Unit u)
+    public UnitStoreroom()
+    {
+        units = new List<Unit>();
+    }
+
+	/*public static void AddUnit(Unit u)
     {
         units.Add(u);
     }
@@ -23,5 +28,5 @@ public class UnitStoreroom : MonoBehaviour
         }
 
         return units[i];
-    }
+    }*/
 }

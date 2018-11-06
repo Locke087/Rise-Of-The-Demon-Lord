@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
-
+    public string unitID;
     public int hp;
     public int str;
     public int def;
@@ -104,7 +104,7 @@ public class Stats : MonoBehaviour
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
         if (nature == null) nature = "Neutral";
         currentHp = hp;
-        gameObject.GetComponent<ARandomNature>().PickANature();
+         
         startClassesUp();
 
 
@@ -131,7 +131,15 @@ public class Stats : MonoBehaviour
         StartCoroutine(RefreshStat());
     }
 
-
+    public Unit FindMyself()
+    {
+        Unit me = new Unit();
+        foreach (Unit u in CurrentGame.game.storeroom.units)
+        {
+            if (unitID == u.unitID) me = u;
+        }
+        return me;
+    }
   
     public IEnumerator RefreshStat()
     {
@@ -639,13 +647,50 @@ public class Stats : MonoBehaviour
         if (attacker.currentHp <= 0) attacker.Death();
     }
 
-    public void SetMeleetWeaponStats(int hit, int might, int weight, int chance, float rate)
+    public void SetMeleetWeaponStats( )
     {
-        weaponHit = hit;
-        weaponMight = might;
-        weaponWeight = weight;
-        weaponCritChance = chance;
-        weaponCritRate = rate;
+        Unit me = FindMyself();
+        if (me.inventory.invSlot1.weapon.equipped)
+        {
+            weaponHit = me.inventory.invSlot1.weapon.details.hitrate;
+            weaponMight = me.inventory.invSlot1.weapon.details.might;
+            weaponWeight = me.inventory.invSlot1.weapon.details.weight;
+            weaponCritChance = me.inventory.invSlot1.weapon.details.critchance;
+            weaponCritRate = me.inventory.invSlot1.weapon.details.critrate;
+        }
+        else if (me.inventory.invSlot2.weapon.equipped)
+        {
+            weaponHit = me.inventory.invSlot2.weapon.details.hitrate;
+            weaponMight = me.inventory.invSlot2.weapon.details.might;
+            weaponWeight = me.inventory.invSlot2.weapon.details.weight;
+            weaponCritChance = me.inventory.invSlot2.weapon.details.critchance;
+            weaponCritRate = me.inventory.invSlot2.weapon.details.critrate;
+        }
+        else if (me.inventory.invSlot3.weapon.equipped)
+        {
+            weaponHit = me.inventory.invSlot3.weapon.details.hitrate;
+            weaponMight = me.inventory.invSlot3.weapon.details.might;
+            weaponWeight = me.inventory.invSlot3.weapon.details.weight;
+            weaponCritChance = me.inventory.invSlot3.weapon.details.critchance;
+            weaponCritRate = me.inventory.invSlot3.weapon.details.critrate;
+        }
+        else if (me.inventory.invSlot4.weapon.equipped)
+        {
+            weaponHit = me.inventory.invSlot4.weapon.details.hitrate;
+            weaponMight = me.inventory.invSlot4.weapon.details.might;
+            weaponWeight = me.inventory.invSlot4.weapon.details.weight;
+            weaponCritChance = me.inventory.invSlot4.weapon.details.critchance;
+            weaponCritRate = me.inventory.invSlot4.weapon.details.critrate;
+        }
+        else if (me.inventory.invSlot5.weapon.equipped)
+        {
+            weaponHit = me.inventory.invSlot5.weapon.details.hitrate;
+            weaponMight = me.inventory.invSlot5.weapon.details.might;
+            weaponWeight = me.inventory.invSlot5.weapon.details.weight;
+            weaponCritChance = me.inventory.invSlot5.weapon.details.critchance;
+            weaponCritRate = me.inventory.invSlot5.weapon.details.critrate;
+        }
+       
     }
 
     public float CalcEnemyHitRate(int enemySkill, int enemyWeaponHit)
@@ -714,8 +759,7 @@ public class Stats : MonoBehaviour
     }
 
    
-
-
+   
     
     /// <summary>
     /// Class Section
@@ -727,17 +771,20 @@ public class Stats : MonoBehaviour
         // h, a, d, sp, sk, m, w                     // h, a  d  sp,sk,m, w  mo
         // gameObject.GetComponent<Stats>().StartingBases(15, 8, 8, 7, 6, 3, 4, 7);
         // sp,a, d, sk, hp, m, w, mo
+        Unit me = FindMyself();
+        nature = me.unitInfo.nature;
+        SetMeleetWeaponStats();
         allClassesBase = new List<TheClassesBase>();
         //allClassesInc = new List<TheClassesInc>();
         allClassesMods = new List<TheClassesMod>();
         allClassesMaster = new List<TheClassesMaster>();
 
-        StatRange(7, 5, 3, 5, 2, 1);
-        allClassesBase.Add(new TheClassesBase("Warrior", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
+        StatRange(me.unitInfo.bases);
+        allClassesBase.Add(new TheClassesBase(calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
         //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
-        allClassesMods.Add(new TheClassesMod("Warrior", Warrior.ModList()));
-        StatRange(6, 6, 5, 4, 1, 2);
-        allClassesBase.Add(new TheClassesBase("Cavalier", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
+        allClassesMods.Add(new TheClassesMod(me.unitInfo.main.modifiers));
+      
+      /*allClassesBase.Add(new TheClassesBase("Cavalier", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
         //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
         allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
         StatRange(7, 5, 3, 5, 2, 1);
@@ -747,11 +794,11 @@ public class Stats : MonoBehaviour
         StatRange(6, 6, 5, 4, 1, 2);
         allClassesBase.Add(new TheClassesBase("CavalierE", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
         //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
-        allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));
+        allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));*/
 
         for (int i = 0; i < 4; i++)
         {
-            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i].theClass, allClassesBase[i], allClassesMods[i]));
+            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i], allClassesMods[i]));
         }
 
         FindStats();
@@ -762,17 +809,12 @@ public class Stats : MonoBehaviour
         allClassesMods.Clear();
         allClassesMaster.Clear();
       
-        allClassesMods.Add(new TheClassesMod("Warrior", Warrior.ModList()));
-        
-        allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
-        
-        allClassesMods.Add(new TheClassesMod("WarriorE", WarriorE.ModList()));
+        allClassesMods.Add(new TheClassesMod(FindMyself().unitInfo.main.modifiers));
        
-        allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));
 
         for (int i = 0; i < 4; i++)
         {
-            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i].theClass, allClassesBase[i], allClassesMods[i]));
+            allClassesMaster.Add(new TheClassesMaster(allClassesBase[i], allClassesMods[i]));
         }
 
         FinishStats();
@@ -784,38 +826,18 @@ public class Stats : MonoBehaviour
         Debug.Log("gotHere");
         foreach (TheClassesMaster mas in allClassesMaster)
         {
-            if (mas.className == currentClass)
+            if (gameObject.GetComponent<Stats>() != null)
             {
-                if (currentClass == "Warrior")
-                {
-                    WarriorClass();
-                }
-                else if (currentClass == "Cavalier")
-                {
-                    CavalierClass();
-                }
-                else if (currentClass == "WarriorE")
-                {
-                    WarriorClass();
-                }
-                else if (currentClass == "CavalierE")
-                {
-                    CavalierClass();
-                }
-
-                if (gameObject.GetComponent<Stats>() != null)
-                {
-                    StartingBases(mas.baseClass.isHp, mas.baseClass.isStr, mas.baseClass.isDef, mas.baseClass.isSpd, mas.baseClass.isSkill, mas.baseClass.isMag, mas.baseClass.isWill, mas.baseClass.isMove);
-                    UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
-                    //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
-                }
-                else
-                {
-                    Debug.Log("but Why");
-                }
-
-
+                StartingBases(mas.baseClass.isHp, mas.baseClass.isStr, mas.baseClass.isDef, mas.baseClass.isSpd, mas.baseClass.isSkill, mas.baseClass.isMag, mas.baseClass.isWill, mas.baseClass.isMove);
+                UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
+                //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
             }
+            else
+            {
+                Debug.Log("but Why");
+            }
+
+
         }
 
     }
@@ -825,62 +847,32 @@ public class Stats : MonoBehaviour
         Debug.Log("gotHere");
         foreach (TheClassesMaster mas in allClassesMaster)
         {
-            if (mas.className == currentClass)
-            {
-                if (currentClass == "Warrior")
-                {
-                    WarriorClass();
-                }
-                else if (currentClass == "Cavalier")
-                {
-                    CavalierClass();
-                }
-                else if (currentClass == "WarriorE")
-                {
-                    WarriorClass();
-                }
-                else if (currentClass == "CavalierE")
-                {
-                    CavalierClass();
-                }
-
-                if (gameObject.GetComponent<Stats>() != null)
-                {
-                    UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
-                    //gameObject.GetComponent<Stats>().UpdateModsStat(mas.incClass.isStr, mas.incClass.isDef, mas.incClass.isSpd, mas.incClass.isSkill, mas.incClass.isMag, mas.incClass.isWill);
-                }
-                else
-                {
-                    Debug.Log("but Why");
-                }
-
-
-            }
+            UpdateMods(mas.modClass.isStr, mas.modClass.isDef, mas.modClass.isSpd, mas.modClass.isSkill, mas.modClass.isMag, mas.modClass.isWill);
         }
 
     }
 
-    public void StatRange(int a, int d, int sp, int sk, int m, int w)
+    public void StatRange(List<int> all)
     {
-        int max = 45;
-        int min = 30;
+        int max = 35;
+        int min = 20;
         int temp = 0;
         int range = 3;
         bool done = false;
         do
         {
-            int aTemp = a;
-            calcStr = Random.Range(a, aTemp + range);
-            aTemp = d;
-            calcDef = Random.Range(d, aTemp + range);
-            aTemp = sp;
-            calcSpd = Random.Range(sp, aTemp + range);
-            aTemp = sk;
-            calcSkill = Random.Range(sk, aTemp + range);
-            aTemp = m;
-            calcMagic = Random.Range(m, aTemp + range);
-            aTemp = w;
-            calcWill = Random.Range(m, aTemp + range);
+            int aTemp = all[0] ;
+            calcStr = Random.Range(aTemp, aTemp + range);
+            aTemp = all[1];
+            calcDef = Random.Range(aTemp, aTemp + range);
+            aTemp = all[2];
+            calcSpd = Random.Range(aTemp, aTemp + range);
+            aTemp = all[3];
+            calcSkill = Random.Range(aTemp, aTemp + range);
+            aTemp = all[4];
+            calcMagic = Random.Range(aTemp, aTemp + range);
+            aTemp = all[5];
+            calcWill = Random.Range(aTemp, aTemp + range);
             temp = calcStr + calcDef + calcSpd + calcSkill + calcMagic + calcWill;
 
             if (temp > min && temp < max)
@@ -893,20 +885,6 @@ public class Stats : MonoBehaviour
     }
 
 
-    public void WarriorClass()
-    {
-
-        gameObject.GetComponent<Weapon>().weapon = "Long Sword";
-       // Warrior.LevelUp();
-
-    }
-
-    public void CavalierClass()
-    {
-
-        gameObject.GetComponent<Weapon>().weapon = "Battle Axe";
-      //  Cavalier.LevelUp();
-    }
 
     [System.Serializable]
     public class TheNatures
@@ -971,11 +949,9 @@ public class Stats : MonoBehaviour
         public float isSkill = 0;
         public float isMag = 0;
         public float isWill = 0;
-        public string theClass = "";
 
-        public TheClassesMod(string cas, List<float> list)
+        public TheClassesMod(List<float> list)
         {
-            theClass = cas;
             isStr = list[0];
             isDef = list[1];
             isSpd = list[2];
@@ -997,11 +973,10 @@ public class Stats : MonoBehaviour
         public int isMag = 0;
         public int isWill = 0;
         public int isMove = 0;
-        public string theClass = "";
 
-        public TheClassesBase(string cas, int str, int def, int spd, int skl, int mag, int will, int hp, int mo)
+        public TheClassesBase(int str, int def, int spd, int skl, int mag, int will, int hp, int mo)
         {
-            theClass = cas;
+            
             isSpd = spd;
             isStr = str;
             isDef = def;
@@ -1019,15 +994,13 @@ public class Stats : MonoBehaviour
     [System.Serializable]
     public class TheClassesMaster
     {
-        public string className;
         public TheClassesBase baseClass;
         // public TheClassesInc incClass;
         public TheClassesMod modClass;
 
-        public TheClassesMaster(string n, TheClassesBase b, TheClassesMod m)
+        public TheClassesMaster(TheClassesBase b, TheClassesMod m)
         {
             baseClass = b;
-            className = b.theClass;
             modClass = m;
             //  i = incClass;
 

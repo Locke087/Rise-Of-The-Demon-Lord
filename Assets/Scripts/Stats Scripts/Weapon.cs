@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         critchance = allWeapons[key].isCritChance;
         critrate = allWeapons[key].isCritRate;
 
-        stats.SetMeleetWeaponStats(hitrate, might, weight, critchance, critrate);
+       /// stats.SetMeleetWeaponStats(hitrate, might, weight, critchance, critrate);
 
     }
 
