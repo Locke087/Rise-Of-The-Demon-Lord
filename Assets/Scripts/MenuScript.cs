@@ -2070,12 +2070,12 @@ public class MenuScript
                 int i = 0;
                 Rows[] allRows = maps.gameObject.GetComponentsInChildren<Rows>();
                 //"Area" + u;
-                Debug.Log(k);
-                
+           
+                tileset.rout.allAreas.areaDirectors[k].spawn = maps.GetComponent<AreaInfo>().spawnType;
                 tileset.rout.allAreas.areaDirectors[k].areas.Add(new AreaHolder());
                 tileset.rout.allAreas.areaDirectors[k].areas[c].id = maps.GetComponent<AreaInfo>().tileType;
                 tileset.rout.allAreas.areaDirectors[k].areas[c].indent = maps.GetComponent<AreaInfo>().tileName;
-                Debug.Log(tileset.rout.allAreas.areaDirectors[k].areas[c].id);
+          
                 u++;
                 foreach (Rows row in allRows)
                 {
@@ -2085,7 +2085,7 @@ public class MenuScript
                     GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
                     foreach (GridTiles tile in allTiles)
                     {
-                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name));
+                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name, maps.GetComponent<AreaInfo>().spawnType));
                         //tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
                         j++;
                     }
@@ -2104,11 +2104,11 @@ public class MenuScript
     public static void RiptoMapFromMemory()
     {
 
-       // GameObject memory = GameObject.Find("I Reme");
+        // GameObject memory = GameObject.Find("I Reme");
 
-        GameObject map = GameObject.Find("Template36x40test");
-        GroupingOrganizer organizer = map.GetComponent<GroupingOrganizer>();
-        Rows[] allRows = map.GetComponentsInChildren<Rows>();
+        GameObject mapping = GameObject.Find("Template36x40test");
+        GroupingOrganizer organizer = mapping.GetComponent<GroupingOrganizer>();
+        Rows[] allRows = mapping.GetComponentsInChildren<Rows>();
         List<GridTiles> everyTile = new List<GridTiles>();
         bool complete = false;
         foreach (Rows row in allRows)
@@ -2118,7 +2118,7 @@ public class MenuScript
             {
                 everyTile.Add(tile);
             }
-            
+
 
         }
 
@@ -2141,17 +2141,17 @@ public class MenuScript
 
                 do
                 {
-                   
-                    int num = Random.Range(0, list[i].areas.Count);
-                    
-                    if (organizer.IsItTaken(list[i].areas[num].indent))
+
+                    int numk = Random.Range(0, list[i].areas.Count);
+
+                    if (organizer.IsItTaken(list[i].areas[numk].indent))
                     {
-                        organizer.taken.Add(list[i].areas[num].indent);
-                        if (organizer.Checklist(list[i].areas[num].id))
+                        organizer.taken.Add(list[i].areas[numk].indent);
+                        if (organizer.Checklist(list[i].areas[numk].id))
                         {
                             organizer.resetAInRows = 0;
                             done = true;
-                            foreach (RowHolder otherRow in list[i].areas[num].rows)
+                            foreach (RowHolder otherRow in list[i].areas[numk].rows)
                             {
                                 foreach (TileHolder tiler in otherRow.tiles)
                                 {
@@ -2170,7 +2170,7 @@ public class MenuScript
                         organizer.taken.Clear();
                         foreach (GridTiles tile in everyTile)
                         {
-                           
+
                             tile.Clean();
                         }
                     }
@@ -2186,9 +2186,158 @@ public class MenuScript
                 if (tile.tag == "Tile") complete = false;
             }
         } while (!complete);
+
+        List<GridTiles> everyTile2 = new List<GridTiles>();
+
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile2.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> pAreas = new List<AreaDirector>();
+        List<AreaDirector> eAreas = new List<AreaDirector>();
+        // List<AreaDirector> list = new List<AreaDirector>();
+
+        foreach (AreaDirector group in TempDisplayer.overGrownLabyrinthPerm.rout.allAreas.areaDirectors)
+        {
+            if (group.spawn == "PlayerSpawn")
+            {
+                pAreas.Add(group);
+            }
+            else if (group.spawn == "EnemySpawn")
+            {
+                eAreas.Add(group);
+            }
+        }
+
+
+
+
+        int num = Random.Range(0, pAreas.Count);
+        foreach (AreaHolder map in pAreas[num].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile2)
+                    {
+                        if (tile.name == tiler.id)
+                        {
+                            tile.CheckSpawnType(tiler.spawn);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == num);
+
+        foreach (AreaHolder map in pAreas[nump].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (AreaHolder map1 in eAreas[num1].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (AreaHolder map1 in eAreas[num2].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (AreaHolder map1 in eAreas[num3].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (AreaHolder map1 in eAreas[num4].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
         //int m = 0;
-       // GameObject TheRecord = new GameObject();
-        
+        // GameObject TheRecord = new GameObject();
+
     }
 
     [MenuItem("Tools/ResetMap")]
@@ -2243,6 +2392,7 @@ public class MenuScript
                     else row.name = "!!" + (r + group.rowMod);
                     foreach (GridTiles tile in allTiles)
                     {
+                       
                         if (map.transform.localScale.z == -1 && map.transform.localScale.x == -1)
                         {
                             Debug.Log("w " + map.name);
@@ -2269,7 +2419,184 @@ public class MenuScript
         }
     }
 
-    
+
+    [MenuItem("Tools/ResetSpawnsOnWholeMap")]
+    public static void ResetSpawn()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            foreach (MapLocation map in areas)
+            {
+                Rows[] allRows = map.GetComponentsInChildren<Rows>();
+                foreach (Rows row in allRows)
+                {
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        tile.playerSpawn = false;
+                        tile.enemySpawn = false;
+                    }
+                }
+            }
+        }
+    }
+
+    [MenuItem("Tools/AssigntoAreas")]
+    public static void AreaSpawn()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        foreach (TempGrouper group in areaGroups)
+        {
+            AreaInfo[] areas = group.GetComponentsInChildren<AreaInfo>();
+            foreach (AreaInfo map in areas)
+            {
+                if (group.pSpawnZone) map.spawnType = "PlayerSpawn";
+                if (group.eSpawnZone) map.spawnType = "EnemySpawn";       
+            }
+        }
+    }
+
+    [MenuItem("Tools/AssignSpawns")]
+    public static void AssignSpawn()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        List<TempGrouper> pAreas = new List<TempGrouper>();
+        List<TempGrouper> eAreas = new List<TempGrouper>();
+        foreach (TempGrouper group in areaGroups)
+        {
+            if (group.pSpawnZone) pAreas.Add(group);
+            else if (group.eSpawnZone) eAreas.Add(group);
+        }
+
+        int num = Random.Range(0, pAreas.Count);
+        foreach (MapLocation map in pAreas[num].GetComponentsInChildren<MapLocation>())
+        {
+
+            Rows[] allRows = map.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRows)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.playerSpawn = true;
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == num);
+
+        foreach (MapLocation mapp in pAreas[nump].GetComponentsInChildren<MapLocation>())
+        {
+
+            Rows[] allRowsp = mapp.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRowsp)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.playerSpawn = true;
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (MapLocation map1 in eAreas[num1].GetComponentsInChildren<MapLocation>())
+        {
+
+            Rows[] allRows1 = map1.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRows1)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.enemySpawn = true;
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+          num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (MapLocation map2 in eAreas[num2].GetComponentsInChildren<MapLocation>())
+        {
+
+            Rows[] allRows2 = map2.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRows2)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.enemySpawn = true;
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (MapLocation map3 in eAreas[num3].GetComponentsInChildren<MapLocation>())
+        {
+
+            Rows[] allRows3 = map3.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRows3)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.enemySpawn = true;
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (MapLocation map4 in eAreas[num4].GetComponentsInChildren<MapLocation>())
+        {
+            Rows[] allRows4 = map4.GetComponentsInChildren<Rows>();
+            foreach (Rows row in allRows4)
+            {
+                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+
+                foreach (GridTiles tile in allTiles)
+                {
+                    tile.enemySpawn = true;
+                }
+            }
+        }
+
+
+
+    }
+
+
 }
 
 

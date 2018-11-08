@@ -19,6 +19,7 @@ public class EventDriver : MonoBehaviour
         return mapLocation;
     }
 
+
     public string FindParty()
     {
         MapLocation map = FindMap();
@@ -66,7 +67,7 @@ public class EventDriver : MonoBehaviour
     {
         MapLocation map = FindMap();
         GridTiles tiles = null;
-
+        
         foreach (Rows row in map.allRows)
         {
             map.allTiles = row.GetComponentsInChildren<GridTiles>();
@@ -87,15 +88,129 @@ public class EventDriver : MonoBehaviour
 
     public List<GridTiles> FindPlayerSpawns()
     {
-        MapLocation map = FindMap();
+        MapLocation map = GameObject.FindObjectOfType<MapLocation>();
         List<GridTiles> tiles = new List<GridTiles>();
-
+        bool valid = false;
         foreach (Rows row in map.allRows)
         {
             map.allTiles = row.GetComponentsInChildren<GridTiles>();
             foreach (GridTiles tile in map.allTiles)
             {
-                if (tile.playerSpawn && tile.walkable) tiles.Add(tile);
+                if (tile.playerSpawn && tile.walkable)
+                {
+                    if (tiles.Count > 0)
+                    {
+                        valid = true;
+                        foreach (GridTiles newTile in tiles)
+                        {
+                            float toClose = Vector3.Distance(tile.transform.position, newTile.transform.position);
+                            if (toClose <= 1) valid = false;
+
+                        }
+                        if (valid) tiles.Add(tile);
+                    } else tiles.Add(tile);
+                }
+            }
+        }
+        return tiles;
+    }
+
+    public List<GridTiles> FindEnemySpawns()
+    {
+        MapLocation map = GameObject.FindObjectOfType<MapLocation>();
+        List<GridTiles> tiles = new List<GridTiles>();
+        bool valid = false;
+        foreach (Rows row in map.allRows)
+        {
+            map.allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in map.allTiles)
+            {
+                if (tile.enemySpawn && tile.walkable)
+                {
+                    if (tiles.Count > 0)
+                    {
+                        valid = true;
+                        foreach (GridTiles newTile in tiles)
+                        {
+                            float toClose = Vector3.Distance(tile.transform.position, newTile.transform.position);
+                            if (toClose <= 1) valid = false;
+
+                        }
+                        if (valid) tiles.Add(tile);
+                    } else tiles.Add(tile);
+                }
+
+            }
+        }
+        return tiles;
+    }
+
+    public List<GridTiles> FindReinforcementSpawns()
+    {
+        MapLocation map = GameObject.FindObjectOfType<MapLocation>();
+        List<GridTiles> tiles = new List<GridTiles>();
+        bool valid = false;
+        foreach (Rows row in map.allRows)
+        {
+            map.allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in map.allTiles)
+            {
+                if (tile.reinforcementSpawn && tile.walkable)
+                {
+                    if (tiles.Count > 0)
+                    {
+                        valid = true;
+                        foreach (GridTiles newTile in tiles)
+                        {
+                            float toClose = Vector3.Distance(tile.transform.position, newTile.transform.position);
+                            if (toClose <= 1) valid = false;
+
+                        }
+                        if (valid) tiles.Add(tile);
+
+
+                    }
+                    else tiles.Add(tile);
+                }
+            }
+        }
+        return tiles;
+    }
+
+    public List<GridTiles> FindBossSpawns()
+    {
+        MapLocation map = GameObject.FindObjectOfType<MapLocation>();
+        List<GridTiles> tiles = new List<GridTiles>();
+    
+        foreach (Rows row in map.allRows)
+        {
+            map.allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in map.allTiles)
+            {
+                if (tile.bossSpawn && tile.walkable)
+                {
+                    tiles.Add(tile);
+                }
+            }
+        }
+        return tiles;
+    }
+
+    public List<GridTiles> FindRecruitSpawns()
+    {
+        MapLocation map = GameObject.FindObjectOfType<MapLocation>();
+        List<GridTiles> tiles = new List<GridTiles>();
+     
+        foreach (Rows row in map.allRows)
+        {
+            map.allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in map.allTiles)
+            {
+                if (tile.recuitSpawn && tile.walkable)
+                {
+                   tiles.Add(tile);                  
+                }
+
             }
         }
         return tiles;

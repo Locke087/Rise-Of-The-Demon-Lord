@@ -4,8 +4,10 @@ using UnityEngine;
 
 [System.Serializable]
 public class MemoryGeneralGame {
+
     public List<Unit> unitsInRoster;
     public List<Unit> unitsInParty;
+    public EnemiesInMap enemiesInMaps;
     public EquipmentOwned itemsOwned;
     public ShopWares shopWares;
     public int gold;
@@ -15,6 +17,7 @@ public class MemoryGeneralGame {
         unitsInParty = new List<Unit>();
         itemsOwned = new EquipmentOwned();
         shopWares = new ShopWares();
+        enemiesInMaps = new EnemiesInMap();
         gold = 0;
     }
 }

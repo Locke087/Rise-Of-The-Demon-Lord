@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class Cavalier : MonoBehaviour {
 
+    /* public static int strStatIncrease = 0;
+   public static int defStatIncrease = 0;
+   public static int skillStatIncrease = 0;
+   public static int spdStatIncrease = 0;
+   public static int magicStatIncrease = 0;
+   public static int willStatIncrease = 0;
+   public static int strAmount = 0;
+   public static int defAmount = 0;
+   public static int skillAmount = 0;
+   public static int spdAmount = 0;
+   public static int magicAmount = 0;
+   public static int willAmount = 0;*/
+    public static float increaseStr = 0;
+    public static float increaseDef = 0;
+    public static float increaseSkill = 0;
+    public static float increaseSpd = 0;
+    public static float increaseMagic = 0;
+    public static float increaseWill = 0;
+
+
     public static float baseStrModifer = 3;
     public static float baseDefModifer = 2.5f;
     public static float baseSkillModifer = 2.5f;
@@ -16,27 +36,18 @@ public class Cavalier : MonoBehaviour {
     public static float spdModifer = 3;
     public static float magicModifer = 2;
     public static float willModifer = 2;
+    public static float strCap = 25;
+    public static float defCap = 20;
+    public static float skillCap = 20;
+    public static float spdCap = 25;
+    public static float magicCap = 10;
+    public static float willCap = 12;
+    public static float hpCap = 35;
+
     public static int level = 0;
-    /* public static int strStatIncrease = 0;
-      public static int defStatIncrease = 0;
-      public static int skillStatIncrease = 0;
-      public static int spdStatIncrease = 0;
-      public static int magicStatIncrease = 0;
-      public static int willStatIncrease = 0;
-      public static int strAmount = 0;
-      public static int defAmount = 0;
-      public static int skillAmount = 0;
-      public static int spdAmount = 0;
-      public static int magicAmount = 0;
-      public static int willAmount = 0;*/
-    public static float increaseStr = 0;
-    public static float increaseDef = 0;
-    public static float increaseSkill = 0;
-    public static float increaseSpd = 0;
-    public static float increaseMagic = 0;
-    public static float increaseWill = 0;
-    public int amount = 10;
-    public int finalLevel;
+    public static int move = 7;
+    public static int baseHp = 11;
+ 
     // Use this for initialization
     void Start()
     {
@@ -63,6 +74,19 @@ public class Cavalier : MonoBehaviour {
         return newList;
     }*/
 
+
+    public static List<float> Caplist()
+    {
+        List<float> newList = new List<float>();
+        newList.Add(strCap);
+        newList.Add(defCap);
+        newList.Add(spdCap);
+        newList.Add(skillCap);
+        newList.Add(magicCap);
+        newList.Add(willCap);
+        newList.Add(hpCap);
+        return newList;
+    }
 
     public static List<float> ModList()
     {

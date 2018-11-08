@@ -28,7 +28,6 @@ GameObject:
   - component: {fileID: 114618273748916894}
   - component: {fileID: 114751766126835248}
   - component: {fileID: 114963991271076884}
-  - component: {fileID: 114026406647247720}
   m_Layer: 0
   m_Name: PlayerCopy
   m_TagString: Player
@@ -106,26 +105,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 92
   m_CollisionDetection: 0
---- !u!114 &114026406647247720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654723943776352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99551dc978571004ba132bc0a745ad3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 114963991271076884}
-  might: 0
-  hitrate: 0
-  weight: 0
-  critrate: 0
-  critchance: 0
-  weaponUsed: 1
-  weapon: Long Sword
-  allWeapons: []
 --- !u!114 &114111841132632316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitID: Melvin
   hp: 0
   str: 0
   def: 0
@@ -257,6 +237,13 @@ MonoBehaviour:
   skillMod: 0
   willMod: 0
   magicMod: 0
+  hpCap: 0
+  strCap: 0
+  defCap: 0
+  spdCap: 0
+  skillCap: 0
+  willCap: 0
+  magicCap: 0
   allNatures: []
   weaponWeight: 0
   weaponMight: 0
@@ -272,9 +259,9 @@ MonoBehaviour:
   dead: 0
   friend: 0
   foe: 0
-  currentClass: Warrior
   allClassesBase: []
   allClassesMods: []
+  allClassesCaps: []
   allClassesMaster: []
   calcHp: 0
   calcStr: 0

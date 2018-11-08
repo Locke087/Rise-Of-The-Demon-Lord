@@ -11,6 +11,7 @@ public class UnitWeaponDetails {
     public int hitrate;
     public float critrate;
     public int critchance;
+    public int range;
     public UnitWeaponEffects effects;
     public UnitWeaponDetails()
     {

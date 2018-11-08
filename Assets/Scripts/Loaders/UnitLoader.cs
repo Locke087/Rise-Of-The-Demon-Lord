@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class UnitLoader : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void CreateNewUnit(UnitStoreroom storeroom)
+    public void CreateNewUnit()
     {
 
         Unit me = new Unit();
@@ -26,7 +17,49 @@ public class UnitLoader : MonoBehaviour {
         for (int i = 0; i < me.unitClass.main.human.warrior.level; i++) {
             Warrior.LevelUp();
         }
+        me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+        me.unitClass.main.human.warrior.caps = Warrior.Caplist();
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        me.unitInfo.main = me.unitClass.main.human.warrior;
+        
+        // str, def, spd, skill, magic, will
+        int[] bases = { 7, 5, 3, 5, 2, 1 };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = "Nimble";
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
+
+        CurrentGame.game.storeroom.units.Add(me);
+
+    }
+
+
+    public void CreateStartingRoster()
+    {
+        CurrentGame.game.storeroom.units.Clear();
+        CurrentGame.game.memoryGeneral.unitsInRoster.Clear();
+        CurrentGame.game.memoryGeneral.unitsInParty.Clear();
+
+        Unit me = new Unit();
+
+        me.unitID = "Jeorge";
+        me.unitClass.main.mainClass = "Warrior";
+        me.unitClass.main.race = "Human";
+        me.unitClass.main.human.warrior.level = 5;
+        for (int i = 0; i < me.unitClass.main.human.warrior.level; i++)
+        {
+            Warrior.LevelUp();
+        }
+        me.unitClass.main.human.warrior.movement = 5;
+        me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+        me.unitClass.main.human.warrior.caps = Warrior.Caplist();
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
@@ -43,7 +76,113 @@ public class UnitLoader : MonoBehaviour {
 
         SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
 
-        storeroom.units.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(me);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(me);
+        // str, def, spd, skill, magic, will
 
+        Unit newMe = new Unit();
+  
+        newMe.unitID = "Melvin";
+        newMe.unitClass.main.mainClass = "Warrior";
+        newMe.unitClass.main.race = "Human";
+        newMe.unitClass.main.human.warrior.level = 5;
+        for (int i = 0; i < newMe.unitClass.main.human.warrior.level; i++)
+        {
+            Warrior.LevelUp();
+        }
+        newMe.unitClass.main.human.warrior.movement = 5;
+        newMe.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+        newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.sub.human.warrior.pickSkill);
+        newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
+
+        // str, def, spd, skill, magic, will
+        int[] bases2 = { 8, 4, 2, 6, 1, 2 };
+        newMe.unitInfo.bases.AddRange(bases2);
+        newMe.unitInfo.nature = "";
+        newMe.inventory.invSlot1.weapon.equipped = true;
+
+        CurrentGame.game.storeroom.units.Add(newMe);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe);
+    }
+
+
+    public List<Unit> LoadEnemies(int rating)
+    {
+        List<Unit> enemiesInMap = new List<Unit>();
+        Unit me = new Unit();
+
+        me.unitID = "BadGuy";
+        me.unitClass.main.mainClass = "Warrior";
+        me.unitClass.main.race = "Human";
+        me.unitClass.main.human.warrior.level = rating;
+        for (int i = 0; i < me.unitClass.main.human.warrior.level; i++)
+        {
+            Warrior.LevelUp();
+        }
+        me.unitClass.main.human.warrior.movement = 5;
+        me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+        me.unitClass.main.human.warrior.caps = Warrior.Caplist();
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        me.unitInfo.main = me.unitClass.main.human.warrior;
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { 7, 5, 3, 5, 2, 1 };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = "Nimble";
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
+
+        enemiesInMap.Add(me);
+        enemiesInMap.Add(me);
+        enemiesInMap.Add(me);
+        enemiesInMap.Add(me);
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+
+        // str, def, spd, skill, magic, will
+
+        Unit newMe = new Unit();
+
+        newMe.unitID = "Melvin";
+        newMe.unitClass.main.mainClass = "Warrior";
+        newMe.unitClass.main.race = "Human";
+        newMe.unitClass.main.human.warrior.level = rating;
+        for (int i = 0; i < newMe.unitClass.main.human.warrior.level; i++)
+        {
+            Warrior.LevelUp();
+        }
+        newMe.unitClass.main.human.warrior.movement = 5;
+        newMe.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+        newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
+        newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
+
+        // str, def, spd, skill, magic, will
+        int[] bases2 = { 8, 4, 2, 6, 1, 2 };
+        newMe.unitInfo.bases.AddRange(bases2);
+        newMe.unitInfo.nature = "";
+        newMe.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(newMe);
+        enemiesInMap.Add(newMe);
+        enemiesInMap.Add(newMe);
+        enemiesInMap.Add(newMe);
+        enemiesInMap.Add(newMe);
+        enemiesInMap.Add(newMe);
+        CurrentGame.game.storeroom.units.Add(newMe);
+        return enemiesInMap;
     }
 }

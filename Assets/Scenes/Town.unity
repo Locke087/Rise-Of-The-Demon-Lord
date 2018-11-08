@@ -1765,6 +1765,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1713636866}
   - component: {fileID: 1713636865}
+  - component: {fileID: 1713636869}
+  - component: {fileID: 1713636868}
+  - component: {fileID: 1713636867}
   m_Layer: 5
   m_Name: AttachmentHaven
   m_TagString: Untagged
@@ -1806,6 +1809,39 @@ RectTransform:
   m_AnchoredPosition: {x: 270.5, y: 169}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1713636867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713636864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59330b9cc4ff84747a46972e9ef20948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1713636868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713636864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754c991d8c55d584f92a8b282da3d506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1713636869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713636864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7e38cd0b8bce347a07a533edd54d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1786816655
 GameObject:
   m_ObjectHideFlags: 0

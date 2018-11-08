@@ -11,13 +11,21 @@ public class OGRoutLoader : MonoBehaviour
         RiptoMapFromMemory();
         GenerateMap();
         PlaceUIOveraly();
+
         GameObject.Find("Template36x40test").SetActive(false);
+        StartCoroutine(setUpMap());
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    public IEnumerator setUpMap()
+    {
+        GameObject map = GameObject.Find("TheMap");
+        yield return new WaitForSeconds(0.01f);
+        map.GetComponent<MapSetup>().SetUp();
     }
 
     public void RiptoMapFromMemory()
@@ -61,16 +69,16 @@ public class OGRoutLoader : MonoBehaviour
                 do
                 {
 
-                    int num = Random.Range(0, list[i].areas.Count);
+                    int numk = Random.Range(0, list[i].areas.Count);
 
-                    if (organizer.IsItTaken(list[i].areas[num].indent))
+                    if (organizer.IsItTaken(list[i].areas[numk].indent))
                     {
-                        organizer.taken.Add(list[i].areas[num].indent);
-                        if (organizer.Checklist(list[i].areas[num].id))
+                        organizer.taken.Add(list[i].areas[numk].indent);
+                        if (organizer.Checklist(list[i].areas[numk].id))
                         {
                             organizer.resetAInRows = 0;
                             done = true;
-                            foreach (RowHolder otherRow in list[i].areas[num].rows)
+                            foreach (RowHolder otherRow in list[i].areas[numk].rows)
                             {
                                 foreach (TileHolder tiler in otherRow.tiles)
                                 {
@@ -105,6 +113,154 @@ public class OGRoutLoader : MonoBehaviour
                 if (tile.tag == "Tile") complete = false;
             }
         } while (!complete);
+
+        List<GridTiles> everyTile2 = new List<GridTiles>();
+
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile2.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> pAreas = new List<AreaDirector>();
+        List<AreaDirector> eAreas = new List<AreaDirector>();
+        // List<AreaDirector> list = new List<AreaDirector>();
+
+        foreach (AreaDirector group in list)
+        {
+            if (group.spawn == "PlayerSpawn")
+            {
+                pAreas.Add(group);
+            }
+            else if (group.spawn == "EnemySpawn")
+            {
+                eAreas.Add(group);
+            }
+        }
+
+
+
+
+        int numb = Random.Range(0, pAreas.Count);
+        foreach (AreaHolder map1 in pAreas[numb].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile2)
+                    {
+                        if (tile.name == tiler.id)
+                        {
+                            tile.CheckSpawnType(tiler.spawn);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == numb);
+
+        foreach (AreaHolder map1 in pAreas[nump].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (AreaHolder map1 in eAreas[num1].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (AreaHolder map1 in eAreas[num2].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (AreaHolder map1 in eAreas[num3].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (AreaHolder map1 in eAreas[num4].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
     }
 
 
@@ -117,10 +273,17 @@ public class OGRoutLoader : MonoBehaviour
         map.AddComponent<MapLocation>();
         map.AddComponent<MapManager>();
         map.AddComponent<SpeedCenterTurns>();
+        map.GetComponent<SpeedCenterTurns>().cam = GameObject.Find("TheCamera");
+
         map.AddComponent<EventDriver>();
-        map.AddComponent<MapEventDriver>();
         map.AddComponent<Rout>();
+        map.AddComponent<Success>();
+        map.AddComponent<GameOver>();
         map.AddComponent<MoveSwitch>();
+        map.AddComponent<EnemySpawnZone>();
+        map.AddComponent<PlayerSpawnZone>();
+        map.AddComponent<MapSetup>();
+
         map.transform.position = maps.transform.position;
         map.transform.parent = GameObject.Find("Map Overlay").transform;
         map.name = "TheMap";
@@ -720,6 +883,7 @@ public class OGRoutLoader : MonoBehaviour
                         tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                         if (!tile.hazard)
                         {
                             tiles.GetComponent<GridTiles>().walkable = true;
@@ -744,6 +908,7 @@ public class OGRoutLoader : MonoBehaviour
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                         if (!tile.hazard)
                         {
                             tiles.GetComponent<GridTiles>().walkable = true;
@@ -933,5 +1098,7 @@ public class OGRoutLoader : MonoBehaviour
             }
             r++;
         }
+       
     }
+    
 }

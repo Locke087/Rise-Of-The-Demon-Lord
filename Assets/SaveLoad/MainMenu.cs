@@ -56,8 +56,9 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Label("File Name");
 			CurrentGame.game.fileName.name = GUILayout.TextField(CurrentGame.game.fileName.name, 20);
             CurrentGame.game.overGrown = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().overGrownLabyrinth;
+            GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
 
-			if(GUILayout.Button("Save")) {
+            if (GUILayout.Button("Save")) {
 				//Save the current Game as a new saved Game
 				SaveLoad.Save();
                 //Move on to game...=

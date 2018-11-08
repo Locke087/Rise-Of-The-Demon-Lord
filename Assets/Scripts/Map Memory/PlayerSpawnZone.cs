@@ -5,66 +5,73 @@ using UnityEngine;
 public class PlayerSpawnZone : MonoBehaviour {
 
 
-    public List<string> allPlayers;
+    public List<NewSpawnPoint> spawnPoints;
+    public List<GridTiles> locations;
     // Use this for initialization
     void Start()
     {
-        allPlayers = new List<string>();
+       
     }
 
     // Update is called once per frame
 
     public void SpawnPlayers()
     {
+        Debug.Log("letsAGO");
         EventDriver eventDrivers = GameObject.FindObjectOfType<EventDriver>();
-        List<GridTiles> locations = new List<GridTiles>();
+        locations = new List<GridTiles>();
         locations.AddRange(eventDrivers.FindPlayerSpawns());
         string tileId = "";
-        string playerId = "";
-        List<NewSpawnPoint> spawnPoints = new List<NewSpawnPoint>();
-        foreach (string play in allPlayers)
+        spawnPoints = new List<NewSpawnPoint>();
+        foreach (Unit play in CurrentGame.game.memoryGeneral.unitsInParty)
         {
-            do
-            {
+              do
+              {
                 int num = Random.Range(0, locations.Count);
-                if (!locations[num].taken) tileId = locations[num].name;
+                if (!locations[num].taken)
+                {
+                    locations[num].taken = true;
+                    tileId = locations[num].name;
+                }
 
-             } while (tileId == "");
+
+               } while (tileId == "");
 
             spawnPoints.Add(new NewSpawnPoint(play, tileId));
             tileId = "";
-
+            
         }
+        mapPlacer();
     }
 
 
-    IEnumerator mapPlacer()
+    void mapPlacer()
     {
-        EventDriver eventDrivers = GameObject.FindObjectOfType<EventDriver>();
-        //  enemyLeader = eventDrivers.FindParty();
-
-        MCMove mcMove = GameObject.FindObjectOfType<MCMove>();
-        // enemyUnitParty = GameObject.Find(enemyLeader).gameObject.GetComponent<UnitParty>();
-        UnitParty playerUnitParty = mcMove.gameObject.GetComponent<UnitParty>();
-        ////   List<string> newEnemyLocations = CalcQuadEnemy();
-        //   List<string> newPlayerLocations = CalcQuadPlayer();
-
-
-        for (int i = 0; i < playerUnitParty.friendlyUnits.Count; i++)
+       
+        foreach (NewSpawnPoint newSpawn in spawnPoints)
         {
-            //     Instantiate(playerUnitParty.friendlyUnits[i], GameObject.Find(newPlayerLocations[i]).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
+            GameObject temp = Resources.Load("PlayerCopy") as GameObject;
+            Instantiate(temp, GameObject.Find(newSpawn.tileID).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
+            temp.GetComponent<Stats>().unitID = newSpawn.playerID.unitID;
+            temp.name = newSpawn.playerID.unitID;
+           // temp.
         }
-        //  goodGo = false;
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<SpeedCenterTurns>().Ordering();
+
+    }
+
+    private static Quaternion setQuaterRotation(float x, float y, float z)
+    {
+        Quaternion newQuaternion = new Quaternion();
+        newQuaternion.Set(x, y, z, 1);
+        return newQuaternion;
     }
 
     [System.Serializable]
     public class NewSpawnPoint
     {
-        public string playerID;
+        public Unit playerID;
         public string tileID;
-        public NewSpawnPoint(string pID, string tID)
+        public NewSpawnPoint(Unit pID, string tID)
         {
             playerID = pID;
             tileID = tID;

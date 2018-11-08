@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class Warrior : MonoBehaviour {
 
+    /* public static int strStatIncrease = 0;
+   public static int defStatIncrease = 0;
+   public static int skillStatIncrease = 0;
+   public static int spdStatIncrease = 0;
+   public static int magicStatIncrease = 0;
+   public static int willStatIncrease = 0;
+   public static int strAmount = 0;
+   public static int defAmount = 0;
+   public static int skillAmount = 0;
+   public static int spdAmount = 0;
+   public static int magicAmount = 0;
+   public static int willAmount = 0;*/
+    public static float increaseStr = 0;
+    public static float increaseDef = 0;
+    public static float increaseSkill = 0;
+    public static float increaseSpd = 0;
+    public static float increaseMagic = 0;
+    public static float increaseWill = 0;
+
     public static double finalHp;
     public static float baseStrModifer = 3;
     public static float baseDefModifer = 3;
@@ -18,29 +37,20 @@ public class Warrior : MonoBehaviour {
     public static float magicModifer = 2;
     public static float willModifer = 2;
     public static int level = 0;
-   /* public static int strStatIncrease = 0;
-    public static int defStatIncrease = 0;
-    public static int skillStatIncrease = 0;
-    public static int spdStatIncrease = 0;
-    public static int magicStatIncrease = 0;
-    public static int willStatIncrease = 0;
-    public static int strAmount = 0;
-    public static int defAmount = 0;
-    public static int skillAmount = 0;
-    public static int spdAmount = 0;
-    public static int magicAmount = 0;
-    public static int willAmount = 0;*/
-    public static float increaseStr = 0;
-    public static float increaseDef = 0;
-    public static float increaseSkill = 0;
-    public static float increaseSpd = 0;
-    public static float increaseMagic = 0;
-    public static float increaseWill = 0;
-   
+    public static int move = 5;
+    public static int baseHp = 14;
+  
+    public static float strCap = 30;
+    public static float defCap = 25;
+    public static float skillCap = 15;
+    public static float spdCap = 20;
+    public static float magicCap = 5;
+    public static float willCap = 10;
+    public static float hpCap = 45;
     // Use this for initialization
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -48,6 +58,7 @@ public class Warrior : MonoBehaviour {
     {
         level = level + 1;
         IncreaseStats();
+
     }
 
     /*public static List<int> IncList()
@@ -62,7 +73,6 @@ public class Warrior : MonoBehaviour {
         return newList;
     }*/
 
-
     public static List<float> ModList()
     {
         List<float> newList = new List<float>();
@@ -72,6 +82,20 @@ public class Warrior : MonoBehaviour {
         newList.Add(skillModifer);
         newList.Add(magicModifer);
         newList.Add(willModifer);
+        return newList;
+    }
+
+
+    public static List<float> Caplist()
+    {
+        List<float> newList = new List<float>();
+        newList.Add(strCap);
+        newList.Add(defCap);
+        newList.Add(spdCap);
+        newList.Add(skillCap);
+        newList.Add(magicCap);
+        newList.Add(willCap);
+        newList.Add(hpCap);
         return newList;
     }
 

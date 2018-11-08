@@ -10,11 +10,13 @@ public class CurrentGame
     public UnitStoreroom storeroom;
     public Character fileName;
     public OverGrownLabyrinthTileSet overGrown;
+    public MemoryGeneralGame memoryGeneral;
     public CurrentGame()
     {
         fileName = new Character();
         storeroom = new UnitStoreroom();
         overGrown = new OverGrownLabyrinthTileSet();
+        memoryGeneral = new MemoryGeneralGame();
 
     }
 }

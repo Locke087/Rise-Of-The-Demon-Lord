@@ -20,7 +20,7 @@ public class MenuForOGL : MonoBehaviour {
         back.onClick.AddListener(BackOut);
         levelSelect.SetActive(false);
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -28,8 +28,11 @@ public class MenuForOGL : MonoBehaviour {
 
     public void Level1()
     {
-
-        SceneManager.LoadScene("OGLMap2");
+        EnemiesInMap enemiesInMap = new EnemiesInMap();
+        enemiesInMap.units.AddRange(FindObjectOfType<UnitLoader>().LoadEnemies(2));
+        CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
+          
+        SceneManager.LoadScene("OGLMap1");
     }
 
     public void LevelSelect()
