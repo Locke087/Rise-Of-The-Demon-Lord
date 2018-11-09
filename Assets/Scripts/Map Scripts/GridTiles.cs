@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -61,6 +60,7 @@ public class GridTiles : MonoBehaviour {
     public bool sandyGrass = false;
     public bool sandstone = false;
     public bool sandstoneWall = false;
+    public bool sandFlow = false;
     public bool rusty = false;
     public bool roughRoad = false;
     public bool roof = false;
@@ -148,104 +148,149 @@ public class GridTiles : MonoBehaviour {
 
     
 
-    public void ChartMaker()
+    public void ChartMaker(string map, string type)
     {
 
-        chartMaster.ogTexture.Add(new OGtextureChart("Street", "Street"));
-        chartMaster.icTexture.Add(new ICtextureChart("Street", "Street"));
-        chartMaster.flTexture.Add(new FLtextureChart("Street", "Street"));
-        chartMaster.deTexture.Add(new DEtextureChart("Street", "Street"));
+      
+
+        //
+        //grassland
+        //
 
         chartMaster.ogTexture.Add(new OGtextureChart("Dirt", "Dirt"));
-        chartMaster.icTexture.Add(new ICtextureChart("Dirt", "Dirt"));
-        chartMaster.flTexture.Add(new FLtextureChart("Dirt", "Dirt"));
-        chartMaster.deTexture.Add(new DEtextureChart("Dirt", "Dirt"));
-     
-        chartMaster.ogTexture.Add(new OGtextureChart("HouseTile", "HouseTile"));
-        chartMaster.icTexture.Add(new ICtextureChart("HouseTile", "HouseTile"));
-        chartMaster.flTexture.Add(new FLtextureChart("HouseTile", "HouseTile"));
-        chartMaster.ogTexture.Add(new OGtextureChart("HouseTile", "HouseTile"));
+        chartMaster.icTexture.Add(new ICtextureChart("Dirt", "Bricks"));
+        chartMaster.flTexture.Add(new FLtextureChart("Dirt", "Mountain"));
+        chartMaster.deTexture.Add(new DEtextureChart("Dirt", "StonePathway"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("DungeonTile", "DungeonTile"));
-        chartMaster.icTexture.Add(new ICtextureChart("DungeonTile", "DungeonTile"));
-        chartMaster.flTexture.Add(new FLtextureChart("DungeonTile", "DungeonTile"));
-        chartMaster.ogTexture.Add(new OGtextureChart("DungeonTile", "DungeonTile"));
+        chartMaster.ogTexture.Add(new OGtextureChart("MossyPuddle", "MossyPuddle"));
+        chartMaster.icTexture.Add(new ICtextureChart("MossyPuddle", "Street"));
+        chartMaster.flTexture.Add(new FLtextureChart("MossyPuddle", "Cobblestone"));
+        chartMaster.deTexture.Add(new DEtextureChart("MossyPuddle", "Dirt"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("ColoredHouseTile", "ColoredHouseTile"));
-        chartMaster.icTexture.Add(new ICtextureChart("ColoredHouseTile", "ColoredHouseTile"));
-        chartMaster.flTexture.Add(new FLtextureChart("ColoredHouseTile", "ColoredHouseTile"));
-        chartMaster.deTexture.Add(new DEtextureChart("ColoredHouseTile", "ColoredHouseTile"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Cobblestone", "Cobblestone"));
-        chartMaster.icTexture.Add(new ICtextureChart("Cobblestone", "Cobblestone"));
-        chartMaster.flTexture.Add(new FLtextureChart("Cobblestone", "Cobblestone"));
-        chartMaster.deTexture.Add(new DEtextureChart("Cobblestone", "Cobblestone"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Bridge", "Bridge"));
-        chartMaster.icTexture.Add(new ICtextureChart("Bridge", "Bridge"));
-        chartMaster.flTexture.Add(new FLtextureChart("Bridge", "Bridge"));
-         chartMaster.deTexture.Add(new DEtextureChart("Bridge", "Bridge"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Forest", "Forest"));
-        chartMaster.icTexture.Add(new ICtextureChart("Forest", "Forest"));
-        chartMaster.flTexture.Add(new FLtextureChart("Forest", "Forest"));
-        chartMaster.deTexture.Add(new DEtextureChart("Forest", "Forest"));
+        chartMaster.icTexture.Add(new ICtextureChart("Forest", "Limestone"));
+        chartMaster.flTexture.Add(new FLtextureChart("Forest", "Rusty"));
+        chartMaster.deTexture.Add(new DEtextureChart("Forest", "SandyGrass"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Mountain", "Mountain"));
-        chartMaster.icTexture.Add(new ICtextureChart("Mountain", "Mountain"));
-        chartMaster.flTexture.Add(new FLtextureChart("Mountain", "Mountain"));
-        chartMaster.deTexture.Add(new DEtextureChart("Mountain", "Mountain"));
+        chartMaster.icTexture.Add(new ICtextureChart("Mountain", "SnowyMountain"));
+        chartMaster.flTexture.Add(new FLtextureChart("Mountain", "Obsidian"));
+        chartMaster.deTexture.Add(new DEtextureChart("Mountain", "SandStone"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("StonePathway", "StonePathway"));
-        chartMaster.icTexture.Add(new ICtextureChart("StonePathway", "StonePathway"));
-        chartMaster.flTexture.Add(new FLtextureChart("StonePathway", "StonePathway"));
-        chartMaster.deTexture.Add(new DEtextureChart("StonePathway", "StonePathway"));
+        chartMaster.icTexture.Add(new ICtextureChart("StonePathway", "Cobblestone"));
+        chartMaster.flTexture.Add(new FLtextureChart("StonePathway", "Street"));
+        chartMaster.deTexture.Add(new DEtextureChart("StonePathway", "OrangeRedRock"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Vine", "Vine"));
-        chartMaster.icTexture.Add(new ICtextureChart("Vine", "Vine"));
-        chartMaster.flTexture.Add(new FLtextureChart("Vine", "Vine"));
-        chartMaster.deTexture.Add(new DEtextureChart("Vine", "Vine"));
+        chartMaster.icTexture.Add(new ICtextureChart("Vine", "Rusty"));
+        chartMaster.flTexture.Add(new FLtextureChart("Vine", "StonePathway"));
+        chartMaster.deTexture.Add(new DEtextureChart("Vine", "Quartz"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Grass", "Grass"));
-        chartMaster.icTexture.Add(new ICtextureChart("Grass", "Grass"));
-        chartMaster.flTexture.Add(new FLtextureChart("Grass", "Grass"));
-        chartMaster.deTexture.Add(new DEtextureChart("Grass", "Grass"));
+        chartMaster.icTexture.Add(new ICtextureChart("Grass", "Snow"));
+        chartMaster.flTexture.Add(new FLtextureChart("Grass", "LavaGround"));
+        chartMaster.deTexture.Add(new DEtextureChart("Grass", "Sand"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("LavaGround", "LavaGround"));
-        chartMaster.ogTexture.Add(new OGtextureChart("LavaGround", "LavaGround"));
-        chartMaster.flTexture.Add(new FLtextureChart("LavaGround", "LavaGround"));
-         chartMaster.deTexture.Add(new DEtextureChart("Grass", "Grass"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("Bricks" , "Bricks" ));
-        chartMaster.icTexture.Add(new ICtextureChart("Bricks", "Bricks"));
-        chartMaster.flTexture.Add(new FLtextureChart("Bricks", "Bricks"));
-         chartMaster.deTexture.Add(new DEtextureChart("Bricks", "Bricks"));
+        chartMaster.ogTexture.Add(new OGtextureChart("PoisonWater", "PoisonWater"));
+        chartMaster.icTexture.Add(new ICtextureChart("PoisonWater", "Rivers"));
+        chartMaster.flTexture.Add(new FLtextureChart("PoisonWater", "Lava"));
+        chartMaster.deTexture.Add(new DEtextureChart("PoisonWater", "SandFlow"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Swamp", "Swamp"));
+        chartMaster.icTexture.Add(new ICtextureChart("Swamp", "Ice"));
+        chartMaster.flTexture.Add(new FLtextureChart("Swamp", "MoltenRock"));
+        chartMaster.deTexture.Add(new DEtextureChart("Swamp", "Rusty"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("MossyRock", "MossyRock"));
+        chartMaster.icTexture.Add(new ICtextureChart("MossyRock", "SnowyRock"));
+        chartMaster.flTexture.Add(new FLtextureChart("MossyRock", "OrangeRedRock"));
+        chartMaster.deTexture.Add(new DEtextureChart("MossyRock", "StonePathway"));
+
+
+        chartMaster.ogTexture.Add(new OGtextureChart("OverGrownWall", "OverGrownWall"));
+        chartMaster.icTexture.Add(new ICtextureChart("OverGrownWall", "SnowyWall"));
+        chartMaster.flTexture.Add(new FLtextureChart("OverGrownWall", "Bricks"));
+        chartMaster.deTexture.Add(new DEtextureChart("OverGrownWall", "RedRockWall"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Limestone", "Limestone"));
+        chartMaster.icTexture.Add(new ICtextureChart("Limestone", "Quartz"));
+        chartMaster.flTexture.Add(new FLtextureChart("Limestone", "HouseTile"));
+        chartMaster.deTexture.Add(new DEtextureChart("Limestone", "Bridge"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Rusty", "Rusty"));
+        chartMaster.icTexture.Add(new ICtextureChart("Rusty", "Bricks"));
+        chartMaster.flTexture.Add(new FLtextureChart("Rusty", "StoneWall"));
+        chartMaster.deTexture.Add(new DEtextureChart("Rusty", "Roof"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("StoneWall", "StoneWall"));
-        chartMaster.icTexture.Add(new ICtextureChart("StoneWall", "StoneWall"));
-        chartMaster.flTexture.Add(new FLtextureChart("StoneWall", "StoneWall"));
-        chartMaster.deTexture.Add(new DEtextureChart("StoneWall", "StoneWall"));
+        chartMaster.icTexture.Add(new ICtextureChart("StoneWall", "GraniteWall"));
+        chartMaster.flTexture.Add(new FLtextureChart("StoneWall", "ColoredHouseTile"));
+        chartMaster.deTexture.Add(new DEtextureChart("StoneWall", "DarkRedRock"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("GraniteWall", "GraniteWall"));
-        chartMaster.icTexture.Add(new ICtextureChart("GraniteWall", "GraniteWall"));
-        chartMaster.flTexture.Add(new FLtextureChart("GraniteWall", "GraniteWall"));
-        chartMaster.deTexture.Add(new DEtextureChart("GraniteWall", "GraniteWall"));
-
+        chartMaster.icTexture.Add(new ICtextureChart("GraniteWall", "Bridge"));
+        chartMaster.flTexture.Add(new FLtextureChart("GraniteWall", "DarkRedRock"));
+        chartMaster.deTexture.Add(new DEtextureChart("GraniteWall", "SandStoneWall"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Rivers", "Rivers"));
         chartMaster.icTexture.Add(new ICtextureChart("Rivers", "Rivers"));
-        chartMaster.flTexture.Add(new FLtextureChart("Rivers", "Rivers"));
-        chartMaster.deTexture.Add(new DEtextureChart("Rivers", "Rivers"));
+        chartMaster.flTexture.Add(new FLtextureChart("Rivers", "Lava"));
+        chartMaster.deTexture.Add(new DEtextureChart("Rivers", "SandFlow"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("HouseTile", "HouseTile"));
+        chartMaster.icTexture.Add(new ICtextureChart("HouseTile", "DungeonTile"));
+        chartMaster.flTexture.Add(new FLtextureChart("HouseTile", "Quartz"));
+        chartMaster.deTexture.Add(new DEtextureChart("HouseTile", "ColoredHouseTile"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("ColoredHouseTile", "ColoredHouseTile"));
+        chartMaster.icTexture.Add(new ICtextureChart("ColoredHouseTile", "HouseTile"));
+        chartMaster.flTexture.Add(new FLtextureChart("ColoredHouseTile", "DungeonTile"));
+        chartMaster.deTexture.Add(new DEtextureChart("ColoredHouseTile", "OtherCarpet"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Bricks", "Bricks"));
+        chartMaster.icTexture.Add(new ICtextureChart("Bricks", "Brigde"));
+        chartMaster.flTexture.Add(new FLtextureChart("Bricks", "Rusty"));
+        chartMaster.deTexture.Add(new DEtextureChart("Bricks", "Cobblestone"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Bridge", "Bridge"));
+        chartMaster.icTexture.Add(new ICtextureChart("Bridge", "SnowyRock"));
+        chartMaster.flTexture.Add(new FLtextureChart("Bridge", "DarkRedRock"));
+        chartMaster.deTexture.Add(new DEtextureChart("Bridge", "Rusty"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Carpet", "Carpet"));
-        chartMaster.icTexture.Add(new ICtextureChart("Carpet", "Carpet"));
-        chartMaster.flTexture.Add(new FLtextureChart("Carpet", "Carpet"));
-        chartMaster.deTexture.Add(new DEtextureChart("Carpet", "Carpet"));
+        chartMaster.icTexture.Add(new ICtextureChart("Carpet", "OtherCarpet"));
+        chartMaster.flTexture.Add(new FLtextureChart("Carpet", "HouseTile"));
+        chartMaster.deTexture.Add(new DEtextureChart("Carpet", "DungeonTile"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("Snow", "Snow"));
+        chartMaster.ogTexture.Add(new OGtextureChart("DungeonTile", "DungeonTile"));
+        chartMaster.icTexture.Add(new ICtextureChart("DungeonTile", "ColoredHouseTile"));
+        chartMaster.flTexture.Add(new FLtextureChart("DungeonTile", "OtherCarpet"));
+        chartMaster.deTexture.Add(new DEtextureChart("DungeonTile", "Carpet"));
+
+
+
+
+        /*
+        //snow
+        //
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Snow", "Grass"));
         chartMaster.icTexture.Add(new ICtextureChart("Snow", "Snow"));
-        chartMaster.flTexture.Add(new FLtextureChart("Snow", "Snow"));
-        chartMaster.deTexture.Add(new DEtextureChart("Snow", "Snow"));
+        chartMaster.flTexture.Add(new FLtextureChart("Snow", "LavaGround"));
+        chartMaster.deTexture.Add(new DEtextureChart("Snow", "Sand"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("OtherCarpet", "OtherCarpet"));
+        chartMaster.icTexture.Add(new ICtextureChart("OtherCarpet", "OtherCarpet"));
+        chartMaster.flTexture.Add(new FLtextureChart("OtherCarpet", "OtherCarpet"));
+        chartMaster.deTexture.Add(new DEtextureChart("OtherCarpet", "OtherCarpet"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Quartz", "Quartz"));
+        chartMaster.icTexture.Add(new ICtextureChart("Quartz", "Quartz"));
+        chartMaster.flTexture.Add(new FLtextureChart("Quartz", "Quartz"));
+        chartMaster.deTexture.Add(new DEtextureChart("Quartz", "Quartz"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("SnowyWall", "SnowyWall"));
         chartMaster.icTexture.Add(new ICtextureChart("SnowyWall", "SnowyWall"));
@@ -257,7 +302,7 @@ public class GridTiles : MonoBehaviour {
         chartMaster.flTexture.Add(new FLtextureChart("SnowyRock", "SnowyRock"));
         chartMaster.deTexture.Add(new DEtextureChart("SnowyRock", "SnowyRock"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("SnowyMountain", "SnowyMountain"));
+        chartMaster.ogTexture.Add(new OGtextureChart("SnowyMountain", "Mountain"));
         chartMaster.icTexture.Add(new ICtextureChart("SnowyMountain", "SnowyMountain"));
         chartMaster.flTexture.Add(new FLtextureChart("SnowyMountain", "SnowyMountain"));
         chartMaster.deTexture.Add(new DEtextureChart("SnowyMountain", "SnowyMountain"));
@@ -267,6 +312,21 @@ public class GridTiles : MonoBehaviour {
         chartMaster.flTexture.Add(new FLtextureChart("Ice", "Ice"));
         chartMaster.deTexture.Add(new DEtextureChart("Ice", "Ice"));
 
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Cobblestone", "Cobblestone"));
+        chartMaster.icTexture.Add(new ICtextureChart("Cobblestone", "Cobblestone"));
+        chartMaster.flTexture.Add(new FLtextureChart("Cobblestone", "Cobblestone"));
+        chartMaster.deTexture.Add(new DEtextureChart("Cobblestone", "Cobblestone"));
+
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Street", "Street"));
+        chartMaster.icTexture.Add(new ICtextureChart("Street", "Street"));
+        chartMaster.flTexture.Add(new FLtextureChart("Street", "Street"));
+        chartMaster.deTexture.Add(new DEtextureChart("Street", "Street"));
+
+        //
+        //sand
+        //
         chartMaster.ogTexture.Add(new OGtextureChart("Sand", "Sand"));
         chartMaster.icTexture.Add(new ICtextureChart("Sand", "Sand"));
         chartMaster.flTexture.Add(new FLtextureChart("Sand", "Sand"));
@@ -282,55 +342,15 @@ public class GridTiles : MonoBehaviour {
         chartMaster.flTexture.Add(new FLtextureChart("SandStone", "SandStone"));
         chartMaster.deTexture.Add(new DEtextureChart("SandStone", "SandStone"));
 
+        chartMaster.ogTexture.Add(new OGtextureChart("SandFlow", "SandFlow"));
+        chartMaster.icTexture.Add(new ICtextureChart("SandFlow", "SandFlow"));
+        chartMaster.flTexture.Add(new FLtextureChart("SandFlow", "SandFlow"));
+        chartMaster.deTexture.Add(new DEtextureChart("SandFlow", "SandFlow"));
+
         chartMaster.ogTexture.Add(new OGtextureChart("SandStoneWall", "SandStoneWall"));
         chartMaster.icTexture.Add(new ICtextureChart("SandStoneWall", "SandStoneWall"));
         chartMaster.flTexture.Add(new FLtextureChart("SandStoneWall", "SandStoneWall"));
         chartMaster.deTexture.Add(new DEtextureChart("SandStoneWall", "SandStoneWall"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("roughRoad", "roughRoad"));
-        chartMaster.icTexture.Add(new ICtextureChart("roughRoad", "roughRoad"));
-        chartMaster.flTexture.Add(new FLtextureChart("roughRoad", "roughRoad"));
-        chartMaster.deTexture.Add(new DEtextureChart("roughRoad", "roughRoad"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Roof", "Roof"));
-        chartMaster.icTexture.Add(new ICtextureChart("Roof", "Roof"));
-        chartMaster.flTexture.Add(new FLtextureChart("Roof", "Roof"));
-        chartMaster.deTexture.Add(new DEtextureChart("Roof", "Roof"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("MossyRock", "MossyRock"));
-        chartMaster.icTexture.Add(new ICtextureChart("MossyRock", "MossyRock"));
-        chartMaster.flTexture.Add(new FLtextureChart("MossyRock", "MossyRock"));
-        chartMaster.deTexture.Add(new DEtextureChart("MossyRock", "MossyRock"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Limestone", "Limestone"));
-        chartMaster.icTexture.Add(new ICtextureChart("Limestone", "Limestone"));
-        chartMaster.flTexture.Add(new FLtextureChart("Limestone", "Limestone"));
-        chartMaster.deTexture.Add(new DEtextureChart("Limestone", "Limestone"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Quartz", "Quartz"));
-        chartMaster.icTexture.Add(new ICtextureChart("Quartz", "Quartz"));
-        chartMaster.flTexture.Add(new FLtextureChart("Quartz", "Quartz"));
-        chartMaster.deTexture.Add(new DEtextureChart("Quartz", "Quartz"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Obsidian", "Obsidian"));
-        chartMaster.icTexture.Add(new ICtextureChart("Obsidian", "Obsidian"));
-        chartMaster.flTexture.Add(new FLtextureChart("Obsidian", "Obsidian"));
-        chartMaster.deTexture.Add(new DEtextureChart("Obsidian", "Obsidian"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("OtherCarpet", "OtherCarpet"));
-        chartMaster.icTexture.Add(new ICtextureChart("OtherCarpet", "OtherCarpet"));
-        chartMaster.flTexture.Add(new FLtextureChart("OtherCarpet", "OtherCarpet"));
-        chartMaster.deTexture.Add(new DEtextureChart("OtherCarpet", "OtherCarpet"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("PoisonWater", "PoisonWater"));
-        chartMaster.icTexture.Add(new ICtextureChart("PoisonWater", "PoisonWater"));
-        chartMaster.flTexture.Add(new FLtextureChart("PoisonWater", "PoisonWater"));
-        chartMaster.deTexture.Add(new DEtextureChart("PoisonWater", "PoisonWater"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Swamp", "Swamp"));
-        chartMaster.icTexture.Add(new ICtextureChart("Swamp", "Swamp"));
-        chartMaster.flTexture.Add(new FLtextureChart("Swamp", "Swamp"));
-        chartMaster.deTexture.Add(new DEtextureChart("Swamp", "Swamp"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("RedRock", "RedRock"));
         chartMaster.icTexture.Add(new ICtextureChart("RedRock", "RedRock"));
@@ -342,50 +362,69 @@ public class GridTiles : MonoBehaviour {
         chartMaster.flTexture.Add(new FLtextureChart("RedRockWall", "RedRockWall"));
         chartMaster.deTexture.Add(new DEtextureChart("RedRockWall", "RedRockWall"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("DarkRockWall", "DarkRockWall"));
-        chartMaster.icTexture.Add(new ICtextureChart("DarkRockWall", "DarkRockWall"));
-        chartMaster.flTexture.Add(new FLtextureChart("DarkRockWall", "DarkRockWall"));
-        chartMaster.deTexture.Add(new DEtextureChart("DarkRockWall", "DarkRockWall"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("OrangeRedRock", "OrangeRedRock"));
         chartMaster.icTexture.Add(new ICtextureChart("OrangeRedRock", "OrangeRedRock"));
         chartMaster.flTexture.Add(new FLtextureChart("OrangeRedRock", "OrangeRedRock"));
         chartMaster.deTexture.Add(new DEtextureChart("OrangeRedRock", "OrangeRedRock"));
 
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Roof", "Roof"));
+        chartMaster.icTexture.Add(new ICtextureChart("Roof", "Roof"));
+        chartMaster.flTexture.Add(new FLtextureChart("Roof", "Roof"));
+        chartMaster.deTexture.Add(new DEtextureChart("Roof", "Roof"));
+
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Quartz", "Quartz"));
+        chartMaster.icTexture.Add(new ICtextureChart("Quartz", "Quartz"));
+        chartMaster.flTexture.Add(new FLtextureChart("Quartz", "Quartz"));
+        chartMaster.deTexture.Add(new DEtextureChart("Quartz", "Quartz"));
+
+
+        //
+        //lava
+        //
+        chartMaster.ogTexture.Add(new OGtextureChart("Obsidian", "Obsidian"));
+        chartMaster.icTexture.Add(new ICtextureChart("Obsidian", "Obsidian"));
+        chartMaster.flTexture.Add(new FLtextureChart("Obsidian", "Obsidian"));
+        chartMaster.deTexture.Add(new DEtextureChart("Obsidian", "Obsidian"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("LavaGround", "LavaGround"));
+        chartMaster.icTexture.Add(new ICtextureChart("LavaGround", "LavaGround"));
+        chartMaster.flTexture.Add(new FLtextureChart("LavaGround", "LavaGround"));
+        chartMaster.deTexture.Add(new DEtextureChart("LavaGround", "LavaGround"));
+
+        chartMaster.ogTexture.Add(new OGtextureChart("Lava", "PoisonWater"));
+        chartMaster.icTexture.Add(new ICtextureChart("Lava", "Lava"));
+        chartMaster.flTexture.Add(new FLtextureChart("Lava", "Lava"));
+        chartMaster.deTexture.Add(new DEtextureChart("Lava", "Lava"));
+
+
         chartMaster.ogTexture.Add(new OGtextureChart("MoltenRock", "MoltenRock"));
-        chartMaster.icTexture.Add(new ICtextureChart("OrangeRedRock", "OrangeRedRock"));
-        chartMaster.flTexture.Add(new FLtextureChart("OrangeRedRock", "OrangeRedRock"));
-        chartMaster.deTexture.Add(new DEtextureChart("OrangeRedRock", "OrangeRedRock"));
+        chartMaster.icTexture.Add(new ICtextureChart("MoltenRock", "MoltenRock"));
+        chartMaster.flTexture.Add(new FLtextureChart("MoltenRock", "MoltenRock"));
+        chartMaster.deTexture.Add(new DEtextureChart("MoltenRock", "MoltenRock"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("MossyPuddle", "MossyPuddle"));
-        chartMaster.icTexture.Add(new ICtextureChart("MossyPuddle", "MossyPuddle"));
-        chartMaster.flTexture.Add(new FLtextureChart("MossyPuddle", "MossyPuddle"));
-        chartMaster.deTexture.Add(new DEtextureChart("MossyPuddle", "MossyPuddle"));
+        chartMaster.ogTexture.Add(new OGtextureChart("roughRoad", "roughRoad"));
+        chartMaster.icTexture.Add(new ICtextureChart("roughRoad", "roughRoad"));
+        chartMaster.flTexture.Add(new FLtextureChart("roughRoad", "roughRoad"));
+        chartMaster.deTexture.Add(new DEtextureChart("roughRoad", "roughRoad"));
 
-        chartMaster.ogTexture.Add(new OGtextureChart("Rusty", "Rusty"));
-        chartMaster.icTexture.Add(new ICtextureChart("Rusty", "Rusty"));
-        chartMaster.flTexture.Add(new FLtextureChart("Rusty", "Rusty"));
-        chartMaster.deTexture.Add(new DEtextureChart("Rusty", "Rusty"));
-          
-        
-    }
+      
+        //general
+        //
 
-    public string ChartFindMat(string map)
-    {
-        if (map == "og")
-        {
-            foreach (OGtextureChart og in chartMaster.ogTexture)
-            {
-                if (TileColor() == og.input) return og.output;
-            }
-        }
 
-        return "";
+
+    */
+
+        ChartCheckMat(map, type);
     }
 
 
     public void ChartCheckMat(string map, string check)
     {
+      
         if (map == "og")
         {
             foreach (OGtextureChart og in chartMaster.ogTexture)
@@ -393,8 +432,42 @@ public class GridTiles : MonoBehaviour {
                 if (check == og.input) CheckWithText(og.output);
             }
         }
+        else if (map == "ic")
+        {
+            foreach (ICtextureChart ic in chartMaster.icTexture)
+            {
+                if (check == ic.input) CheckWithText(ic.output);
+            }
+        }
+        else if (map == "fl")
+        {
+            foreach (FLtextureChart fl in chartMaster.flTexture)
+            {
+                if (check == fl.input) CheckWithText(fl.output);
+            }
+        }
+        else if (map == "de")
+        {
+            foreach (DEtextureChart de in chartMaster.deTexture)
+            {
+                if (check == de.input) CheckWithText(de.output); 
+            }
+        }
+
+        ColorSelf();
+        TagChange(map);
+        TagColor();
     }
 
+    public void TagChange(string map)
+    {
+        if (gameObject.tag == "RiverC" && map == "fl") gameObject.tag = "LavaRC";     
+        else if( gameObject.tag == "RiverH" && map == "fl") gameObject.tag = "LavaH";         
+        else if (gameObject.tag == "Rivers" && map == "fl") gameObject.tag = "LavaR";          
+        else if (gameObject.tag == "LakeC" && map == "fl") gameObject.tag = "LavaLC";  
+        else if (gameObject.tag == "LakeS" && map == "fl") gameObject.tag = "LavaLS";     
+        else if (gameObject.tag == "LakeM" && map == "fl") gameObject.tag = "LavaLM";
+    }
 
     public string TileColor()
     {
@@ -419,6 +492,7 @@ public class GridTiles : MonoBehaviour {
         else if (water) return name = "Rivers";
         else if (lava) return name = "Lava";
         else if (carpet) return name = "Carpet";
+        else if (otherCarpet) return name = "OtherCarpet";
         else if (snow) return name = "Snow";
         else if (snowyWall) return name = "SnowyWall";
         else if (snowyRock) return name = "SnowyRock";
@@ -432,17 +506,18 @@ public class GridTiles : MonoBehaviour {
         else if (roof) return name = "Roof";
         else if (mossyRock) return name = "MossyRock";
         else if (limestone) return name = "Limestone";
-        else if (quartz) return name = "Quartz";
+        else if (quartz) return name = "Quartz"; 
         else if (obsidian) return name = "Obsidian";
         else if (poison) return name = "PoisonWater";
         else if (swamp) return name = "Swamp";
         else if (redRock) return name = "RedRock";
         else if (redRockWall) return name = "RedRockWall";
-        else if (darkRedRock) return name = "DarkRockWall";
+        else if (darkRedRock) return name = "DarkRedRock";
         else if (orangeRedRock) return name = "OrangeRedRock";
         else if (moltenRock) return name = "MoltenRock";
         else if (mossyPuddle) return name = "MossyPuddle";
         else if (rusty) return name = "Rusty";
+        else if (sandFlow) return name = "SandFlow";
 
         return name;
 
@@ -496,11 +571,12 @@ public class GridTiles : MonoBehaviour {
         else if ("Swamp" == color) swamp = true;
         else if ("RedRock" == color) redRock = true;
         else if ("RedRockWall" == color) redRockWall = true;
-        else if ("DarkRockWall" == color) darkRedRock = true;
+        else if ("DarkRedRock" == color) darkRedRock = true;
         else if ("OrangeRedRock" == color) orangeRedRock = true;
         else if ("MoltenRock" == color) moltenRock = true;
         else if ("MossyPuddle" == color) mossyPuddle = true;
         else if ("Rusty" == color) rusty = true;
+        else if ("SandFlow" == color) sandFlow = true;
 
         Material material = Resources.Load<Material>(color);
         gameObject.GetComponent<Renderer>().material = material;
@@ -554,6 +630,7 @@ public class GridTiles : MonoBehaviour {
         else if ("MoltenRock" == type) moltenRock = false;
         else if ("MossyPuddle" == type) mossyPuddle = false;
         else if ("Rusty" == type) rusty = false;
+        else if ("SandFlow" == type) sandFlow = false;
         else if ("N" == type) NEorN = false;
         else if ("E" == type) NWorE = false;
         else if ("S" == type) SEorS = false;
@@ -1140,13 +1217,13 @@ public class GridTiles : MonoBehaviour {
     [System.Serializable]
     public class DEtextureChart
     {
+        public string input;
         public string output;
-        public string order;
 
-        public DEtextureChart(string outp, string ord)
+        public DEtextureChart(string inp, string outp)
         {
+            input = inp;
             output = outp;
-            order = ord;
         }
 
     }

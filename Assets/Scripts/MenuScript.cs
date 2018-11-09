@@ -2420,32 +2420,7 @@ public class MenuScript
     }
 
 
-    [MenuItem("Tools/ResetSpawnsOnWholeMap")]
-    public static void ResetSpawn()
-    {
-        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
-        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
-
-        foreach (TempGrouper group in areaGroups)
-        {
-            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
-            foreach (MapLocation map in areas)
-            {
-                Rows[] allRows = map.GetComponentsInChildren<Rows>();
-                foreach (Rows row in allRows)
-                {
-                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-                    foreach (GridTiles tile in allTiles)
-                    {
-                        tile.playerSpawn = false;
-                        tile.enemySpawn = false;
-                    }
-                }
-            }
-        }
-    }
-
-    [MenuItem("Tools/AssigntoAreas")]
+    [MenuItem("Tools/AssignSpawnstoAreas")]
     public static void AreaSpawn()
     {
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
@@ -2462,139 +2437,36 @@ public class MenuScript
         }
     }
 
-    [MenuItem("Tools/AssignSpawns")]
-    public static void AssignSpawn()
+    [MenuItem("Tools/ReskinMap")]
+    public static void Retile()
     {
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
         TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
 
-        List<TempGrouper> pAreas = new List<TempGrouper>();
-        List<TempGrouper> eAreas = new List<TempGrouper>();
         foreach (TempGrouper group in areaGroups)
         {
-            if (group.pSpawnZone) pAreas.Add(group);
-            else if (group.eSpawnZone) eAreas.Add(group);
-        }
-
-        int num = Random.Range(0, pAreas.Count);
-        foreach (MapLocation map in pAreas[num].GetComponentsInChildren<MapLocation>())
-        {
-
-            Rows[] allRows = map.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRows)
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            foreach (MapLocation map in areas)
             {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
+                Rows[] allRows = map.GetComponentsInChildren<Rows>();
+                foreach (Rows row in allRows)
                 {
-                    tile.playerSpawn = true;
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        string m = "de";
+                        string t = tile.TileColor();
+
+                        tile.UnCheckWithText(t);
+                        tile.ChartMaker(m, t);
+                        
+
+                    }
                 }
             }
         }
-
-        int nump = Random.Range(0, pAreas.Count);
-        do
-        {
-            nump = Random.Range(0, pAreas.Count);
-        } while (nump == num);
-
-        foreach (MapLocation mapp in pAreas[nump].GetComponentsInChildren<MapLocation>())
-        {
-
-            Rows[] allRowsp = mapp.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRowsp)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
-                {
-                    tile.playerSpawn = true;
-                }
-            }
-        }
-
-        int num1 = Random.Range(0, eAreas.Count);
-        foreach (MapLocation map1 in eAreas[num1].GetComponentsInChildren<MapLocation>())
-        {
-
-            Rows[] allRows1 = map1.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRows1)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
-                {
-                    tile.enemySpawn = true;
-                }
-            }
-        }
-
-        int num2 = Random.Range(0, eAreas.Count);
-        do
-        {
-          num2 = Random.Range(0, eAreas.Count);
-        } while (num2 == num1);
-
-        foreach (MapLocation map2 in eAreas[num2].GetComponentsInChildren<MapLocation>())
-        {
-
-            Rows[] allRows2 = map2.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRows2)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
-                {
-                    tile.enemySpawn = true;
-                }
-            }
-        }
-
-        int num3 = Random.Range(0, eAreas.Count);
-        do
-        {
-            num3 = Random.Range(0, eAreas.Count);
-        } while (num3 == num1 && num3 == num2);
-
-        foreach (MapLocation map3 in eAreas[num3].GetComponentsInChildren<MapLocation>())
-        {
-
-            Rows[] allRows3 = map3.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRows3)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
-                {
-                    tile.enemySpawn = true;
-                }
-            }
-        }
-
-
-        int num4 = Random.Range(0, eAreas.Count);
-        do
-        {
-            num4 = Random.Range(0, eAreas.Count);
-        } while (num4 == num1 && num4 == num2 && num4 == num3);
-
-        foreach (MapLocation map4 in eAreas[num4].GetComponentsInChildren<MapLocation>())
-        {
-            Rows[] allRows4 = map4.GetComponentsInChildren<Rows>();
-            foreach (Rows row in allRows4)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-                foreach (GridTiles tile in allTiles)
-                {
-                    tile.enemySpawn = true;
-                }
-            }
-        }
-
-
-
     }
+
 
 
 }

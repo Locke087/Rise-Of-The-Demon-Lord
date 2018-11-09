@@ -69,6 +69,8 @@ public class TileMaterialSelector : MonoBehaviour, IPointerClickHandler, IPointe
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=Sand>Sand</link>";
         textMeshPro.text += "\n";
+        textMeshPro.text += "<link=SandFlow>Sand Flow</link>";
+        textMeshPro.text += "\n";
         textMeshPro.text += "<link=SandyGrass>Sandy Grass</link>";
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=SandStone>Sandstone</link>";
@@ -109,6 +111,7 @@ public class TileMaterialSelector : MonoBehaviour, IPointerClickHandler, IPointe
         textMeshPro.text += "\n";
         textMeshPro.text += "<link=OrangeRedRock>Orange Red Rock</link>";
         textMeshPro.text += "\n";
+        
     }
 
    
