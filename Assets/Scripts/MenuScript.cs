@@ -2035,14 +2035,19 @@ public class MenuScript
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
         TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
 
-        GameObject preFab = new GameObject();
-        preFab.AddComponent<TempDisplayer>();
-        preFab.name = "LoadMaps";
+
+        GameObject preFab = GameObject.Find("LoadMaps");
+        // GameObject preFab = new GameObject();
+        //preFab.AddComponent<TempDisplayer>();
+        // preFab.name = "LoadMap2";
         //int m = 0;
-       // GameObject TheRecord = new GameObject();
-      //  TheRecord.AddComponent<TempDisplayer>();
-       // TheRecord.name = "I Remember";
-        OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+        // GameObject TheRecord = new GameObject();
+        //  TheRecord.AddComponent<TempDisplayer>();
+        // TheRecord.name = "I Remember";
+        //OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+        //ScorchingWastesTileSet tileset = new ScorchingWastesTileSet();
+        //FrozenTundraTileSet tileset = new FrozenTundraTileSet();
+        GrowlingDeepsTileSet tileset = new GrowlingDeepsTileSet();
 
         tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
         tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
@@ -2096,8 +2101,11 @@ public class MenuScript
             k++;
         }
        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
-        TempDisplayer.overGrownLabyrinthPerm = tileset;
-        preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //TempDisplayer.overGrownLabyrinthPerm = tileset;
+        //preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
+        //preFab.GetComponent<TempDisplayer>().frozenTundra = tileset;
+        preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
     }
 
     [MenuItem("Tools/RiptoMap")]
@@ -2454,7 +2462,7 @@ public class MenuScript
                     GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
                     foreach (GridTiles tile in allTiles)
                     {
-                        string m = "de";
+                        string m = "fl";
                         string t = tile.TileColor();
 
                         tile.UnCheckWithText(t);

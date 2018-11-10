@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46226418, g: 0.2723592, b: 0.08940014, a: 1}
+  m_Color: {r: 0.05286579, g: 0.41509432, b: 0.09362054, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4711,6 +4711,7 @@ GameObject:
   - component: {fileID: 1113644674}
   - component: {fileID: 1113644673}
   - component: {fileID: 1113644677}
+  - component: {fileID: 1113644678}
   m_Layer: 0
   m_Name: Map Overlay
   m_TagString: Untagged
@@ -4806,6 +4807,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee68cbf89c7f5b34891b08ca844e5287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113644678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113644672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528635675cf61374f997e0d760c7e0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 100
+  unitRewardID: 
+  weaponRewardID: 
+  itemRewardID: 
 --- !u!1 &1139789157
 GameObject:
   m_ObjectHideFlags: 0

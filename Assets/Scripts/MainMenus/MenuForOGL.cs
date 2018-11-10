@@ -18,20 +18,46 @@ public class MenuForOGL : MonoBehaviour {
         overGrowth.onClick.AddListener(LevelSelect);
         level1.onClick.AddListener(Level1);
         back.onClick.AddListener(BackOut);
+        CheckStatus();
         levelSelect.SetActive(false);
+      
     }
-
+	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void Level1()
+    public void CheckStatus()
+    {
+        if (InUse("oglevel1"))
+        {
+            level1.GetComponent<Image>().color = Color.gray;
+            level1.onClick.RemoveAllListeners();
+        }
+
+    }
+
+    public bool InUse(string name)
+    {
+        foreach (CurrentLevel l in CurrentGame.game.memoryGeneral.currentLevels)
+        {
+            if (name == l.level) return true;
+        }
+        return false;
+    }
+
+
+
+     public void Level1()
     {
         EnemiesInMap enemiesInMap = new EnemiesInMap();
         enemiesInMap.units.AddRange(FindObjectOfType<UnitLoader>().LoadEnemies(2));
         CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
-          
+        string name = "oglevel1";
+        CurrentGame.game.memoryGeneral.currentLevelID = name;
+        CurrentGame.game.memoryGeneral.levelCompletion.ogLevels.level1.level = name;
+        CurrentGame.game.memoryGeneral.currentLevels.Add(CurrentGame.game.memoryGeneral.levelCompletion.ogLevels.level1);
         SceneManager.LoadScene("OGLMap1");
     }
 

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrozenTundraTileSet : MonoBehaviour {
+[System.Serializable]
+public class FrozenTundraTileSet {
 
     public GameTypeDirector rout;
     public GameTypeDirector rescue;

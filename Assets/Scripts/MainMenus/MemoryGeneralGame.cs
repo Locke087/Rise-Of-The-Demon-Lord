@@ -11,6 +11,9 @@ public class MemoryGeneralGame {
     public EquipmentOwned itemsOwned;
     public ShopWares shopWares;
     public int gold;
+    public LevelCompletion levelCompletion;
+    public List<CurrentLevel> currentLevels;
+    public string currentLevelID;
 	public MemoryGeneralGame()
     {
         unitsInRoster = new List<Unit>();
@@ -18,6 +21,9 @@ public class MemoryGeneralGame {
         itemsOwned = new EquipmentOwned();
         shopWares = new ShopWares();
         enemiesInMaps = new EnemiesInMap();
+        levelCompletion = new LevelCompletion();
+        currentLevels = new List<CurrentLevel>();
+        currentLevelID = "";
         gold = 0;
     }
 }

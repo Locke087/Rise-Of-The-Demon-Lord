@@ -56,6 +56,9 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Label("File Name");
 			CurrentGame.game.fileName.name = GUILayout.TextField(CurrentGame.game.fileName.name, 20);
             CurrentGame.game.overGrown = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().overGrownLabyrinth;
+            CurrentGame.game.growlingDeeps = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().growlingDeeps;
+            CurrentGame.game.scorchingWastes = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().scorchingWastes;
+            CurrentGame.game.frozenTundra = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().frozenTundra;
             GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
 
             if (GUILayout.Button("Save")) {

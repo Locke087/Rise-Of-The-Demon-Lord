@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowlingDeepsTileSet : MonoBehaviour {
+[System.Serializable]
+public class GrowlingDeepsTileSet {
 
     public GameTypeDirector rout;
     public GameTypeDirector rescue;

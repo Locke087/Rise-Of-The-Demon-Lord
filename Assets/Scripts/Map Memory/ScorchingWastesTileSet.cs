@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorchingWastesTileSet : MonoBehaviour {
+[System.Serializable]
+public class ScorchingWastesTileSet {
 
     public GameTypeDirector rout;
     public GameTypeDirector rescue;
