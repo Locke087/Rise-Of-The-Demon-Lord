@@ -26,87 +26,8 @@ public class LiveMapGenerator : MonoBehaviour {
     public int collumPlayerEnd = 0;
     public int rowEnemyStart = 0;
     public int collumEnemyEnd = 0;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
 
-
-   /*public void Remove(int area)
-    {
-        GameObject maps = GameObject.Find("AreaPrim");
-        Rows[] allRows = maps.GetComponentsInChildren<Rows>();
-        GameObject mapsin = GameObject.Find("Area" + area.ToString());
-        Rows[] allRowsin = mapsin.GetComponentsInChildren<Rows>();
-        int r = 0;
-        int c = 0;
-        foreach (Rows row in allRows)
-        {
-            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-            GridTiles[] allTilesin = allRowsin[r].GetComponentsInChildren<GridTiles>();
-            foreach (GridTiles tile in allTiles)
-            {
-              
-                if (tile.GetComponentInChildren<UIEditorExtention>().taken && tile.GetComponentInChildren<UIEditorExtention>().removeMe)
-                {
-                    Debug.Log(c);
-                    if (c < allTilesin.Length)
-                    {
-                        GameObject tiles = new GameObject();
-                        tiles.transform.parent = allRowsin[r].transform;
-                        tiles.AddComponent<GridTiles>();
-                        tiles.name = "rr" + c + "r" + r;
-                        tile.transform.localPosition = allTilesin[c].transform.localPosition;
-                        Debug.Log(c + " get in here " + allTilesin[c].name);
-                        tile.GetComponentInChildren<UIEditorExtention>().removeMe = false;
-                        tile.GetComponentInChildren<UIEditorExtention>().taken = false;     
-                        Destroy(allTilesin[c].gameObject);
-                        allTilesin[c] = tiles.GetComponent<GridTiles>();
-                    }
-                }
-                c++;
-            }
-            r++;
-            c = 0;
-        }
-
-       
-
-       
-
-    }*/
-
-    /*public void RemoveStandins(int area)
-    {
-        GameObject maps = GameObject.Find("Area" + area.ToString());
-        Rows[] allRows = maps.GetComponentsInChildren<Rows>();
-      
-        foreach (Rows row in allRows)
-        {
-            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-
-            foreach (GridTiles tile in allTiles)
-            {
-              
-                string checking = "";
-                char[] theName = tile.name.ToCharArray();
-                for (int i = 0; i < theName.Length; i++)
-                {
-                    if ( i < 2)
-                    {
-                        checking += theName[i];
-                    }
-                }
-
-                if (checking != "og") Destroy(tile);
-            }
-        }
-    }*/
 
     public void Generate(int area)
     {
@@ -828,7 +749,7 @@ public class LiveMapGenerator : MonoBehaviour {
                     {
                         GameObject tiles = new GameObject();
                         tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
+                        tiles.name = "!!" + f + "r" + r;
                         f++;
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.tag = "Tile";
@@ -847,7 +768,7 @@ public class LiveMapGenerator : MonoBehaviour {
                         Material material = Resources.Load<Material>(tile.TileColor());
                         tiles.GetComponent<Renderer>().material = material;
                         tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
+                        tiles.name = "!!" + f + "r" + r;
                         f++;
                         tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.tag = "Tile";
@@ -921,6 +842,7 @@ public class LiveMapGenerator : MonoBehaviour {
             }
             i++;
             r++;
+            f = 0;
         }
     
 

@@ -8,12 +8,14 @@ public class MemoryGeneralGame {
     public List<Unit> unitsInRoster;
     public List<Unit> unitsInParty;
     public EnemiesInMap enemiesInMaps;
+    public AreaGroupHolder heldGameType;
     public EquipmentOwned itemsOwned;
     public ShopWares shopWares;
     public int gold;
     public LevelCompletion levelCompletion;
     public List<CurrentLevel> currentLevels;
     public string currentLevelID;
+    public string doISave;
 	public MemoryGeneralGame()
     {
         unitsInRoster = new List<Unit>();
@@ -23,7 +25,9 @@ public class MemoryGeneralGame {
         enemiesInMaps = new EnemiesInMap();
         levelCompletion = new LevelCompletion();
         currentLevels = new List<CurrentLevel>();
+        heldGameType = new AreaGroupHolder();
         currentLevelID = "";
+        doISave = "";
         gold = 0;
     }
 }

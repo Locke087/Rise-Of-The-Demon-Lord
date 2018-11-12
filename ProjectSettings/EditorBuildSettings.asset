@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GDMap1.unity
     guid: 5dfab7894f857ae4aad51aad14b3039f
+  - enabled: 1
+    path: Assets/Scenes/UserEndMapEditor.unity
+    guid: 7beffa076d25e4e428dfa3d7c0b1fb0e
   m_configObjects: {}

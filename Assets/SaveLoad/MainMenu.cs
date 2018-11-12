@@ -55,10 +55,18 @@ public class MainMenu : MonoBehaviour {
 
 			GUILayout.Label("File Name");
 			CurrentGame.game.fileName.name = GUILayout.TextField(CurrentGame.game.fileName.name, 20);
-            CurrentGame.game.overGrown = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().overGrownLabyrinth;
-            CurrentGame.game.growlingDeeps = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().growlingDeeps;
-            CurrentGame.game.scorchingWastes = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().scorchingWastes;
-            CurrentGame.game.frozenTundra = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().frozenTundra;
+            OverGrownLabyrinthTileSet overGrown = new OverGrownLabyrinthTileSet();
+            GrowlingDeepsTileSet growlingDeeps = new GrowlingDeepsTileSet();
+            FrozenTundraTileSet frozenTundra = new FrozenTundraTileSet();
+            ScorchingWastesTileSet scorchingWastes = new ScorchingWastesTileSet();
+            overGrown = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().overGrownLabyrinth;
+            frozenTundra = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().frozenTundra;
+            growlingDeeps = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().growlingDeeps;
+            scorchingWastes = GameObject.Find("LoadMaps").GetComponent<TempDisplayer>().scorchingWastes;
+            CurrentGame.game.overGrown = overGrown;
+            CurrentGame.game.growlingDeeps = growlingDeeps;
+            CurrentGame.game.scorchingWastes = scorchingWastes;
+            CurrentGame.game.frozenTundra = frozenTundra;
             GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
 
             if (GUILayout.Button("Save")) {
@@ -81,18 +89,18 @@ public class MainMenu : MonoBehaviour {
 			
 			GUILayout.Box("Select Save File");
 			GUILayout.Space(10);
-			
-			foreach(CurrentGame g in SaveLoad.savedGames) {
+  
+            foreach (CurrentGame g in SaveLoad.savedGames) {
 				if(GUILayout.Button(g.fileName.name)) {
 					CurrentGame.game = g;
                     //Move on to game...
-
+                    SaveLoad.currentFile = SaveLoad.savedGames.FindIndex(x => x == g);
                     SceneManager.LoadScene("Town");
                 }
-
+                
             }
-
-			GUILayout.Space(10);
+        
+            GUILayout.Space(10);
 			if(GUILayout.Button("Cancel")) {
 				currentMenu = Menu.MainMenu;
 			}
@@ -101,16 +109,17 @@ public class MainMenu : MonoBehaviour {
 
         else if (currentMenu == Menu.Delete)
         {
-
+          
             foreach (CurrentGame g in SaveLoad.savedGames)
             {
                 if (GUILayout.Button(g.fileName.name))
                 {
+                    Debug.Log(SaveLoad.savedGames.FindIndex(x => x == g));
+                    SaveLoad.currentFile = SaveLoad.savedGames.FindIndex(x => x == g);
                     SaveLoad.Deleted();
-                }
-
+                    return;
+                }           
             }
-
             GUILayout.Space(10);
             if (GUILayout.Button("Cancel"))
             {

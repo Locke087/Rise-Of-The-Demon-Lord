@@ -156,7 +156,7 @@ public class GridTiles : MonoBehaviour {
         //
         //grassland
         //
-
+        
         chartMaster.ogTexture.Add(new OGtextureChart("Dirt", "Dirt"));
         chartMaster.icTexture.Add(new ICtextureChart("Dirt", "Bricks"));
         chartMaster.flTexture.Add(new FLtextureChart("Dirt", "Mountain"));
@@ -193,6 +193,10 @@ public class GridTiles : MonoBehaviour {
         chartMaster.flTexture.Add(new FLtextureChart("Grass", "LavaGround"));
         chartMaster.deTexture.Add(new DEtextureChart("Grass", "Sand"));
 
+        chartMaster.ogTexture.Add(new OGtextureChart("Rivers", "Rivers"));
+        chartMaster.icTexture.Add(new ICtextureChart("Rivers", "Rivers"));
+        chartMaster.flTexture.Add(new FLtextureChart("Rivers", "Lava"));
+        chartMaster.deTexture.Add(new DEtextureChart("Rivers", "SandFlow"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("PoisonWater", "PoisonWater"));
         chartMaster.icTexture.Add(new ICtextureChart("PoisonWater", "Rivers"));
@@ -208,7 +212,6 @@ public class GridTiles : MonoBehaviour {
         chartMaster.icTexture.Add(new ICtextureChart("MossyRock", "SnowyRock"));
         chartMaster.flTexture.Add(new FLtextureChart("MossyRock", "OrangeRedRock"));
         chartMaster.deTexture.Add(new DEtextureChart("MossyRock", "StonePathway"));
-
 
         chartMaster.ogTexture.Add(new OGtextureChart("OverGrownWall", "OverGrownWall"));
         chartMaster.icTexture.Add(new ICtextureChart("OverGrownWall", "SnowyWall"));
@@ -233,12 +236,7 @@ public class GridTiles : MonoBehaviour {
         chartMaster.ogTexture.Add(new OGtextureChart("GraniteWall", "GraniteWall"));
         chartMaster.icTexture.Add(new ICtextureChart("GraniteWall", "Bridge"));
         chartMaster.flTexture.Add(new FLtextureChart("GraniteWall", "DarkRedRock"));
-        chartMaster.deTexture.Add(new DEtextureChart("GraniteWall", "SandStoneWall"));
-
-        chartMaster.ogTexture.Add(new OGtextureChart("Rivers", "Rivers"));
-        chartMaster.icTexture.Add(new ICtextureChart("Rivers", "Rivers"));
-        chartMaster.flTexture.Add(new FLtextureChart("Rivers", "Lava"));
-        chartMaster.deTexture.Add(new DEtextureChart("Rivers", "SandFlow"));
+        chartMaster.deTexture.Add(new DEtextureChart("GraniteWall", "SandStoneWall"));   
 
         chartMaster.ogTexture.Add(new OGtextureChart("HouseTile", "HouseTile"));
         chartMaster.icTexture.Add(new ICtextureChart("HouseTile", "DungeonTile"));
@@ -251,14 +249,14 @@ public class GridTiles : MonoBehaviour {
         chartMaster.deTexture.Add(new DEtextureChart("ColoredHouseTile", "OtherCarpet"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Bricks", "Bricks"));
-        chartMaster.icTexture.Add(new ICtextureChart("Bricks", "Brigde"));
+        chartMaster.icTexture.Add(new ICtextureChart("Bricks", "Ice"));
         chartMaster.flTexture.Add(new FLtextureChart("Bricks", "Rusty"));
         chartMaster.deTexture.Add(new DEtextureChart("Bricks", "Cobblestone"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Bridge", "Bridge"));
         chartMaster.icTexture.Add(new ICtextureChart("Bridge", "SnowyRock"));
         chartMaster.flTexture.Add(new FLtextureChart("Bridge", "DarkRedRock"));
-        chartMaster.deTexture.Add(new DEtextureChart("Bridge", "Rusty"));
+        chartMaster.deTexture.Add(new DEtextureChart("Bridge", "DarkRedRock"));
 
         chartMaster.ogTexture.Add(new OGtextureChart("Carpet", "Carpet"));
         chartMaster.icTexture.Add(new ICtextureChart("Carpet", "OtherCarpet"));
@@ -696,19 +694,25 @@ public class GridTiles : MonoBehaviour {
     {
 
         if (SEorS == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "NWorE";
-        else if (SWorW == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "NEorN";
+        else if (SWorW == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "NEorN";
         else if (NEorN == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "SWorW";
-        else if (NWorE == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1) return "SEorS";
+        else if (NWorE == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 && IsACorner()) return "SEorS";
+        else if (SEorS == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 ) return "NEorN";
+        else if (SWorW == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 ) return "NWorE";
+        else if (NEorN == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 ) return "SEorS";
+        else if (NWorE == true && map.transform.localScale.z == -1 && map.transform.localScale.x == -1 ) return "SWorW";
 
         else if (SEorS == true && map.transform.localScale.z == -1) return "NEorN";
-        else if (SWorW == true && map.transform.localScale.z == -1) return "NWorE";
+        else if (SWorW == true && map.transform.localScale.z == -1 && IsACorner()) return "NWorE";
         else if (NEorN == true && map.transform.localScale.z == -1) return "SEorS";
-        else if (NWorE == true && map.transform.localScale.z == -1) return "SWorW";
+        else if (NWorE == true && map.transform.localScale.z == -1 && IsACorner()) return "SWorW";
 
         else if (NEorN == true && map.transform.localScale.x == -1 && IsACorner()) return "NWorE";
-        else if (NWorE == true && map.transform.localScale.x == -1) return "NEorN";
+        else if (NWorE == true && map.transform.localScale.x == -1 && IsACorner()) return "NEorN";
+        else if (NWorE == true && map.transform.localScale.x == -1) return "SWorW";
         else if (SEorS == true && map.transform.localScale.x == -1 && IsACorner()) return "SWorW";
-        else if (SWorW == true && map.transform.localScale.x == -1) return "SEorS";
+        else if (SWorW == true && map.transform.localScale.x == -1 && IsACorner()) return "SEorS";
+        else if (SWorW == true && map.transform.localScale.x == -1) return "NWorE";
 
         else if (NEorN == true) return "NEorN";
         else if (NWorE == true) return "NWorE";
@@ -722,7 +726,7 @@ public class GridTiles : MonoBehaviour {
 
     public bool IsACorner()
     {
-        if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC")
+        if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC" || gameObject.tag == "LavaRC")
         {
             return true;
         }
@@ -817,7 +821,7 @@ public class GridTiles : MonoBehaviour {
             else if (SEorS) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);
             else if (SWorW) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
         }
-        else if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC")
+        else if (gameObject.tag == "RiverC" || gameObject.tag == "LavaLC" || gameObject.tag == "LakeC" || gameObject.tag == "LavaRC")
         {
             if (NEorN) gameObject.transform.localRotation = Quaternion.Euler(0, 180f, 0);
             else if (NWorE) gameObject.transform.localRotation = Quaternion.Euler(0, 90f, 0);

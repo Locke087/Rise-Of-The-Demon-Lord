@@ -98,6 +98,7 @@ public class EventDriver : MonoBehaviour
             {
                 if (tile.playerSpawn && tile.walkable)
                 {
+                    Debug.Log("got it");
                     if (tiles.Count > 0)
                     {
                         valid = true;
@@ -107,8 +108,17 @@ public class EventDriver : MonoBehaviour
                             if (toClose <= 1) valid = false;
 
                         }
-                        if (valid) tiles.Add(tile);
-                    } else tiles.Add(tile);
+                        if (valid)
+                        {
+                            Debug.Log("got inp");
+                            tiles.Add(tile);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("got binp");
+                        tiles.Add(tile);
+                    }
                 }
             }
         }
@@ -136,8 +146,17 @@ public class EventDriver : MonoBehaviour
                             if (toClose <= 1) valid = false;
 
                         }
-                        if (valid) tiles.Add(tile);
-                    } else tiles.Add(tile);
+                        if (valid)
+                        {
+                            Debug.Log("got ine");
+                            tiles.Add(tile);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("got bine");
+                        tiles.Add(tile);
+                    }
                 }
 
             }

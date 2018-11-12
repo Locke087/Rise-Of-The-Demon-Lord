@@ -4710,8 +4710,8 @@ GameObject:
   - component: {fileID: 1113644675}
   - component: {fileID: 1113644674}
   - component: {fileID: 1113644673}
-  - component: {fileID: 1113644677}
   - component: {fileID: 1113644678}
+  - component: {fileID: 1113644677}
   m_Layer: 0
   m_Name: Map Overlay
   m_TagString: Untagged
@@ -4804,9 +4804,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113644672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee68cbf89c7f5b34891b08ca844e5287, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e187897ac14d52429cd3571718d0a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  og: 1
+  sw: 0
+  gd: 0
+  ft: 0
 --- !u!114 &1113644678
 MonoBehaviour:
   m_ObjectHideFlags: 0

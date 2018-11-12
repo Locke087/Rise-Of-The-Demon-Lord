@@ -549,7 +549,84 @@ public class RoutLoader : MonoBehaviour {
                         tiles.GetComponent<GridTiles>().walkable = false;
                     }
                 }
+                if (tile.tag == "Rivers")
+                {
+                    if (tile.transform.localPosition.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
+                        // tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
 
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, 0, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+                if (tile.tag == "RiverH")
+                {
+                    if (tile.transform.localPosition.y > 0.9f)
+                    {
+
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
 
                 if (tile.tag == "LavaR")
                 {
@@ -557,6 +634,8 @@ public class RoutLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
                         tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
                         tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
                         // tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "River";
@@ -634,6 +713,7 @@ public class RoutLoader : MonoBehaviour {
                 //   WaterCorner Directions
                 // |0   270|
                 //  --  ---  
+
                 else if (tile.tag == "LavaRC")
                 {
 
@@ -643,7 +723,7 @@ public class RoutLoader : MonoBehaviour {
                         tiles.transform.parent = newRow.transform;
                         tiles.name = "og" + f + "r" + r;
                         f++;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "River";
                         tiles.AddComponent<GridTiles>();
@@ -670,7 +750,6 @@ public class RoutLoader : MonoBehaviour {
                         tiles.tag = "River";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = false;
-
                     }
                 }
 
@@ -889,9 +968,9 @@ public class RoutLoader : MonoBehaviour {
                         tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                         if (!tile.hazard)
                         {
+                            tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                             tiles.GetComponent<GridTiles>().walkable = true;
                             tiles.GetComponent<GridTiles>().distance = 5;
                         }
@@ -914,9 +993,9 @@ public class RoutLoader : MonoBehaviour {
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.tag = "Tile";
                         tiles.AddComponent<GridTiles>();
-                        tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                         if (!tile.hazard)
                         {
+                            tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
                             tiles.GetComponent<GridTiles>().walkable = true;
                             tiles.GetComponent<GridTiles>().distance = 5;
                         }

@@ -30,20 +30,13 @@ public class MiddleManStorage : MonoBehaviour {
     public Text rotateText;
     public Text heightText;
     public void Start()
-    {
-        //confirm = GameObject.Find("ConfirmB").GetComponent<Button>();
+    {   
         confirm.onClick.AddListener(Confirm);
-        //cancel = GameObject.Find("ResetB").GetComponent<Button>();
         cancel.onClick.AddListener(ResetMap);
-        //cleanRotate = GameObject.Find("CleanBoxRotate").GetComponent<Button>();
         cleanRotate.onClick.AddListener(RemoveRotate);
-       // cleanShape = GameObject.Find("CleanBoxShape").GetComponent<Button>();
         cleanShape.onClick.AddListener(RemoveShape);
-       // cleanMaterial = GameObject.Find("CleanBoxMaterial").GetComponent<Button>();
         cleanMaterial.onClick.AddListener(RemoveMaterial);
-      //  cleanSpecial = GameObject.Find("CleanBoxSpecial").GetComponent<Button>();
         cleanSpecial.onClick.AddListener(RemoveSpecial);
-       // cleanHeight = GameObject.Find("CleanBoxHeight").GetComponent<Button>();
         cleanHeight.onClick.AddListener(RemoveHeight);
     }
 
@@ -131,9 +124,10 @@ public class MiddleManStorage : MonoBehaviour {
             {
                 if (tile.highlighted)
                 {
-                    tile.GetComponentInChildren<UIEditorExtention>().taken = true;
+                    UIEditorExtention editorExtention = tile.GetComponentInChildren<UIEditorExtention>();
+                    editorExtention.taken = true;
                     tile.highlighted = false;
-
+                    editorExtention.transform.localPosition = new Vector3(editorExtention.transform.localPosition.x, height + 1, editorExtention.transform.localPosition.z);
                     if (shape != "") tile.tag = shape;
                     if (material != "") tile.CheckWithText(material);
                     if (special != "") tile.CheckSpecialorTurnText(special);

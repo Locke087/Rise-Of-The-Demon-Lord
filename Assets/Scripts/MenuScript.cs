@@ -691,7 +691,84 @@ public class MenuScript
                         tiles.GetComponent<GridTiles>().walkable = false;
                     }
                 }
+                if (tile.tag == "Rivers")
+                {
+                    if (tile.transform.localPosition.y > 0.9f)
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
+                        // tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
 
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localRotation = tile.transform.localRotation;
+                        tiles.transform.localPosition = new Vector3(j - 0.25f, 0, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
+                if (tile.tag == "RiverH")
+                {
+                    if (tile.transform.localPosition.y > 0.9f)
+                    {
+
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+
+
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        Material material = Resources.Load<Material>("Dirt");
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+                    else
+                    {
+                        GameObject tiles = GameObject.Instantiate(Resources.Load("River piece")) as GameObject;
+                        tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
+                        tiles.transform.localPosition = new Vector3(j, 0, 0.25f);
+                        tiles.transform.localRotation *= Quaternion.Euler(0, 90f, 0);
+                        tiles.tag = "River";
+                        tiles.AddComponent<GridTiles>();
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                    }
+                }
 
                 if (tile.tag == "LavaR")
                 {
@@ -699,6 +776,8 @@ public class MenuScript
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
                         tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
                         tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
                         // tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "River";
@@ -776,6 +855,7 @@ public class MenuScript
                 //   WaterCorner Directions
                 // |0   270|
                 //  --  ---  
+
                 else if (tile.tag == "LavaRC")
                 {
 
@@ -785,7 +865,7 @@ public class MenuScript
                         tiles.transform.parent = newRow.transform;
                         tiles.name = "og" + f + "r" + r;
                         f++;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "River";
                         tiles.AddComponent<GridTiles>();
@@ -812,7 +892,6 @@ public class MenuScript
                         tiles.tag = "River";
                         tiles.AddComponent<GridTiles>();
                         tiles.GetComponent<GridTiles>().walkable = false;
-
                     }
                 }
 
@@ -1507,19 +1586,20 @@ public class MenuScript
                         {
                             GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
                             tiles.transform.parent = newRow.transform;
+                            tiles.name = "og" + f + "r" + r;
+                            f++;
                             tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
                             // tiles.transform.localRotation = tile.transform.localRotation;
                             tiles.tag = "River";
                             tiles.AddComponent<GridTiles>();
                             tiles.GetComponent<GridTiles>().walkable = false;
 
-
                             GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                             tilesn.transform.parent = newRow.transform;
-                            Material material = Resources.Load<Material>("Dirt");
+                            Material material = Resources.Load<Material>("LavaGround");
                             tilesn.GetComponent<Renderer>().material = material;
                             tilesn.transform.localPosition = new Vector3(j, 1, 0);
-                            tilesn.transform.localScale = new Vector3(1, (tile.transform.position.y), 1);
+                            tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
                             tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
                             tilesn.transform.localPosition += Vector3.down + Vector3.down;
                             tilesn.transform.parent = tiles.transform;
@@ -2027,9 +2107,7 @@ public class MenuScript
 
         }
     }
-
-
-    [MenuItem("Tools/RecordNewAreaMap")]
+    [MenuItem("Tools/RecordOvergrown")]
     public static void RecordAreaMap()
     {
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
@@ -2044,10 +2122,246 @@ public class MenuScript
         // GameObject TheRecord = new GameObject();
         //  TheRecord.AddComponent<TempDisplayer>();
         // TheRecord.name = "I Remember";
-        //OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+         OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+       // ScorchingWastesTileSet tileset = new ScorchingWastesTileSet();
+        //FrozenTundraTileSet tileset = new FrozenTundraTileSet();
+        //GrowlingDeepsTileSet tileset = new GrowlingDeepsTileSet();
+
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        int k = 0;
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            int c = 0;
+            int u = 1;
+            foreach (MapLocation maps in areas)
+            {
+                int i = 0;
+                Rows[] allRows = maps.gameObject.GetComponentsInChildren<Rows>();
+                //"Area" + u;
+
+                tileset.rout.allAreas.areaDirectors[k].spawn = maps.GetComponent<AreaInfo>().spawnType;
+                tileset.rout.allAreas.areaDirectors[k].areas.Add(new AreaHolder());
+                tileset.rout.allAreas.areaDirectors[k].areas[c].id = maps.GetComponent<AreaInfo>().tileType;
+                tileset.rout.allAreas.areaDirectors[k].areas[c].indent = maps.GetComponent<AreaInfo>().tileName;
+
+                u++;
+                foreach (Rows row in allRows)
+                {
+                    int j = 0;
+                    //row new Vector3(0, 0, i);
+                    tileset.rout.allAreas.areaDirectors[k].areas[c].rows.Add(new RowHolder(row.name));
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name, maps.GetComponent<AreaInfo>().spawnType));
+                        //tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        j++;
+                    }
+                    i++;
+                }
+                c++;
+            }
+            k++;
+        }
+        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //TempDisplayer.overGrownLabyrinthPerm = tileset;
+        preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
+        //preFab.GetComponent<TempDisplayer>().frozenTundra = tileset;
+        //preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
+    }
+
+    [MenuItem("Tools/RecordGrowling")]
+    public static void RecordGAreaMap()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+
+        GameObject preFab = GameObject.Find("LoadMaps");
+        // GameObject preFab = new GameObject();
+        //preFab.AddComponent<TempDisplayer>();
+        // preFab.name = "LoadMap2";
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+        //  TheRecord.AddComponent<TempDisplayer>();
+        // TheRecord.name = "I Remember";
+        // OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
         //ScorchingWastesTileSet tileset = new ScorchingWastesTileSet();
         //FrozenTundraTileSet tileset = new FrozenTundraTileSet();
         GrowlingDeepsTileSet tileset = new GrowlingDeepsTileSet();
+
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        int k = 0;
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            int c = 0;
+            int u = 1;
+            foreach (MapLocation maps in areas)
+            {
+                int i = 0;
+                Rows[] allRows = maps.gameObject.GetComponentsInChildren<Rows>();
+                //"Area" + u;
+
+                tileset.rout.allAreas.areaDirectors[k].spawn = maps.GetComponent<AreaInfo>().spawnType;
+                tileset.rout.allAreas.areaDirectors[k].areas.Add(new AreaHolder());
+                tileset.rout.allAreas.areaDirectors[k].areas[c].id = maps.GetComponent<AreaInfo>().tileType;
+                tileset.rout.allAreas.areaDirectors[k].areas[c].indent = maps.GetComponent<AreaInfo>().tileName;
+
+                u++;
+                foreach (Rows row in allRows)
+                {
+                    int j = 0;
+                    //row new Vector3(0, 0, i);
+                    tileset.rout.allAreas.areaDirectors[k].areas[c].rows.Add(new RowHolder(row.name));
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name, maps.GetComponent<AreaInfo>().spawnType));
+                        //tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        j++;
+                    }
+                    i++;
+                }
+                c++;
+            }
+            k++;
+        }
+        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //TempDisplayer.overGrownLabyrinthPerm = tileset;
+        //preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
+        //preFab.GetComponent<TempDisplayer>().frozenTundra = tileset;
+        preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
+    }
+
+    [MenuItem("Tools/RecordFrozen")]
+    public static void RecordFAreaMap()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+
+        GameObject preFab = GameObject.Find("LoadMaps");
+        // GameObject preFab = new GameObject();
+        //preFab.AddComponent<TempDisplayer>();
+        // preFab.name = "LoadMap2";
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+        //  TheRecord.AddComponent<TempDisplayer>();
+        // TheRecord.name = "I Remember";
+        // OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+        //ScorchingWastesTileSet tileset = new ScorchingWastesTileSet();
+        FrozenTundraTileSet tileset = new FrozenTundraTileSet();
+        //GrowlingDeepsTileSet tileset = new GrowlingDeepsTileSet();
+
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
+        int k = 0;
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            int c = 0;
+            int u = 1;
+            foreach (MapLocation maps in areas)
+            {
+                int i = 0;
+                Rows[] allRows = maps.gameObject.GetComponentsInChildren<Rows>();
+                //"Area" + u;
+
+                tileset.rout.allAreas.areaDirectors[k].spawn = maps.GetComponent<AreaInfo>().spawnType;
+                tileset.rout.allAreas.areaDirectors[k].areas.Add(new AreaHolder());
+                tileset.rout.allAreas.areaDirectors[k].areas[c].id = maps.GetComponent<AreaInfo>().tileType;
+                tileset.rout.allAreas.areaDirectors[k].areas[c].indent = maps.GetComponent<AreaInfo>().tileName;
+
+                u++;
+                foreach (Rows row in allRows)
+                {
+                    int j = 0;
+                    //row new Vector3(0, 0, i);
+                    tileset.rout.allAreas.areaDirectors[k].areas[c].rows.Add(new RowHolder(row.name));
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        tileset.rout.allAreas.areaDirectors[k].areas[c].rows[i].tiles.Add(new TileHolder(tile.tag, tile.FindSpecOrTT(maps.gameObject), tile.TileColor(), (int)tile.gameObject.transform.localPosition.y, tile.name, maps.GetComponent<AreaInfo>().spawnType));
+                        //tiles.transform.localPosition = new Vector3(j, tile.transform.position.y, 0);
+                        j++;
+                    }
+                    i++;
+                }
+                c++;
+            }
+            k++;
+        }
+        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //TempDisplayer.overGrownLabyrinthPerm = tileset;
+        //preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
+        //preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
+        preFab.GetComponent<TempDisplayer>().frozenTundra = tileset;
+        //preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
+    }
+    [MenuItem("Tools/RecordScorching")]
+    public static void RecordSAreaMap()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+
+        GameObject preFab = GameObject.Find("LoadMaps");
+        // GameObject preFab = new GameObject();
+        //preFab.AddComponent<TempDisplayer>();
+        // preFab.name = "LoadMap2";
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+        //  TheRecord.AddComponent<TempDisplayer>();
+        // TheRecord.name = "I Remember";
+       // OverGrownLabyrinthTileSet tileset = new OverGrownLabyrinthTileSet();
+        ScorchingWastesTileSet tileset = new ScorchingWastesTileSet();
+        //FrozenTundraTileSet tileset = new FrozenTundraTileSet();
+        //GrowlingDeepsTileSet tileset = new GrowlingDeepsTileSet();
 
         tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
         tileset.rout.allAreas.areaDirectors.Add(new AreaDirector());
@@ -2103,12 +2417,13 @@ public class MenuScript
        // TheRecord.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
         //TempDisplayer.overGrownLabyrinthPerm = tileset;
         //preFab.GetComponent<TempDisplayer>().overGrownLabyrinth = tileset;
-        //preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
+        preFab.GetComponent<TempDisplayer>().scorchingWastes = tileset;
         //preFab.GetComponent<TempDisplayer>().frozenTundra = tileset;
-        preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
+        //preFab.GetComponent<TempDisplayer>().growlingDeeps = tileset;
     }
 
-    [MenuItem("Tools/RiptoMap")]
+   
+    [MenuItem("Tools/RiptoMapOver")]
     public static void RiptoMapFromMemory()
     {
 
@@ -2131,7 +2446,7 @@ public class MenuScript
         }
 
         List<AreaDirector> list = new List<AreaDirector>();
-        list = TempDisplayer.overGrownLabyrinthPerm.rout.allAreas.areaDirectors;
+        list = GameObject.FindObjectOfType<TempDisplayer>().overGrownLabyrinth.rout.allAreas.areaDirectors;
         organizer.StartUp();
         do
         {
@@ -2212,7 +2527,730 @@ public class MenuScript
         List<AreaDirector> eAreas = new List<AreaDirector>();
         // List<AreaDirector> list = new List<AreaDirector>();
 
-        foreach (AreaDirector group in TempDisplayer.overGrownLabyrinthPerm.rout.allAreas.areaDirectors)
+        foreach (AreaDirector group in GameObject.FindObjectOfType<TempDisplayer>().overGrownLabyrinth.rout.allAreas.areaDirectors)
+        {
+            if (group.spawn == "PlayerSpawn")
+            {
+                pAreas.Add(group);
+            }
+            else if (group.spawn == "EnemySpawn")
+            {
+                eAreas.Add(group);
+            }
+        }
+
+
+
+
+        int num = Random.Range(0, pAreas.Count);
+        foreach (AreaHolder map in pAreas[num].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile2)
+                    {
+                        if (tile.name == tiler.id)
+                        {
+                            tile.CheckSpawnType(tiler.spawn);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == num);
+
+        foreach (AreaHolder map in pAreas[nump].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (AreaHolder map1 in eAreas[num1].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (AreaHolder map1 in eAreas[num2].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (AreaHolder map1 in eAreas[num3].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (AreaHolder map1 in eAreas[num4].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+
+    }
+
+
+    [MenuItem("Tools/RiptoMapScorching")]
+    public static void RiptoMapSFromMemory()
+    {
+
+        // GameObject memory = GameObject.Find("I Reme");
+
+        GameObject mapping = GameObject.Find("Template36x40test");
+        GroupingOrganizer organizer = mapping.GetComponent<GroupingOrganizer>();
+        Rows[] allRows = mapping.GetComponentsInChildren<Rows>();
+        List<GridTiles> everyTile = new List<GridTiles>();
+        bool complete = false;
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> list = new List<AreaDirector>();
+        list = GameObject.FindObjectOfType<TempDisplayer>().scorchingWastes.rout.allAreas.areaDirectors;
+        organizer.StartUp();
+        do
+        {
+            organizer.taken.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                complete = true;
+                if (organizer.redo)
+                {
+                    Debug.Log("DoOver");
+                    organizer.redo = false;
+                    i = 0;
+                }
+                bool done = false;
+
+                do
+                {
+
+                    int numk = Random.Range(0, list[i].areas.Count);
+
+                    if (organizer.IsItTaken(list[i].areas[numk].indent))
+                    {
+                        organizer.taken.Add(list[i].areas[numk].indent);
+                        if (organizer.Checklist(list[i].areas[numk].id))
+                        {
+                            organizer.resetAInRows = 0;
+                            done = true;
+                            foreach (RowHolder otherRow in list[i].areas[numk].rows)
+                            {
+                                foreach (TileHolder tiler in otherRow.tiles)
+                                {
+                                    foreach (GridTiles tile in everyTile)
+                                    {
+                                        if (tile.name == tiler.id) tile.ReflectMe(tiler);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    if (organizer.redo)
+                    {
+                        organizer.taken.Clear();
+                        foreach (GridTiles tile in everyTile)
+                        {
+
+                            tile.Clean();
+                        }
+                    }
+
+
+                } while (!done && !organizer.stop && !organizer.redo);
+                if (organizer.stop) Debug.Log("deleted");
+
+
+            }
+            foreach (GridTiles tile in everyTile)
+            {
+                if (tile.tag == "Tile") complete = false;
+            }
+        } while (!complete);
+
+        List<GridTiles> everyTile2 = new List<GridTiles>();
+
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile2.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> pAreas = new List<AreaDirector>();
+        List<AreaDirector> eAreas = new List<AreaDirector>();
+        // List<AreaDirector> list = new List<AreaDirector>();
+
+        foreach (AreaDirector group in GameObject.FindObjectOfType<TempDisplayer>().scorchingWastes.rout.allAreas.areaDirectors)
+        {
+            if (group.spawn == "PlayerSpawn")
+            {
+                pAreas.Add(group);
+            }
+            else if (group.spawn == "EnemySpawn")
+            {
+                eAreas.Add(group);
+            }
+        }
+
+
+
+
+        int num = Random.Range(0, pAreas.Count);
+        foreach (AreaHolder map in pAreas[num].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile2)
+                    {
+                        if (tile.name == tiler.id)
+                        {
+                            tile.CheckSpawnType(tiler.spawn);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == num);
+
+        foreach (AreaHolder map in pAreas[nump].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (AreaHolder map1 in eAreas[num1].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (AreaHolder map1 in eAreas[num2].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (AreaHolder map1 in eAreas[num3].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (AreaHolder map1 in eAreas[num4].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+
+    }
+
+
+    [MenuItem("Tools/RiptoMapFrozen")]
+    public static void RiptoMapFFromMemory()
+    {
+
+        // GameObject memory = GameObject.Find("I Reme");
+
+        GameObject mapping = GameObject.Find("Template36x40test");
+        GroupingOrganizer organizer = mapping.GetComponent<GroupingOrganizer>();
+        Rows[] allRows = mapping.GetComponentsInChildren<Rows>();
+        List<GridTiles> everyTile = new List<GridTiles>();
+        bool complete = false;
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> list = new List<AreaDirector>();
+        list = GameObject.FindObjectOfType<TempDisplayer>().frozenTundra.rout.allAreas.areaDirectors;
+        organizer.StartUp();
+        do
+        {
+            organizer.taken.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                complete = true;
+                if (organizer.redo)
+                {
+                    Debug.Log("DoOver");
+                    organizer.redo = false;
+                    i = 0;
+                }
+                bool done = false;
+
+                do
+                {
+
+                    int numk = Random.Range(0, list[i].areas.Count);
+
+                    if (organizer.IsItTaken(list[i].areas[numk].indent))
+                    {
+                        organizer.taken.Add(list[i].areas[numk].indent);
+                        if (organizer.Checklist(list[i].areas[numk].id))
+                        {
+                            organizer.resetAInRows = 0;
+                            done = true;
+                            foreach (RowHolder otherRow in list[i].areas[numk].rows)
+                            {
+                                foreach (TileHolder tiler in otherRow.tiles)
+                                {
+                                    foreach (GridTiles tile in everyTile)
+                                    {
+                                        if (tile.name == tiler.id) tile.ReflectMe(tiler);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    if (organizer.redo)
+                    {
+                        organizer.taken.Clear();
+                        foreach (GridTiles tile in everyTile)
+                        {
+
+                            tile.Clean();
+                        }
+                    }
+
+
+                } while (!done && !organizer.stop && !organizer.redo);
+                if (organizer.stop) Debug.Log("deleted");
+
+
+            }
+            foreach (GridTiles tile in everyTile)
+            {
+                if (tile.tag == "Tile") complete = false;
+            }
+        } while (!complete);
+
+        List<GridTiles> everyTile2 = new List<GridTiles>();
+
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile2.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> pAreas = new List<AreaDirector>();
+        List<AreaDirector> eAreas = new List<AreaDirector>();
+        // List<AreaDirector> list = new List<AreaDirector>();
+
+        foreach (AreaDirector group in GameObject.FindObjectOfType<TempDisplayer>().frozenTundra.rout.allAreas.areaDirectors)
+        {
+            if (group.spawn == "PlayerSpawn")
+            {
+                pAreas.Add(group);
+            }
+            else if (group.spawn == "EnemySpawn")
+            {
+                eAreas.Add(group);
+            }
+        }
+
+
+
+
+        int num = Random.Range(0, pAreas.Count);
+        foreach (AreaHolder map in pAreas[num].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile2)
+                    {
+                        if (tile.name == tiler.id)
+                        {
+                            tile.CheckSpawnType(tiler.spawn);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        int nump = Random.Range(0, pAreas.Count);
+        do
+        {
+            nump = Random.Range(0, pAreas.Count);
+        } while (nump == num);
+
+        foreach (AreaHolder map in pAreas[nump].areas)
+        {
+            foreach (RowHolder otherRow in map.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num1 = Random.Range(0, eAreas.Count);
+        foreach (AreaHolder map1 in eAreas[num1].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num2 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num2 = Random.Range(0, eAreas.Count);
+        } while (num2 == num1);
+
+        foreach (AreaHolder map1 in eAreas[num2].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+        int num3 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num3 = Random.Range(0, eAreas.Count);
+        } while (num3 == num1 && num3 == num2);
+
+        foreach (AreaHolder map1 in eAreas[num3].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        int num4 = Random.Range(0, eAreas.Count);
+        do
+        {
+            num4 = Random.Range(0, eAreas.Count);
+        } while (num4 == num1 && num4 == num2 && num4 == num3);
+
+        foreach (AreaHolder map1 in eAreas[num4].areas)
+        {
+            foreach (RowHolder otherRow in map1.rows)
+            {
+                foreach (TileHolder tiler in otherRow.tiles)
+                {
+                    foreach (GridTiles tile in everyTile)
+                    {
+                        if (tile.name == tiler.id) tile.CheckSpawnType(tiler.spawn);
+                    }
+                }
+            }
+        }
+
+
+        //int m = 0;
+        // GameObject TheRecord = new GameObject();
+
+    }
+
+
+    [MenuItem("Tools/RiptoMapGrowling")]
+    public static void RiptoMapGFromMemory()
+    {
+
+        // GameObject memory = GameObject.Find("I Reme");
+
+        GameObject mapping = GameObject.Find("Template36x40test");
+        GroupingOrganizer organizer = mapping.GetComponent<GroupingOrganizer>();
+        Rows[] allRows = mapping.GetComponentsInChildren<Rows>();
+        List<GridTiles> everyTile = new List<GridTiles>();
+        bool complete = false;
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> list = new List<AreaDirector>();
+        list = GameObject.FindObjectOfType<TempDisplayer>().growlingDeeps.rout.allAreas.areaDirectors;
+        organizer.StartUp();
+        do
+        {
+            organizer.taken.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                complete = true;
+                if (organizer.redo)
+                {
+                    Debug.Log("DoOver");
+                    organizer.redo = false;
+                    i = 0;
+                }
+                bool done = false;
+
+                do
+                {
+
+                    int numk = Random.Range(0, list[i].areas.Count);
+
+                    if (organizer.IsItTaken(list[i].areas[numk].indent))
+                    {
+                        organizer.taken.Add(list[i].areas[numk].indent);
+                        if (organizer.Checklist(list[i].areas[numk].id))
+                        {
+                            organizer.resetAInRows = 0;
+                            done = true;
+                            foreach (RowHolder otherRow in list[i].areas[numk].rows)
+                            {
+                                foreach (TileHolder tiler in otherRow.tiles)
+                                {
+                                    foreach (GridTiles tile in everyTile)
+                                    {
+                                        if (tile.name == tiler.id) tile.ReflectMe(tiler);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    if (organizer.redo)
+                    {
+                        organizer.taken.Clear();
+                        foreach (GridTiles tile in everyTile)
+                        {
+
+                            tile.Clean();
+                        }
+                    }
+
+
+                } while (!done && !organizer.stop && !organizer.redo);
+                if (organizer.stop) Debug.Log("deleted");
+
+
+            }
+            foreach (GridTiles tile in everyTile)
+            {
+                if (tile.tag == "Tile") complete = false;
+            }
+        } while (!complete);
+
+        List<GridTiles> everyTile2 = new List<GridTiles>();
+
+        foreach (Rows row in allRows)
+        {
+            GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+            foreach (GridTiles tile in allTiles)
+            {
+                everyTile2.Add(tile);
+            }
+
+
+        }
+
+        List<AreaDirector> pAreas = new List<AreaDirector>();
+        List<AreaDirector> eAreas = new List<AreaDirector>();
+        // List<AreaDirector> list = new List<AreaDirector>();
+
+        foreach (AreaDirector group in GameObject.FindObjectOfType<TempDisplayer>().growlingDeeps.rout.allAreas.areaDirectors)
         {
             if (group.spawn == "PlayerSpawn")
             {
@@ -2445,7 +3483,7 @@ public class MenuScript
         }
     }
 
-    [MenuItem("Tools/ReskinMap")]
+    [MenuItem("Tools/ReskinMapGrowling")]
     public static void Retile()
     {
         GameObject wholeMap = GameObject.Find("WholeMap 36x40");
@@ -2465,9 +3503,10 @@ public class MenuScript
                         string m = "fl";
                         string t = tile.TileColor();
 
-                        tile.UnCheckWithText(t);
+                      
                         tile.ChartMaker(m, t);
-                        
+                        tile.UnCheckWithText(t);
+
 
                     }
                 }
@@ -2475,10 +3514,98 @@ public class MenuScript
         }
     }
 
+    [MenuItem("Tools/ReskinMapFrozen")]
+    public static void RetileF()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            foreach (MapLocation map in areas)
+            {
+                Rows[] allRows = map.GetComponentsInChildren<Rows>();
+                foreach (Rows row in allRows)
+                {
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        string m = "ic";
+                        string t = tile.TileColor();
+
+                        tile.UnCheckWithText(t);
+                        tile.ChartMaker(m, t);
+                       
+
+                    }
+                }
+            }
+        }
+    }
+
+  
+    [MenuItem("Tools/ReskinMapScorching")]
+    public static void RetileS()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            foreach (MapLocation map in areas)
+            {
+                Rows[] allRows = map.GetComponentsInChildren<Rows>();
+                foreach (Rows row in allRows)
+                {
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        string m = "de";
+                        string t = tile.TileColor();
+
+                        tile.UnCheckWithText(t);
+                        tile.ChartMaker(m, t);
+                  
+
+
+                    }
+                }
+            }
+        }
+    }
+
+    [MenuItem("Tools/FlipFlopRivers")]
+    public static void FlipFlopR()
+    {
+        GameObject wholeMap = GameObject.Find("WholeMap 36x40");
+        TempGrouper[] areaGroups = wholeMap.GetComponentsInChildren<TempGrouper>();
+
+        foreach (TempGrouper group in areaGroups)
+        {
+            MapLocation[] areas = group.GetComponentsInChildren<MapLocation>();
+            foreach (MapLocation map in areas)
+            {
+                Rows[] allRows = map.GetComponentsInChildren<Rows>();
+                foreach (Rows row in allRows)
+                {
+                    GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                    foreach (GridTiles tile in allTiles)
+                    {
+                        if (tile.tag == "LavaH") tile.tag = "LavaR";
+                        else if (tile.tag == "LavaR") tile.tag = "LavaH";
+                        else if (tile.tag == "Rivers") tile.tag = "RiverH";
+                        else if (tile.tag == "RiverH") tile.tag = "Rivers";
+                    }
+                }
+            }
+        }
+    }
 
 
 }
 
 
-          
+
 

@@ -6,6 +6,7 @@ public class TempGrouper : MonoBehaviour {
 
     public int rowMod;
     public int tileMod;
+    public string flip;
     public bool pSpawnZone;
     public bool eSpawnZone;
     // Use this for initialization

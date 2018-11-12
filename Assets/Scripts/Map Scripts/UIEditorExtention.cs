@@ -98,6 +98,7 @@ public class UIEditorExtention : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         gameObject.GetComponentInParent<GridTiles>().Clean();
         gameObject.GetComponentInParent<GridTiles>().tag = "Tile";
+        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, 1, gameObject.transform.localPosition.z);
         GameObject maps = GameObject.Find("Area" + GameObject.FindObjectOfType<MiddleManStorage>().area.ToString());
         Destroy(maps);
         yield return new WaitForSeconds(0.01f);
