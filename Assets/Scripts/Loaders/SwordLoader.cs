@@ -38,6 +38,7 @@ public class SwordLoader : MonoBehaviour
         ///  if (a == vemonBlade.name) u.details = vemonBlade;
         UnitWeapon vemonBlade = new UnitWeapon();
         vemonBlade.name = "Vemon Blade";
+        vemonBlade.cost = 200;
         vemonBlade.details.might = 12;
         vemonBlade.details.weight = 8;
         vemonBlade.details.hitrate = 65;
