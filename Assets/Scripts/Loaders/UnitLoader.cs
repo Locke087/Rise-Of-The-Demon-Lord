@@ -43,6 +43,8 @@ public class UnitLoader : MonoBehaviour {
 
     public void CreateStartingRoster()
     {
+        CurrentGame.game.memoryGeneral.itemsOwned.assessories.Clear();
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Clear();
         CurrentGame.game.storeroom.units.Clear();
         CurrentGame.game.memoryGeneral.unitsInRoster.Clear();
         CurrentGame.game.memoryGeneral.unitsInParty.Clear();

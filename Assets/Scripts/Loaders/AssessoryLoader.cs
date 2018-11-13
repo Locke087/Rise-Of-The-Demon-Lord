@@ -34,6 +34,16 @@ public class AssessoryLoader : MonoBehaviour {
         ruby.details.weight = 1;
         ruby.details.boostStr = true;
         ruby.idx = "Ruby" + IDMaker.NewID();
+      
         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(ruby);
+
+        UnitAssessory ruby2 = new UnitAssessory();
+        ruby2.name = "Ruby";
+        ruby2.details.boost = 0.2f;
+        ruby2.details.weight = 1;
+        ruby2.details.boostStr = true;
+        ruby2.idx = "Ruby" + IDMaker.NewID();
+
+        CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(ruby2);
     }
 }

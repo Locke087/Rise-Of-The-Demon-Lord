@@ -67,6 +67,7 @@ public class MainMenu : MonoBehaviour {
             CurrentGame.game.growlingDeeps = growlingDeeps;
             CurrentGame.game.scorchingWastes = scorchingWastes;
             CurrentGame.game.frozenTundra = frozenTundra;
+           
             GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
             SwordLoader.StartingInventoryWeapon();
             AssessoryLoader.StartingInventoryAssessory();

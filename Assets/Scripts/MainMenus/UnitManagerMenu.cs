@@ -24,7 +24,7 @@ public class UnitManagerMenu : MonoBehaviour {
     public bool slot3;
     public bool slot4;
     public bool slot5;
-
+    Vector2 scrollPosition;
     void OnGUI()
     {
 
@@ -33,6 +33,7 @@ public class UnitManagerMenu : MonoBehaviour {
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
+        
 
         if (currentMenu == Menu.UnitMenu)
         {
@@ -62,18 +63,24 @@ public class UnitManagerMenu : MonoBehaviour {
 
         else if (currentMenu == Menu.Inventory)
         {
-            GUILayout.BeginScrollView(Vector2.positiveInfinity, GUIStyle.none);
-            GUILayout.VerticalScrollbar(10, 2, 20, -20);
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.BeginVertical();
+            GUILayout.FlexibleSpace();
+            //GUILayout.FlexibleSpace();
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
+          
 
             GUILayout.Box("Select Slot");
             GUILayout.Space(3);
-
             GUILayout.Box("Slot 1: " + unit.inventory.invSlot1.holding);
-            if (unit.inventory.invSlot1.weapon.equipped) GUILayout.Box("Equipped Weapon");
-            if (unit.inventory.invSlot1.assessory.equipped) GUILayout.Box("Equipped Assessory");
+            if (unit.inventory.invSlot1.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot1.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
             {
                 slot1 = true;
+
                 currentMenu = Menu.WeaponOrAssessory;
             }
             if (unit.inventory.invSlot1.holding != "")
@@ -104,7 +111,7 @@ public class UnitManagerMenu : MonoBehaviour {
 
                     }
                 }
-                else if (GUILayout.Button("Unequip" + unit.inventory.invSlot1.holding))
+                else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot1.holding))
                 {
                     if (unit.inventory.invSlot1.weapon.inSlot)
                     {
@@ -135,8 +142,8 @@ public class UnitManagerMenu : MonoBehaviour {
         
             GUILayout.Space(3);
             GUILayout.Box("Slot 2: " + unit.inventory.invSlot2.holding);
-            if (unit.inventory.invSlot2.weapon.equipped) GUILayout.Box("Equipped Weapon");
-            if (unit.inventory.invSlot2.assessory.equipped) GUILayout.Box("Equipped Assessory");
+            if (unit.inventory.invSlot2.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot2.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
             {
                 slot2 = true;
@@ -201,8 +208,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.Space(3);
 
             GUILayout.Box("Slot 3: " + unit.inventory.invSlot3.holding);
-            if (unit.inventory.invSlot3.weapon.equipped) GUILayout.Box("Equipped Weapon");
-            if (unit.inventory.invSlot3.assessory.equipped) GUILayout.Box("Equipped Assessory");
+            if (unit.inventory.invSlot3.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot3.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
             {
                 slot3 = true;
@@ -266,8 +273,8 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             GUILayout.Space(3);
             GUILayout.Box("Slot 4: " + unit.inventory.invSlot4.holding);
-            if (unit.inventory.invSlot4.weapon.equipped) GUILayout.Box("Equipped Weapon");
-            if (unit.inventory.invSlot4.assessory.equipped) GUILayout.Box("Equipped Assessory");
+            if (unit.inventory.invSlot4.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot4.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
             {
                 slot4 = true;
@@ -332,8 +339,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.Space(3);
 
             GUILayout.Box("Slot 5: " + unit.inventory.invSlot4.holding);
-            if (unit.inventory.invSlot5.weapon.equipped) GUILayout.Box("Equipped Weapon");
-            if (unit.inventory.invSlot5.assessory.equipped) GUILayout.Box("Equipped Assessory");
+            if (unit.inventory.invSlot5.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot5.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
             {
                 slot5 = true;
@@ -395,10 +402,9 @@ public class UnitManagerMenu : MonoBehaviour {
                     }
                 }
             }
-            GUILayout.Space(3);
-
+  
             GUILayout.Space(5);
-            if (GUILayout.Button("Comfirm & Exit"))
+            if (GUILayout.Button("Confirm & Exit"))
             {
                 int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
@@ -411,10 +417,15 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
-
+            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
             GUILayout.EndScrollView();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
         }
-
+   
 
 
         else if (currentMenu == Menu.WeaponOrAssessory)
@@ -453,6 +464,13 @@ public class UnitManagerMenu : MonoBehaviour {
 
         else if (currentMenu == Menu.WeaponList)
         {
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.BeginVertical();
+            GUILayout.FlexibleSpace();
+            //GUILayout.FlexibleSpace();
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);
             foreach (UnitWeapon u in CurrentGame.game.memoryGeneral.itemsOwned.weapons)
@@ -460,47 +478,79 @@ public class UnitManagerMenu : MonoBehaviour {
                 if (!u.inSlot)
                 {
                     GUILayout.Box(u.name);
-                    GUILayout.Box("Might: " + u.details.might.ToString());
-                    GUILayout.Box("Hitrate: " + u.details.hitrate.ToString());
-                    GUILayout.Box("Range: " + u.details.range.ToString());
-                    GUILayout.Box("Weight: " + u.details.weight.ToString());
-                    GUILayout.Box("Critrate: " + u.details.critrate.ToString());
-                    GUILayout.Box("Critchance: " + u.details.critchance.ToString());
-                    if (u.details.physical) GUILayout.Box("Physical Damage");
-                    if (u.details.magic) GUILayout.Box("Magic Damage");
-                    if (u.details.effects.poison) GUILayout.Box("Poison");
-                    if (u.details.effects.fireDamage) GUILayout.Box("Fire Damage");
+                 //   GUILayout.Box("", GUILayout.Width(100), GUILayout.Height(100));
+                    GUILayout.Label("Might: " + u.details.might.ToString());
+                    GUILayout.Label("Hitrate: " + u.details.hitrate.ToString());
+                    GUILayout.Label("Range: " + u.details.range.ToString());
+                    GUILayout.Label("Weight: " + u.details.weight.ToString());
+                    GUILayout.Label("Critrate: " + u.details.critrate.ToString());
+                    GUILayout.Label("Critchance: " + u.details.critchance.ToString());
+                    if (u.details.physical) GUILayout.Label("Physical Damage");
+                    if (u.details.magic) GUILayout.Label("Magic Damage");
+                    if (u.details.effects.poison) GUILayout.Label("Poison");
+                    if (u.details.effects.fireDamage) GUILayout.Label("Fire Damage");
                     GUILayout.Space(5);
                     if (GUILayout.Button("Put In Slot"))
                     {
-
+                      
                         u.inSlot = true;
+                        
                         if (slot1)
                         {
+                            if (unit.inventory.invSlot1.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                            }
                             unit.inventory.invSlot1.holding = u.name;
                             unit.inventory.invSlot1.weapon = u;
                             unit.inventory.invSlot1.weapon.inSlot = true;
                         }
                         else if (slot2)
                         {
+                            if (unit.inventory.invSlot2.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                            }
                             unit.inventory.invSlot2.holding = u.name;
                             unit.inventory.invSlot2.weapon = u;
                             unit.inventory.invSlot2.weapon.inSlot = true;
                         }
                         else if (slot3)
                         {
+                            if (unit.inventory.invSlot3.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                            }
                             unit.inventory.invSlot3.holding = u.name;
                             unit.inventory.invSlot3.weapon = u;
                             unit.inventory.invSlot3.weapon.inSlot = true;
                         }
                         else if (slot4)
                         {
+                            if (unit.inventory.invSlot4.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                            }
                             unit.inventory.invSlot4.holding = u.name;
                             unit.inventory.invSlot4.weapon = u;
                             unit.inventory.invSlot4.weapon.inSlot = true;
                         }
                         else if (slot5)
                         {
+                            if (unit.inventory.invSlot5.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot5.weapon.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                            }
                             unit.inventory.invSlot5.holding = u.name;
                             unit.inventory.invSlot5.weapon = u;
                             unit.inventory.invSlot5.weapon.inSlot = true;
@@ -520,8 +570,9 @@ public class UnitManagerMenu : MonoBehaviour {
 
             }
 
+       
             GUILayout.Space(5);
-            if (GUILayout.Button("Comfirm & Exit"))
+            if (GUILayout.Button("Confirm & Exit"))
             {
                 int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
@@ -534,11 +585,25 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
+            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
+            GUILayout.EndScrollView();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
 
         }
 
         else if (currentMenu == Menu.AssessoryList)
         {
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.BeginVertical();
+            GUILayout.FlexibleSpace();
+            //GUILayout.FlexibleSpace();
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);
             foreach (UnitAssessory u in CurrentGame.game.memoryGeneral.itemsOwned.assessories)
@@ -546,13 +611,13 @@ public class UnitManagerMenu : MonoBehaviour {
                 if (!u.inSlot)
                 {
                     GUILayout.Box(u.name);
-                    if (u.details.weight > 0) GUILayout.Box("Weight " + u.details.weight.ToString());
-                    if (u.details.boostStr) GUILayout.Box("Boost Str" + " By " + u.details.boost.ToString());
-                    if (u.details.boostDef) GUILayout.Box("Boost Def" + " By " + u.details.boost.ToString());
-                    if (u.details.boostSkill) GUILayout.Box("Boost Skill" + " By " + u.details.boost.ToString());
-                    if (u.details.boostHp) GUILayout.Box("Boost HP" + " By " + u.details.boost.ToString());
-                    if (u.details.boostSpd) GUILayout.Box("Boost Spd" + " By " + u.details.boost.ToString());
-                    if (u.details.boostWill) GUILayout.Box("Boost Will" + " By " + u.details.boost.ToString());
+                    if (u.details.weight > 0) GUILayout.Label("Weight " + u.details.weight.ToString());
+                    if (u.details.boostStr) GUILayout.Label("Boost Str" + " By " + u.details.boost.ToString());
+                    if (u.details.boostDef) GUILayout.Label("Boost Def" + " By " + u.details.boost.ToString());
+                    if (u.details.boostSkill) GUILayout.Label("Boost Skill" + " By " + u.details.boost.ToString());
+                    if (u.details.boostHp) GUILayout.Label("Boost HP" + " By " + u.details.boost.ToString());
+                    if (u.details.boostSpd) GUILayout.Label("Boost Spd" + " By " + u.details.boost.ToString());
+                    if (u.details.boostWill) GUILayout.Label("Boost Will" + " By " + u.details.boost.ToString());
 
                     GUILayout.Space(5);
                     if (GUILayout.Button("Put In Slot"))
@@ -561,30 +626,60 @@ public class UnitManagerMenu : MonoBehaviour {
                         u.inSlot = true;
                         if (slot1)
                         {
+                            if (unit.inventory.invSlot1.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                            }
                             unit.inventory.invSlot1.holding = u.name;
                             unit.inventory.invSlot1.assessory = u;
                             unit.inventory.invSlot1.assessory.inSlot = true;
                         }
                         else if (slot2)
                         {
+                            if (unit.inventory.invSlot2.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                            }
                             unit.inventory.invSlot2.holding = u.name;
                             unit.inventory.invSlot2.assessory = u;
                             unit.inventory.invSlot2.assessory.inSlot = true;
                         }
                         else if (slot3)
                         {
+                            if (unit.inventory.invSlot3.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                            }
                             unit.inventory.invSlot3.holding = u.name;
                             unit.inventory.invSlot3.assessory = u;
                             unit.inventory.invSlot3.assessory.inSlot = true;
                         }
                         else if (slot4)
                         {
+                            if (unit.inventory.invSlot4.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                            }
                             unit.inventory.invSlot4.holding = u.name;
                             unit.inventory.invSlot4.assessory = u;
                             unit.inventory.invSlot4.assessory.inSlot = true;
                         }
                         else if (slot5)
                         {
+                            if (unit.inventory.invSlot5.holding != "")
+                            {
+                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                            }
                             unit.inventory.invSlot5.holding = u.name;
                             unit.inventory.invSlot5.assessory = u;
                             unit.inventory.invSlot5.assessory.inSlot = true;
@@ -604,7 +699,7 @@ public class UnitManagerMenu : MonoBehaviour {
 
             }
             GUILayout.Space(5);
-            if (GUILayout.Button("Comfirm & Exit"))
+            if (GUILayout.Button("Confirm & Exit"))
             {
                 int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
@@ -617,6 +712,13 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
+            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
+            GUILayout.EndScrollView();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
         }
 
         GUILayout.FlexibleSpace();
