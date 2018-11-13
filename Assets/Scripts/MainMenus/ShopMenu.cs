@@ -110,167 +110,166 @@ public class ShopMenu : MonoBehaviour
                         CurrentGame.game.memoryGeneral.gold = (CurrentGame.game.memoryGeneral.gold - u.cost);
                         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(u);
                         bought = true;
-                    }
-                    if (bought)
-                    {
-                        if (GUILayout.Button("Add To Unit?"))
-                        {
-                            bought = false;
-                            lookAtUnits = true;
-                        }
-                        if (GUILayout.Button("Close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                         
-                        }
-                      
-                    }
-                    if (lookAtUnits)
-                    {
-                        foreach (Unit f in CurrentGame.game.memoryGeneral.unitsInRoster)
-                        {
-                            if (GUILayout.Button(f.unitID))
-                            {
-                                unit = f;                            
-                                addToUnit = true;
-                                lookAtUnits = false;
-                            }
-                        }              
-                        if (GUILayout.Button("Close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                         
-                        }
-
-                    }
-                    if (addToUnit)
-                    {
-                        lookAtUnits = false;
-                        if (GUILayout.Button("Slot1"))
-                        {
-                            if (unit.inventory.invSlot1.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot1.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot1.weapon = u;
-                            unit.inventory.invSlot1.weapon.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                          
-
-                        }
-                        if (GUILayout.Button("Slot2"))
-                        {
-                            if (unit.inventory.invSlot2.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot2.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot2.weapon = u;
-                            unit.inventory.invSlot2.weapon.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                         
-                        }
-                        if (GUILayout.Button("Slot3"))
-                        {
-                            if (unit.inventory.invSlot3.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot3.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot3.weapon = u;
-                            unit.inventory.invSlot3.weapon.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                           
-                        }
-                        if (GUILayout.Button("Slot4"))
-                        {
-                            if (unit.inventory.invSlot4.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot4.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot4.weapon = u;
-                            unit.inventory.invSlot4.weapon.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                            
-                        }
-                        if (GUILayout.Button("Slot5"))
-                        {
-                            if (unit.inventory.invSlot5.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot5.weapon.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot5.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot5.weapon = u;
-                            unit.inventory.invSlot5.weapon.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                          
-                        }
-                        if (GUILayout.Button("close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                           
-                        }
-                    }
+                    }           
                  
                 }
                 else
                 {
                     GUILayout.Box("Not Enough Gold");
                 }
+                if (bought)
+                {
+                    if (GUILayout.Button("Add To Unit?"))
+                    {
+                        bought = false;
+                        lookAtUnits = true;
+                    }
+                    if (GUILayout.Button("Close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
 
+                    }
+
+                }
+                if (lookAtUnits)
+                {
+                    foreach (Unit f in CurrentGame.game.memoryGeneral.unitsInRoster)
+                    {
+                        if (GUILayout.Button(f.unitID))
+                        {
+                            unit = f;
+                            addToUnit = true;
+                            lookAtUnits = false;
+                        }
+                    }
+                    if (GUILayout.Button("Close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+
+                }
+                if (addToUnit)
+                {
+                    lookAtUnits = false;
+                    if (GUILayout.Button("Slot1"))
+                    {
+                        if (unit.inventory.invSlot1.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot1.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot1.weapon = u;
+                        unit.inventory.invSlot1.weapon.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+
+                    }
+                    if (GUILayout.Button("Slot2"))
+                    {
+                        if (unit.inventory.invSlot2.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot2.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot2.weapon = u;
+                        unit.inventory.invSlot2.weapon.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot3"))
+                    {
+                        if (unit.inventory.invSlot3.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot3.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot3.weapon = u;
+                        unit.inventory.invSlot3.weapon.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot4"))
+                    {
+                        if (unit.inventory.invSlot4.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot4.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot4.weapon = u;
+                        unit.inventory.invSlot4.weapon.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot5"))
+                    {
+                        if (unit.inventory.invSlot5.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot5.weapon.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot5.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot5.weapon = u;
+                        unit.inventory.invSlot5.weapon.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                }
             }
             GUILayout.Space(5);
             if (GUILayout.Button("Exit"))
@@ -326,166 +325,164 @@ public class ShopMenu : MonoBehaviour
                         CurrentGame.game.memoryGeneral.gold = (CurrentGame.game.memoryGeneral.gold - u.cost);
                         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(u);
                         bought = true;
-                    }
-                    if (bought)
-                    {
-                        if (GUILayout.Button("Add To Unit?"))
-                        {
-                            bought = false;
-                            lookAtUnits = true;
-                        }
-                        if (GUILayout.Button("Close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-
-                    }
-                    if (lookAtUnits)
-                    {
-                        foreach (Unit f in CurrentGame.game.memoryGeneral.unitsInRoster)
-                        {
-                            if (GUILayout.Button(f.unitID))
-                            {
-                                unit = f;
-                                addToUnit = true;
-                                lookAtUnits = false;
-                            }
-                        }
-                        if (GUILayout.Button("Close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-
-                    }
-                    if (addToUnit)
-                    {
-                        lookAtUnits = false;
-                        if (GUILayout.Button("Slot1"))
-                        {
-                            if (unit.inventory.invSlot1.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot1.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot1.assessory = u;
-                            unit.inventory.invSlot1.assessory.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            bought = false;
-                            lookAtUnits = false;
-
-
-                        }
-                        if (GUILayout.Button("Slot2"))
-                        {
-                            if (unit.inventory.invSlot2.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot2.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot2.assessory = u;
-                            unit.inventory.invSlot2.assessory.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-                        if (GUILayout.Button("Slot3"))
-                        {
-                            if (unit.inventory.invSlot3.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot3.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot3.assessory = u;
-                            unit.inventory.invSlot3.assessory.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-                        if (GUILayout.Button("Slot4"))
-                        {
-                            if (unit.inventory.invSlot4.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot4.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot4.assessory = u;
-                            unit.inventory.invSlot4.assessory.inSlot = true;
-
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-                        if (GUILayout.Button("Slot5"))
-                        {
-                            if (unit.inventory.invSlot5.holding != "")
-                            {
-                                int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
-                            }
-                            unit.inventory.invSlot5.holding = u.name;
-                            u.inSlot = true;
-                            unit.inventory.invSlot5.assessory = u;
-                            unit.inventory.invSlot5.assessory.inSlot = true;
-                            int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
-                            int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
-                            CurrentGame.game.storeroom.units[num] = unit;
-                            CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-
-                        }
-                        if (GUILayout.Button("close"))
-                        {
-                            addToUnit = false;
-                            bought = false;
-                            lookAtUnits = false;
-                        }
-                    }
-
+                    }               
                 }
                 else
                 {
                     GUILayout.Box("Not Enough Gold");
                 }
-          
+                if (bought)
+                {
+                    if (GUILayout.Button("Add To Unit?"))
+                    {
+                        bought = false;
+                        lookAtUnits = true;
+                    }
+                    if (GUILayout.Button("Close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+
+                }
+                if (lookAtUnits)
+                {
+                    foreach (Unit f in CurrentGame.game.memoryGeneral.unitsInRoster)
+                    {
+                        if (GUILayout.Button(f.unitID))
+                        {
+                            unit = f;
+                            addToUnit = true;
+                            lookAtUnits = false;
+                        }
+                    }
+                    if (GUILayout.Button("Close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+
+                }
+                if (addToUnit)
+                {
+                    lookAtUnits = false;
+                    if (GUILayout.Button("Slot1"))
+                    {
+                        if (unit.inventory.invSlot1.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot1.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot1.assessory = u;
+                        unit.inventory.invSlot1.assessory.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        bought = false;
+                        lookAtUnits = false;
+
+
+                    }
+                    if (GUILayout.Button("Slot2"))
+                    {
+                        if (unit.inventory.invSlot2.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot2.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot2.assessory = u;
+                        unit.inventory.invSlot2.assessory.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot3"))
+                    {
+                        if (unit.inventory.invSlot3.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot3.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot3.assessory = u;
+                        unit.inventory.invSlot3.assessory.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot4"))
+                    {
+                        if (unit.inventory.invSlot4.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot4.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot4.assessory = u;
+                        unit.inventory.invSlot4.assessory.inSlot = true;
+
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("Slot5"))
+                    {
+                        if (unit.inventory.invSlot5.holding != "")
+                        {
+                            int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].inSlot = false;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].equipped = false;
+                        }
+                        unit.inventory.invSlot5.holding = u.name;
+                        u.inSlot = true;
+                        unit.inventory.invSlot5.assessory = u;
+                        unit.inventory.invSlot5.assessory.inSlot = true;
+                        int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                        int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                        CurrentGame.game.storeroom.units[num] = unit;
+                        CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+
+                    }
+                    if (GUILayout.Button("close"))
+                    {
+                        addToUnit = false;
+                        bought = false;
+                        lookAtUnits = false;
+                    }
+                }
 
             }
 
