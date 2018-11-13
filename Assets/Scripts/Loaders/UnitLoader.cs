@@ -72,10 +72,13 @@ public class UnitLoader : MonoBehaviour {
         int[] bases = { 7, 5, 3, 5, 2, 1 };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = "Nimble";
+        me.inventory.invSlot1.holding = "Vemon Blade";
         me.inventory.invSlot1.weapon.equipped = true;
-
+        me.inventory.invSlot1.weapon.name = "Vemon Blade";
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
         SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
-
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(me.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(me);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(me);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(me);
@@ -105,9 +108,15 @@ public class UnitLoader : MonoBehaviour {
         // str, def, spd, skill, magic, will
         int[] bases2 = { 8, 4, 2, 6, 1, 2 };
         newMe.unitInfo.bases.AddRange(bases2);
-        newMe.unitInfo.nature = "";
+        newMe.unitInfo.nature = "Tough";
+        newMe.inventory.invSlot1.holding = "Vemon Blade";
         newMe.inventory.invSlot1.weapon.equipped = true;
-
+        newMe.inventory.invSlot1.weapon.name = "Vemon Blade";
+        newMe.inventory.invSlot1.weapon.inSlot = true;
+        newMe.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
+        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
+       
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe);
@@ -143,9 +152,12 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = "Nimble";
         me.inventory.invSlot1.weapon.equipped = true;
-
+       
+        me.inventory.invSlot1.weapon.name = "Vemon Blade";
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
         SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
-
+      
         enemiesInMap.Add(me);
         enemiesInMap.Add(me);
         enemiesInMap.Add(me);
@@ -157,7 +169,7 @@ public class UnitLoader : MonoBehaviour {
 
         Unit newMe = new Unit();
 
-        newMe.unitID = "Melvin";
+        newMe.unitID = "DadGuy";
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
         newMe.unitClass.main.human.warrior.level = rating;
@@ -173,8 +185,13 @@ public class UnitLoader : MonoBehaviour {
         // str, def, spd, skill, magic, will
         int[] bases2 = { 8, 4, 2, 6, 1, 2 };
         newMe.unitInfo.bases.AddRange(bases2);
-        newMe.unitInfo.nature = "";
+        newMe.unitInfo.nature = "Hardy";
         newMe.inventory.invSlot1.weapon.equipped = true;
+
+        newMe.inventory.invSlot1.weapon.name = "Vemon Blade";
+        newMe.inventory.invSlot1.weapon.inSlot = true;
+        newMe.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
+        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
 
         enemiesInMap.Add(newMe);
         enemiesInMap.Add(newMe);

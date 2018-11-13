@@ -68,6 +68,8 @@ public class MainMenu : MonoBehaviour {
             CurrentGame.game.scorchingWastes = scorchingWastes;
             CurrentGame.game.frozenTundra = frozenTundra;
             GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
+            SwordLoader.StartingInventoryWeapon();
+            AssessoryLoader.StartingInventoryAssessory();
 
             if (GUILayout.Button("Save")) {
 				//Save the current Game as a new saved Game

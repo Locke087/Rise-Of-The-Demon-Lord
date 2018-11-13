@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a7d351a2a2bc54eaee23459b0bc74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkable: 0
+  walkable: 1
   current: 0
   target: 0
   selectable: 0
@@ -332,10 +332,74 @@ MonoBehaviour:
   mapLocation: {fileID: 0}
   rows: {fileID: 0}
   phaseSwitcher: {fileID: 0}
+  playerSpawn: 0
+  enemySpawn: 0
+  bossSpawn: 0
+  reinforcementSpawn: 0
+  recuitSpawn: 0
+  objectivePoint: 0
+  taken: 0
+  chartMaster:
+    ogTexture: []
+    icTexture: []
+    deTexture: []
+    flTexture: []
+  houseTile: 0
+  grass: 0
+  vine: 0
+  lavaGround: 0
+  forest: 0
+  brigde: 0
+  cobbleStone: 0
+  mountain: 0
+  overGrownWall: 0
+  stoneWall: 0
+  graniteWall: 0
+  stonePathway: 0
+  swamp: 0
+  street: 0
+  dirt: 0
+  coloredHT: 0
+  dungeonTile: 0
+  brick: 0
+  carpet: 0
+  lava: 0
+  water: 0
+  poison: 0
+  snow: 0
+  snowyWall: 0
+  snowyRock: 0
+  snowyMountain: 0
+  ice: 0
+  sand: 0
+  orangeRedRock: 0
+  darkRedRock: 0
+  redRock: 0
+  redRockWall: 0
+  moltenRock: 0
+  sandyGrass: 0
+  sandstone: 0
+  sandstoneWall: 0
+  sandFlow: 0
+  rusty: 0
+  roughRoad: 0
+  roof: 0
+  mossyRock: 0
+  mossyPuddle: 0
+  limestone: 0
+  quartz: 0
+  obsidian: 0
+  otherCarpet: 0
+  NEorN: 0
+  NWorE: 0
+  SEorS: 0
+  SWorW: 0
+  hazard: 0
   marked: []
   counter: 0
   adjacencyList: []
   attackList: []
+  highlighted: 0
   visited: 0
   parent: {fileID: 0}
   distance: 0

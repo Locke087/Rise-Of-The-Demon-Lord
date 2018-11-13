@@ -10,27 +10,30 @@ public class TownGeneralMenu : MonoBehaviour {
     public Button mapEditor;
     public Button save;
     public GameObject saveMenu;
+    public GameObject partyMenu;
+    public Button unitMenu;
     public Text changer;
     public Button changeButton;
 	void Start () {
-        changeButton.onClick.AddListener(ChangeText);
+      // changeButton.onClick.AddListener(ChangeText);
         mapEditor.onClick.AddListener(LoadEditor);
         save.onClick.AddListener(Save);
-        changer.text = CurrentGame.game.memoryGeneral.doISave;
+        unitMenu.onClick.AddListener(UnitMenu);
+      //  changer.text = CurrentGame.game.memoryGeneral.doISave;
         saveMenu.SetActive(false);
   
     }
 	
-    void ChangeText()
+   /* void ChangeText()
     {
         CurrentGame.game.memoryGeneral.doISave = "chess";
         changer.text = CurrentGame.game.memoryGeneral.doISave;
-    }
+    }*/
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void UnitMenu()
+    {
+        partyMenu.SetActive(true);
+    }
 
     void Save()
     {

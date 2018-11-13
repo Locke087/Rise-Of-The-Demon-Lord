@@ -12,6 +12,8 @@ public class UnitWeaponDetails {
     public float critrate;
     public int critchance;
     public int range;
+    public bool magic;
+    public bool physical;
     public UnitWeaponEffects effects;
     public UnitWeaponDetails()
     {
@@ -21,6 +23,8 @@ public class UnitWeaponDetails {
         hitrate = 0;
         critrate = 0;
         critchance = 0;
+        magic = false;
+        physical = false;
         effects = new UnitWeaponEffects();
     }
 }
