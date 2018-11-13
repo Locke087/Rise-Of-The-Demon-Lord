@@ -67,11 +67,11 @@ public class MainMenu : MonoBehaviour {
             CurrentGame.game.growlingDeeps = growlingDeeps;
             CurrentGame.game.scorchingWastes = scorchingWastes;
             CurrentGame.game.frozenTundra = frozenTundra;
-           
+            CurrentGame.game.memoryGeneral.gold = 600;
             GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
             SwordLoader.StartingInventoryWeapon();
             AssessoryLoader.StartingInventoryAssessory();
-
+            ItemLoader.StartingInventoryItems();
             if (GUILayout.Button("Save")) {
 				//Save the current Game as a new saved Game
 				SaveLoad.Save();

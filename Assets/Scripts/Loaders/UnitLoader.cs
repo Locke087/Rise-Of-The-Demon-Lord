@@ -43,8 +43,12 @@ public class UnitLoader : MonoBehaviour {
 
     public void CreateStartingRoster()
     {
+        CurrentGame.game.memoryGeneral.itemsOwned.items.Clear();
         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Clear();
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Clear();
+        CurrentGame.game.memoryGeneral.shopWares.items.Clear();
+        CurrentGame.game.memoryGeneral.shopWares.assessories.Clear();
+        CurrentGame.game.memoryGeneral.shopWares.weapons.Clear();
         CurrentGame.game.storeroom.units.Clear();
         CurrentGame.game.memoryGeneral.unitsInRoster.Clear();
         CurrentGame.game.memoryGeneral.unitsInParty.Clear();
@@ -78,6 +82,7 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.equipped = true;
         me.inventory.invSlot1.weapon.name = "Vemon Blade";
         me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.cost = 100;
         me.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
         SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(me.inventory.invSlot1.weapon);
@@ -115,6 +120,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.inventory.invSlot1.weapon.equipped = true;
         newMe.inventory.invSlot1.weapon.name = "Vemon Blade";
         newMe.inventory.invSlot1.weapon.inSlot = true;
+        newMe.inventory.invSlot1.weapon.cost = 100;
         newMe.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
         SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
        

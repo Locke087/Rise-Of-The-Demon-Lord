@@ -28,8 +28,7 @@ public class SwordLoader : MonoBehaviour
 
         if (sw == vemonBlade.name) u.details = vemonBlade;
 
-        UnitAssessoryDetails ruby = new UnitAssessoryDetails();
-        //ruby.
+      
 
     }
 
@@ -49,6 +48,7 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.details.name = "Vemon Blade";
         vemonBlade.idx = "Vemon Blade" + IDMaker.NewID();
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(vemonBlade);
+        CurrentGame.game.memoryGeneral.shopWares.weapons.Add(vemonBlade);
     }
 
 }

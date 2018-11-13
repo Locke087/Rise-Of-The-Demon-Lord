@@ -7,6 +7,7 @@ public class UnitAssessory {
 
     public string idx;
     public string name;
+    public int cost;
     public bool inSlot;
     public bool equipped;
     public UnitAssessoryDetails details;
@@ -17,6 +18,7 @@ public class UnitAssessory {
         name = "";
         inSlot = false;
         equipped = false;
+        cost = 0;
         details = new UnitAssessoryDetails();
     }
 }

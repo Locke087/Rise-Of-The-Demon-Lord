@@ -74,6 +74,7 @@ public class UnitManagerMenu : MonoBehaviour {
 
             GUILayout.Box("Select Slot");
             GUILayout.Space(3);
+
             GUILayout.Box("Slot 1: " + unit.inventory.invSlot1.holding);
             if (unit.inventory.invSlot1.weapon.equipped) GUILayout.Label("Equipped Weapon");
             if (unit.inventory.invSlot1.assessory.equipped) GUILayout.Label("Equipped Assessory");
@@ -477,14 +478,16 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 if (!u.inSlot)
                 {
-                    GUILayout.Box(u.name);
-                 //   GUILayout.Box("", GUILayout.Width(100), GUILayout.Height(100));
-                    GUILayout.Label("Might: " + u.details.might.ToString());
+                    GUILayout.Label(u.name);
+                    //   GUILayout.Box("", GUILayout.Width(100), GUILayout.Height(100));
+                    GUILayout.Label("Mt: " + u.details.might.ToString() + " | Hit: " + u.details.hitrate.ToString() + " | Wt: " + u.details.weight.ToString() +
+                      " | CritR: " + u.details.critrate.ToString() + " | CritC: " + u.details.critchance.ToString() + " | Range: " + u.details.range.ToString());
+                  /*GUILayout.Label("Might: " + u.details.might.ToString());
                     GUILayout.Label("Hitrate: " + u.details.hitrate.ToString());
                     GUILayout.Label("Range: " + u.details.range.ToString());
                     GUILayout.Label("Weight: " + u.details.weight.ToString());
                     GUILayout.Label("Critrate: " + u.details.critrate.ToString());
-                    GUILayout.Label("Critchance: " + u.details.critchance.ToString());
+                    GUILayout.Label("Critchance: " + u.details.critchance.ToString());*/
                     if (u.details.physical) GUILayout.Label("Physical Damage");
                     if (u.details.magic) GUILayout.Label("Magic Damage");
                     if (u.details.effects.poison) GUILayout.Label("Poison");

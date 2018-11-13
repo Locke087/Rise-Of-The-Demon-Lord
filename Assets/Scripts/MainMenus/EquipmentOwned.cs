@@ -7,10 +7,11 @@ public class EquipmentOwned {
 
     public List<UnitWeapon> weapons;
     public List<UnitAssessory> assessories;
-
-	public EquipmentOwned()
+    public List<ItemHolder> items;
+    public EquipmentOwned()
     {
         weapons = new List<UnitWeapon>();
         assessories = new List<UnitAssessory>();
+        items = new List<ItemHolder>();
     }
 }
