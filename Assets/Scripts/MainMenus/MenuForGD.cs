@@ -60,8 +60,7 @@ public class MenuForGD : MonoBehaviour {
         CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
         string name = "gdlevel1";
         CurrentGame.game.memoryGeneral.currentLevelID = name;
-        CurrentGame.game.memoryGeneral.levelCompletion.gdLevels.level1.level = name;
-        CurrentGame.game.memoryGeneral.currentLevels.Add(CurrentGame.game.memoryGeneral.levelCompletion.gdLevels.level1);
+ 
         SceneManager.LoadScene("GDMap1");
     }
 

@@ -52,7 +52,8 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Clear();
         CurrentGame.game.memoryGeneral.unitsInRoster.Clear();
         CurrentGame.game.memoryGeneral.unitsInParty.Clear();
-
+        CurrentGame.game.memoryGeneral.enemiesInMaps.units.Clear();
+        Warrior.Clear();
         Unit me = new Unit();
 
         me.unitID = "Jeorge";
@@ -62,10 +63,13 @@ public class UnitLoader : MonoBehaviour {
         for (int i = 0; i < me.unitClass.main.human.warrior.level; i++)
         {
             Warrior.LevelUp();
+            me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+            me.unitClass.main.human.warrior.caps = Warrior.Caplist();
         }
         me.unitClass.main.human.warrior.movement = 5;
-        me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
-        me.unitClass.main.human.warrior.caps = Warrior.Caplist();
+      //  me.unitClass.main.human.warrior.modifiers.Clear();
+      //  me.unitClass.main.human.warrior.caps.Clear();
+      
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
@@ -93,15 +97,13 @@ public class UnitLoader : MonoBehaviour {
 
         Unit newMe = new Unit();
   
-        newMe.unitID = "Melvin";
+        newMe.unitID = "Melvins";
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
         newMe.unitClass.main.human.warrior.level = 5;
-        for (int i = 0; i < newMe.unitClass.main.human.warrior.level; i++)
-        {
-            Warrior.LevelUp();
-        }
         newMe.unitClass.main.human.warrior.movement = 5;
+      //  newMe.unitClass.main.human.warrior.modifiers.Clear();
+      //  newMe.unitClass.main.human.warrior.caps.Clear();
         newMe.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
@@ -140,10 +142,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.mainClass = "Warrior";
         me.unitClass.main.race = "Human";
         me.unitClass.main.human.warrior.level = rating;
-        for (int i = 0; i < me.unitClass.main.human.warrior.level; i++)
-        {
-            Warrior.LevelUp();
-        }
+     
         me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         me.unitClass.main.human.warrior.caps = Warrior.Caplist();
@@ -181,10 +180,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
         newMe.unitClass.main.human.warrior.level = rating;
-        for (int i = 0; i < newMe.unitClass.main.human.warrior.level; i++)
-        {
-            Warrior.LevelUp();
-        }
+   
         newMe.unitClass.main.human.warrior.movement = 5;
         newMe.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();

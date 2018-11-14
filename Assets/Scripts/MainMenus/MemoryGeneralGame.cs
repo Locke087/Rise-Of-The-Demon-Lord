@@ -13,7 +13,9 @@ public class MemoryGeneralGame {
     public ShopWares shopWares;
     public int gold;
     public LevelCompletion levelCompletion;
+    public LevelHolder levelHolder;
     public List<CurrentLevel> currentLevels;
+    public CurrentLevel currentLevel;
     public string currentLevelID;
     public string doISave;
 	public MemoryGeneralGame()
@@ -23,6 +25,7 @@ public class MemoryGeneralGame {
         itemsOwned = new EquipmentOwned();
         shopWares = new ShopWares();
         enemiesInMaps = new EnemiesInMap();
+        levelHolder = new LevelHolder();
         levelCompletion = new LevelCompletion();
         currentLevels = new List<CurrentLevel>();
         heldGameType = new AreaGroupHolder();

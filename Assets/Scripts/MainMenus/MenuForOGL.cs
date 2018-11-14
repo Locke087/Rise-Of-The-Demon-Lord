@@ -56,8 +56,6 @@ public class MenuForOGL : MonoBehaviour {
         CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
         string name = "oglevel1";
         CurrentGame.game.memoryGeneral.currentLevelID = name;
-        CurrentGame.game.memoryGeneral.levelCompletion.ogLevels.level1.level = name;
-        CurrentGame.game.memoryGeneral.currentLevels.Add(CurrentGame.game.memoryGeneral.levelCompletion.ogLevels.level1);
         SceneManager.LoadScene("OGLMap1");
     }
 

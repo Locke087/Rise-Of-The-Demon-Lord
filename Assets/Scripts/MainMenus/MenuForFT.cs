@@ -56,8 +56,7 @@ public class MenuForFT : MonoBehaviour {
         CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
         string name = "ftlevel1";
         CurrentGame.game.memoryGeneral.currentLevelID = name;
-        CurrentGame.game.memoryGeneral.levelCompletion.ftLevels.level1.level = name;
-        CurrentGame.game.memoryGeneral.currentLevels.Add(CurrentGame.game.memoryGeneral.levelCompletion.ftLevels.level1);
+     
         SceneManager.LoadScene("FTMap1");
     }
 

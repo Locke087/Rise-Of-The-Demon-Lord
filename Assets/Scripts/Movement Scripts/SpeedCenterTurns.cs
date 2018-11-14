@@ -24,7 +24,7 @@ public class SpeedCenterTurns : MonoBehaviour {
 	}
 	
 	
-    public void UpdateList()
+   /* public void UpdateList()
     {
         allUnits.Clear();
         playerUnits.Clear();
@@ -58,6 +58,7 @@ public class SpeedCenterTurns : MonoBehaviour {
             GameObject highest;
             int highestNum = 0;
             int highestUnitIndex = 0;
+            bool fail = false;
             do
             {
                 for (int i = 0; i < allUnits.Count; i++)
@@ -69,12 +70,15 @@ public class SpeedCenterTurns : MonoBehaviour {
                             highest = allUnits[i];
                             highestUnitIndex = i;
                             highestNum = allUnits[i].GetComponent<Stats>().spd;
-                        }
-                        else if (allUnits[i].GetComponent<Stats>().spd == highestNum && allUnits[i].tag == "Player")
+                            allUnits[i].GetComponent<ChoosenAlready>().picked = true;
+
+                        }                   
+                        else if (allUnits[i].GetComponent<Stats>().spd == highestNum)
                         {
                             highest = allUnits[i];
                             highestUnitIndex = i;
                             highestNum = allUnits[i].GetComponent<Stats>().spd;
+                            allUnits[i].GetComponent<ChoosenAlready>().picked = true;
                         }
                     }
                 }
@@ -114,10 +118,10 @@ public class SpeedCenterTurns : MonoBehaviour {
         {
             upNext = 0;
             StartTurn();
-        }*/
+        }
          upNext = 0;
          StartTurn();
-    }
+    }*/
 
 
 
@@ -128,9 +132,11 @@ public class SpeedCenterTurns : MonoBehaviour {
         playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        
         GameObject highest;
         int highestNum = 0;
         int highestUnitIndex = 0;
+        bool gotone = false;
         do
         {
             for (int i = 0; i < allUnits.Count; i++)
@@ -142,16 +148,29 @@ public class SpeedCenterTurns : MonoBehaviour {
                         highest = allUnits[i];
                         highestUnitIndex = i;
                         highestNum = allUnits[i].GetComponent<Stats>().spd;
+                        gotone = true;
                     }
-                    else if (allUnits[i].GetComponent<Stats>().spd == highestNum && allUnits[i].tag == "Player")
-                    {
-                        highest = allUnits[i];
-                        highestUnitIndex = i;
-                        highestNum = allUnits[i].GetComponent<Stats>().spd;
-                    }
+                    
                 }
             }
+            if (!gotone)
+            {
+                for (int i = 0; i < allUnits.Count; i++)
+                {
+                    if (!allUnits[i].GetComponent<Stats>().skip)
+                    {
+                        if (allUnits[i].GetComponent<Stats>().spd == highestNum)
+                        {
+                            highest = allUnits[i];
+                            highestUnitIndex = i;
+                            highestNum = allUnits[i].GetComponent<Stats>().spd;
+                        }
+                    }
 
+                }
+              
+            }
+            gotone = false;
             highestNum = 0;
             allUnits[highestUnitIndex].GetComponent<Stats>().skip = true;
             unitOrder.Add(allUnits[highestUnitIndex]);

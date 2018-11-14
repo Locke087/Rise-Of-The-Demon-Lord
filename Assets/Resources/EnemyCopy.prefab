@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114441351203014964}
   - component: {fileID: 114641385255928904}
   - component: {fileID: 114216616895260910}
+  - component: {fileID: 114227765253399570}
   m_Layer: 0
   m_Name: EnemyCopy
   m_TagString: Enemy
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitID: Melvin
+  unitID: DadGuy
   hp: 0
   str: 0
   def: 0
@@ -185,6 +186,18 @@ MonoBehaviour:
   calcSkill: 0
   calcMagic: 0
   calcWill: 0
+--- !u!114 &114227765253399570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149182482640766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e346f715cdcd7824d993ab7d102a919e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picked: 0
 --- !u!114 &114441351203014964
 MonoBehaviour:
   m_ObjectHideFlags: 1

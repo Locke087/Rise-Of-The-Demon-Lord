@@ -60,8 +60,6 @@ public class MenuForSW : MonoBehaviour {
         CurrentGame.game.memoryGeneral.enemiesInMaps = enemiesInMap;
         string name = "swlevel1";
         CurrentGame.game.memoryGeneral.currentLevelID = name;
-        CurrentGame.game.memoryGeneral.levelCompletion.swLevels.level1.level = name;
-        CurrentGame.game.memoryGeneral.currentLevels.Add(CurrentGame.game.memoryGeneral.levelCompletion.swLevels.level1);
         SceneManager.LoadScene("SWMap1");
     }
 

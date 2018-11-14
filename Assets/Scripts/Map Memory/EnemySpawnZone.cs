@@ -50,10 +50,11 @@ public class EnemySpawnZone : MonoBehaviour {
       
         foreach (NewSpawnPoint newSpawn in spawnPoints)
         {
-            GameObject temp = Resources.Load("EnemyCopy") as GameObject; 
-            Instantiate(temp, GameObject.Find(newSpawn.tileID).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
+            GameObject temp = Resources.Load("EnemyCopy") as GameObject;
             temp.GetComponent<Stats>().unitID = newSpawn.enemyID.unitID;
             temp.name = newSpawn.enemyID.unitID;
+            Instantiate(temp, GameObject.Find(newSpawn.tileID).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
+           
             // temp.
         }
     }

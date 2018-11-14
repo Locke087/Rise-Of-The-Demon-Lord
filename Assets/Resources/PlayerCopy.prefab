@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114618273748916894}
   - component: {fileID: 114751766126835248}
   - component: {fileID: 114963991271076884}
+  - component: {fileID: 114397171167189000}
   m_Layer: 0
   m_Name: PlayerCopy
   m_TagString: Player
@@ -123,6 +124,18 @@ MonoBehaviour:
   actualTargetTile: {fileID: 0}
   inUse: 0
   attacked: 0
+--- !u!114 &114397171167189000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654723943776352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e346f715cdcd7824d993ab7d102a919e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picked: 0
 --- !u!114 &114551773680583276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f91330ca38ac9b40b8cdcc3883603df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitID: Melvin
+  unitID: Melvins
   hp: 0
   str: 0
   def: 0

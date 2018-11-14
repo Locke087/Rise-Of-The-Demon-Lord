@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopMenu : MonoBehaviour
-{
+public class OGDeploymentMenu : MonoBehaviour {
 
-    public enum Menu
+  /*  public enum Menu
     {
-        ShopMenu,
+        LevelMenu,
         WeaponList,
         AssessoryList,
         ItemList,
@@ -20,7 +19,7 @@ public class ShopMenu : MonoBehaviour
     public bool bought;
     public bool lookAtUnits;
     public bool addToUnit;
-    public Unit unit;
+    //public Unit unit;
     Vector2 scrollPosition;
     void OnGUI()
     {
@@ -40,31 +39,23 @@ public class ShopMenu : MonoBehaviour
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
-       
-        if (currentMenu == Menu.ShopMenu)
+
+        if (currentMenu == Menu.LevelMenu)
         {
 
-            GUILayout.Box("Shop");
+            GUILayout.Box("Select Level");
             GUILayout.Space(10);
-
-            if (GUILayout.Button("Buy Weapon"))
+            foreach (CurrentLevel level in CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels)
             {
-                currentMenu = Menu.WeaponList;
+                if (!level.complete)
+                {
+                    if (GUILayout.Button(level.name + " Power Rating of " + level.powerRanking.ToString() + " Stars"))
+                    {
+                        currentMenu = Menu.WeaponList;
+                    }
+                }
             }
-            if (GUILayout.Button("Buy Assessory"))
-            {
-                currentMenu = Menu.AssessoryList;
-            }
-            if (GUILayout.Button("Buy Item"))
-            {
-                currentMenu = Menu.ItemList;
-            }
-
-            GUILayout.Space(10);
-            if (GUILayout.Button("Exit Menu"))
-            {
-                menuPar.SetActive(false);
-            }
+            
         }
 
 
@@ -77,10 +68,10 @@ public class ShopMenu : MonoBehaviour
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
             //GUILayout.FlexibleSpace();
-         
+
             GUILayout.Space(5);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
-     
+
             GUILayout.Box("Select Weapon");
             GUILayout.Space(10);
             foreach (UnitWeapon u in CurrentGame.game.memoryGeneral.shopWares.weapons)
@@ -94,13 +85,13 @@ public class ShopMenu : MonoBehaviour
                   GUILayout.Label("Range: " + u.details.range.ToString());
                   GUILayout.Label("Weight: " + u.details.weight.ToString());
                   GUILayout.Label("Critrate: " + u.details.critrate.ToString());
-                  GUILayout.Label("Critchance: " + u.details.critchance.ToString());*/
+                  GUILayout.Label("Critchance: " + u.details.critchance.ToString());
                 if (u.details.physical) GUILayout.Label("Physical Damage");
                 if (u.details.magic) GUILayout.Label("Magic Damage");
                 if (u.details.effects.poison) GUILayout.Label("Poison");
                 if (u.details.effects.fireDamage) GUILayout.Label("Fire Damage");
-            
-           
+
+
                 if (u.cost <= CurrentGame.game.memoryGeneral.gold)
                 {
                     if (GUILayout.Button("Buy for " + u.cost.ToString() + " gold"))
@@ -109,8 +100,8 @@ public class ShopMenu : MonoBehaviour
                         CurrentGame.game.memoryGeneral.gold = (CurrentGame.game.memoryGeneral.gold - u.cost);
                         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(u);
                         bought = true;
-                    }           
-                 
+                    }
+
                 }
                 else
                 {
@@ -273,9 +264,9 @@ public class ShopMenu : MonoBehaviour
             GUILayout.Space(5);
             if (GUILayout.Button("Exit"))
             {
-                currentMenu = Menu.ShopMenu;
+                currentMenu = Menu.LevelMenu;
             }
-          
+
             GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
@@ -295,10 +286,10 @@ public class ShopMenu : MonoBehaviour
             GUILayout.FlexibleSpace();
             //GUILayout.FlexibleSpace();
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
-        
+
             GUILayout.Box("Select Assessory");
             GUILayout.Space(10);
-     
+
             foreach (UnitAssessory u in CurrentGame.game.memoryGeneral.shopWares.assessories)
             {
                 GUILayout.Box(u.name);
@@ -310,12 +301,12 @@ public class ShopMenu : MonoBehaviour
                 if (u.details.boostSpd) GUILayout.Label("Boost Spd" + " By " + u.details.boost.ToString());
                 if (u.details.boostWill) GUILayout.Label("Boost Will" + " By " + u.details.boost.ToString());
                 GUILayout.Space(5);
-              
-      
 
-               
+
+
+
                 GUILayout.Space(5);
-              
+
                 if (u.cost <= CurrentGame.game.memoryGeneral.gold)
                 {
                     if (GUILayout.Button("Buy for " + u.cost.ToString() + " gold"))
@@ -324,7 +315,7 @@ public class ShopMenu : MonoBehaviour
                         CurrentGame.game.memoryGeneral.gold = (CurrentGame.game.memoryGeneral.gold - u.cost);
                         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(u);
                         bought = true;
-                    }               
+                    }
                 }
                 else
                 {
@@ -488,7 +479,7 @@ public class ShopMenu : MonoBehaviour
             GUILayout.Space(5);
             if (GUILayout.Button("Exit"))
             {
-                currentMenu = Menu.ShopMenu;
+                currentMenu = Menu.LevelMenu;
             }
             GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
             GUILayout.EndScrollView();
@@ -540,7 +531,7 @@ public class ShopMenu : MonoBehaviour
             GUILayout.Space(5);
             if (GUILayout.Button("Exit"))
             {
-                currentMenu = Menu.ShopMenu;
+                currentMenu = Menu.LevelMenu;
             }
             GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
             GUILayout.EndScrollView();
@@ -557,5 +548,5 @@ public class ShopMenu : MonoBehaviour
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
-    }
+    }*/
 }

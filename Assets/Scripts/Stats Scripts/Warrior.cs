@@ -61,6 +61,8 @@ public class Warrior : MonoBehaviour {
 
     }
 
+
+
     /*public static List<int> IncList()
     {
         List<int> newList = new List<int>();
@@ -72,6 +74,29 @@ public class Warrior : MonoBehaviour {
         newList.Add(willStatIncrease);
         return newList;
     }*/
+
+    public static void Clear()
+    {
+        increaseStr = 0;
+        increaseDef = 0;
+        increaseSkill = 0;
+        increaseSpd = 0;
+        increaseMagic = 0;
+        increaseWill = 0;
+        strModifer = 3;
+        defModifer = 3;
+        skillModifer = 2.5f;
+        spdModifer = 2.5f;
+        magicModifer = 2;
+        willModifer = 2;
+        level = 0;
+        move = 5;
+        baseHp = 14;
+    }
+
+
+
+
 
     public static List<float> ModList()
     {
