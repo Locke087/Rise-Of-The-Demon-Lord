@@ -6194,10 +6194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3e24a942581c74a9489f070baf40aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitMenu: {fileID: 0}
-  move: {fileID: 0}
-  attack: {fileID: 0}
-  endTurn: {fileID: 0}
+  unitMenu: {fileID: 2115594548}
+  move: {fileID: 1421399785}
+  attack: {fileID: 1009990157}
+  endTurn: {fileID: 1061720109}
   menuActive: 0
   attackFinished: 0
   movedFinished: 0

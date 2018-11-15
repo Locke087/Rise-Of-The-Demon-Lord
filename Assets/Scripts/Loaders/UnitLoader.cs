@@ -97,7 +97,7 @@ public class UnitLoader : MonoBehaviour {
 
         Unit newMe = new Unit();
   
-        newMe.unitID = "Melvins";
+        newMe.unitID = "Melvin";
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
         newMe.unitClass.main.human.warrior.level = 5;

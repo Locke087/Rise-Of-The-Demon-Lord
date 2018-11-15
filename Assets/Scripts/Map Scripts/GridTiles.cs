@@ -956,29 +956,34 @@ public class GridTiles : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.GetComponent<MCMove>() != null)
-        {
+        /*  if (collision.gameObject.GetComponent<MCMove>() != null)
+          {
 
-            unit = collision.gameObject;
-            Rows[] allRows;
-            allRows = mapLocation.GetComponentsInChildren<Rows>();
-            int i = 0;
-            foreach (Rows row in allRows)
-            {
-                GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
-                foreach (GridTiles tile in allTiles)
-                {
-                    if (tile.unit != null)
-                        if (tile.unit.GetComponent<MCMove>() != null)
-                        {
-                            i++;
-                            if (i > 1) tile.unit = null;
-                        }
-                }
-            }
-            i = 0;
+              unit = collision.gameObject;
+              Rows[] allRows;
+              allRows = mapLocation.GetComponentsInChildren<Rows>();
+              int i = 0;
+              foreach (Rows row in allRows)
+              {
+                  GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
+                  foreach (GridTiles tile in allTiles)
+                  {
+                      if (tile.unit != null)
+                          if (tile.unit.GetComponent<MCMove>() != null)
+                          {
+                              i++;
+                              if (i > 1) tile.unit = null;
+                          }
+                  }
+              }
+              i = 0;
+          }
+          else*/
+        if(collision.gameObject.GetComponent<Stats>() != null) unit = collision.gameObject;
+        else
+        {
+            unit = collision.gameObject.GetComponentInParent<Rows>().gameObject.GetComponentInParent<UnitSelect>().gameObject;
         }
-        else unit = collision.gameObject;
     }
 
 

@@ -214,7 +214,7 @@ public class SpeedCenterTurns : MonoBehaviour {
        
         if (!stopped)
         {
-            unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.green;
+          //  unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.green;
             cam.transform.position = new Vector3(unitOrder[upNext].transform.position.x, cam.transform.position.y, unitOrder[upNext].transform.position.z);
             activeUnit = unitOrder[upNext];
             int temp = upNext;
