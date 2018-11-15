@@ -22,167 +22,180 @@ public class SpeedCenterTurns : MonoBehaviour {
         playerUnits = new List<GameObject>();
         enemyUnits = new List<GameObject>();
 	}
-	
-	
-   /* public void UpdateList()
+
+
+    /* public void UpdateList()
+     {
+         allUnits.Clear();
+         playerUnits.Clear();
+         enemyUnits.Clear();
+         upNext = 0;
+         if (GameObject.FindGameObjectsWithTag("Player") != null)
+         {
+
+             allUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+             playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+         }
+         else
+         {
+             stopped = true;
+             FindObjectOfType<GameOver>().GameEnd();
+
+         }
+
+         if (GameObject.FindGameObjectsWithTag("Enemy") != null)
+         {
+             allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+             enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+         }
+         else
+         {
+             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+         }
+
+         if (!stopped)
+         {
+             GameObject highest;
+             int highestNum = 0;
+             int highestUnitIndex = 0;
+             bool fail = false;
+             do
+             {
+                 for (int i = 0; i < allUnits.Count; i++)
+                 {
+                     if (!allUnits[i].GetComponent<Stats>().skip)
+                     {
+                         if (allUnits[i].GetComponent<Stats>().spd > highestNum)
+                         {
+                             highest = allUnits[i];
+                             highestUnitIndex = i;
+                             highestNum = allUnits[i].GetComponent<Stats>().spd;
+                             allUnits[i].GetComponent<ChoosenAlready>().picked = true;
+
+                         }                   
+                         else if (allUnits[i].GetComponent<Stats>().spd == highestNum)
+                         {
+                             highest = allUnits[i];
+                             highestUnitIndex = i;
+                             highestNum = allUnits[i].GetComponent<Stats>().spd;
+                             allUnits[i].GetComponent<ChoosenAlready>().picked = true;
+                         }
+                     }
+                 }
+
+                 highestNum = 0;
+                 allUnits[highestUnitIndex].GetComponent<Stats>().skip = true;
+                 unitOrder.Add(allUnits[highestUnitIndex]);
+             } while (allUnits.Count != unitOrder.Count);
+
+             foreach (GameObject unit in allUnits)
+             {
+                 unit.GetComponent<Stats>().skip = false;
+             }
+
+             ResumeTurns();
+         }
+     }
+
+     void ResumeTurns()
+     {
+       /* if (activeUnit != null)
+        {
+             do
+             {
+                 upNext++;
+             } while (activeUnit != unitOrder[upNext]);
+        }
+        else if (nextUnit != null)
+        {
+             do
+             {
+                 upNext++;
+             } while (nextUnit != unitOrder[upNext]);
+             StartTurn();
+        }
+         else
+         {
+             upNext = 0;
+             StartTurn();
+         }
+          upNext = 0;
+          StartTurn();
+     }*/
+    public bool FoundHigher(List<GameObject> temp, GameObject highest)
     {
-        allUnits.Clear();
-        playerUnits.Clear();
-        enemyUnits.Clear();
-        upNext = 0;
-        if (GameObject.FindGameObjectsWithTag("Player") != null)
+        foreach (GameObject u in temp)
         {
-
-            allUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-            playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-        }
-        else
-        {
-            stopped = true;
-            FindObjectOfType<GameOver>().GameEnd();
-
-        }
-
-        if (GameObject.FindGameObjectsWithTag("Enemy") != null)
-        {
-            allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-            enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        }
-        else
-        {
-            if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
-        }
-
-        if (!stopped)
-        {
-            GameObject highest;
-            int highestNum = 0;
-            int highestUnitIndex = 0;
-            bool fail = false;
-            do
+            if (u.GetComponent<Stats>().spd > highest.GetComponent<Stats>().spd)
             {
-                for (int i = 0; i < allUnits.Count; i++)
-                {
-                    if (!allUnits[i].GetComponent<Stats>().skip)
-                    {
-                        if (allUnits[i].GetComponent<Stats>().spd > highestNum)
-                        {
-                            highest = allUnits[i];
-                            highestUnitIndex = i;
-                            highestNum = allUnits[i].GetComponent<Stats>().spd;
-                            allUnits[i].GetComponent<ChoosenAlready>().picked = true;
-
-                        }                   
-                        else if (allUnits[i].GetComponent<Stats>().spd == highestNum)
-                        {
-                            highest = allUnits[i];
-                            highestUnitIndex = i;
-                            highestNum = allUnits[i].GetComponent<Stats>().spd;
-                            allUnits[i].GetComponent<ChoosenAlready>().picked = true;
-                        }
-                    }
-                }
-
-                highestNum = 0;
-                allUnits[highestUnitIndex].GetComponent<Stats>().skip = true;
-                unitOrder.Add(allUnits[highestUnitIndex]);
-            } while (allUnits.Count != unitOrder.Count);
-
-            foreach (GameObject unit in allUnits)
-            {
-                unit.GetComponent<Stats>().skip = false;
+                return true;
             }
-
-            ResumeTurns();
         }
+        return false;
     }
 
-    void ResumeTurns()
+    public GameObject OnlyTheFastest(List<GameObject> temp)
     {
-      /* if (activeUnit != null)
-       {
-            do
-            {
-                upNext++;
-            } while (activeUnit != unitOrder[upNext]);
-       }
-       else if (nextUnit != null)
-       {
-            do
-            {
-                upNext++;
-            } while (nextUnit != unitOrder[upNext]);
-            StartTurn();
-       }
-        else
+
+        GameObject highest = temp[0];
+        do
         {
-            upNext = 0;
-            StartTurn();
+            foreach (GameObject u in temp)
+            {
+                if (u.GetComponent<Stats>().spd > highest.GetComponent<Stats>().spd)
+                {
+                    Debug.Log(u.GetComponent<Stats>().spd + " no I am sonic");
+                    highest = u;
+                }
+            }
+        } while (FoundHigher(temp, highest));
+
+        foreach (GameObject u in temp)
+        {
+            if (u.GetComponent<Stats>().spd > highest.GetComponent<Stats>().spd)
+            {
+                highest = u;
+            }
         }
-         upNext = 0;
-         StartTurn();
-    }*/
 
+        return highest;
+    }
 
-
-    public void Ordering()
+   
+    IEnumerator DelayOrder()
     {
-
+        
+        List<GameObject> temp = new List<GameObject>();
         allUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         playerUnits.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         allUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         enemyUnits.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        
-        GameObject highest;
-        int highestNum = 0;
-        int highestUnitIndex = 0;
-        bool gotone = false;
+        temp.AddRange(allUnits);
+        GameObject highest = new GameObject();
+        yield return new WaitForSeconds(0.3f);
         do
         {
-            for (int i = 0; i < allUnits.Count; i++)
+            if (temp.Count > 0)
             {
-                if (!allUnits[i].GetComponent<Stats>().skip)
-                {
-                    if (allUnits[i].GetComponent<Stats>().spd > highestNum)
-                    {
-                        highest = allUnits[i];
-                        highestUnitIndex = i;
-                        highestNum = allUnits[i].GetComponent<Stats>().spd;
-                        gotone = true;
-                    }
-                    
-                }
+                highest = OnlyTheFastest(temp);
+                unitOrder.Add(highest);
+                Debug.Log("order " + highest.name + " " + highest.GetComponent<Stats>().spd.ToString());
+                temp.Remove(highest);
             }
-            if (!gotone)
-            {
-                for (int i = 0; i < allUnits.Count; i++)
-                {
-                    if (!allUnits[i].GetComponent<Stats>().skip)
-                    {
-                        if (allUnits[i].GetComponent<Stats>().spd == highestNum)
-                        {
-                            highest = allUnits[i];
-                            highestUnitIndex = i;
-                            highestNum = allUnits[i].GetComponent<Stats>().spd;
-                        }
-                    }
+        } while (allUnits.Count > unitOrder.Count);
 
-                }
-              
-            }
-            gotone = false;
-            highestNum = 0;
-            allUnits[highestUnitIndex].GetComponent<Stats>().skip = true;
-            unitOrder.Add(allUnits[highestUnitIndex]);
-        } while (allUnits.Count != unitOrder.Count); 
-        
-        foreach(GameObject unit in allUnits)
+        foreach (GameObject unit in allUnits)
         {
             unit.GetComponent<Stats>().skip = false;
         }
 
         StartTurn();
-        
+
+    }
+
+    public void Ordering()
+    {
+        StartCoroutine(DelayOrder());
     }
 
     public void StartTurn()

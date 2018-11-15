@@ -17,8 +17,9 @@ public class TownGeneralMenu : MonoBehaviour {
     public Text changer;
     public Button changeButton;
 	void Start () {
+        CurrentGame.game.memoryGeneral.unitsInParty.Clear();
       // changeButton.onClick.AddListener(ChangeText);
-        mapEditor.onClick.AddListener(LoadEditor);
+      mapEditor.onClick.AddListener(LoadEditor);
         shopMenu.onClick.AddListener(ShopMenu);
         save.onClick.AddListener(Save);
         unitMenu.onClick.AddListener(UnitMenu);

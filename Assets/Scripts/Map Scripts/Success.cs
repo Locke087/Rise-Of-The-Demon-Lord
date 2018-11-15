@@ -34,7 +34,7 @@ public class Success : MonoBehaviour {
     {
         foreach (CurrentLevel l in CurrentGame.game.memoryGeneral.currentLevels)
         {
-            if (CurrentGame.game.memoryGeneral.currentLevelID == l.level) l.complete = true;
+            if (CurrentGame.game.memoryGeneral.currentLevelID == l.name) l.complete = true;
         }
 
     }

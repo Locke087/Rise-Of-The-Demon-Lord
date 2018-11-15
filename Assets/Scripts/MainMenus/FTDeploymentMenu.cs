@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class OGDeploymentMenu : MonoBehaviour
-{
+public class FTDeploymentMenu : MonoBehaviour {
 
     public enum Menu
     {
@@ -28,19 +27,19 @@ public class OGDeploymentMenu : MonoBehaviour
     public bool slot4;
     public bool slot5;
     CurrentLevel newLevel;
-  
+
     //public Unit unit;
     Vector2 scrollPosition;
-  
+
     void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(((Screen.width * -1)/8), ((Screen.width * -1)/18), Screen.width / 2, Screen.height / 4));
-    
+        GUILayout.BeginArea(new Rect(((Screen.width * -1) / 8), ((Screen.width * -1) / 18), Screen.width / 2, Screen.height / 4));
+
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
-        GUILayout.Box("The Overgrown Labyrinth");
+        GUILayout.Box("The Frozen Tundra");
         GUILayout.FlexibleSpace();
         GUILayout.EndVertical();
         GUILayout.FlexibleSpace();
@@ -51,7 +50,7 @@ public class OGDeploymentMenu : MonoBehaviour
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
-     
+
         if (currentMenu == Menu.LevelMenu)
         {
             GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
@@ -60,25 +59,25 @@ public class OGDeploymentMenu : MonoBehaviour
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
             GUILayout.Space(10);
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width/2f), GUILayout.Height(Screen.height * 1.5f));
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Level");
             GUILayout.Space(10);
-            foreach (CurrentLevel level in CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels)
+            foreach (CurrentLevel level in CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels)
             {
                 if (!level.complete)
                 {
                     if (GUILayout.Button(level.name))
                     {
-                       CurrentGame.game.memoryGeneral.currentLevel = level;
-                       newLevel = level;
-                       CurrentGame.game.memoryGeneral.enemiesInMaps = level.enemiesInMap;
-                       currentMenu = Menu.unitSelect;
+                        CurrentGame.game.memoryGeneral.currentLevel = level;
+                        newLevel = level;
+                        CurrentGame.game.memoryGeneral.enemiesInMaps = level.enemiesInMap;
+                        currentMenu = Menu.unitSelect;
                     }
                     GUILayout.Label("Enemy Power Level of " + level.powerRanking.ToString() + " Stars");
                     GUILayout.Space(10);
                 }
 
-             
+
             }
 
             GUILayout.Space(10);
@@ -86,7 +85,7 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 menuPar.SetActive(false);
             }
-               GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
@@ -105,7 +104,7 @@ public class OGDeploymentMenu : MonoBehaviour
             GUILayout.FlexibleSpace();
             //GUILayout.FlexibleSpace();
             GUILayout.Space(10);
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width /2f), GUILayout.Height(Screen.height * 1.5f));
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Unit");
             GUILayout.Space(10);
             foreach (Unit u in CurrentGame.game.memoryGeneral.unitsInRoster)
@@ -160,7 +159,7 @@ public class OGDeploymentMenu : MonoBehaviour
                             GUILayout.Label("Has the Assessory " + u.inventory.invSlot2.holding + " in Slot 2");
                         }
                     }
-                }         
+                }
                 if (u.inventory.invSlot3.holding != "")
                 {
                     if (u.inventory.invSlot3.weapon.inSlot)
@@ -186,7 +185,7 @@ public class OGDeploymentMenu : MonoBehaviour
                         }
                     }
                 }
-              
+
                 if (u.inventory.invSlot4.holding != "")
                 {
                     if (u.inventory.invSlot4.weapon.inSlot)
@@ -211,7 +210,7 @@ public class OGDeploymentMenu : MonoBehaviour
                             GUILayout.Label("Has the Assessory " + u.inventory.invSlot4.holding + " in Slot 4");
                         }
                     }
-                }     
+                }
                 if (u.inventory.invSlot5.holding != "")
                 {
                     if (u.inventory.invSlot5.weapon.inSlot)
@@ -238,7 +237,7 @@ public class OGDeploymentMenu : MonoBehaviour
                     }
                 }
                 if (FindSlotCount(u) > 0) GUILayout.Label("Has " + FindSlotCount(u) + " empty slots");
-            
+
                 if (selectionCount <= newLevel.deployLimit && FindInParty(u))
                 {
                     if (GUILayout.Button("Select " + u.unitID))
@@ -256,12 +255,12 @@ public class OGDeploymentMenu : MonoBehaviour
                         CurrentGame.game.memoryGeneral.unitsInParty.Remove(u);
                     }
                 }
-                if(GUILayout.Button("Edit Inventory of " + u.unitID))
+                if (GUILayout.Button("Edit Inventory of " + u.unitID))
                 {
                     unit = u;
                     currentMenu = Menu.Inventory;
                 }
-              
+
                 GUILayout.Space(5);
             }
             if (selectionCount >= newLevel.deployLimit)
@@ -299,9 +298,9 @@ public class OGDeploymentMenu : MonoBehaviour
             GUILayout.Space(5);
             if (GUILayout.Button("Exit"))
             {
-              selectionCount = 0;
-              CurrentGame.game.memoryGeneral.unitsInParty.Clear();
-              currentMenu = Menu.LevelMenu;
+                selectionCount = 0;
+                CurrentGame.game.memoryGeneral.unitsInParty.Clear();
+                currentMenu = Menu.LevelMenu;
             }
             GUILayout.Label("", GUILayout.Width(Screen.width / 2.5f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
@@ -723,7 +722,7 @@ public class OGDeploymentMenu : MonoBehaviour
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
             //GUILayout.FlexibleSpace();
-          //  GUILayout.Space(10);
+            //  GUILayout.Space(10);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);
@@ -859,7 +858,7 @@ public class OGDeploymentMenu : MonoBehaviour
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
             //GUILayout.FlexibleSpace();
-          //  GUILayout.Space(10);
+            //  GUILayout.Space(10);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);

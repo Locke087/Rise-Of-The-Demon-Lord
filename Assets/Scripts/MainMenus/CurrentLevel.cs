@@ -6,14 +6,20 @@ using UnityEngine;
 public class CurrentLevel {
 
     public bool complete;
-    public string level;
+    public string name;
+    public string sceneName;
     public string idx;
+    public int powerRanking;
+    public int deployLimit;
     public EnemiesInMap enemiesInMap;
     public CurrentLevel()
     {
         enemiesInMap = new EnemiesInMap();
         complete = false;
-        level = "";
+        name = "";
+        sceneName = "";
         idx = "";
+        powerRanking = 0;
+        deployLimit = 0;
     }
 }

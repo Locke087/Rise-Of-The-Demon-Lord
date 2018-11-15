@@ -9,7 +9,7 @@ public class MenuScript
 
     //my tools
 
-    [MenuItem("Tools/Assign Custom Material")]
+   [MenuItem("Tools/Assign Custom Material")]
     public static void AssignCustomMaterial()
     {
         GameObject something = GameObject.Find("StartMenuInField");
@@ -1285,13 +1285,7 @@ public class MenuScript
                     }
 
                 }
-                /*else
-                {
-                    GameObject tiles = new GameObject();
-                    tiles.AddComponent<GridTiles>();
-                    tiles.transform.parent = newRow.transform;
-                    tiles.name = "rr" + f + "r" + r;
-                }*/
+            
                 j++;
             }
             i++;
@@ -1587,13 +1581,12 @@ public class MenuScript
                             GameObject tiles = GameObject.Instantiate(Resources.Load("LavaRiverLine")) as GameObject;
                             tiles.transform.parent = newRow.transform;
                             tiles.name = "og" + f + "r" + r;
-                            f++;
+                            f++;;
                             tiles.transform.localPosition = new Vector3(j - 0.25f, tile.transform.localPosition.y, 0);
                             // tiles.transform.localRotation = tile.transform.localRotation;
                             tiles.tag = "River";
                             tiles.AddComponent<GridTiles>();
-                            tiles.GetComponent<GridTiles>().walkable = false;
-
+                            tiles.GetComponent<GridTiles>().walkable = false;
                             GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                             tilesn.transform.parent = newRow.transform;
                             Material material = Resources.Load<Material>("LavaGround");
@@ -1602,7 +1595,7 @@ public class MenuScript
                             tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
                             tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
                             tilesn.transform.localPosition += Vector3.down + Vector3.down;
-                            tilesn.transform.parent = tiles.transform;
+                            tilesn.transform.parent = tiles.transform;;
 
                         }
                         else
@@ -2098,7 +2091,7 @@ public class MenuScript
                         tiles.AddComponent<GridTiles>();
                         tiles.transform.parent = newRow.transform;
                         tiles.name = "rr" + f + "r" + r;
-                    }*/
+                   }*/
                     j++;
                 }
                 i++;
@@ -3535,8 +3528,7 @@ public class MenuScript
                         string t = tile.TileColor();
 
                         tile.UnCheckWithText(t);
-                        tile.ChartMaker(m, t);
-                       
+                        tile.ChartMaker(m, t);                       
 
                     }
                 }
@@ -3564,12 +3556,9 @@ public class MenuScript
                     {
                         string m = "de";
                         string t = tile.TileColor();
-
-                        tile.UnCheckWithText(t);
+   
+                       tile.UnCheckWithText(t);
                         tile.ChartMaker(m, t);
-                  
-
-
                     }
                 }
             }
@@ -3605,7 +3594,3 @@ public class MenuScript
 
 
 }
-
-
-
-
