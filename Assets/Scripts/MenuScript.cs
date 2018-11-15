@@ -264,7 +264,6 @@ public class MenuScript
 
     }
 
-
     [MenuItem("Tools/CreateTileNames")]
     public static void CreateTileNames()
     {
@@ -424,7 +423,109 @@ public class MenuScript
 
     }
 
+    [MenuItem("Tools/TempSquareMaker")]
+    public static void MakeMYTemp()
+    {
+        GameObject orgin = GameObject.Find("!!0r0tempAlt");
+        GameObject mid = GameObject.Find("!!0r0tempmid");
+        GameObject motherTile = new GameObject();
+        motherTile.transform.parent = GameObject.Find("Template36x40test").transform;
+        motherTile.transform.position = mid.transform.position;
+        motherTile.name = "mini tile grid";
+        //  motherTile.transform.position
+        int r = 32;
+        int f = 32;
+        float num = 0.03125f;
+        for (int i = 0; i < r; i++)
+        {   
+            
+            GameObject rowTile = new GameObject();
+            rowTile.transform.parent = motherTile.transform;
 
+            rowTile.transform.localPosition = new Vector3(0, 0, (num * i));
+            rowTile.name = "u!" + i;
+            for (int j =0; j < f; j++)
+            {
+                GameObject tiles = GameObject.Instantiate(Resources.Load("!!0r0tempTile")) as GameObject;
+                tiles.transform.parent = rowTile.transform;
+                tiles.transform.localPosition = new Vector3((num * j), tiles.transform.localPosition.y, 0);
+                tiles.name = "u!" + j + "r" + i;
+            }           
+            
+        }
+    
+
+
+    }
+
+    [MenuItem("Tools/TempSquareMaker")]
+    public static void MakeMYTempImage()
+    {
+        GameObject orgin = GameObject.Find("!!0r0tempAlt");
+        GameObject mid = GameObject.Find("!!0r0tempmid");
+        GameObject motherTile = new GameObject();
+        motherTile.transform.parent = GameObject.Find("Template36x40test").transform;
+        motherTile.name = "mini image grid";
+        //  motherTile.transform.position
+        int r = 32;
+        int f = 32;
+        float num = 0.03125f;
+        for (int i = 0; i < r; i++)
+        {
+
+            GameObject rowTile = new GameObject();
+            rowTile.transform.parent = motherTile.transform;
+
+            rowTile.transform.localPosition = new Vector3(0, 0, (num * i));
+            rowTile.name = "u!" + i;
+            for (int j = 0; j < f; j++)
+            {
+                GameObject tiles = GameObject.Instantiate(Resources.Load("!!0r0tempTile")) as GameObject;
+                tiles.transform.parent = rowTile.transform;
+                tiles.transform.localPosition = new Vector3((num * j), tiles.transform.localPosition.y, 0);
+                tiles.name = "u!" + j + "r" + i;
+            }
+
+        }
+
+
+
+    }
+
+
+    [MenuItem("Tools/TempImageMaker")]
+    public static void MakeMYTempImageq()
+    {
+        GameObject orgin = GameObject.Find("!!0r0tempAlt");
+        GameObject mid = GameObject.Find("!!0r0tempmid");
+        GameObject motherTile = new GameObject();
+        motherTile.transform.parent = GameObject.Find("Template36x40test").transform;
+        motherTile.name = "mini image grid overaly";
+        //  motherTile.transform.position
+        int r = 32;
+        int f = 32;
+        float num = 0.03125f;
+        for (int i = 0; i < r; i++)
+        {
+
+            GameObject rowTile = new GameObject();
+            rowTile.transform.parent = motherTile.transform;
+
+            rowTile.transform.localPosition = new Vector3(0, 0, (num * i));
+            rowTile.name = "u!" + i;
+            for (int j = 0; j < f; j++)
+            {
+                GameObject tiles = GameObject.Instantiate(Resources.Load("Tester1")) as GameObject;
+                tiles.transform.parent = rowTile.transform;
+                tiles.transform.localPosition = new Vector3((num * j), tiles.transform.localPosition.y, 0);
+                tiles.name = "u!" + j + "r" + i;
+            }
+
+        }
+
+
+
+    }
     [MenuItem("Tools/GenerateNewMap")]
     public static void SetNewTile()
     {
@@ -1586,7 +1687,8 @@ public class MenuScript
                             // tiles.transform.localRotation = tile.transform.localRotation;
                             tiles.tag = "River";
                             tiles.AddComponent<GridTiles>();
-                            tiles.GetComponent<GridTiles>().walkable = false;
+                            tiles.GetComponent<GridTiles>().walkable = false;
+
                             GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                             tilesn.transform.parent = newRow.transform;
                             Material material = Resources.Load<Material>("LavaGround");
@@ -3591,6 +3693,8 @@ public class MenuScript
             }
         }
     }
+
+
 
 
 }
