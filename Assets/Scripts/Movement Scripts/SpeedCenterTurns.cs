@@ -283,12 +283,12 @@ public class SpeedCenterTurns : MonoBehaviour {
 
             if (unitOrder[upNext].tag == "Player")
             {
-                unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                //unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.blue;
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = false;
             }
             else
             {
-                unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.red;
+               //unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.red;
             }
             int check = upNext + 1;
             if (check < unitOrder.Count)

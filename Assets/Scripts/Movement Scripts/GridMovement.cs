@@ -163,6 +163,15 @@ public class GridMovement : MonoBehaviour
         }
     }
 
+    IEnumerator MoveSlower(Vector3 target)
+    {
+        do
+        {
+            transform.position = Vector3.Lerp(transform.position, target, 0.05f);
+            yield return new WaitForSeconds(0.01f);
+        } while (Vector3.Distance(transform.position, target) >= 0.05f);
+    }
+
     public void Move()
     {
         if (path.Count > 0)
@@ -179,7 +188,8 @@ public class GridMovement : MonoBehaviour
                 SetHorizotalVelocity();
                 //Locomotion
                 transform.forward = heading;
-                transform.position += velocity * Time.deltaTime;
+                StartCoroutine(MoveSlower(target));
+                //transform.position += velocity * Time.deltaTime;
             }
             else
             {

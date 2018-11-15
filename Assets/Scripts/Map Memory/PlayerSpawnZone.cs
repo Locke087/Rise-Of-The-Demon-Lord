@@ -54,7 +54,8 @@ public class PlayerSpawnZone : MonoBehaviour {
             GameObject temp = Resources.Load("PlayerCopy") as GameObject;
             temp.GetComponent<Stats>().unitID = newSpawn.playerID.unitID;
             temp.name = newSpawn.playerID.unitID;
-            Instantiate(temp, GameObject.Find(newSpawn.tileID).transform.position + new Vector3(0, 0, 0), setQuaterRotation(0, 0, 0));
+          //  temp.transform.parent. = GameObject.Find("Map Overlay").transform;
+            Instantiate(temp, GameObject.Find(newSpawn.tileID).transform.position + new Vector3(0, 1.4f, 0), setQuaterRotation(0, 0, 0));
        
            // temp.
         }
