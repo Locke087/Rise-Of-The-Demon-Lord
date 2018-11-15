@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UnitSkillEffects {
+public class UnitSkillEffects
+{
 
     public bool knockBack;
     public bool attackBoost;
@@ -25,6 +26,18 @@ public class UnitSkillEffects {
     public bool selfDamage;
     public bool counter;
     public bool hitrateReduce;
+    public bool dodge;
+    public bool stealMoney;
+    public bool stealItem;
+    public bool darkDamage;
+    public bool waterDamage;
+    public bool earthDamage;
+    public bool natureDamage;
+    public bool metalDamage;
+    public bool trueDamage;
+    public bool overRun;
+    public bool movementDown;
+
     public UnitSkillEffects()
     {
         counter = false;
@@ -43,10 +56,20 @@ public class UnitSkillEffects {
         berserk = false;
         vampire = false;
         holyDamage = false;
+        darkDamage = false;
         fireDamage = false;
+        waterDamage = false;
+        earthDamage = false;
+        natureDamage = false;
+        metalDamage = false;
+        trueDamage = false;
         healing = false;
         revive = false;
-
-
+        hitrateReduce = false;
+        dodge = false;
+        stealItem = false;
+        stealMoney = false;
+        overRun = false;
+        movementDown = false;
     }
 }

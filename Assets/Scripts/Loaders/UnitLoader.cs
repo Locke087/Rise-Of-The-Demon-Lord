@@ -67,9 +67,7 @@ public class UnitLoader : MonoBehaviour {
             me.unitClass.main.human.warrior.caps = Warrior.Caplist();
         }
         me.unitClass.main.human.warrior.movement = 5;
-      //  me.unitClass.main.human.warrior.modifiers.Clear();
-      //  me.unitClass.main.human.warrior.caps.Clear();
-      
+
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
@@ -130,6 +128,47 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe);
+
+        Unit newMe2 = new Unit();
+
+        newMe2.unitID = "Jesel";
+        newMe2.unitClass.main.mainClass = "Cavalier";
+        newMe2.unitClass.main.race = "Human";
+        newMe2.unitClass.main.human.cavalier.level = 5;
+        for (int i = 0; i < newMe2.unitClass.main.human.cavalier.level; i++)
+        {
+            Cavalier.LevelUp();
+            newMe2.unitClass.main.human.cavalier.modifiers = Cavalier.ModList();
+            newMe2.unitClass.main.human.cavalier.caps = Cavalier.Caplist();
+        }
+        newMe2.unitClass.main.human.cavalier.movement = 6;
+    
+        CavalierLoader.AssignSkill("Trample", newMe2.unitClass.main.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("Lance", newMe2.unitClass.main.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("Protect Flanks", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        newMe2.unitInfo.main = newMe2.unitClass.main.human.cavalier;
+
+        // str, def, spd, skill, magic, will
+        int[] bases3 = { 8, 4, 2, 6, 1, 2 };
+        newMe2.unitInfo.bases.AddRange(bases2);
+        newMe2.unitInfo.nature = "Tough";
+        newMe2.inventory.invSlot1.holding = "Vemon Blade";
+        newMe2.inventory.invSlot1.weapon.equipped = true;
+        newMe2.inventory.invSlot1.weapon.name = "Vemon Blade";
+        newMe2.inventory.invSlot1.weapon.inSlot = true;
+        newMe2.inventory.invSlot1.weapon.cost = 100;
+        newMe2.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
+        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe2.inventory.invSlot1.weapon);
+        CurrentGame.game.storeroom.units.Add(newMe2);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
+
     }
 
 
