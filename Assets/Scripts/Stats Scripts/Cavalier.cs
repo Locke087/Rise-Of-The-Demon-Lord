@@ -73,7 +73,24 @@ public class Cavalier : MonoBehaviour {
         newList.Add(willStatIncrease);
         return newList;
     }*/
-
+    public static void Clear()
+    {
+        increaseStr = 0;
+        increaseDef = 0;
+        increaseSkill = 0;
+        increaseSpd = 0;
+        increaseMagic = 0;
+        increaseWill = 0;
+        strModifer = 3;
+        defModifer = 3;
+        skillModifer = 2.5f;
+        spdModifer = 2.5f;
+        magicModifer = 2;
+        willModifer = 2;
+        level = 0;
+        move = 6;
+        baseHp = 14;
+    }
 
     public static List<float> Caplist()
     {
@@ -203,4 +220,5 @@ public class Cavalier : MonoBehaviour {
         willStatIncrease = willAmount;
     }*/
 
+ 
 }

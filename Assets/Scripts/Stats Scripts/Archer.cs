@@ -2,7 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CavalierE : MonoBehaviour {
+public class Archer : MonoBehaviour
+{
+
+    /* public static int strStatIncrease = 0;
+   public static int defStatIncrease = 0;
+   public static int skillStatIncrease = 0;
+   public static int spdStatIncrease = 0;
+   public static int magicStatIncrease = 0;
+   public static int willStatIncrease = 0;
+   public static int strAmount = 0;
+   public static int defAmount = 0;
+   public static int skillAmount = 0;
+   public static int spdAmount = 0;
+   public static int magicAmount = 0;
+   public static int willAmount = 0;*/
+    public static float increaseStr = 0;
+    public static float increaseDef = 0;
+    public static float increaseSkill = 0;
+    public static float increaseSpd = 0;
+    public static float increaseMagic = 0;
+    public static float increaseWill = 0;
+
 
     public static float baseStrModifer = 3;
     public static float baseDefModifer = 2.5f;
@@ -16,22 +37,22 @@ public class CavalierE : MonoBehaviour {
     public static float spdModifer = 3;
     public static float magicModifer = 2;
     public static float willModifer = 2;
-    public static int level = 0;
- 
-    public static float increaseStr = 0;
-    public static float increaseDef = 0;
-    public static float increaseSkill = 0;
-    public static float increaseSpd = 0;
-    public static float increaseMagic = 0;
-    public static float increaseWill = 0;
+    public static float strCap = 25;
+    public static float defCap = 20;
+    public static float skillCap = 20;
+    public static float spdCap = 25;
+    public static float magicCap = 10;
+    public static float willCap = 12;
+    public static float hpCap = 35;
 
+    public static int level = 0;
     public static int move = 7;
     public static int baseHp = 11;
 
     // Use this for initialization
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -39,9 +60,20 @@ public class CavalierE : MonoBehaviour {
     {
         level = level + 1;
         IncreaseStats();
+
     }
 
- 
+    /*public static List<int> IncList()
+    {
+        List<int> newList = new List<int>();
+        newList.Add(strStatIncrease);
+        newList.Add(defStatIncrease);
+        newList.Add(spdStatIncrease);
+        newList.Add(skillStatIncrease);
+        newList.Add(magicStatIncrease);
+        newList.Add(willStatIncrease);
+        return newList;
+    }*/
     public static void Clear()
     {
         increaseStr = 0;
@@ -57,8 +89,22 @@ public class CavalierE : MonoBehaviour {
         magicModifer = 2;
         willModifer = 2;
         level = 0;
-        move = 5;
+        move = 7;
         baseHp = 14;
+    }
+
+
+    public static List<float> Caplist()
+    {
+        List<float> newList = new List<float>();
+        newList.Add(strCap);
+        newList.Add(defCap);
+        newList.Add(spdCap);
+        newList.Add(skillCap);
+        newList.Add(magicCap);
+        newList.Add(willCap);
+        newList.Add(hpCap);
+        return newList;
     }
 
     public static List<float> ModList()
@@ -117,17 +163,17 @@ public class CavalierE : MonoBehaviour {
 
     public static void StrIncrease()
     {
-        strModifer = increaseStr;
+        strModifer = baseStrModifer + (Mathf.Round(level / baseStrModifer) * .1f) + 1;
     }
 
     public static void DefIncrease()
     {
-        defModifer = increaseDef;
+        defModifer = baseDefModifer + (Mathf.Round(level / baseDefModifer) * .1f) + 1;
     }
 
     public static void SkillIncrease()
     {
-        skillModifer = increaseSkill;
+        skillModifer = baseDefModifer + (Mathf.Round(level / baseSkillModifer) * .1f) + 1;
     }
 
     public static void SpdIncrease()
@@ -176,4 +222,5 @@ public class CavalierE : MonoBehaviour {
         willStatIncrease = willAmount;
     }*/
 
+ 
 }
