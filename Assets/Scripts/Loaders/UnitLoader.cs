@@ -65,6 +65,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Jeorge";
         me.unitClass.main.mainClass = "Warrior";
         me.unitClass.main.race = "Human";
+        me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
@@ -98,6 +99,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.idx = newMe.unitID + IDMaker.NewID();
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
+        newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
@@ -130,6 +132,8 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitID = "Jesel";
         newMe2.unitClass.main.mainClass = "Cavalier";
         newMe2.unitClass.main.race = "Human";
+
+        newMe2.unitInfo.human = true;
         newMe2.idx = me.unitID + IDMaker.NewID();
       
         newMe2.unitClass.main.human.cavalier.movement = 6;

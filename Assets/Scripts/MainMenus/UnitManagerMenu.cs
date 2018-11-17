@@ -70,7 +70,19 @@ public class UnitManagerMenu : MonoBehaviour {
 
         else if(currentMenu == Menu.ClassChange)
         {
-            //unit.unitInfo.
+            
+            if (unit.unitInfo.human)
+            {
+
+            }
+            if (unit.unitInfo.vira)
+            {
+
+            }
+            if (unit.unitInfo.imp)
+            {
+
+            }
         }
 
 
