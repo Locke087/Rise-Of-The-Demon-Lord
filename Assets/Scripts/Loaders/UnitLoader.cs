@@ -169,8 +169,138 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
 
+
+   
+      
+
+    
     }
 
+    public void NewSWLevel()
+    {
+      
+        CurrentLevel level1 = new CurrentLevel();
+        level1.deployLimit = 2;
+        level1.powerRanking = 2;
+        level1.enemiesInMap.units = LoadEnemies(level1.powerRanking);
+        level1.name = "A Sweaty Welcome";
+        level1.idx = "1" + IDMaker.NewID();
+        level1.sceneName = "SWMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level1);
+        CurrentLevel level2 = new CurrentLevel();
+        level2.deployLimit = 4;
+        level2.powerRanking = 1;
+        level2.enemiesInMap.units = LoadEnemies(level2.powerRanking);
+        level2.name = "An Oasis Of Evil";
+        level2.idx = "2" + IDMaker.NewID();
+        level2.sceneName = "SWMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level2);
+        CurrentLevel level3 = new CurrentLevel();
+        level3.deployLimit = 8;
+        level3.powerRanking = 3;
+        level3.enemiesInMap.units = LoadEnemies(level3.powerRanking);
+        level3.name = "The Sands of Danger";
+        level3.idx = "3" + IDMaker.NewID();
+        level3.sceneName = "SWMap1";
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level3);
+    }
+
+    public void NewOGLevel()
+    {
+        CurrentLevel level1 = new CurrentLevel();
+        level1.deployLimit = 2;
+        level1.powerRanking = 2;
+        level1.enemiesInMap.units = LoadEnemies(level1.powerRanking);
+        level1.name = "A Grassy Start";
+        level1.idx = "1" + IDMaker.NewID();
+        level1.sceneName = "OGLMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level1);
+        CurrentLevel level2 = new CurrentLevel();
+        level2.deployLimit = 4;
+        level2.powerRanking = 1;
+        level2.enemiesInMap.units = LoadEnemies(level2.powerRanking);
+        level2.name = "A Deadly Knoll";
+        level2.idx = "2" + IDMaker.NewID();
+        level2.sceneName = "OGLMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level2);
+        CurrentLevel level3 = new CurrentLevel();
+        level3.deployLimit = 8;
+        level3.powerRanking = 4;
+        level3.enemiesInMap.units = LoadEnemies(level3.powerRanking);
+        level3.name = "Weed Out The Enemy";
+        level3.idx = "3" + IDMaker.NewID();
+        level3.sceneName = "OGLMap1";
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level3);
+
+
+    }
+
+
+    public void NewGDLevel()
+    {
+      
+        CurrentLevel level1G = new CurrentLevel();
+        level1G.deployLimit = 2;
+        level1G.powerRanking = 2;
+        level1G.enemiesInMap.units = LoadEnemies(level1G.powerRanking);
+        level1G.name = "A Heated Greeting";
+        level1G.idx = "1" + IDMaker.NewID();
+        level1G.sceneName = "GDMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level1G);
+        CurrentLevel level2G = new CurrentLevel();
+        level2G.deployLimit = 4;
+        level2G.powerRanking = 1;
+        level2G.enemiesInMap.units = LoadEnemies(level2G.powerRanking);
+        level2G.name = "Ablaze With Wickedness";
+        level2G.idx = "2" + IDMaker.NewID();
+        level2G.sceneName = "GDMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level2G);
+        CurrentLevel level3G = new CurrentLevel();
+        level3G.deployLimit = 8;
+        level3G.powerRanking = 4;
+        level3G.enemiesInMap.units = LoadEnemies(level3G.powerRanking);
+        level3G.name = "The Burning Hellscape";
+        level3G.idx = "3" + IDMaker.NewID();
+        level3G.sceneName = "GDMap1";
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level3G);
+    }
+
+
+    public void NewFTLevel()
+    {
+        CurrentLevel level1F = new CurrentLevel();
+        level1F.deployLimit = 2;
+        level1F.powerRanking = 2;
+        level1F.enemiesInMap.units = LoadEnemies(level1F.powerRanking);
+        level1F.name = "A Frosty Beginning";
+        level1F.idx = "1" + IDMaker.NewID();
+        level1F.sceneName = "FTMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level1F);
+        CurrentLevel level2F = new CurrentLevel();
+        level2F.deployLimit = 4;
+        level2F.powerRanking = 1;
+        level2F.enemiesInMap.units = LoadEnemies(level2F.powerRanking);
+        level2F.name = "The Frozen Front";
+        level2F.idx = "2" + IDMaker.NewID();
+        level2F.sceneName = "FTMap1";
+
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level2F);
+        CurrentLevel level3F = new CurrentLevel();
+        level3F.deployLimit = 8;
+        level3F.powerRanking = 4;
+        level3F.enemiesInMap.units = LoadEnemies(level3F.powerRanking);
+        level3F.name = "Chilled Out Baddies";
+        level3F.idx = "3" + IDMaker.NewID();
+        level3F.sceneName = "FTMap1";
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
+    }
 
     public List<Unit> LoadEnemies(int rating)
     {
@@ -243,6 +373,12 @@ public class UnitLoader : MonoBehaviour {
         enemiesInMap.Add(newMe);
         enemiesInMap.Add(newMe);
         CurrentGame.game.storeroom.units.Add(newMe);
+
+
+
+
+
+
         return enemiesInMap;
     }
 }

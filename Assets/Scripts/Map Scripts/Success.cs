@@ -9,14 +9,7 @@ public class Success : MonoBehaviour {
     // Use this for initialization
     public MapRewards rewards;
 
-	void Start () {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void Win()
     {
@@ -25,20 +18,27 @@ public class Success : MonoBehaviour {
         GameObject tiles = GameObject.Instantiate(Resources.Load("WinScreen")) as GameObject;
         CurrentGame.game.memoryGeneral.gold += rewards.gold;
         GameObject.Find("GText").GetComponent<Text>().text = rewards.gold.ToString();
-        InUse();
+        CurrentGame.game.memoryGeneral.unitsInParty.Clear();
+         
+        if(CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
+        {
+
+        }
+        else if (CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
+        {
+
+        }
+        else if (CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
+        {
+
+        }
+        else if (CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
+        {
+
+        }
         StartCoroutine(BackToTown());
 
     }
-
-    public void InUse()
-    {
-        foreach (CurrentLevel l in CurrentGame.game.memoryGeneral.currentLevels)
-        {
-            if (CurrentGame.game.memoryGeneral.currentLevelID == l.name) l.complete = true;
-        }
-
-    }
-
 
     public IEnumerator BackToTown()
     {
