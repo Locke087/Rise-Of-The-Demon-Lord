@@ -11,6 +11,7 @@ public class Unit {
     public UnitProgress progress;
     public UnitClass unitClass;
     public UnitStatus status;
+    public string idx;
     public string unitID;
 	public Unit()
     {
@@ -20,6 +21,7 @@ public class Unit {
         progress = new UnitProgress();
         unitClass = new UnitClass();
         status = new UnitStatus();
+        idx = "";
         unitID = "";
     }
 }

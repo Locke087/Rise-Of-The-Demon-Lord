@@ -25,7 +25,9 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.critchance = 1;
         vemonBlade.effects.poison = true;
         vemonBlade.name = "Vemon Blade";
-
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.type = "HeavyBlade";
         if (sw == vemonBlade.name) u.details = vemonBlade;
 
       
@@ -47,6 +49,10 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.details.effects.poison = true;
         vemonBlade.details.physical = true;
         vemonBlade.details.name = "Vemon Blade";
+        vemonBlade.details.type = "HeavyBlade";
+        vemonBlade.details.rank = 2;
+        vemonBlade.details.range = 1;
+        vemonBlade.details.unlocks = "Blitz";      
         vemonBlade.idx = "Vemon Blade" + IDMaker.NewID();
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(vemonBlade);
         CurrentGame.game.memoryGeneral.shopWares.weapons.Add(vemonBlade);

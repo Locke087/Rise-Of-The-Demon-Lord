@@ -12,7 +12,6 @@ public class UnitHumanClass
     public UnitClassDetail mage;
     public UnitClassDetail priest;
     public UnitClassDetail bard;
-    
 
     public UnitHumanClass()
     {

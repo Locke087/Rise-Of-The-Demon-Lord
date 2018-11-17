@@ -17,6 +17,8 @@ public class CavalierLoader : MonoBehaviour
 
     }
 
+
+
     public static void AssignSkill(string sk, UnitClassSkill u)
     {
         UnitSkillDetail trample = new UnitSkillDetail();

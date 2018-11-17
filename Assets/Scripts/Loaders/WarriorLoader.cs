@@ -14,6 +14,43 @@ public class WarriorLoader : MonoBehaviour {
 		
 	}
 
+    public static void NewWarriorClass()
+    {
+
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.name = "Warrior";
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement = 5;
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.type = "HeavyBlade";
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.type = "Axe";
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.rank = 2;
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Warrior.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.modifiers = Warrior.ModList();
+        foreach(string id in CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID) {
+                    u.unitClass.main.human.warrior.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.modifiers;
+                    u.unitClass.main.human.warrior.level = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.warrior.unlocked = true;
+    }
+
+ 
     public static void AssignSkill(string sk, UnitClassSkill u)
     {
         UnitSkillDetail focused = new UnitSkillDetail();

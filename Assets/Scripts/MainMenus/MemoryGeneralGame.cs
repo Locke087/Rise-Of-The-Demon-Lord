@@ -17,6 +17,9 @@ public class MemoryGeneralGame {
     public List<CurrentLevel> currentLevels;
     public CurrentLevel currentLevel;
     public string currentLevelID;
+    public UnitHumanClass humanClassProgress;
+    public UnitImpClass impClassProgress;
+    public UnitViraClass viraClassProgress;
     public string doISave;
 	public MemoryGeneralGame()
     {
@@ -29,6 +32,9 @@ public class MemoryGeneralGame {
         levelCompletion = new LevelCompletion();
         currentLevels = new List<CurrentLevel>();
         heldGameType = new AreaGroupHolder();
+        humanClassProgress = new UnitHumanClass();
+        impClassProgress = new UnitImpClass();
+        viraClassProgress = new UnitViraClass();
         currentLevelID = "";
         doISave = "";
         gold = 0;

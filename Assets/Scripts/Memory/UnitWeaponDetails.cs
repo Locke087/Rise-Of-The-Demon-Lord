@@ -14,6 +14,9 @@ public class UnitWeaponDetails {
     public int range;
     public bool magic;
     public bool physical;
+    public string unlocks;
+    public string type;
+    public int rank;
     public UnitWeaponEffects effects;
     public UnitWeaponDetails()
     {
@@ -25,6 +28,8 @@ public class UnitWeaponDetails {
         critchance = 0;
         magic = false;
         physical = false;
+        type = "";
+        rank = 0;
         effects = new UnitWeaponEffects();
     }
 }

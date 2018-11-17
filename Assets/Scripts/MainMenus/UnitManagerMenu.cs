@@ -10,6 +10,7 @@ public class UnitManagerMenu : MonoBehaviour {
     {
         UnitMenu,
         Inventory,
+        ClassChange,
         WeaponOrAssessory,
         WeaponList,
         AssessoryList,
@@ -45,12 +46,18 @@ public class UnitManagerMenu : MonoBehaviour {
 
             foreach (Unit u in CurrentGame.game.memoryGeneral.unitsInRoster)
             {
-                if (GUILayout.Button(u.unitID))
+                GUILayout.Box(u.unitID);
+                if (GUILayout.Button("Inventory"))
                 {
                     unit = u;
                     currentMenu = Menu.Inventory;
                 }
-
+                if (GUILayout.Button("Class") )
+                {
+                    unit = u;
+                    currentMenu = Menu.ClassChange;
+                }
+                GUILayout.Space(5);
             }
             GUILayout.Space(10);
             if (GUILayout.Button("Exit Menu"))
@@ -58,6 +65,14 @@ public class UnitManagerMenu : MonoBehaviour {
                 menuPar.SetActive(false);
             }
         }
+
+
+
+        else if(currentMenu == Menu.ClassChange)
+        {
+            //unit.unitInfo.
+        }
+
 
 
 
