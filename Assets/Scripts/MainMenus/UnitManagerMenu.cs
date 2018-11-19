@@ -14,7 +14,9 @@ public class UnitManagerMenu : MonoBehaviour {
         WeaponOrAssessory,
         WeaponList,
         AssessoryList,
-        finalize
+        finalize,
+        Human,
+        Imp
     }
 
     public Menu currentMenu;
@@ -25,6 +27,8 @@ public class UnitManagerMenu : MonoBehaviour {
     public bool slot3;
     public bool slot4;
     public bool slot5;
+    
+ 
     Vector2 scrollPosition;
     void OnGUI()
     {
@@ -72,16 +76,468 @@ public class UnitManagerMenu : MonoBehaviour {
         {
             
             if (unit.unitInfo.human)
-            {
-
+            {        
+                if (unit.unitClass.main.human.warrior.unlocked)
+                {
+                   
+                    if (unit.unitClass.main.mainClass != "Warrior")
+                    {
+                        if (GUILayout.Button("Switch to Warrior"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.warrior.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.modifiers;
+                            unit.unitClass.main.human.warrior.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons;
+                            unit.unitClass.main.human.warrior.caps = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps;
+                            unit.unitClass.main.human.warrior.level = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level;
+                            unit.unitInfo.main = unit.unitClass.main.human.warrior;
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.warrior);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.warrior);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Warrior" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.warrior);
+                    }
+                }
+                if (unit.unitClass.main.human.rogue.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Rogue")
+                    {
+                        if (GUILayout.Button("Switch to Rogue"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.rogue.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.modifiers;
+                            unit.unitClass.main.human.rogue.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons;
+                            unit.unitClass.main.human.rogue.caps = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.caps;
+                            unit.unitClass.main.human.rogue.level = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level;
+                            unit.unitInfo.main = unit.unitClass.main.human.rogue;
+                            unit.unitClass.main.mainClass = "Rogue";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.rogue);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label("Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.rogue);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Rogue" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.rogue);
+                    }
+                }
+                if (unit.unitClass.main.human.mage.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Mage")
+                    {
+                        if (GUILayout.Button("Switch to Mage"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.mage.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.mage.modifiers;
+                            unit.unitClass.main.human.mage.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons;
+                            unit.unitClass.main.human.mage.caps = CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps;
+                            unit.unitClass.main.human.mage.level = CurrentGame.game.memoryGeneral.humanClassProgress.mage.level;
+                            unit.unitInfo.main = unit.unitClass.main.human.mage;
+                            unit.unitClass.main.mainClass = "Mage";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.mage);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.mage);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Mage" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.mage);
+                    }
+                }
+                if (unit.unitClass.main.human.archer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Archer")
+                    {
+                        if (GUILayout.Button("Switch to Archer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.archer.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.archer.modifiers;
+                            unit.unitClass.main.human.archer.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons;
+                            unit.unitClass.main.human.archer.caps = CurrentGame.game.memoryGeneral.humanClassProgress.archer.caps;
+                            unit.unitClass.main.human.archer.level = CurrentGame.game.memoryGeneral.humanClassProgress.archer.level;
+                            unit.unitInfo.weaponRanks.Bow.canUse = true;
+                            unit.unitInfo.weaponRanks.Bow.rank = CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon1.rank;
+                            unit.unitInfo.main = unit.unitClass.main.human.archer;
+                            unit.unitClass.main.mainClass = "Archer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.archer);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.archer);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Archer" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.archer);
+                    }
+                }
+                if (unit.unitClass.main.human.bard.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Bard")
+                    {
+                        if (GUILayout.Button("Switch to Bard"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.bard.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.bard.modifiers;
+                            unit.unitClass.main.human.bard.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons;
+                            unit.unitClass.main.human.bard.caps = CurrentGame.game.memoryGeneral.humanClassProgress.bard.caps;
+                            unit.unitClass.main.human.bard.level = CurrentGame.game.memoryGeneral.humanClassProgress.bard.level;
+                            unit.unitInfo.main = unit.unitClass.main.human.bard;
+                            unit.unitClass.main.mainClass = "Bard";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.bard);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.bard.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.bard):
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Archer" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.bard);
+                    }
+                }
+                if (unit.unitClass.main.human.cavalier.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Cavalier")
+                    {
+                        if (GUILayout.Button("Switch to Cavalier"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.cavalier.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.modifiers;
+                            unit.unitClass.main.human.cavalier.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons;
+                            unit.unitClass.main.human.cavalier.caps = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.caps;
+                            unit.unitClass.main.human.cavalier.level = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level;
+                            unit.unitInfo.main = unit.unitClass.main.human.cavalier;
+                            unit.unitClass.main.mainClass = "Cavalier";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.cavalier);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Cavalier" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier);
+                    }
+                }
+              
             }
             if (unit.unitInfo.vira)
             {
-
+                if (unit.unitClass.main.vira.chronos.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Chronos")
+                    {
+                        if (GUILayout.Button("Switch to Chronos"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.chronos.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.modifiers;
+                            unit.unitClass.main.vira.chronos.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.classWeapons;
+                            unit.unitClass.main.vira.chronos.caps = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.caps;
+                            unit.unitClass.main.vira.chronos.level = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.chronos;
+                            unit.unitClass.main.mainClass = "Chronos";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.chronos);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.chronos.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Chronos" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
+                    }
+                }
+                if (unit.unitClass.main.vira.alchemist.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Alchemist")
+                    {
+                        if (GUILayout.Button("Switch to Alchemist"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.alchemist.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.modifiers;
+                            unit.unitClass.main.vira.alchemist.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.classWeapons;
+                            unit.unitClass.main.vira.alchemist.caps = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.caps;
+                            unit.unitClass.main.vira.alchemist.level = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.alchemist;
+                            unit.unitClass.main.mainClass = "Alchemist";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.alchemist);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Alchemist" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
+                    }
+                }
+                if (unit.unitClass.main.vira.geomancer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Geomancer")
+                    {
+                        if (GUILayout.Button("Switch to Geomancer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.geomancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.modifiers;
+                            unit.unitClass.main.vira.geomancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.classWeapons;
+                            unit.unitClass.main.vira.geomancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.caps;
+                            unit.unitClass.main.vira.geomancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.geomancer;
+                            unit.unitClass.main.mainClass = "Geomancer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.geomancer);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Geomancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
+                    }
+                }
+                if (unit.unitClass.main.vira.kensai.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Kensai")
+                    {
+                        if (GUILayout.Button("Switch to Kensai"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.kensai.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.modifiers;
+                            unit.unitClass.main.vira.kensai.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.classWeapons;
+                            unit.unitClass.main.vira.kensai.caps = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.caps;
+                            unit.unitClass.main.vira.kensai.level = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.kensai;
+                            unit.unitClass.main.mainClass = "Kensai";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.kensai);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.kensai.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Kensai" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
+                    }
+                }
+                if (unit.unitClass.main.vira.onmiyoji.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Onmiyoji")
+                    {
+                        if (GUILayout.Button("Switch to Onmiyoji"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.onmiyoji.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.modifiers;
+                            unit.unitClass.main.vira.onmiyoji.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.classWeapons;
+                            unit.unitClass.main.vira.onmiyoji.caps = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.caps;
+                            unit.unitClass.main.vira.onmiyoji.level = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.onmiyoji;
+                            unit.unitClass.main.mainClass = "Onmiyoji";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.onmiyoji);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Onmiyoji" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
+                    }
+                }
+                if (unit.unitClass.main.vira.wardancer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Wardancer")
+                    {
+                        if (GUILayout.Button("Switch to Wardancer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.wardancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.modifiers;
+                            unit.unitClass.main.vira.wardancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.classWeapons;
+                            unit.unitClass.main.vira.wardancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.caps;
+                            unit.unitClass.main.vira.wardancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.wardancer;
+                            unit.unitClass.main.mainClass = "Wardancer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.wardancer);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Wardancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); //+ CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
+                    }
+                }
+              
             }
             if (unit.unitInfo.imp)
             {
+                if (unit.unitClass.main.imp.dread.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Dread")
+                    {
+                        if (GUILayout.Button("Switch to Dread"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.dread.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.dread.modifiers;
+                            unit.unitClass.main.imp.dread.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.dread.classWeapons;
+                            unit.unitClass.main.imp.dread.caps = CurrentGame.game.memoryGeneral.impClassProgress.dread.caps;
+                            unit.unitClass.main.imp.dread.level = CurrentGame.game.memoryGeneral.impClassProgress.dread.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.dread;
+                            unit.unitClass.main.mainClass = "Dread";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.dread);
+                            CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.dread.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.dread);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Dread" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.dread.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.dread);
+                    }
+                }
+                if (unit.unitClass.main.imp.fusilier.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Fusilier")
+                    {
+                        if (GUILayout.Button("Switch to Fusilier"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.fusilier.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.modifiers;
+                            unit.unitClass.main.imp.fusilier.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons;
+                            unit.unitClass.main.imp.fusilier.caps = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.caps;
+                            unit.unitClass.main.imp.fusilier.level = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.fusilier;
+                            unit.unitClass.main.mainClass = "Fusilier";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.fusilier);
+                            CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement); // + CurrentGame.game.memoryGeneral.impClassProgress.fusilier);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Fusilier" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement);// + CurrentGame.game.memoryGeneral.impClassProgress.fusilier);
+                    }
+                }
+                if (unit.unitClass.main.imp.magus.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Magus")
+                    {
+                        if (GUILayout.Button("Switch to Magus"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.magus.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.magus.modifiers;
+                            unit.unitClass.main.imp.magus.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.magus.classWeapons;
+                            unit.unitClass.main.imp.magus.caps = CurrentGame.game.memoryGeneral.impClassProgress.magus.caps;
+                            unit.unitClass.main.imp.magus.level = CurrentGame.game.memoryGeneral.impClassProgress.magus.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.magus;
+                            unit.unitClass.main.mainClass = "Magus";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.magus);
+                            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.magus.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.magus.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Magus" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.magus.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.magus.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
+                    }
+                }
+                if (unit.unitClass.main.imp.shadow.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Shadow")
+                    {
+                        if (GUILayout.Button("Switch to Shadow"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.shadow.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.shadow.modifiers;
+                            unit.unitClass.main.imp.shadow.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons;
+                            unit.unitClass.main.imp.shadow.caps = CurrentGame.game.memoryGeneral.impClassProgress.shadow.caps;
+                            unit.unitClass.main.imp.shadow.level = CurrentGame.game.memoryGeneral.impClassProgress.shadow.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.shadow;
+                            unit.unitClass.main.mainClass = "Shadow";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.shadow);
+                            CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.shadow);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Shadow" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement); // + CurrentGame.game.memoryGeneral.impClassProgress.shadow);
+                    }
+                }
+                if (unit.unitClass.main.imp.shrike.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Shrike")
+                    {
+                        if (GUILayout.Button("Switch to Shrike"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.shrike.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.shrike.modifiers;
+                            unit.unitClass.main.imp.shrike.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons;
+                            unit.unitClass.main.imp.shrike.caps = CurrentGame.game.memoryGeneral.impClassProgress.shrike.caps;
+                            unit.unitClass.main.imp.shrike.level = CurrentGame.game.memoryGeneral.impClassProgress.shrike.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.shrike;
+                            unit.unitClass.main.mainClass = "Shrike";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.shrike);
+                            CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Shrike" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement);
+                    }
+                }
+                if (unit.unitClass.main.imp.swashbulkler.unlocked)
+                {
 
+                    if (unit.unitClass.main.mainClass != "Swashbulkler")
+                    {
+                        if (GUILayout.Button("Switch to Swashbulkler"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.swashbulkler.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.modifiers;
+                            unit.unitClass.main.imp.swashbulkler.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.classWeapons;
+                            unit.unitClass.main.imp.swashbulkler.caps = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.caps;
+                            unit.unitClass.main.imp.swashbulkler.level = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.swashbulkler;
+                            unit.unitClass.main.mainClass = "Swashbulkler";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.swashbulkler);
+                            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.movement);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.movement);
+                    }
+                }
             }
         }
 
@@ -751,11 +1207,187 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.EndArea();
         }
 
+
+       
+
         GUILayout.FlexibleSpace();
         GUILayout.EndVertical();
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
+
+    }
+
+    public void UnequipNonClassWeapons(Unit unit, UnitClassDetail unitClass )
+    {
+        if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot1.weapon.details.rank > unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot1.weapon.details.rank > unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            unit.inventory.invSlot1.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot2.weapon.details.rank > unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot2.weapon.details.rank > unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            unit.inventory.invSlot2.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot3.weapon.details.rank > unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot3.weapon.details.rank > unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            unit.inventory.invSlot3.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot4.weapon.details.rank > unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot4.weapon.details.rank > unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            unit.inventory.invSlot4.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot5.weapon.details.rank > unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot5.weapon.details.rank > unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            unit.inventory.invSlot5.weapon.equipped = false;
+        }
+    }
+
+
+    public void UnsignOldClass(Unit unit)
+    {
+        if (unit.unitClass.main.mainClass == "Warrior")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Rogue")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Mage")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Archer")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Bard")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.bard.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Cavalier")
+        {
+            CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Chronos")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.chronos.subbed.Remove(unit.idx);
+
+        }
+
+        if (unit.unitClass.main.mainClass == "Alchemist")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.subbed.Remove(unit.idx);
+
+        }
+
+        if (unit.unitClass.main.mainClass == "Geomancer")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.subbed.Remove(unit.idx);
+
+        }
+
+        if (unit.unitClass.main.mainClass == "Kensai")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.kensai.subbed.Remove(unit.idx);
+
+        }
+
+        if (unit.unitClass.main.mainClass == "Onmiyoji")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Wardancer")
+        {
+            CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Dread")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Fusilier")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Magus")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Shadow")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Shrike")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Swashbulkler")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Remove(unit.idx);
+        }
+
 
     }
 }

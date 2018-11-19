@@ -68,7 +68,7 @@ public class MainMenu : MonoBehaviour {
             CurrentGame.game.scorchingWastes = scorchingWastes;
             CurrentGame.game.frozenTundra = frozenTundra;
             CurrentGame.game.memoryGeneral.gold = 600;
-            StartCoroutine(GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster());
+           GameObject.Find("LoadUnits").GetComponent<UnitLoader>().CreateStartingRoster();
             SwordLoader.StartingInventoryWeapon();
             AssessoryLoader.StartingInventoryAssessory();
             ItemLoader.StartingInventoryItems();

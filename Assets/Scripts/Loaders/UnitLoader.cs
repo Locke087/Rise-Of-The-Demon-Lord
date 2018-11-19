@@ -41,7 +41,7 @@ public class UnitLoader : MonoBehaviour {
     }
 
 
-    public IEnumerator CreateStartingRoster()
+    public void CreateStartingRoster()
     {
         CurrentGame.game.memoryGeneral.itemsOwned.items.Clear();
         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Clear();
@@ -58,8 +58,6 @@ public class UnitLoader : MonoBehaviour {
         Rogue.Clear();
         WarriorLoader.NewWarriorClass();
 
-        yield return new WaitForSeconds(0.03f);
-
         Unit me = new Unit();
 
         me.unitID = "Jeorge";
@@ -67,6 +65,11 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.race = "Human";
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
+        me.unitClass.main.human.warrior.unlocked = true;
+        me.unitClass.main.human.cavalier.unlocked = true;
+        me.unitClass.main.human.archer.unlocked = true;
+        me.unitClass.main.human.mage.unlocked = true;
+        me.unitClass.main.human.priest.unlocked = true;
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
@@ -100,6 +103,11 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
+        newMe.unitClass.main.human.warrior.unlocked = true;
+        newMe.unitClass.main.human.cavalier.unlocked = true;
+        newMe.unitClass.main.human.archer.unlocked = true;
+        newMe.unitClass.main.human.mage.unlocked = true;
+        newMe.unitClass.main.human.priest.unlocked = true;
         newMe.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
@@ -132,10 +140,13 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitID = "Jesel";
         newMe2.unitClass.main.mainClass = "Cavalier";
         newMe2.unitClass.main.race = "Human";
-
         newMe2.unitInfo.human = true;
         newMe2.idx = me.unitID + IDMaker.NewID();
-      
+        newMe.unitClass.main.human.warrior.unlocked = true;
+        newMe.unitClass.main.human.cavalier.unlocked = true;
+        newMe.unitClass.main.human.archer.unlocked = true;
+        newMe.unitClass.main.human.mage.unlocked = true;
+        newMe.unitClass.main.human.priest.unlocked = true;
         newMe2.unitClass.main.human.cavalier.movement = 6;
         newMe2.unitClass.main.human.cavalier.name = "Cavalier";
         newMe2.unitClass.main.human.cavalier.level = 1;
