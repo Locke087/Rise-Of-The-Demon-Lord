@@ -16,13 +16,13 @@ public class WarriorLoader : MonoBehaviour {
 
     public static void NewWarriorClass()
     {
-
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.name = "Warrior";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement = 5;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.type = "HeavyBlade";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.type = "Axe";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.rank = 2;
+
         LevelUpClass();
     }
 
@@ -32,6 +32,7 @@ public class WarriorLoader : MonoBehaviour {
         Warrior.LevelUp();
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level + 1;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.modifiers = Warrior.ModList();
+
         foreach(string id in CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed)
         {
             Unit me = new Unit();

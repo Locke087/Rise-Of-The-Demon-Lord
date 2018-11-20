@@ -21,13 +21,15 @@ public class UnitManagerMenu : MonoBehaviour {
 
     public Menu currentMenu;
     public GameObject menuPar;
+    public Sprite sprite;
     public Unit unit;
     public bool slot1;
     public bool slot2;
     public bool slot3;
     public bool slot4;
     public bool slot5;
-    
+    public Image image;
+    public Stats stats;
  
     Vector2 scrollPosition;
     void OnGUI()
@@ -59,6 +61,7 @@ public class UnitManagerMenu : MonoBehaviour {
                 if (GUILayout.Button("Class") )
                 {
                     unit = u;
+                    
                     currentMenu = Menu.ClassChange;
                 }
                 GUILayout.Space(5);
@@ -74,11 +77,110 @@ public class UnitManagerMenu : MonoBehaviour {
 
         else if(currentMenu == Menu.ClassChange)
         {
-            
+            stats.unitID = unit.unitID;
+            stats.startClassesUp();
+            GUILayout.Box(unit.unitID);
+            sprite = Resources.Load<Sprite>(unit.unitInfo.mugName);
+            image.sprite = sprite;
+            GUILayout.Label(unit.unitClass.main.mainClass + " Level " + unit.unitInfo.main.level);
+            GUILayout.Label(unit.unitClass.main.race);
+            GUILayout.Label("str: " + stats.str  + " def: " + stats.def + " spd " + stats.spd + " skill " + stats.skill + "magic: "  + stats.magic + " will:" );
+            GUILayout.Label("Inventory");
+            GUILayout.Box("Slot 1: " + unit.inventory.invSlot1.holding);
+            if (unit.inventory.invSlot1.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot1.assessory.equipped) GUILayout.Label("Equipped Assessory");
+            if (unit.inventory.invSlot1.holding != "")
+            {
+                if (unit.inventory.invSlot1.weapon.inSlot)
+                {
+                    unit.inventory.invSlot1.weapon.equipped = false;
+                }
+                else if (unit.inventory.invSlot1.assessory.inSlot)
+                {
+                    unit.inventory.invSlot1.assessory.equipped = false;
+                }
+            }
+            GUILayout.Space(3);
+            GUILayout.Box("Slot 2: " + unit.inventory.invSlot2.holding);
+            if (unit.inventory.invSlot2.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot2.assessory.equipped) GUILayout.Label("Equipped Assessory");
+            if (unit.inventory.invSlot2.holding != "")
+            {
+                if (unit.inventory.invSlot2.weapon.inSlot)
+                {
+                    unit.inventory.invSlot2.weapon.equipped = false;
+                }
+                else if (unit.inventory.invSlot2.assessory.inSlot)
+                {
+                    unit.inventory.invSlot2.assessory.equipped = false;
+                }
+            }
+            GUILayout.Space(3);
+            GUILayout.Box("Slot 3: " + unit.inventory.invSlot3.holding);
+            if (unit.inventory.invSlot3.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot3.assessory.equipped) GUILayout.Label("Equipped Assessory");
+           
+            if (unit.inventory.invSlot3.holding != "")
+            {
+                if (unit.inventory.invSlot3.weapon.inSlot)
+                {
+                    unit.inventory.invSlot3.weapon.equipped = false;
+                }
+                else if (unit.inventory.invSlot3.assessory.inSlot)
+                {
+                    unit.inventory.invSlot3.assessory.equipped = false;
+                }
+            }
+            GUILayout.Space(3);
+            GUILayout.Box("Slot 4: " + unit.inventory.invSlot4.holding);
+            if (unit.inventory.invSlot4.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot4.assessory.equipped) GUILayout.Label("Equipped Assessory");
+         
+            if (unit.inventory.invSlot4.holding != "")
+            {
+                if (unit.inventory.invSlot4.weapon.inSlot)
+                {
+                    unit.inventory.invSlot4.weapon.equipped = false;
+                }
+                else if (unit.inventory.invSlot4.assessory.inSlot)
+                {
+                    unit.inventory.invSlot4.assessory.equipped = false;
+                }
+            }
+            GUILayout.Space(3);
+
+            GUILayout.Box("Slot 5: " + unit.inventory.invSlot4.holding);
+            if (unit.inventory.invSlot5.weapon.equipped) GUILayout.Label("Equipped Weapon");
+            if (unit.inventory.invSlot5.assessory.equipped) GUILayout.Label("Equipped Assessory");
+            if (GUILayout.Button("Get New Item"))
+            {
+                slot5 = true;
+                currentMenu = Menu.WeaponOrAssessory;
+            }
+            if (unit.inventory.invSlot5.holding != "")
+            {
+              
+                if (GUILayout.Button("Unequip: " + unit.inventory.invSlot5.holding))
+                {
+                    if (unit.inventory.invSlot5.weapon.inSlot)
+                    {
+                        unit.inventory.invSlot5.weapon.equipped = false;
+                    }
+                    else if (unit.inventory.invSlot5.assessory.inSlot)
+                    {
+                        unit.inventory.invSlot5.assessory.equipped = false;
+                    }
+
+                }
+            }
+
             if (unit.unitInfo.human)
-            {        
+            {
+
+                 
                 if (unit.unitClass.main.human.warrior.unlocked)
                 {
+               
                    
                     if (unit.unitClass.main.mainClass != "Warrior")
                     {

@@ -65,6 +65,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.race = "Human";
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
+        me.unitInfo.mugName = "1SpJeogre";
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
         me.unitClass.main.human.archer.unlocked = true;
@@ -101,6 +102,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitID = "Melvin";
         newMe.idx = newMe.unitID + IDMaker.NewID();
         newMe.unitClass.main.mainClass = "Warrior";
+        newMe.unitInfo.mugName = "1SpNino";
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior.unlocked = true;
@@ -110,6 +112,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.priest.unlocked = true;
         newMe.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
+        newMe.unitInfo.currentMods = Warrior.ModList();
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill);
@@ -141,6 +144,7 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.mainClass = "Cavalier";
         newMe2.unitClass.main.race = "Human";
         newMe2.unitInfo.human = true;
+        newMe2.unitInfo.mugName = "1SpNino";
         newMe2.idx = me.unitID + IDMaker.NewID();
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
