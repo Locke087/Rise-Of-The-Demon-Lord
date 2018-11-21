@@ -65,7 +65,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.race = "Human";
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
-        me.unitInfo.mugName = "1SpJeogre";
+        me.unitInfo.mugName = "Dude";
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
         me.unitClass.main.human.archer.unlocked = true;
@@ -102,7 +102,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitID = "Melvin";
         newMe.idx = newMe.unitID + IDMaker.NewID();
         newMe.unitClass.main.mainClass = "Warrior";
-        newMe.unitInfo.mugName = "1SpNino";
+        newMe.unitInfo.mugName = "Actor_FW01_4";
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior.unlocked = true;
@@ -144,7 +144,7 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.mainClass = "Cavalier";
         newMe2.unitClass.main.race = "Human";
         newMe2.unitInfo.human = true;
-        newMe2.unitInfo.mugName = "1SpNino";
+        newMe2.unitInfo.mugName = "Actor_FW01_8";
         newMe2.idx = me.unitID + IDMaker.NewID();
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
@@ -182,7 +182,10 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
 
-
+        NewOGLevel();
+        NewFTLevel();
+        NewSWLevel();
+        NewGDLevel();
    
       
 
@@ -191,7 +194,8 @@ public class UnitLoader : MonoBehaviour {
 
     public void NewSWLevel()
     {
-      
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Clear();
+
         CurrentLevel level1 = new CurrentLevel();
         level1.deployLimit = 2;
         level1.powerRanking = 2;
@@ -222,6 +226,8 @@ public class UnitLoader : MonoBehaviour {
 
     public void NewOGLevel()
     {
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Clear();
+
         CurrentLevel level1 = new CurrentLevel();
         level1.deployLimit = 2;
         level1.powerRanking = 2;
@@ -255,8 +261,9 @@ public class UnitLoader : MonoBehaviour {
 
     public void NewGDLevel()
     {
-      
-        CurrentLevel level1G = new CurrentLevel();
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Clear();
+
+         CurrentLevel level1G = new CurrentLevel();
         level1G.deployLimit = 2;
         level1G.powerRanking = 2;
         level1G.enemiesInMap.units = LoadEnemies(level1G.powerRanking);
@@ -287,6 +294,8 @@ public class UnitLoader : MonoBehaviour {
 
     public void NewFTLevel()
     {
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Clear();
+
         CurrentLevel level1F = new CurrentLevel();
         level1F.deployLimit = 2;
         level1F.powerRanking = 2;

@@ -21,7 +21,8 @@ public class UnitManagerMenu : MonoBehaviour {
 
     public Menu currentMenu;
     public GameObject menuPar;
-    public Sprite sprite;
+    public List<Sprite> sprite;
+    public List<Sprite> spritem;
     public Unit unit;
     public bool slot1;
     public bool slot2;
@@ -29,9 +30,27 @@ public class UnitManagerMenu : MonoBehaviour {
     public bool slot4;
     public bool slot5;
     public Image image;
-    public Stats stats;
- 
+    public DisplayStats stats;
+    public bool done = false;
+    public Texture2D texture;
+    public Texture2D texture2;
+    public Texture2D perm;
     Vector2 scrollPosition;
+
+    void Start()
+    {
+        spritem = new List<Sprite>();
+        spritem.AddRange(Resources.LoadAll<Sprite>("Actor_FW01"));
+        foreach (Sprite i in spritem)
+        {
+            Debug.Log(i.name);
+        }
+        image.sprite = spritem.Find(x => x.name == "Dude");
+        perm = new Texture2D((int)image.sprite.rect.width, (int)image.sprite.rect.height);
+
+        sprite = new List<Sprite>();
+    }
+
     void OnGUI()
     {
 
@@ -77,11 +96,40 @@ public class UnitManagerMenu : MonoBehaviour {
 
         else if(currentMenu == Menu.ClassChange)
         {
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.BeginVertical();
+            GUILayout.FlexibleSpace();
+            GUILayout.Space(10);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             stats.unitID = unit.unitID;
-            stats.startClassesUp();
-            GUILayout.Box(unit.unitID);
-            sprite = Resources.Load<Sprite>(unit.unitInfo.mugName);
-            image.sprite = sprite;
+         
+            var croppedTexture = new Texture2D((int)image.sprite.rect.width, (int)image.sprite.rect.height);
+            if (!done)
+            {
+                stats.StartUp();
+                done = true;
+
+                GUILayout.Box(unit.unitID);
+                sprite.AddRange(Resources.LoadAll<Sprite>("Actor_FW01"));
+                foreach (Sprite i in sprite)
+                {
+                    Debug.Log(i.name);
+                }
+
+
+                image.sprite = sprite.Find(x => x.name == unit.unitInfo.mugName);
+               
+                var pixels = image.sprite.texture.GetPixels((int)image.sprite.rect.x,
+                                                        (int)image.sprite.rect.y,
+                                                        (int)image.sprite.rect.width,
+                                                        (int)image.sprite.rect.height);
+                croppedTexture.SetPixels(pixels);
+                croppedTexture.Apply();
+                perm = croppedTexture;
+            }
+            GUILayout.Box(perm);
             GUILayout.Label(unit.unitClass.main.mainClass + " Level " + unit.unitInfo.main.level);
             GUILayout.Label(unit.unitClass.main.race);
             GUILayout.Label("str: " + stats.str  + " def: " + stats.def + " spd " + stats.spd + " skill " + stats.skill + "magic: "  + stats.magic + " will:" );
@@ -641,6 +689,29 @@ public class UnitManagerMenu : MonoBehaviour {
                     }
                 }
             }
+
+            if (GUILayout.Button("Confirm & Exit"))
+            {
+                done = false;
+                int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
+                int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
+                CurrentGame.game.storeroom.units[num] = unit;
+                CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                currentMenu = Menu.UnitMenu;
+            }
+            GUILayout.Space(5);
+            if (GUILayout.Button("Cancel & Exit"))
+            {
+                done = false;
+                currentMenu = Menu.UnitMenu;
+            }
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
+            GUILayout.EndScrollView();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
         }
 
 
@@ -653,10 +724,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
-            //GUILayout.FlexibleSpace();
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
-          
-
+            GUILayout.Space(10);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Slot");
             GUILayout.Space(3);
 
@@ -989,8 +1058,7 @@ public class UnitManagerMenu : MonoBehaviour {
                 }
             }
   
-            GUILayout.Space(5);
-            if (GUILayout.Button("Confirm & Exit"))
+             if (GUILayout.Button("Confirm & Exit"))
             {
                 int num = CurrentGame.game.storeroom.units.FindIndex(x => x.unitID == unit.unitID);
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
@@ -1003,7 +1071,7 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
-            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
@@ -1055,8 +1123,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
-            //GUILayout.FlexibleSpace();
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
+            GUILayout.Space(10);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);
             foreach (UnitWeapon u in CurrentGame.game.memoryGeneral.itemsOwned.weapons)
@@ -1173,7 +1241,7 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
-            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
@@ -1190,8 +1258,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
-            //GUILayout.FlexibleSpace();
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(380), GUILayout.Height(700));
+            GUILayout.Space(10);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.Box("Select Item");
             GUILayout.Space(10);
             foreach (UnitAssessory u in CurrentGame.game.memoryGeneral.itemsOwned.assessories)
@@ -1300,7 +1368,7 @@ public class UnitManagerMenu : MonoBehaviour {
             {
                 currentMenu = Menu.UnitMenu;
             }
-            GUILayout.Label("", GUILayout.Width(380), GUILayout.Height(500));
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
