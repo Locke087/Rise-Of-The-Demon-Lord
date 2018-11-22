@@ -15,15 +15,23 @@ public class UnitClassDetail {
     public string name;
     public List<string> subbed;
     public ClassWeapons classWeapons;
+    public int powerLevel;
+    public int xp;
+    public int pxp;
+    public bool present;
     public UnitClassDetail()
     {
         level = 0;
         movement = 0;
+        powerLevel = 0;
+        xp = 0;
+        pxp = 0;
         pickSkill = new UnitClassSkill();
         modifiers = new List<float>();
         caps = new List<float>();
         unlocked = false;
         subbed = new List<string>();
         classWeapons = new ClassWeapons();
+        present = false;
     }
 }

@@ -66,6 +66,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitInfo.mugName = "Dude";
+        me.unitClass.main.human.warrior.powerLevel = 1;
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
         me.unitClass.main.human.archer.unlocked = true;
@@ -105,6 +106,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitInfo.mugName = "Actor_FW01_4";
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
+        newMe.unitClass.main.human.warrior.powerLevel = 1;
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
         newMe.unitClass.main.human.archer.unlocked = true;
@@ -154,6 +156,8 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.human.cavalier.movement = 6;
         newMe2.unitClass.main.human.cavalier.name = "Cavalier";
         newMe2.unitClass.main.human.cavalier.level = 1;
+        newMe2.unitClass.main.human.warrior.powerLevel = 1;
+
         newMe2.unitClass.main.human.cavalier.modifiers = Cavalier.ModList();
         newMe2.unitClass.main.human.cavalier.caps = Cavalier.Caplist();
         CavalierLoader.AssignSkill("Trample", newMe2.unitClass.main.human.cavalier.pickSkill);

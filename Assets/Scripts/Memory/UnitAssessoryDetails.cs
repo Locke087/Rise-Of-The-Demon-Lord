@@ -15,16 +15,24 @@ public class UnitAssessoryDetails {
     public bool boostStr;
     public bool boostMag;
     public bool boostSpd;
+    public string unlocks;
+    public int rank;
+    public int xp;
+    public List<UnitUniqueAssessoryXp> uniqueAssessoryXps;
     public UnitAssessoryDetails()
     {
         name = "";
         boost = 0;
         weight = 0;
+        xp = 0;
         boostStr = false;
         boostMag = false;
         boostSkill = false;
         boostMag = false;
         boostHp = false;
         boostSpd = false;
+        unlocks = "";
+        rank = 0;
+        uniqueAssessoryXps = new List<UnitUniqueAssessoryXp>();
     }
 }

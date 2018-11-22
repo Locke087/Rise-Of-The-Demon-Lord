@@ -17,6 +17,8 @@ public class UnitWeaponDetails {
     public string unlocks;
     public string type;
     public int rank;
+    public int xp;
+    public List<UnitUniqueWeaponXp> uniqueWeaponXps;
     public UnitWeaponEffects effects;
     public UnitWeaponDetails()
     {
@@ -30,6 +32,8 @@ public class UnitWeaponDetails {
         physical = false;
         type = "";
         rank = 0;
+        xp = 0;
+        uniqueWeaponXps = new List<UnitUniqueWeaponXp>();
         effects = new UnitWeaponEffects();
     }
 }

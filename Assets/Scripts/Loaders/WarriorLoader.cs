@@ -26,7 +26,7 @@ public class WarriorLoader : MonoBehaviour {
 
         LevelUpClass();
     }
-
+ 
 
     public static void LevelUpClass()
     {
@@ -129,6 +129,43 @@ public class WarriorLoader : MonoBehaviour {
         }
 
 
+
+    }
+
+
+    public static bool HasSkill(string sk, UnitClassSkill u)
+    {
+      
+        if (u.skill1.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill2.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill3.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill4.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill5.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill6.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill7.name == sk)
+        {
+            return true;
+        }
+
+        return false;
 
     }
 }

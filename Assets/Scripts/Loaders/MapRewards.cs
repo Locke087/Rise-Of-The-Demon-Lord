@@ -8,6 +8,9 @@ public class MapRewards : MonoBehaviour {
     public string unitRewardID;
     public string weaponRewardID;
     public string itemRewardID;
+    public int weaponXP;
+    public int unitXp;
+  
 	// Use this for initialization
 	void Start () {
 		
