@@ -268,7 +268,7 @@ public class MenuScript
     public static void CreateTileNames()
     {
 
-        GameObject map = GameObject.Find("NewMap");
+        GameObject map = GameObject.Find("Template36x40test");
         Rows[] allRows = map.GetComponentsInChildren<Rows>();
         int r = 0;
         foreach (Rows row in allRows)
@@ -277,10 +277,11 @@ public class MenuScript
             GridTiles[] allTiles = row.GetComponentsInChildren<GridTiles>();
 
             //
-            row.name = "og" + r;
+            row.name = "!!" + r;
             foreach (GridTiles tile in allTiles)
             {
-                tile.name = "og" + f + "r" + r;
+                if (tile.GetComponent<GridTiles>() != null) GameObject.DestroyImmediate(tile.GetComponent<GridTiles>());
+                tile.name = "!!" + f + "r" + r;
                 f++;
             }
             r++;

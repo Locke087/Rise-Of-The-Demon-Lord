@@ -17,6 +17,7 @@ public class WarriorLoader : MonoBehaviour {
     public static void NewWarriorClass()
     {
         Warrior.Clear();
+        Warrior.level = 0;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.name = "Warrior";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement = 5;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.type = "HeavyBlade";
