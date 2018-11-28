@@ -25,7 +25,10 @@ public class GridMovement : MonoBehaviour
     public int move = 5;
     public float jumpHeight = 3;
     public float moveSpeed = 2;
-
+    public bool north;
+    public bool south;
+    public bool east;
+    public bool west;
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
@@ -35,7 +38,10 @@ public class GridMovement : MonoBehaviour
 
     public void Init()
     {
-
+        north = false;
+        south = false;
+        east = false;
+        west = false;
         AssignArray(tiles);
         //mine
        // if (gameObject.GetComponent<EnemyMove>() == null) isPlayerPhase = true;
@@ -167,7 +173,40 @@ public class GridMovement : MonoBehaviour
     {
         do
         {
-            transform.position = Vector3.Lerp(transform.position, target, 0.05f);
+           
+          
+            Vector3 newMovement = Vector3.Lerp(transform.position, target, 0.05f);
+            if (newMovement.x > transform.position.x)
+            {
+                east = true;
+                south = false;
+                north = false;
+                west = false;
+            }
+            else if (newMovement.x < transform.position.x)
+            {
+                west = true;
+                south = false;
+                north = false;
+                east = false;
+            }
+            if (newMovement.z < transform.position.z)
+            {
+             
+                south = true;
+                north = false;
+                east = false;
+                west = false;
+            }
+            else if (newMovement.z > transform.position.z)
+            {
+                north = true;
+                south = false;
+                east = false;
+                west = false;
+               
+            }
+            transform.position = newMovement;
             yield return new WaitForSeconds(0.01f);
         } while (Vector3.Distance(transform.position, target) >= 0.05f);
     }
@@ -188,6 +227,7 @@ public class GridMovement : MonoBehaviour
                 SetHorizotalVelocity();
                 //Locomotion
                 transform.forward = heading;
+               
                 StartCoroutine(MoveSlower(target));
                 //transform.position += velocity * Time.deltaTime;
             }
@@ -288,6 +328,7 @@ public class GridMovement : MonoBehaviour
         }
         if (endTile.gameObject.tag == "Ramp")
         {
+            Debug.Log("hdfksjflk me");
             return endTile.parent;
         }
         return endTile;

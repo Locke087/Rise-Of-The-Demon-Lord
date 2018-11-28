@@ -91,6 +91,7 @@ public class EventDriver : MonoBehaviour
         MapLocation map = GameObject.FindObjectOfType<MapLocation>();
         List<GridTiles> tiles = new List<GridTiles>();
         bool valid = false;
+        Debug.Log(map.name);
         foreach (Rows row in map.allRows)
         {
             map.allTiles = row.GetComponentsInChildren<GridTiles>();
@@ -137,6 +138,7 @@ public class EventDriver : MonoBehaviour
             {
                 if (tile.enemySpawn && tile.walkable)
                 {
+                    Debug.Log("got inj");
                     if (tiles.Count > 0)
                     {
                         valid = true;
@@ -148,7 +150,7 @@ public class EventDriver : MonoBehaviour
                         }
                         if (valid)
                         {
-                            Debug.Log("got ine");
+                           
                             tiles.Add(tile);
                         }
                     }

@@ -953,59 +953,46 @@ public class RoutLoader : MonoBehaviour {
                 //<- 0     180-> (Lip)
                 //      270
                 //       V
-                else if (tile.tag == "Normal")
+                 else if (tile.tag == "Normal")
                 {
+                    GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Material material = Resources.Load<Material>(tile.TileColor());
+                    tiles.transform.parent = newRow.transform;
+                    tiles.name = "og" + f + "r" + r;
+                    f++;
+                    tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
+                    tiles.transform.localRotation = tile.transform.localRotation;
+                    tiles.GetComponent<Renderer>().material = material;
+                    tiles.tag = "Tile";
+                    tiles.AddComponent<GridTiles>();
 
-                    if (tile.transform.localPosition.y > 0.9f)
+                    if (!tile.hazard)
                     {
-
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>(tile.TileColor());
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
-                        f++;
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        if (!tile.hazard)
-                        {
-                            tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
-                            tiles.GetComponent<GridTiles>().walkable = true;
-                            tiles.GetComponent<GridTiles>().distance = 5;
-                        }
-                        else
-                        {
-                            tiles.GetComponent<GridTiles>().walkable = false;
-                            tiles.GetComponent<GridTiles>().distance = 5;
-                        }
-                        tiles.transform.localScale = new Vector3(1, (tile.transform.localPosition.y + 1), 1);
-                        tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y / 2, 0);
+                        tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
+                        tiles.GetComponent<GridTiles>().walkable = true;
+                      //  tiles.GetComponent<GridTiles>().distance = 5;
                     }
                     else
                     {
-                        GameObject tiles = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Material material = Resources.Load<Material>(tile.TileColor());
-                        tiles.GetComponent<Renderer>().material = material;
-                        tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
-                        f++;
-                        tiles.transform.localPosition = new Vector3(j, 0, 0);
-                        tiles.tag = "Tile";
-                        tiles.AddComponent<GridTiles>();
-                        if (!tile.hazard)
-                        {
-                            tiles.GetComponent<GridTiles>().CheckSpawnType(tile.FindSpawnType());
-                            tiles.GetComponent<GridTiles>().walkable = true;
-                            tiles.GetComponent<GridTiles>().distance = 5;
-                        }
-                        else
-                        {
-                            tiles.GetComponent<GridTiles>().walkable = false;
-                            tiles.GetComponent<GridTiles>().distance = 5;
-                        }
+                        tiles.GetComponent<GridTiles>().walkable = false;
+                      //  tiles.GetComponent<GridTiles>().distance = 5;
                     }
+
+                    if (tile.transform.localPosition.y > 0.9f)
+                    {
+                        GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        tilesn.transform.parent = newRow.transform;
+                        tilesn.GetComponent<Renderer>().material = material;
+                        tilesn.transform.localPosition = new Vector3(j, 1, 0);
+                        tilesn.transform.localScale = new Vector3(1, (tile.transform.localPosition.y), 1);
+                        tilesn.transform.localPosition += new Vector3(0, 0.5f * (tile.transform.localPosition.y + 1), 0);
+                        tilesn.transform.localPosition += Vector3.down + Vector3.down;
+                        tilesn.transform.parent = tiles.transform;
+                    }
+
+                  
                 }
+               
                 else if (tile.tag == "RampE")
                 {
                     GameObject tiles = GameObject.Instantiate(Resources.Load("Ramp")) as GameObject;
