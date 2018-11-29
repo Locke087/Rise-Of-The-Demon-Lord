@@ -2,18 +2,18 @@ fileFormatVersion: 2
 guid: 5e72bf85f66e668458950e4a76d26302
 TextureImporter:
   fileIDToRecycleName:
-    21300000: $Ninetails_0
-    21300002: $Ninetails_1
-    21300004: $Ninetails_2
-    21300006: $Ninetails_3
-    21300008: $Ninetails_4
-    21300010: $Ninetails_5
-    21300012: $Ninetails_6
-    21300014: $Ninetails_7
-    21300016: $Ninetails_8
-    21300018: $Ninetails_9
-    21300020: $Ninetails_10
-    21300022: $Ninetails_11
+    21300000: South1
+    21300002: SouthIdle
+    21300004: South3
+    21300006: West1
+    21300008: WestIdle
+    21300010: West3
+    21300012: East1
+    21300014: EastIdle
+    21300016: East3
+    21300018: North1
+    21300020: NorthIdle
+    21300022: North3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -151,7 +151,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: $Ninetails_0
+      name: South1
       rect:
         serializedVersion: 2
         x: 0
@@ -159,7 +159,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_1
+      name: SouthIdle
       rect:
         serializedVersion: 2
         x: 64
@@ -179,7 +179,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_2
+      name: South3
       rect:
         serializedVersion: 2
         x: 128
@@ -199,7 +199,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,7 +211,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_3
+      name: West1
       rect:
         serializedVersion: 2
         x: 0
@@ -219,7 +219,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,15 +231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_4
+      name: WestIdle
       rect:
         serializedVersion: 2
         x: 64
-        y: 110
+        y: 111
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -251,15 +251,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_5
+      name: West3
       rect:
         serializedVersion: 2
         x: 128
-        y: 110
+        y: 109
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,7 +271,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_6
+      name: East1
       rect:
         serializedVersion: 2
         x: 0
@@ -279,7 +279,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_7
+      name: EastIdle
       rect:
         serializedVersion: 2
         x: 64
@@ -299,7 +299,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -311,7 +311,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_8
+      name: East3
       rect:
         serializedVersion: 2
         x: 128
@@ -319,7 +319,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,7 +331,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_9
+      name: North1
       rect:
         serializedVersion: 2
         x: 0
@@ -339,7 +339,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,7 +351,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_10
+      name: NorthIdle
       rect:
         serializedVersion: 2
         x: 64
@@ -359,7 +359,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -371,7 +371,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Ninetails_11
+      name: North3
       rect:
         serializedVersion: 2
         x: 128
@@ -379,7 +379,7 @@ TextureImporter:
         width: 64
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
