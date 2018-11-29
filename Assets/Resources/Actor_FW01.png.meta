@@ -2,14 +2,14 @@ fileFormatVersion: 2
 guid: 0210b27c980ebe64090c9fe60667e6ba
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dude
-    21300002: Actor_FW01_2
-    21300004: Actor_FW01_3
-    21300006: Actor_FW01_4
-    21300008: Actor_FW01_5
-    21300010: Actor_FW01_6
-    21300012: Actor_FW01_7
-    21300014: Actor_FW01_8
+    21300000: Ryoma
+    21300002: Natalie
+    21300004: Verient
+    21300006: Brenda
+    21300008: Claudius
+    21300010: Himea
+    21300012: Noah
+    21300014: Alice
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -125,7 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dude
+      name: Ryoma
       rect:
         serializedVersion: 2
         x: 0
@@ -145,10 +145,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_2
+      name: Natalie
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 96
         width: 96
         height: 96
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_3
+      name: Verient
       rect:
         serializedVersion: 2
         x: 192
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_4
+      name: Brenda
       rect:
         serializedVersion: 2
         x: 288
@@ -205,7 +205,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_5
+      name: Claudius
       rect:
         serializedVersion: 2
         x: 0
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_6
+      name: Himea
       rect:
         serializedVersion: 2
         x: 96
@@ -245,7 +245,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_7
+      name: Noah
       rect:
         serializedVersion: 2
         x: 192
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW01_8
+      name: Alice
       rect:
         serializedVersion: 2
         x: 288

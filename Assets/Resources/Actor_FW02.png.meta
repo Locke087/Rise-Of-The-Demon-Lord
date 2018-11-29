@@ -2,14 +2,14 @@ fileFormatVersion: 2
 guid: 27feab654711627488f105a765f112c8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Actor_FW02_0
-    21300002: Actor_FW02_1
-    21300004: Actor_FW02_2
-    21300006: Actor_FW02_3
-    21300008: Actor_FW02_4
-    21300010: Actor_FW02_5
-    21300012: Actor_FW02_6
-    21300014: Actor_FW02_7
+    21300000: Arthur
+    21300002: Cassie
+    21300004: Axis
+    21300006: Vertice
+    21300008: Tius
+    21300010: Isabelle
+    21300012: Rick
+    21300014: Sascha
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -147,15 +147,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Actor_FW02_0
+      name: Arthur
       rect:
         serializedVersion: 2
         x: 0
-        y: 97
+        y: 96
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_1
+      name: Cassie
       rect:
         serializedVersion: 2
         x: 95
@@ -175,7 +175,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,7 +187,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_2
+      name: Axis
       rect:
         serializedVersion: 2
         x: 190
@@ -195,7 +195,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_3
+      name: Vertice
       rect:
         serializedVersion: 2
         x: 285
@@ -215,7 +215,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_4
+      name: Tius
       rect:
         serializedVersion: 2
         x: 0
@@ -235,7 +235,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,7 +247,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_5
+      name: Isabelle
       rect:
         serializedVersion: 2
         x: 95
@@ -255,7 +255,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,7 +267,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_6
+      name: Rick
       rect:
         serializedVersion: 2
         x: 190
@@ -275,7 +275,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -287,7 +287,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Actor_FW02_7
+      name: Sascha
       rect:
         serializedVersion: 2
         x: 285
@@ -295,7 +295,7 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
