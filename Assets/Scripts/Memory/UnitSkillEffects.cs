@@ -5,11 +5,19 @@ using UnityEngine;
 [System.Serializable]
 public class UnitSkillEffects
 {
-
+    public bool increaseDebuffs;
+    public bool randomDebuff;
+    public bool invisible;
+    public bool randomDamage;
+    public bool swapPosition;
     public bool knockBack;
+    public bool nullDamage;
+    public bool mpRestore;
     public bool attackBoost;
     public bool defenseBoost;
+    public bool magicDefenseBoost;
     public bool hitReduction;
+    public bool critIncrease;
     public bool damageReduction;
     public bool extraHit;
     public bool holyDamage;
@@ -21,6 +29,10 @@ public class UnitSkillEffects
     public bool skillUseRestore;
     public bool poison;
     public bool sleep;
+    public bool shaken;
+    public bool stun;
+    public bool root;
+    public bool confuse;
     public bool berserk;
     public bool vampire;
     public bool selfDamage;
@@ -37,10 +49,24 @@ public class UnitSkillEffects
     public bool trueDamage;
     public bool overRun;
     public bool movementDown;
+    public bool statusHeal;
 
     public UnitSkillEffects()
     {
+        increaseDebuffs = false;
+        randomDebuff = false;
+        invisible = false;
+        critIncrease = false;
+        shaken = false;
+        randomDamage = false;
+        root = false;
+        confuse = false;
+        stun = false;
+        swapPosition = false;
+        statusHeal = false;
         counter = false;
+        mpRestore = false;
+        nullDamage = false;
         selfDamage = false;
         hitReduction = false;
         knockBack = false;

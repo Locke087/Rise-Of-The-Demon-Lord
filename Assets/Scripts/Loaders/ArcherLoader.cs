@@ -24,11 +24,11 @@ public class ArcherLoader : MonoBehaviour
         volley.physicalDamage = true;
         volley.range = 5;
 
-        UnitSkillDetail overDraw = new UnitSkillDetail();
-        overDraw.name = "Overdraw";
-        overDraw.physicalDamage = true;
-        overDraw.range = 8;
-        overDraw.effects.hitrateReduce = true;
+        UnitSkillDetail longShot = new UnitSkillDetail();
+        longShot.name = "Long Shot";
+        longShot.physicalDamage = true;
+        longShot.range = 8;
+        longShot.effects.hitrateReduce = true;
 
         UnitSkillDetail doubleNock = new UnitSkillDetail();
         doubleNock.name = "Double-Nock";
@@ -66,9 +66,9 @@ public class ArcherLoader : MonoBehaviour
         {
             u.skill1 = volley;
         }
-        else if (sk == overDraw.name)
+        else if (sk == longShot.name)
         {
-            u.skill2 = overDraw;
+            u.skill2 = longShot;
         }
         else if (sk == doubleNock.name)
         {
@@ -90,9 +90,6 @@ public class ArcherLoader : MonoBehaviour
         {
             u.skill7 = stabbingArrow;
         }
-
-
-
     }
 }
 
