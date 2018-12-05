@@ -39,8 +39,9 @@ public class ActorPlacementGroup : MonoBehaviour {
     public PictureState place31;
     public PictureState place32;
     public PictureState place33;
+
     void Start () {
-		
+
 	}
 	
 	// Update is called once per frame

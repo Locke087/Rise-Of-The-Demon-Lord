@@ -7260,7 +7260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd55bc915ce984ea1d518b14f52878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realname: ActMelvin
+  realname: ActRyoma
   place: {fileID: 2144410658}
   place2: {fileID: 534335672}
   place3: {fileID: 2093890856}
@@ -8897,7 +8897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd55bc915ce984ea1d518b14f52878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realname: ActJane
+  realname: ActBrenda
   place: {fileID: 1515670905}
   place2: {fileID: 1700136827}
   place3: {fileID: 803433082}

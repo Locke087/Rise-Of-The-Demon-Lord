@@ -14,7 +14,7 @@ public class ShowAttackRange : MonoBehaviour {
     List<GridTiles> attackTile = new List<GridTiles>();
 
     public bool isMoving = false;
-    public int attackRange = 3;
+    public int attackArea = 3;
     public float jumpHeight = 3;
     public float moveSpeed = 2;
 
@@ -27,14 +27,20 @@ public class ShowAttackRange : MonoBehaviour {
 
     public void Init()
     {
-
         AssignArray(tiles);
-        halfHeight = GetComponent<Collider>().bounds.extents.y;
+        //mine
+        // if (gameObject.GetComponent<EnemyMove>() == null) isPlayerPhase = true;
+        // else isPlayerPhase = false;
+        // isEnemyPhase = false;
+        // freeze = false;
+        // enemyIsFinished = false;
+        // enemyAccounted = false;
+        //not mine
+        // halfHeight = gameObject.GetComponent<Collider>().bounds.extents.y;
     }
 
     public void GetCurrentTile()
     {
-        //changed
         currentTile = GetTargetTile(gameObject);
         currentTile.current = true;
     }
@@ -46,7 +52,16 @@ public class ShowAttackRange : MonoBehaviour {
 
         if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 3))
         {
-            tile = hit.collider.GetComponentInParent<GridTiles>();
+            if (hit.collider.GetComponent<GridTiles>() == null)
+            {
+
+                Debug.Log("thudfdjs");
+                tile = hit.collider.GetComponentInParent<GridTiles>();
+            }
+            else
+            {
+                tile = hit.collider.GetComponent<GridTiles>();
+            }
         }
 
         return tile;
@@ -63,11 +78,11 @@ public class ShowAttackRange : MonoBehaviour {
     {
         GridTiles[] mapTiles = GameObject.FindObjectsOfType<GridTiles>();
         foreach (GridTiles obj in mapTiles)
-           list.Add(obj.gameObject);
+            list.Add(obj.gameObject);
     }
 
 
-    public void FindAttackTiles()
+    public void FindSelectableTiles()
     {
         ComputeAdjacencyLists(jumpHeight, null);
         GetCurrentTile();
@@ -77,34 +92,29 @@ public class ShowAttackRange : MonoBehaviour {
         process.Enqueue(currentTile);
         currentTile.visited = true;
 
-
-        //currentTile.parent = ??  leave as null 
-
         while (process.Count > 0)
         {
             GridTiles t = process.Dequeue();
-            attackTile.Add(t);
+            selectableTiles.Add(t);
+            t.selectable = false;
             t.attack = true;
 
-            if (t.distance < attackRange)
+            if (t.distance < attackArea)
             {
-                 foreach (GridTiles tile in t.attackList)
-                 {
-                     if (!tile.visited)
-                     {
-                         attackTile.Add(tile);
-                         tile.parent = t;
-                         tile.visited = true;
-                         tile.distance = 1 + t.distance;
-                         tile.selectable = false;
-                         tile.attack = true;
-                     }
-                 }
+                foreach (GridTiles tile in t.adjacencyList)
+                {
+                    if (!tile.visited)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.distance = 1 + t.distance;
+                        process.Enqueue(tile);
+                    }
+                }
             }
 
-
-
         }
+
     }
 
     public void MoveToTile(GridTiles tile)
@@ -113,13 +123,17 @@ public class ShowAttackRange : MonoBehaviour {
         tile.target = true;
         isMoving = true;
 
+
         GridTiles next = tile;
+
         while (next != null)
         {
             path.Push(next);
             next = next.parent;
         }
     }
+
+
 
     public void Move()
     {
@@ -129,17 +143,17 @@ public class ShowAttackRange : MonoBehaviour {
             Vector3 target = t.transform.position;
 
             //Calculate the unit's position on top of the target tile
-            target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
+            target.y += halfHeight; //+ t.GetComponent<Collider>().bounds.extents.y;
 
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
-                heading = target - transform.position;
-                heading.Normalize();
-
-                velocity = heading * moveSpeed;
+                CalculateHeading(target);
+                SetHorizotalVelocity();
                 //Locomotion
                 transform.forward = heading;
-                transform.position += velocity * Time.deltaTime;
+
+               
+                //transform.position += velocity * Time.deltaTime;
             }
             else
             {
@@ -220,17 +234,27 @@ public class ShowAttackRange : MonoBehaviour {
             next = next.parent;
         }
 
-        if (tempPath.Count <= attackRange)
+        if (tempPath.Count <= attackArea)
         {
+            if (t.parent.gameObject.tag == "Ramp")
+            {
+                GridTiles temp = t.parent;
+                return temp.parent;
+            }
             return t.parent;
         }
 
         GridTiles endTile = null;
-        for (int i = 0; i <= attackRange; i++)
+        for (int i = 0; i <= attackArea; i++)
         {
+
             endTile = tempPath.Pop();
         }
-
+        if (endTile.gameObject.tag == "Ramp")
+        {
+            Debug.Log("hdfksjflk me");
+            return endTile.parent;
+        }
         return endTile;
     }
 
@@ -240,14 +264,18 @@ public class ShowAttackRange : MonoBehaviour {
         GetCurrentTile();
 
         List<GridTiles> openList = new List<GridTiles>();
+        List<GridTiles> closedList = new List<GridTiles>();
 
         openList.Add(currentTile);
+        //currentTile.parent = ??
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
         currentTile.f = currentTile.h;
 
         while (openList.Count > 0)
         {
             GridTiles t = FindLowestF(openList);
+
+            closedList.Add(t);
 
             if (t == target)
             {
@@ -258,7 +286,11 @@ public class ShowAttackRange : MonoBehaviour {
 
             foreach (GridTiles tile in t.adjacencyList)
             {
-                if (openList.Contains(tile))
+                if (closedList.Contains(tile))
+                {
+                    //Do nothing, already processed
+                }
+                else if (openList.Contains(tile))
                 {
                     float tempG = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
 
@@ -285,7 +317,7 @@ public class ShowAttackRange : MonoBehaviour {
 
 
 
-        GameObject.FindObjectOfType<MoveSwitch>().gridOn = false;
+        // GameObject.FindObjectOfType<MoveSwitch>().gridOn = false;
         Debug.Log("Make A Better Map you nit wit");
     }
 

@@ -10,6 +10,7 @@ public class Unit {
     public UnitInfo unitInfo;
     public UnitClass unitClass;
     public UnitStatus status;
+    public UnitActor unitActor;
     public string idx;
     public string unitID;
 	public Unit()
@@ -19,6 +20,7 @@ public class Unit {
         unitInfo = new UnitInfo();
         unitClass = new UnitClass();
         status = new UnitStatus();
+        unitActor = new UnitActor();
         idx = "";
         unitID = "";
     }

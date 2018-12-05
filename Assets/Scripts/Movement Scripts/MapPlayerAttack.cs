@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MapPlayerAttack : ShowAttackRange {
 
     // Use this for initialization
     public bool inUse = false;
     public bool attacked = false;
+    public string shape;
+    public UnitSkillDetail currentAttack;
     MapPlayerMove playerMove;
     void Start()
     {
+        shape = "";
         playerMove = gameObject.GetComponent<MapPlayerMove>();
     }
 
@@ -36,10 +39,26 @@ public class MapPlayerAttack : ShowAttackRange {
         {
             inUse = true;
             AssignMe();
-            FindAttackTiles();
+            FindSelectableTiles();
             
         }
     }
+
+   
+
+    public void UniqueAttack()
+    {
+        Debug.Log("okay now");
+        if (!playerMove.busy)
+        {
+            attackArea = currentAttack.range;
+            inUse = true;
+            AssignMe();
+            FindSelectableTiles();
+
+        }
+    }
+
 
     public void HideAttack()
     {

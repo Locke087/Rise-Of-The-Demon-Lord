@@ -18,6 +18,7 @@ public class WarriorLoader : MonoBehaviour {
     {
         Warrior.Clear();
         Warrior.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level = 0;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.name = "Warrior";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement = 5;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.type = "HeavyBlade";
@@ -92,7 +93,7 @@ public class WarriorLoader : MonoBehaviour {
         UnitSkillDetail lunge = new UnitSkillDetail();
         lunge.name = "Lunge";
         lunge.range = 1;
-        lunge.attackPattern = "2TileLine";
+        lunge.attackPattern = "LineVert";
         lunge.physicalDamage = true;
 
         UnitSkillDetail counter = new UnitSkillDetail();
@@ -114,7 +115,7 @@ public class WarriorLoader : MonoBehaviour {
         }
         else if (sk == doubleEdged.name)
         {
-            u.skill4 = bullrush;
+            u.skill4 = doubleEdged;
         }
         else if (sk == blitz.name)
         {

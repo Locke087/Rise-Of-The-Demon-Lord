@@ -9,10 +9,10 @@ public class UnitSkillDetail {
     public float extraDamageMod;
     public int restore;
     public int range;
+    public bool self;
     public bool support;
     public bool magicDamage;
     public bool physicalDamage;
-
     public UnitSkillEffects effects;
     // public GameObject attackPattern;
     public string attackPattern;
@@ -24,6 +24,7 @@ public class UnitSkillDetail {
         restore = 0;
         range = 0;
         support = false;
+        self = false;
         effects = new UnitSkillEffects();
         magicDamage = false;
         physicalDamage = false;

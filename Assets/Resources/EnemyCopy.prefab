@@ -186,6 +186,50 @@ MonoBehaviour:
   calcSkill: 0
   calcMagic: 0
   calcWill: 0
+  affitity: 
+  attackBonus: 0
+  currentAttack:
+    name: 
+    extraDamageMod: 0
+    restore: 0
+    range: 0
+    self: 0
+    support: 0
+    magicDamage: 0
+    physicalDamage: 0
+    effects:
+      knockBack: 0
+      attackBoost: 0
+      defenseBoost: 0
+      hitReduction: 0
+      damageReduction: 0
+      extraHit: 0
+      holyDamage: 0
+      fireDamage: 0
+      healing: 0
+      extraTurn: 0
+      revive: 0
+      willBoost: 0
+      skillUseRestore: 0
+      poison: 0
+      sleep: 0
+      berserk: 0
+      vampire: 0
+      selfDamage: 0
+      counter: 0
+      hitrateReduce: 0
+      dodge: 0
+      stealMoney: 0
+      stealItem: 0
+      darkDamage: 0
+      waterDamage: 0
+      earthDamage: 0
+      natureDamage: 0
+      metalDamage: 0
+      trueDamage: 0
+      overRun: 0
+      movementDown: 0
+    attackPattern: 
 --- !u!114 &114227765253399570
 MonoBehaviour:
   m_ObjectHideFlags: 1

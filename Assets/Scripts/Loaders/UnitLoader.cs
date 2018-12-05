@@ -79,6 +79,8 @@ public class UnitLoader : MonoBehaviour {
         WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
         me.unitInfo.main = me.unitClass.main.human.warrior;
 
         // str, def, spd, skill, magic, will
