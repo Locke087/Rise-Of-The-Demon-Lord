@@ -21,6 +21,7 @@ public class ArcherLoader : MonoBehaviour
     {
         UnitSkillDetail volley = new UnitSkillDetail();
         volley.name = "Volley";
+        volley.attackPattern = "Cross Attack";
         volley.physicalDamage = true;
         volley.range = 5;
 

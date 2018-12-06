@@ -34,7 +34,7 @@ public class CutSceneController : MonoBehaviour {
         {        
             foreach (CurrentSceneActorInfo actorInfo in currentScene.actors)
             {
-                ActorPlacementGroup actor = actors.Find(x => x.realname == actorInfo.name);
+                ActorPlacementGroup actor = actors.Find(x => x.realname == actorInfo.groupName);
                 actor.SwitchPostion(actorInfo.location, actorInfo.name);
                 yield return new WaitForSeconds(0.01f);
                 actor.CurrentPostion().NewMe(actorInfo.name);
@@ -43,6 +43,7 @@ public class CutSceneController : MonoBehaviour {
 
             foreach (string word in currentScene.order)
             {
+
                 ActorPlacementGroup actor = actors.Find(x => x.realname == word);
                 CurrentSceneActorInfo actorInfo = currentScene.actors.Find(x => x.actor == actor);
                 yield return new WaitForSeconds(0.01f);
@@ -53,6 +54,7 @@ public class CutSceneController : MonoBehaviour {
                 allDone++;
             }
             yield return new WaitUntil(() => allDone >= currentScene.order.Count);
+            allDone = 0;
         }
     }
 

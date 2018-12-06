@@ -92,7 +92,9 @@ public class Stats : MonoBehaviour
     public int calcSkill;
     public int calcMagic;
     public int calcWill;
-
+    public string affitity;
+    public float attackBonus;
+    public UnitSkillDetail currentAttack;
     void Start()
     {
        // confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
@@ -149,7 +151,7 @@ public class Stats : MonoBehaviour
         allNatures.Add(new TheNatures("Lame", 1, 1, 1, 0, 3, 1, 1)); //+hp -skill
 
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
-
+        attackBonus = 0;
         if (nature == null) nature = "Neutral";
         currentHp = hp;
          
@@ -252,8 +254,6 @@ public class Stats : MonoBehaviour
             GameObject.Find("SumSkl").GetComponent<Text>().text = "0";
         }
     }*/
-
-
    /* public void UpdateModsStat(int a, int d, int sp, int sk, int m, int w)
     {
         skillModStat = sk;
@@ -375,6 +375,24 @@ public class Stats : MonoBehaviour
         else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
 
        //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
+    }
+
+    public void attackedMag(Stats attacker)
+    {
+        //AttackPreview(attacker);
+        int aAttackSpeed = spd - weaponWeight;
+        int dAttackSpeed = attacker.spd - attacker.weaponWeight;
+        DefenderMagDamaged(attacker);
+        if ((aAttackSpeed) < 0) aAttackSpeed = 0;
+        if ((dAttackSpeed) < 0) dAttackSpeed = 0;
+        //Double Attack if: (Attack Speed – enemy Attack Speed) >= 4
+        if ((aAttackSpeed - dAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
+        {
+            DefenderMagDamaged(attacker);
+        }
+        else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0) AttackerMagDamaged(attacker);
+
+        //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
 
 
@@ -630,13 +648,84 @@ public class Stats : MonoBehaviour
 
     }
 
+
+
+    public void Skill(Stats attacker)
+    {
+        attackBonus = 0;
+        if (currentAttack.physicalDamage)
+        {
+            if(currentAttack.effects.fireDamage && affitity == "Wood")
+            {
+
+                attacker.attackBonus = 1.5f;
+                attacker.attackBonus = 1.5f;
+
+            }
+            DefenderDamaged(attacker);
+        }
+        else if (currentAttack.magicDamage)
+        {
+            if (currentAttack.effects.fireDamage && affitity == "Wood")
+            {
+                attacker.attackBonus = 1.5f;
+            }
+            DefenderMagDamaged(attacker);
+        }
+        else if (currentAttack.support)
+        {
+            if (currentAttack.effects.healing)
+            {
+                if (affitity != "Undead")
+                {
+                    currentHp += currentAttack.restore;
+                }
+                else
+                {
+                    currentHp -= currentAttack.restore;
+                    if (currentHp < 0) currentHp = 0;
+                    if (currentHp <= 0) Death();
+                }
+            }
+
+            if (currentAttack.effects.revive)
+            {
+               
+                if (affitity != "Undead")
+                {
+                    if (dead)
+                    {
+                        dead = false;
+                        currentHp += currentAttack.restore;
+                        gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        currentHp += currentAttack.restore;
+                    }
+                }
+                else
+                {
+                    currentHp -= currentAttack.restore;
+                    if (currentHp < 0) currentHp = 0;
+                    if (currentHp <= 0) Death();
+                }
+            }
+          
+        }
+    }
+
+  
+
     public void DefenderDamaged(Stats attacker)
     {
         //total atk includes weapons
         enemyHitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
         baseEnemyHit = enemyHitRate;
         int totalAtk = attacker.str + attacker.weaponMight;
-        damage = totalAtk - def;
+        damage = totalAtk  - def;
+        if (attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - def;
+   //     if (attackNeg != 0) damage = (int)(totalAtk / attacker.attackNeg) - def;
         float reduce = CalcFinalHit(enemyHitRate); 
         float hurt = damage * reduce;
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
@@ -685,6 +774,7 @@ public class Stats : MonoBehaviour
         basePlayerHit = playerHitRate;
         int totalAtk = str + weaponMight;
         enemyDamage = totalAtk - attacker.def;
+        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.def;
         float reduce = CalcFinalHit(playerHitRate);
         float hurt = enemyDamage * reduce;
         if (hurt < 0)
@@ -707,6 +797,110 @@ public class Stats : MonoBehaviour
 
       
         Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
+        Debug.Log("Is Now This Much HP: " + attacker.currentHp);
+        if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("DefTD2").GetComponent<Text>().text = enemyDamage.ToString();
+        }
+        else
+        {
+            GameObject.Find("DefTD").GetComponent<Text>().text = enemyDamage.ToString();
+        }
+
+        if (GameObject.Find("DefHitP").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("DefHitP2").GetComponent<Text>().text = reduce.ToString();
+        }
+        else
+        {
+            GameObject.Find("DefHitP").GetComponent<Text>().text = reduce.ToString();
+        }
+
+        GameObject.Find("DefHp").GetComponentInChildren<Text>().text = attacker.currentHp.ToString();
+        if (attacker.currentHp < 0) attacker.currentHp = 0;
+        if (attacker.currentHp <= 0) attacker.Death();
+    }
+
+
+    public void DefenderMagDamaged(Stats attacker)
+    {
+        //total atk includes weapons
+        enemyHitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
+        baseEnemyHit = enemyHitRate;
+        int totalAtk = attacker.magic + attacker.weaponMight;
+        damage = totalAtk - will;
+        if (attacker.attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - will;
+        float reduce = CalcFinalHit(enemyHitRate);
+        float hurt = damage * reduce;
+        int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
+        damage = newDamage;
+        Debug.Log("Is Now This Much HP: " + attacker.currentHp);
+
+        if (damage > 0)
+            currentHp = currentHp - damage;
+        else
+        {
+            damage = 1;
+            currentHp = currentHp - damage;
+        }
+
+        Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + will);
+        Debug.Log("Is Now This Much HP: " + currentHp);
+        if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("AtkTD2").GetComponent<Text>().text = damage.ToString();
+        }
+        else
+        {
+            GameObject.Find("AtkTD").GetComponent<Text>().text = damage.ToString();
+        }
+
+        if (GameObject.Find("AtkHitP").GetComponent<Text>().text != "0")
+        {
+            GameObject.Find("AtkHitP2").GetComponent<Text>().text = reduce.ToString();
+        }
+        else
+        {
+            GameObject.Find("AtkHitP").GetComponent<Text>().text = reduce.ToString();
+        }
+
+        GameObject.Find("AtkHp").GetComponentInChildren<Text>().text = currentHp.ToString();
+
+        if (currentHp < 0) currentHp = 0;
+        if (currentHp <= 0) Death();
+    }
+
+
+    public void AttackerMagDamaged(Stats attacker)
+    {
+
+        playerHitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
+        basePlayerHit = playerHitRate;
+        int totalAtk = magic + weaponMight;
+        enemyDamage = totalAtk - attacker.will;
+        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.will;
+        float reduce = CalcFinalHit(playerHitRate);
+        float hurt = enemyDamage * reduce;
+        if (hurt < 0)
+        {
+
+            int newDamage = CalcCrit(hurt, weaponCritRate + critRate, weaponCritChance + critChance);
+            enemyDamage = newDamage;
+        }
+
+
+        Debug.Log("Had This Much HP: " + attacker.currentHp);
+
+        if (enemyDamage > 0)
+            attacker.currentHp = attacker.currentHp - enemyDamage;
+        else
+        {
+            enemyDamage = 1;
+            attacker.currentHp = attacker.currentHp - enemyDamage;
+        }
+
+
+        Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + will);
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
         if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
         {

@@ -66,6 +66,27 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitInfo.mugName = "Dude";
+        //  me.unitActor.mapActor.groupName = "sdsjkhsd";
+        //   me.unitActor.mapActor.personalID = "goblin";
+
+        ///For Directions
+         // List<Sprite> sprites = new List<Sprite>();       
+        // sprites.AddRange(Resources.LoadAll<Sprite>(me.unitActor.mapActor.groupName));
+        // if (north) string direction = "North";
+        //string idle = "Idle";
+       // string[] allText = { "1", "Idle", "3" };
+      //  List<string> texter = new List<string>();
+        //texter.AddRange(allText);
+        // string spriteName = me.unitActor.mapActor.personalID + direction + idle;
+       // List<Sprite> spritesNew = new List<Sprite>();
+        /*foreach (string st in texter)
+        {
+            spritesNew.Add(sprites.Find(x => x.name == (me.unitActor.mapActor.personalID + direction + st)));
+        }
+        foreach (Sprite s in spritesNew)
+        {
+         
+        }*/
         me.unitClass.main.human.warrior.powerLevel = 1;
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
@@ -79,6 +100,8 @@ public class UnitLoader : MonoBehaviour {
         WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
         me.unitInfo.main = me.unitClass.main.human.warrior;
 
         // str, def, spd, skill, magic, will

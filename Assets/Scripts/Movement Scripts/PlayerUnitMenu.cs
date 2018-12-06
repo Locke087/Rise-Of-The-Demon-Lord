@@ -16,7 +16,7 @@ public class PlayerUnitMenu : MonoBehaviour {
     public bool movedFinished = false;
     public bool attackDoubleClick = false;
     public bool moveDoubleClick = false;
-   
+    public GameObject attackMenu;
     void Start () {
         unitMenu = GameObject.Find("UnitMenu1");
         move = GameObject.Find("Move").GetComponent<Button>();
@@ -97,6 +97,7 @@ public class PlayerUnitMenu : MonoBehaviour {
         if (attackDoubleClick)
         {
             attackDoubleClick = false;
+            attackMenu.SetActive(false);
             unitfFor.GetComponent<MapPlayerAttack>().HideAttack();
         }
         else if (moveDoubleClick)
@@ -105,8 +106,9 @@ public class PlayerUnitMenu : MonoBehaviour {
             unitfFor.GetComponent<MapPlayerMove>().HideMove();
             if (!attackFinished)
             {
-                Debug.Log("in attack");
-                if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+               Debug.Log("in attack");
+                //if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+                attackMenu.SetActive(true);
                 attackDoubleClick = true;
             }
         }
@@ -114,8 +116,10 @@ public class PlayerUnitMenu : MonoBehaviour {
         {
             attackDoubleClick = true;
             Debug.Log("in attack");
-            if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
-        
+            //if (unitfFor != null) unitfFor.GetComponent<MapPlayerAttack>().ShowAttack();
+            attackMenu.SetActive(true);
+            attackDoubleClick = true;
+
         }
         
     }
