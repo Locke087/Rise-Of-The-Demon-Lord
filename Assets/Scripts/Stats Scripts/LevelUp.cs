@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour {
 
-    public void LEvelUpNow()
+    public void LevelUpNow()
     {
         UnitHumanClass hum = CurrentGame.game.memoryGeneral.humanClassProgress;
         UnitViraClass vira = CurrentGame.game.memoryGeneral.viraClassProgress;

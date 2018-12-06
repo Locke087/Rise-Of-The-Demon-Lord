@@ -710,7 +710,7 @@ public class Stats : MonoBehaviour
 
     public void UpdateHp()
     {
-        info.hpText.text = currentHp.ToString(); 
+        if (info.hpText != null) info.hpText.text = currentHp.ToString(); 
     }
 
     public void Skill(Stats attacker)

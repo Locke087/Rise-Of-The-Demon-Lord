@@ -221,16 +221,16 @@ public class SpeedCenterTurns : MonoBehaviour {
             Debug.Log(unitOrder[upNext].name);
             if (unitOrder[upNext].tag == "Player")
             {
-                GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+               // GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
                 if (temp + 1 >= unitOrder.Count)
                 {
-                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
+                    //GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
                     nextUnit = unitOrder[0];
                 }
                 else
                 {
                     int temp1 = upNext;
-                    GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
+                  //  GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[temp1 + 1].name;
                     nextUnit = unitOrder[temp1 + 1];
                 }
                 unitOrder[upNext].GetComponent<UnitSelect>().isTurn = true;

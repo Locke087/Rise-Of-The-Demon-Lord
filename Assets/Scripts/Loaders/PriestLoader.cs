@@ -24,9 +24,9 @@ public class PriestLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.level = 0;
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.name = "Priest";
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.movement = 5;
-        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.type = "HeavyBlade";
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.type = "Axe";
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.rank = 3;
-        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.type = "Axe";
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.type = "Staff?";
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.rank = 2;
 
         LevelUpClass();

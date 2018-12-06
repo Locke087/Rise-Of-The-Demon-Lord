@@ -16,13 +16,19 @@ public class Success : MonoBehaviour {
         rewards = GameObject.FindObjectOfType<MapRewards>();
         GameObject.Find("Menus").SetActive(false);
         GameObject tiles = GameObject.Instantiate(Resources.Load("WinScreen")) as GameObject;
-        CurrentGame.game.memoryGeneral.gold += rewards.gold;
-        GameObject.Find("GText").GetComponent<Text>().text = rewards.gold.ToString();
-        CurrentGame.game.memoryGeneral.unitsInParty.Clear();
-         
+
+        GameObject.FindObjectOfType<LevelUp>().LevelUpNow();
+
         if(CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
         {
-
+            CurrentGame.game.memoryGeneral.currentLevel.complete = true;
+            CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Find(x => x == CurrentGame.game.memoryGeneral.currentLevel).complete = true;
+            CurrentGame.game.memoryGeneral.currentLevel.complete = true;
+            CurrentGame.game.memoryGeneral.gold += CurrentGame.game.memoryGeneral.currentLevel.goldReward;
+            GameObject.Find("GText").GetComponent<Text>().text = CurrentGame.game.memoryGeneral.currentLevel.goldReward.ToString();
+  
+            CurrentGame.game.memoryGeneral.unitsInParty.Clear();
+ 
         }
         else if (CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Exists(x => x == CurrentGame.game.memoryGeneral.currentLevel))
         {
