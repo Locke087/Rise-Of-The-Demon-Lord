@@ -198,10 +198,19 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      increaseDebuffs: 0
+      randomDebuff: 0
+      invisible: 0
+      randomDamage: 0
+      swapPosition: 0
       knockBack: 0
+      nullDamage: 0
+      mpRestore: 0
       attackBoost: 0
       defenseBoost: 0
+      magicDefenseBoost: 0
       hitReduction: 0
+      critIncrease: 0
       damageReduction: 0
       extraHit: 0
       holyDamage: 0
@@ -213,6 +222,10 @@ MonoBehaviour:
       skillUseRestore: 0
       poison: 0
       sleep: 0
+      shaken: 0
+      stun: 0
+      root: 0
+      confuse: 0
       berserk: 0
       vampire: 0
       selfDamage: 0
@@ -229,6 +242,7 @@ MonoBehaviour:
       trueDamage: 0
       overRun: 0
       movementDown: 0
+      statusHeal: 0
     attackPattern: 
 --- !u!114 &114227765253399570
 MonoBehaviour:

@@ -108,6 +108,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
@@ -127,6 +128,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.currentAttack = unit.unitInfo.main.pickSkill.skill2;
                         checking = true;
+                        menuPar.SetActive(false);
                     }
                     if (u.physicalDamage) GUILayout.Label("Physical Damage");
                     if (u.magicDamage) GUILayout.Label("Magic Damage");
@@ -173,6 +175,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
@@ -206,6 +209,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
@@ -226,6 +230,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.currentAttack = unit.unitInfo.main.pickSkill.skill5; 
                         checking = true;
+                        menuPar.SetActive(false);
                     }
                     if (u.physicalDamage) GUILayout.Label("Physical Damage");
                     if (u.magicDamage) GUILayout.Label("Magic Damage");
@@ -258,6 +263,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.currentAttack = unit.unitInfo.main.pickSkill.skill6;
                         checking = true;
+                        menuPar.SetActive(false);
                     }
                     if (u.physicalDamage) GUILayout.Label("Physical Damage");
                     if (u.magicDamage) GUILayout.Label("Magic Damage");
@@ -271,6 +277,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
@@ -290,6 +297,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.currentAttack = unit.unitInfo.main.pickSkill.skill7;
                         checking = true;
+
                     }
                     if (u.physicalDamage) GUILayout.Label("Physical Damage");
                     if (u.magicDamage) GUILayout.Label("Magic Damage");
@@ -303,6 +311,7 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
@@ -322,6 +331,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.currentAttack = unit.unitInfo.main.pickSkill.skill8;
                         checking = true;
+
                     }
                     if (u.physicalDamage) GUILayout.Label("Physical Damage");
                     if (u.magicDamage) GUILayout.Label("Magic Damage");
@@ -335,11 +345,13 @@ public class MenuForAttacks : MonoBehaviour {
 
                         attack.UniqueAttack();
                         checking = false;
+                        menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
                     {
                         attack.currentAttack = empty;
                         checking = false;
+
                     }
 
                 }

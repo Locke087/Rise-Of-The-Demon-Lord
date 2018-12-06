@@ -53,7 +53,7 @@ public class UIExtention : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         Debug.Log("sdjfjjs");
         gameObject.GetComponentInParent<GridTiles>().SendInfo();
-        if (shape != null) shape.transform.localPosition = new Vector3(shape.transform.localPosition.x, gameObject.transform.localPosition.y + 0.5f, shape.transform.localPosition.z);
+       // if (shape != null) shape.transform.localPosition = new Vector3(shape.transform.localPosition.x, gameObject.transform.localPosition.y + 0.5f, shape.transform.localPosition.z);
         if (gameObject.GetComponentInParent<GridTiles>().unit != null)
         {
             GameObject.Find("DefHp").GetComponentInChildren<Text>().text = gameObject.GetComponentInParent<GridTiles>().unit.GetComponent<Stats>().currentHp.ToString();

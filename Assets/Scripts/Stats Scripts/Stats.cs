@@ -655,15 +655,18 @@ public class Stats : MonoBehaviour
         attackBonus = 0;
         if (currentAttack.physicalDamage)
         {
-            if(currentAttack.effects.fireDamage && affitity == "Metal")
+            if(currentAttack.effects.fireDamage && affitity == "Wood")
             {
+
                 attacker.attackBonus = 1.5f;
+                attacker.attackBonus = 1.5f;
+
             }
             DefenderDamaged(attacker);
         }
         else if (currentAttack.magicDamage)
         {
-            if (currentAttack.effects.fireDamage && affitity == "Metal")
+            if (currentAttack.effects.fireDamage && affitity == "Wood")
             {
                 attacker.attackBonus = 1.5f;
             }
@@ -722,6 +725,7 @@ public class Stats : MonoBehaviour
         int totalAtk = attacker.str + attacker.weaponMight;
         damage = totalAtk  - def;
         if (attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - def;
+   //     if (attackNeg != 0) damage = (int)(totalAtk / attacker.attackNeg) - def;
         float reduce = CalcFinalHit(enemyHitRate); 
         float hurt = damage * reduce;
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
