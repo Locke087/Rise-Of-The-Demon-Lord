@@ -23,6 +23,7 @@ public class MemoryGeneralGame {
     public string doISave;
 	public MemoryGeneralGame()
     {
+        
         unitsInRoster = new List<Unit>();
         unitsInParty = new List<Unit>();
         itemsOwned = new EquipmentOwned();

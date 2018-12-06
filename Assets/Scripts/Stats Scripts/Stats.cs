@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
+    public InfoForUnit info;
     public string unitID;
     public int hp;
     public int str;
@@ -154,7 +155,7 @@ public class Stats : MonoBehaviour
         attackBonus = 0;
         if (nature == null) nature = "Neutral";
         currentHp = hp;
-         
+       
         startClassesUp();
 
 
@@ -178,7 +179,59 @@ public class Stats : MonoBehaviour
        // FindStats();
         ReflectStat();
         // Booster();
+        UpdateHp();
         StartCoroutine(RefreshStat());
+    }
+
+    public void HealHp(int num)
+    {
+        if (currentHp == hp)
+        {
+            info.attackText.text = "Full Hp";
+            StartCoroutine(ClearNoticeText());
+        }
+        if (currentHp + num > hp)
+        {
+            info.attackText.color = Color.green;
+            info.attackText.text = hp.ToString() + " Hp Now Full";
+            currentHp = hp;
+            UpdateHp();
+            StartCoroutine(ClearNoticeText());
+        }
+        else
+        {
+
+            info.attackText.color = Color.green;
+            info.attackText.text = hp.ToString() + " Healed";
+            currentHp += num;
+            UpdateHp();
+            StartCoroutine(ClearNoticeText());
+        }
+    }
+
+    public void DamageHp(int num, float type)
+    {
+        info.attackText.color = Color.red;
+        info.attackText.text = num.ToString();
+        if (info.attackText.text != "")
+        {
+            if (type == 1) info.attackText.text = num.ToString() + " Incredible Hit 100% Dmg";
+            else if (type == 0.75f) info.attackText.text = num.ToString() + " Great Hit 75% Dmg";
+            else if (type == 0.50f) info.attackText.text = num.ToString() + " Nice Hit 50% Dmg";
+            else if (type == 0.25f) info.attackText.text = num.ToString() + " Nearly Missed 25% Dmg";
+            else if (type == 0.10f) info.attackText.text = num.ToString() + " Poor Hit 10% Dmg";
+            else if (type == 0) info.attackText.text = num.ToString() + " Missed 0% Dmg";
+        }
+        else
+        {
+            if (type == 1) info.lowattackText.text = num.ToString() + " Incredible Hit 100% Dmg";
+            else if (type == 0.75f) info.lowattackText.text = num.ToString() + " Great Hit 75% Dmg";
+            else if (type == 0.50f) info.lowattackText.text = num.ToString() + " Nice Hit 50% Dmg";
+            else if (type == 0.25f) info.lowattackText.text = num.ToString() + " Nearly Missed 25% Dmg";
+            else if (type == 0.10f) info.lowattackText.text = num.ToString() + " Poor Hit 10% Dmg";
+            else if (type == 0) info.lowattackText.text = num.ToString() + " Missed 0% Dmg";
+        }
+        StartCoroutine(ClearNoticeText());      
     }
 
     public Unit FindMyself()
@@ -196,7 +249,16 @@ public class Stats : MonoBehaviour
         yield return new WaitForSeconds(4f);
         classesRefresh();
         ReflectStat();
+        UpdateHp();
     }
+
+    public IEnumerator ClearNoticeText()
+    {
+        yield return new WaitForSeconds(2f);
+        info.attackText.text = "";
+        info.lowattackText.text = "";
+    }
+
 
     // Update is called once per frame
     public void StartingBases(int h, int a, int d, int sp, int sk, int m, int w, int mo)
@@ -607,7 +669,6 @@ public class Stats : MonoBehaviour
         return (int)hurt;
     }
 
-
     public int CalcCritE(float hurt, float rate, int chance)
     {
         if (Random.Range(0, 101) <= chance)
@@ -620,7 +681,6 @@ public class Stats : MonoBehaviour
         }
         return (int)hurt;
     }
-
 
     public void CleanTextBoxs()
     {
@@ -648,7 +708,10 @@ public class Stats : MonoBehaviour
 
     }
 
-
+    public void UpdateHp()
+    {
+        info.hpText.text = currentHp.ToString(); 
+    }
 
     public void Skill(Stats attacker)
     {
@@ -679,12 +742,17 @@ public class Stats : MonoBehaviour
                 if (affitity != "Undead")
                 {
                     currentHp += currentAttack.restore;
+                    HealHp(currentAttack.restore);
+                    UpdateHp();
                 }
                 else
                 {
                     currentHp -= currentAttack.restore;
+                    HealHp(currentAttack.restore);
                     if (currentHp < 0) currentHp = 0;
+                    UpdateHp();
                     if (currentHp <= 0) Death();
+                  
                 }
             }
 
@@ -698,17 +766,24 @@ public class Stats : MonoBehaviour
                         dead = false;
                         currentHp += currentAttack.restore;
                         gameObject.SetActive(true);
+                        HealHp(currentAttack.restore);
+                        UpdateHp();
                     }
                     else
                     {
                         currentHp += currentAttack.restore;
+                        HealHp(currentAttack.restore);
+                        UpdateHp();
                     }
                 }
                 else
                 {
                     currentHp -= currentAttack.restore;
                     if (currentHp < 0) currentHp = 0;
+                    HealHp(currentAttack.restore);
+                    UpdateHp();
                     if (currentHp <= 0) Death();
+                 
                 }
             }
           
@@ -731,7 +806,8 @@ public class Stats : MonoBehaviour
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
-      
+
+        
         if (damage > 0)
             currentHp = currentHp - damage;
         else
@@ -739,7 +815,8 @@ public class Stats : MonoBehaviour
             damage = 1;
             currentHp = currentHp - damage;
         }
-
+        DamageHp(damage, reduce);
+        UpdateHp();
         Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         Debug.Log("Is Now This Much HP: " + currentHp);
         if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
@@ -786,6 +863,7 @@ public class Stats : MonoBehaviour
 
 
         Debug.Log("Had This Much HP: " + attacker.currentHp);
+      
 
         if (enemyDamage > 0)
             attacker.currentHp = attacker.currentHp - enemyDamage;
@@ -794,8 +872,8 @@ public class Stats : MonoBehaviour
             enemyDamage = 1;
             attacker.currentHp = attacker.currentHp - enemyDamage;
         }
-
-      
+        attacker.DamageHp(enemyDamage, reduce);
+        attacker.UpdateHp();
         Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + def);
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
         if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")
@@ -835,7 +913,7 @@ public class Stats : MonoBehaviour
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
         damage = newDamage;
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
-
+    
         if (damage > 0)
             currentHp = currentHp - damage;
         else
@@ -843,7 +921,8 @@ public class Stats : MonoBehaviour
             damage = 1;
             currentHp = currentHp - damage;
         }
-
+        DamageHp(damage, reduce);
+        UpdateHp();
         Debug.Log(gameObject.name + "lost " + damage + " HP" + " Normal Atk was" + totalAtk + "-" + will);
         Debug.Log("Is Now This Much HP: " + currentHp);
         if (GameObject.Find("AtkTD").GetComponent<Text>().text != "0")
@@ -898,7 +977,8 @@ public class Stats : MonoBehaviour
             enemyDamage = 1;
             attacker.currentHp = attacker.currentHp - enemyDamage;
         }
-
+        attacker.DamageHp(enemyDamage, reduce);
+        attacker.UpdateHp();
 
         Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + will);
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);

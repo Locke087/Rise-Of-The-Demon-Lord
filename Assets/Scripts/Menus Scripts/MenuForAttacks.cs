@@ -514,6 +514,8 @@ public class MenuForAttacks : MonoBehaviour {
                 if (GUILayout.Button("Potion Small " + "x " + potionSmall.count))
                 {
                     unitObj.GetComponent<Stats>().currentHp += potionSmall.effects.effectBase;
+                    unitObj.GetComponent<Stats>().HealHp(potionSmall.effects.effectBase);
+                    unitObj.GetComponent<Stats>().UpdateHp();
                     CurrentGame.game.memoryGeneral.itemsOwned.items.Find(x => x.name == "Potion Small").count--;
                     attack.AssignMe();
                     MapManager manager = GameObject.FindObjectOfType<MapManager>();
