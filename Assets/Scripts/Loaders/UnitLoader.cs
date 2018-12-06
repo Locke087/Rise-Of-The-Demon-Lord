@@ -186,6 +186,53 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
 
+
+        Unit newMe3 = new Unit();
+
+        newMe3.unitID = "Alice";
+        newMe3.idx = newMe.unitID + IDMaker.NewID();
+        newMe3.unitClass.main.mainClass = "Priest";
+        newMe3.unitInfo.mugName = "Actor_FW01_4";
+        newMe3.unitClass.main.race = "Human";
+        newMe3.unitInfo.human = true;
+        newMe3.unitClass.main.human.priest.powerLevel = 1;
+        newMe3.unitClass.main.human.warrior.unlocked = true;
+        newMe3.unitClass.main.human.cavalier.unlocked = true;
+        newMe3.unitClass.main.human.archer.unlocked = true;
+        newMe3.unitClass.main.human.mage.unlocked = true;
+        newMe3.unitClass.main.human.priest.unlocked = true;
+        newMe3.unitClass.main.human.priest = CurrentGame.game.memoryGeneral.humanClassProgress.priest;
+        newMe3.unitClass.main.human.priest.caps = Priest.Caplist();
+        newMe3.unitInfo.currentMods = Priest.ModList();
+        PriestLoader.AssignSkill("Smite", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Smite", newMe3.unitClass.sub.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.sub.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
+        newMe3.unitInfo.main = newMe3.unitClass.main.human.priest;
+
+        // str, def, spd, skill, magic, will
+        int[] bases4 = { 2, 4, 2, 4, 6, 8 };
+        newMe3.unitInfo.bases.AddRange(bases4);
+        newMe3.unitInfo.nature = "Tough";
+        newMe3.inventory.invSlot1.holding = "Warhammer";
+        newMe3.inventory.invSlot1.weapon.equipped = true;
+        newMe3.inventory.invSlot1.weapon.name = "Warhammer";
+        newMe3.inventory.invSlot1.weapon.inSlot = true;
+        newMe3.inventory.invSlot1.weapon.cost = 100;
+        newMe3.inventory.invSlot1.weapon.idx = "Warhammer" + IDMaker.NewID();
+        SwordLoader.AssignSword("Warhammer", newMe.inventory.invSlot1.weapon);
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe3.inventory.invSlot1.weapon);
+        CurrentGame.game.storeroom.units.Add(newMe3);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe3);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe3);
+
+
+
+
+
         NewOGLevel();
         NewFTLevel();
         NewSWLevel();

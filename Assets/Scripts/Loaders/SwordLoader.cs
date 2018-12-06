@@ -17,6 +17,18 @@ public class SwordLoader : MonoBehaviour
 
     public static void AssignSword(string sw, UnitWeapon u)
     {
+        UnitWeaponDetails warhammer = new UnitWeaponDetails();
+        warhammer.might = 14;
+        warhammer.weight = 10;
+        warhammer.hitrate = 55;
+        warhammer.critrate = 3;
+        warhammer.critchance = 1;
+        warhammer.name = "Warhammer";
+        warhammer.unlocks = "Smite";
+        warhammer.rank = 2;
+        warhammer.type = "Axes";
+        if (sw == warhammer.name) u.details = warhammer;
+
         UnitWeaponDetails vemonBlade = new UnitWeaponDetails();
         vemonBlade.might = 12;
         vemonBlade.weight = 8;
@@ -29,8 +41,6 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.rank = 2;
         vemonBlade.type = "HeavyBlade";
         if (sw == vemonBlade.name) u.details = vemonBlade;
-
-      
 
     }
 
