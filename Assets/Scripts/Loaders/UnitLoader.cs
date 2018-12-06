@@ -171,11 +171,11 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitInfo.human = true;
         newMe2.unitInfo.mugName = "Actor_FW01_8";
         newMe2.idx = me.unitID + IDMaker.NewID();
-        newMe.unitClass.main.human.warrior.unlocked = true;
-        newMe.unitClass.main.human.cavalier.unlocked = true;
-        newMe.unitClass.main.human.archer.unlocked = true;
-        newMe.unitClass.main.human.mage.unlocked = true;
-        newMe.unitClass.main.human.priest.unlocked = true;
+        newMe2.unitClass.main.human.warrior.unlocked = true;
+        newMe2.unitClass.main.human.cavalier.unlocked = true;
+        newMe2.unitClass.main.human.archer.unlocked = true;
+        newMe2.unitClass.main.human.mage.unlocked = true;
+        newMe2.unitClass.main.human.priest.unlocked = true;
         newMe2.unitClass.main.human.cavalier.movement = 6;
         newMe2.unitClass.main.human.cavalier.name = "Cavalier";
         newMe2.unitClass.main.human.cavalier.level = 1;
@@ -202,12 +202,101 @@ public class UnitLoader : MonoBehaviour {
         newMe2.inventory.invSlot1.weapon.inSlot = true;
         newMe2.inventory.invSlot1.weapon.cost = 100;
         newMe2.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
-        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
+        SwordLoader.AssignSword("Vemon Blade", newMe2.inventory.invSlot1.weapon);
 
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe2.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
+
+
+        Unit newMe3 = new Unit();
+
+        newMe3.unitID = "Alice";
+        newMe3.idx = newMe.unitID + IDMaker.NewID();
+        newMe3.unitClass.main.mainClass = "Priest";
+        newMe3.unitInfo.mugName = "Actor_FW01_4";
+        newMe3.unitClass.main.race = "Human";
+        newMe3.unitInfo.human = true;
+        newMe3.unitClass.main.human.priest.powerLevel = 1;
+        newMe3.unitClass.main.human.warrior.unlocked = true;
+        newMe3.unitClass.main.human.cavalier.unlocked = true;
+        newMe3.unitClass.main.human.archer.unlocked = true;
+        newMe3.unitClass.main.human.mage.unlocked = true;
+        newMe3.unitClass.main.human.priest.unlocked = true;
+        newMe3.unitClass.main.human.priest = CurrentGame.game.memoryGeneral.humanClassProgress.priest;
+        newMe3.unitClass.main.human.priest.caps = Priest.Caplist();
+        newMe3.unitInfo.currentMods = Priest.ModList();
+        PriestLoader.AssignSkill("Smite", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Smite", newMe3.unitClass.sub.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.sub.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
+        PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
+        newMe3.unitInfo.main = newMe3.unitClass.main.human.priest;
+
+        // str, def, spd, skill, magic, will
+        int[] bases4 = { 2, 4, 2, 4, 6, 8 };
+        newMe3.unitInfo.bases.AddRange(bases4);
+        newMe3.unitInfo.nature = "Tough";
+        newMe3.inventory.invSlot1.holding = "Warhammer";
+        newMe3.inventory.invSlot1.weapon.equipped = true;
+        newMe3.inventory.invSlot1.weapon.name = "Warhammer";
+        newMe3.inventory.invSlot1.weapon.inSlot = true;
+        newMe3.inventory.invSlot1.weapon.cost = 100;
+        newMe3.inventory.invSlot1.weapon.idx = "Warhammer" + IDMaker.NewID();
+        SwordLoader.AssignSword("Warhammer", newMe3.inventory.invSlot1.weapon);
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe3.inventory.invSlot1.weapon);
+        CurrentGame.game.storeroom.units.Add(newMe3);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe3);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe3);
+
+
+
+        Unit newMe4 = new Unit();
+
+        newMe4.unitID = "Sascha";
+        newMe4.idx = newMe.unitID + IDMaker.NewID();
+        newMe4.unitClass.main.mainClass = "Fusilier";
+        newMe4.unitInfo.mugName = "Actor_FW02_Sascha";
+        newMe4.unitClass.main.race = "Imp";
+        newMe4.unitInfo.imp = true;
+        newMe4.unitClass.main.imp.fusilier.powerLevel = 1;
+        newMe4.unitClass.main.imp.swashbulkler.unlocked = true;
+        newMe4.unitClass.main.imp.shrike.unlocked = true;
+        newMe4.unitClass.main.imp.shadow.unlocked = true;
+        newMe4.unitClass.main.imp.dread.unlocked = true;
+        newMe4.unitClass.main.imp.fusilier.unlocked = true;
+        newMe4.unitClass.main.imp.fusilier = CurrentGame.game.memoryGeneral.impClassProgress.fusilier;
+        newMe4.unitClass.main.imp.fusilier.caps = Fusilier.Caplist();
+        newMe4.unitInfo.currentMods = Priest.ModList();
+        FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        newMe4.unitInfo.main = newMe4.unitClass.main.imp.fusilier;
+
+        // str, def, spd, skill, magic, will
+        int[] bases5 = { 2, 4, 6, 8, 3, 3 };
+        newMe4.unitInfo.bases.AddRange(bases5);
+        newMe4.unitInfo.nature = "Nimble";
+        newMe4.inventory.invSlot1.holding = "Rifle";
+        newMe4.inventory.invSlot1.weapon.equipped = true;
+        newMe4.inventory.invSlot1.weapon.name = "Rifle";
+        newMe4.inventory.invSlot1.weapon.inSlot = true;
+        newMe4.inventory.invSlot1.weapon.cost = 100;
+        newMe4.inventory.invSlot1.weapon.idx = "Rifle" + IDMaker.NewID();
+        SwordLoader.AssignSword("Rifle", newMe4.inventory.invSlot1.weapon);
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe4.inventory.invSlot1.weapon);
+        CurrentGame.game.storeroom.units.Add(newMe4);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe4);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe4);
+
+
 
         NewOGLevel();
         NewFTLevel();
