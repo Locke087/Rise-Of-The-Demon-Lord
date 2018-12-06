@@ -8,6 +8,7 @@ public class MapRewards : MonoBehaviour {
     public string unitRewardID;
     public string weaponRewardID;
     public string itemRewardID;
+    public string shopWeaponAdd;
     public int weaponXP;
     public int unitXp;
   
