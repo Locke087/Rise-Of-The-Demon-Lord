@@ -14,7 +14,7 @@ public class WarriorLoader : MonoBehaviour {
 		
 	}
 
-    public static void NewWarriorClass()
+    public static void NewClass()
     {
         Warrior.Clear();
         Warrior.level = 0;

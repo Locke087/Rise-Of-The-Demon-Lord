@@ -39,7 +39,24 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
 
     }
+    ///For Directions
+    // List<Sprite> sprites = new List<Sprite>();       
+    // sprites.AddRange(Resources.LoadAll<Sprite>(me.unitActor.mapActor.groupName));
+    // if (north) string direction = "North";
+    //string idle = "Idle";
+    // string[] allText = { "1", "Idle", "3" };
+    //  List<string> texter = new List<string>();
+    //texter.AddRange(allText);
+    // string spriteName = me.unitActor.mapActor.personalID + direction + idle;
+    // List<Sprite> spritesNew = new List<Sprite>();
+    /*foreach (string st in texter)
+    {
+        spritesNew.Add(sprites.Find(x => x.name == (me.unitActor.mapActor.personalID + direction + st)));
+    }
+    foreach (Sprite s in spritesNew)
+    {
 
+    }*/
 
     public void CreateStartingRoster()
     {
@@ -56,7 +73,7 @@ public class UnitLoader : MonoBehaviour {
         Warrior.Clear();
         Archer.Clear();
         Rogue.Clear();
-        WarriorLoader.NewWarriorClass();
+        WarriorLoader.NewClass();
 
         Unit me = new Unit();
 
@@ -69,24 +86,7 @@ public class UnitLoader : MonoBehaviour {
         //  me.unitActor.mapActor.groupName = "sdsjkhsd";
         //   me.unitActor.mapActor.personalID = "goblin";
 
-        ///For Directions
-         // List<Sprite> sprites = new List<Sprite>();       
-        // sprites.AddRange(Resources.LoadAll<Sprite>(me.unitActor.mapActor.groupName));
-        // if (north) string direction = "North";
-        //string idle = "Idle";
-       // string[] allText = { "1", "Idle", "3" };
-      //  List<string> texter = new List<string>();
-        //texter.AddRange(allText);
-        // string spriteName = me.unitActor.mapActor.personalID + direction + idle;
-       // List<Sprite> spritesNew = new List<Sprite>();
-        /*foreach (string st in texter)
-        {
-            spritesNew.Add(sprites.Find(x => x.name == (me.unitActor.mapActor.personalID + direction + st)));
-        }
-        foreach (Sprite s in spritesNew)
-        {
-         
-        }*/
+     
         me.unitClass.main.human.warrior.powerLevel = 1;
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
@@ -176,13 +176,12 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.human.archer.unlocked = true;
         newMe2.unitClass.main.human.mage.unlocked = true;
         newMe2.unitClass.main.human.priest.unlocked = true;
-        newMe2.unitClass.main.human.cavalier.movement = 6;
-        newMe2.unitClass.main.human.cavalier.name = "Cavalier";
-        newMe2.unitClass.main.human.cavalier.level = 1;
-        newMe2.unitClass.main.human.warrior.powerLevel = 1;
 
-        newMe2.unitClass.main.human.cavalier.modifiers = Cavalier.ModList();
-        newMe2.unitClass.main.human.cavalier.caps = Cavalier.Caplist();
+        newMe.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier;
+        newMe.unitClass.main.human.warrior.caps = Cavalier.Caplist();
+        newMe.unitInfo.currentMods = Cavalier.ModList();
+        newMe2.unitClass.main.human.cavalier.powerLevel = 1;
+
         CavalierLoader.AssignSkill("Trample", newMe2.unitClass.main.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("Lance", newMe2.unitClass.main.human.cavalier.pickSkill);
@@ -211,7 +210,7 @@ public class UnitLoader : MonoBehaviour {
 
 
         Unit newMe3 = new Unit();
-
+       
         newMe3.unitID = "Alice";
         newMe3.idx = newMe.unitID + IDMaker.NewID();
         newMe3.unitClass.main.mainClass = "Priest";
@@ -227,6 +226,7 @@ public class UnitLoader : MonoBehaviour {
         newMe3.unitClass.main.human.priest = CurrentGame.game.memoryGeneral.humanClassProgress.priest;
         newMe3.unitClass.main.human.priest.caps = Priest.Caplist();
         newMe3.unitInfo.currentMods = Priest.ModList();
+
         PriestLoader.AssignSkill("Smite", newMe3.unitClass.main.human.priest.pickSkill);
         PriestLoader.AssignSkill("Smite", newMe3.unitClass.sub.human.priest.pickSkill);
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.main.human.priest.pickSkill);
@@ -238,7 +238,7 @@ public class UnitLoader : MonoBehaviour {
         // str, def, spd, skill, magic, will
         int[] bases4 = { 2, 4, 2, 4, 6, 8 };
         newMe3.unitInfo.bases.AddRange(bases4);
-        newMe3.unitInfo.nature = "Tough";
+        newMe3.unitInfo.nature = "Magical";
         newMe3.inventory.invSlot1.holding = "Warhammer";
         newMe3.inventory.invSlot1.weapon.equipped = true;
         newMe3.inventory.invSlot1.weapon.name = "Warhammer";
@@ -262,7 +262,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitInfo.mugName = "Actor_FW02_Sascha";
         newMe4.unitClass.main.race = "Imp";
         newMe4.unitInfo.imp = true;
-        newMe4.unitClass.main.imp.fusilier.powerLevel = 1;
+        newMe4.unitClass.main.imp.fusilier.level = 1;
         newMe4.unitClass.main.imp.swashbulkler.unlocked = true;
         newMe4.unitClass.main.imp.shrike.unlocked = true;
         newMe4.unitClass.main.imp.shadow.unlocked = true;
@@ -282,7 +282,7 @@ public class UnitLoader : MonoBehaviour {
         // str, def, spd, skill, magic, will
         int[] bases5 = { 2, 4, 6, 8, 3, 3 };
         newMe4.unitInfo.bases.AddRange(bases5);
-        newMe4.unitInfo.nature = "Nimble";
+        newMe4.unitInfo.nature = "Quick";
         newMe4.inventory.invSlot1.holding = "Rifle";
         newMe4.inventory.invSlot1.weapon.equipped = true;
         newMe4.inventory.invSlot1.weapon.name = "Rifle";

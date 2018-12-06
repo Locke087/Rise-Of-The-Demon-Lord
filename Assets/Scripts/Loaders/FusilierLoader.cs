@@ -17,6 +17,48 @@ public class FusilierLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Fusilier.Clear();
+        Fusilier.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.name = "Fusilier";
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement = 5;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon1.type = "Ranged";
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon1.type = "Axe";
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Fusilier.LevelUp();
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level + 1;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.modifiers = Fusilier.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.imp.fusilier.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.modifiers;
+                    u.unitClass.main.imp.fusilier.level = CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.imp.fusilier.unlocked = true;
+    }
+
+
     public static void AssignSkill(string sk, UnitClassSkill u)
     {
         UnitSkillDetail pistolWhip = new UnitSkillDetail();

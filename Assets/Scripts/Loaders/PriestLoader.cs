@@ -17,6 +17,47 @@ public class PriestLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Priest.Clear();
+        Priest.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.name = "Priest";
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.movement = 5;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.type = "HeavyBlade";
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.type = "Axe";
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Priest.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.level = CurrentGame.game.memoryGeneral.humanClassProgress.priest.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.modifiers = Priest.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.priest.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.human.priest.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.priest.modifiers;
+                    u.unitClass.main.human.priest.level = CurrentGame.game.memoryGeneral.humanClassProgress.priest.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.priest.unlocked = true;
+    }
+
     public static void AssignSkill(string sk, UnitClassSkill u)
     {
         UnitSkillDetail healingLight = new UnitSkillDetail();

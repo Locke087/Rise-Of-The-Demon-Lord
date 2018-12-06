@@ -16,7 +16,46 @@ public class CavalierLoader : MonoBehaviour
     {
 
     }
+    public static void NewClass()
+    {
+        Cavalier.Clear();
+        Cavalier.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.name = "Cavalier";
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement = 6;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon1.type = "HeavyBlade";
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon2.type = "Axe";
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon2.rank = 2;
 
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Cavalier.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.modifiers = Cavalier.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.human.cavalier.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.modifiers;
+                    u.unitClass.main.human.cavalier.level = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.cavalier.unlocked = true;
+    }
 
 
     public static void AssignSkill(string sk, UnitClassSkill u)
