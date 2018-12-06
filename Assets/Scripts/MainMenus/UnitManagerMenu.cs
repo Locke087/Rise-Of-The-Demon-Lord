@@ -1326,7 +1326,43 @@ public class UnitManagerMenu : MonoBehaviour {
             CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Remove(unit.idx);
         }
 
-        if (unit.unitClass.main.mainClass == "Chronos")
+
+        if (unit.unitClass.main.mainClass == "Dread")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Fusilier")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Magus")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Remove(unit.idx);
+        }
+
+        if (unit.unitClass.main.mainClass == "Shadow")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Shrike")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Remove(unit.idx);
+        }
+
+
+        if (unit.unitClass.main.mainClass == "Swashbulkler")
+        {
+            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Remove(unit.idx);
+        }
+
+
+    }
+    /*  if (unit.unitClass.main.mainClass == "Chronos")
         {
             CurrentGame.game.memoryGeneral.viraClassProgress.chronos.subbed.Remove(unit.idx);
 
@@ -1360,44 +1396,7 @@ public class UnitManagerMenu : MonoBehaviour {
             CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.subbed.Remove(unit.idx);
         }
 
-
-        if (unit.unitClass.main.mainClass == "Dread")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Remove(unit.idx);
-        }
-
-
-        if (unit.unitClass.main.mainClass == "Fusilier")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Remove(unit.idx);
-        }
-
-
-        if (unit.unitClass.main.mainClass == "Magus")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Remove(unit.idx);
-        }
-
-        if (unit.unitClass.main.mainClass == "Shadow")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Remove(unit.idx);
-        }
-
-
-        if (unit.unitClass.main.mainClass == "Shrike")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Remove(unit.idx);
-        }
-
-
-        if (unit.unitClass.main.mainClass == "Swashbulkler")
-        {
-            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Remove(unit.idx);
-        }
-
-
-    }
-
+     */
     /*
      *   if (unit.unitInfo.vira)
             {
