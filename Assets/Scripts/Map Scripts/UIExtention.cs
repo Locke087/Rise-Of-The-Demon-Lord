@@ -30,8 +30,9 @@ public class UIExtention : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                            
                 shape = GameObject.Instantiate(Resources.Load(user.GetComponent<MapPlayerAttack>().currentAttack.attackPattern)) as GameObject;
                 shape.SetActive(true);
+                shape.GetComponent<AttackController>().mother = this;
                 shape.transform.parent = gameObject.GetComponentInParent<GridTiles>().gameObject.GetComponentInParent<Rows>().gameObject.GetComponentInParent<MapManager>().transform;
-                shape.transform.localPosition = new Vector3(tileP.localPosition.x, (gameObject.transform.localPosition.y - 0.5f), rowP.transform.localPosition.z);
+                shape.transform.localPosition = new Vector3(tileP.localPosition.x, (gameObject.transform.localPosition.y + 0.3f), rowP.transform.localPosition.z);
               
             }
             if (gameObject.GetComponentInParent<GridTiles>().unit != null)
@@ -44,7 +45,7 @@ public class UIExtention : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(shape != null) shape.SetActive(false);
+        //if(shape != null) shape.SetActive(false);
         gameObject.GetComponentInParent<GridTiles>().overTile = false;
     }
 

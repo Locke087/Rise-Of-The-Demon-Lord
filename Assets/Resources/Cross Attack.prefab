@@ -198,6 +198,7 @@ MonoBehaviour:
   fiveTiles: 1
   sixTiles: 0
   sevenTiles: 0
+  mother: {fileID: 0}
 --- !u!114 &114638984539354224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,7 +372,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224805569280032820
 RectTransform:

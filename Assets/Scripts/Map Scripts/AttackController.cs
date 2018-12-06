@@ -29,6 +29,7 @@ public class AttackController : MonoBehaviour, IPointerClickHandler, IPointerEnt
     public bool fiveTiles;
     public bool sixTiles;
     public bool sevenTiles;
+    public UIExtention mother;
     void Start () {
 
 	}
@@ -41,7 +42,7 @@ public class AttackController : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+        Destroy(gameObject);
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -61,7 +61,8 @@ public class WarriorLoader : MonoBehaviour {
         focused.name = "Focused";
         focused.effects.attackBoost = true;
         focused.support = true;
-        focused.attackPattern = "Self";
+        focused.attackPattern = "SupportTile";
+        focused.range = 0;
 
         UnitSkillDetail wildStrike = new UnitSkillDetail();
         wildStrike.name = "Wild Strike";
