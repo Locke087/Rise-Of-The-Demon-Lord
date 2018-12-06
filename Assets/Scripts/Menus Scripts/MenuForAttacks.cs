@@ -494,7 +494,7 @@ public class MenuForAttacks : MonoBehaviour {
 
         else if (currentMenu == Menu.Items)
         {
-            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width / 2, Screen.height / 2f));
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
@@ -505,15 +505,17 @@ public class MenuForAttacks : MonoBehaviour {
             turnCon = GameObject.FindObjectOfType<SpeedCenterTurns>();
             unitObj = turnCon.activeUnit;
             unit = unitObj.GetComponent<Stats>().FindMyself();
+            attack = unitObj.GetComponent<MapPlayerAttack>();
             EquipmentOwned e = CurrentGame.game.memoryGeneral.itemsOwned;
             ItemHolder potionSmall = CurrentGame.game.memoryGeneral.itemsOwned.items.Find(x => x.name == "Potion Small");
 
             if (potionSmall.count > 0)
             {
-                if (GUILayout.Button("Potion Small"))
+                if (GUILayout.Button("Potion Small " + "x " + potionSmall.count))
                 {
                     unitObj.GetComponent<Stats>().currentHp += potionSmall.effects.effectBase;
-                    CurrentGame.game.memoryGeneral.itemsOwned.items.Find(x => x.name == "Potion Small " + "x " + potionSmall.count).count--;
+                    CurrentGame.game.memoryGeneral.itemsOwned.items.Find(x => x.name == "Potion Small").count--;
+                    attack.AssignMe();
                     MapManager manager = GameObject.FindObjectOfType<MapManager>();
                     manager.PlayerSkill();
                     menuPar.SetActive(false);
