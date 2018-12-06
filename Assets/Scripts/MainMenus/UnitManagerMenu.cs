@@ -39,14 +39,14 @@ public class UnitManagerMenu : MonoBehaviour {
 
     void Start()
     {
-        spritem = new List<Sprite>();
-        spritem.AddRange(Resources.LoadAll<Sprite>("Actor_FW01"));
-        foreach (Sprite i in spritem)
-        {
-            Debug.Log(i.name);
-        }
-        image.sprite = spritem.Find(x => x.name == "Dude");
-        perm = new Texture2D((int)image.sprite.rect.width, (int)image.sprite.rect.height);
+       // spritem = new List<Sprite>();
+       // spritem.AddRange(Resources.LoadAll<Sprite>("Actor_FW01"));
+       // foreach (Sprite i in spritem)
+       // {
+          //  Debug.Log(i.name);
+       // }
+       // image.sprite = spritem.Find(x => x.name == "Dude");
+       // perm = new Texture2D((int)image.sprite.rect.width, (int)image.sprite.rect.height);
 
         sprite = new List<Sprite>();
     }
@@ -371,160 +371,7 @@ public class UnitManagerMenu : MonoBehaviour {
                 }
               
             }
-            if (unit.unitInfo.vira)
-            {
-                if (unit.unitClass.main.vira.chronos.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Chronos")
-                    {
-                        if (GUILayout.Button("Switch to Chronos"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.chronos.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.modifiers;
-                            unit.unitClass.main.vira.chronos.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.classWeapons;
-                            unit.unitClass.main.vira.chronos.caps = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.caps;
-                            unit.unitClass.main.vira.chronos.level = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.chronos;
-                            unit.unitClass.main.mainClass = "Chronos";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.chronos);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.chronos.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Chronos" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
-                    }
-                }
-                if (unit.unitClass.main.vira.alchemist.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Alchemist")
-                    {
-                        if (GUILayout.Button("Switch to Alchemist"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.alchemist.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.modifiers;
-                            unit.unitClass.main.vira.alchemist.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.classWeapons;
-                            unit.unitClass.main.vira.alchemist.caps = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.caps;
-                            unit.unitClass.main.vira.alchemist.level = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.alchemist;
-                            unit.unitClass.main.mainClass = "Alchemist";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.alchemist);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Alchemist" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
-                    }
-                }
-                if (unit.unitClass.main.vira.geomancer.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Geomancer")
-                    {
-                        if (GUILayout.Button("Switch to Geomancer"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.geomancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.modifiers;
-                            unit.unitClass.main.vira.geomancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.classWeapons;
-                            unit.unitClass.main.vira.geomancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.caps;
-                            unit.unitClass.main.vira.geomancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.geomancer;
-                            unit.unitClass.main.mainClass = "Geomancer";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.geomancer);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Geomancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
-                    }
-                }
-                if (unit.unitClass.main.vira.kensai.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Kensai")
-                    {
-                        if (GUILayout.Button("Switch to Kensai"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.kensai.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.modifiers;
-                            unit.unitClass.main.vira.kensai.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.classWeapons;
-                            unit.unitClass.main.vira.kensai.caps = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.caps;
-                            unit.unitClass.main.vira.kensai.level = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.kensai;
-                            unit.unitClass.main.mainClass = "Kensai";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.kensai);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.kensai.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Kensai" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
-                    }
-                }
-                if (unit.unitClass.main.vira.onmiyoji.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Onmiyoji")
-                    {
-                        if (GUILayout.Button("Switch to Onmiyoji"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.onmiyoji.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.modifiers;
-                            unit.unitClass.main.vira.onmiyoji.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.classWeapons;
-                            unit.unitClass.main.vira.onmiyoji.caps = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.caps;
-                            unit.unitClass.main.vira.onmiyoji.level = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.onmiyoji;
-                            unit.unitClass.main.mainClass = "Onmiyoji";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.onmiyoji);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Onmiyoji" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
-                    }
-                }
-                if (unit.unitClass.main.vira.wardancer.unlocked)
-                {
-                    if (unit.unitClass.main.mainClass != "Wardancer")
-                    {
-                        if (GUILayout.Button("Switch to Wardancer"))
-                        {
-                            UnsignOldClass(unit);
-                            unit.unitClass.main.vira.wardancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.modifiers;
-                            unit.unitClass.main.vira.wardancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.classWeapons;
-                            unit.unitClass.main.vira.wardancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.caps;
-                            unit.unitClass.main.vira.wardancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level;
-                            unit.unitInfo.main = unit.unitClass.main.vira.wardancer;
-                            unit.unitClass.main.mainClass = "Wardancer";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.wardancer);
-                            CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.subbed.Add(unit.idx);
-                        }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Wardancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); //+ CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
-                    }
-                }
-              
-            }
+          
             if (unit.unitInfo.imp)
             {
                 if (unit.unitClass.main.imp.dread.unlocked)
@@ -1550,4 +1397,161 @@ public class UnitManagerMenu : MonoBehaviour {
 
 
     }
+
+    /*
+     *   if (unit.unitInfo.vira)
+            {
+                if (unit.unitClass.main.vira.chronos.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Chronos")
+                    {
+                        if (GUILayout.Button("Switch to Chronos"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.chronos.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.modifiers;
+                            unit.unitClass.main.vira.chronos.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.classWeapons;
+                            unit.unitClass.main.vira.chronos.caps = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.caps;
+                            unit.unitClass.main.vira.chronos.level = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.chronos;
+                            unit.unitClass.main.mainClass = "Chronos";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.chronos);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.chronos.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Chronos" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.chronos);
+                    }
+                }
+                if (unit.unitClass.main.vira.alchemist.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Alchemist")
+                    {
+                        if (GUILayout.Button("Switch to Alchemist"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.alchemist.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.modifiers;
+                            unit.unitClass.main.vira.alchemist.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.classWeapons;
+                            unit.unitClass.main.vira.alchemist.caps = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.caps;
+                            unit.unitClass.main.vira.alchemist.level = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.alchemist;
+                            unit.unitClass.main.mainClass = "Alchemist";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.alchemist);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Alchemist" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist);
+                    }
+                }
+                if (unit.unitClass.main.vira.geomancer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Geomancer")
+                    {
+                        if (GUILayout.Button("Switch to Geomancer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.geomancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.modifiers;
+                            unit.unitClass.main.vira.geomancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.classWeapons;
+                            unit.unitClass.main.vira.geomancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.caps;
+                            unit.unitClass.main.vira.geomancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.geomancer;
+                            unit.unitClass.main.mainClass = "Geomancer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.geomancer);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Geomancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer);
+                    }
+                }
+                if (unit.unitClass.main.vira.kensai.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Kensai")
+                    {
+                        if (GUILayout.Button("Switch to Kensai"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.kensai.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.modifiers;
+                            unit.unitClass.main.vira.kensai.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.classWeapons;
+                            unit.unitClass.main.vira.kensai.caps = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.caps;
+                            unit.unitClass.main.vira.kensai.level = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.kensai;
+                            unit.unitClass.main.mainClass = "Kensai";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.kensai);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.kensai.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Kensai" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.kensai);
+                    }
+                }
+                if (unit.unitClass.main.vira.onmiyoji.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Onmiyoji")
+                    {
+                        if (GUILayout.Button("Switch to Onmiyoji"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.onmiyoji.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.modifiers;
+                            unit.unitClass.main.vira.onmiyoji.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.classWeapons;
+                            unit.unitClass.main.vira.onmiyoji.caps = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.caps;
+                            unit.unitClass.main.vira.onmiyoji.level = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.onmiyoji;
+                            unit.unitClass.main.mainClass = "Onmiyoji";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.onmiyoji);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Onmiyoji" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji);
+                    }
+                }
+                if (unit.unitClass.main.vira.wardancer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Wardancer")
+                    {
+                        if (GUILayout.Button("Switch to Wardancer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.vira.wardancer.modifiers = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.modifiers;
+                            unit.unitClass.main.vira.wardancer.classWeapons = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.classWeapons;
+                            unit.unitClass.main.vira.wardancer.caps = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.caps;
+                            unit.unitClass.main.vira.wardancer.level = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level;
+                            unit.unitInfo.main = unit.unitClass.main.vira.wardancer;
+                            unit.unitClass.main.mainClass = "Wardancer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.vira.wardancer);
+                            CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.subbed.Add(unit.idx);
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); // + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Wardancer" + " Level: " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.movement); //+ CurrentGame.game.memoryGeneral.viraClassProgress.wardancer);
+                    }
+                }
+              
+            }
+     */
 }
