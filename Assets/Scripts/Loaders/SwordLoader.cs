@@ -29,6 +29,18 @@ public class SwordLoader : MonoBehaviour
         warhammer.type = "Axes";
         if (sw == warhammer.name) u.details = warhammer;
 
+        UnitWeaponDetails rifle = new UnitWeaponDetails();
+        rifle.might = 10;
+        rifle.weight = 10;
+        rifle.hitrate = 75;
+        rifle.critrate = 3;
+        rifle.critchance = 1;
+        rifle.name = "Rifle";
+        rifle.unlocks = "Deadeye";
+        rifle.rank = 2;
+        rifle.type = "Ranged";
+        if (sw == rifle.name) u.details = rifle;
+
         UnitWeaponDetails vemonBlade = new UnitWeaponDetails();
         vemonBlade.might = 12;
         vemonBlade.weight = 8;
@@ -66,6 +78,44 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.idx = "Vemon Blade" + IDMaker.NewID();
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(vemonBlade);
         CurrentGame.game.memoryGeneral.shopWares.weapons.Add(vemonBlade);
+
+        UnitWeapon warhammer = new UnitWeapon();
+        warhammer.name = "Warhammer";
+        warhammer.cost = 180;
+        warhammer.details.might = 14;
+        warhammer.details.weight = 10;
+        warhammer.details.hitrate = 55;
+        warhammer.details.critrate = 3;
+        warhammer.details.critchance = 1;
+        warhammer.details.physical = true;
+        warhammer.details.name = "Warhammer";
+        warhammer.details.type = "Axes";
+        warhammer.details.rank = 2;
+        warhammer.details.range = 1;
+        warhammer.details.unlocks = "Smite";
+        warhammer.idx = "Warhammer" + IDMaker.NewID();
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(warhammer);
+        CurrentGame.game.memoryGeneral.shopWares.weapons.Add(warhammer);
+
+        UnitWeapon rifle = new UnitWeapon();
+        rifle.name = "Rifle";
+        rifle.cost = 230;
+        rifle.details.might = 9;
+        rifle.details.weight = 9;
+        rifle.details.hitrate = 75;
+        rifle.details.critrate = 3;
+        rifle.details.critchance = 1;
+        rifle.details.physical = true;
+        rifle.details.name = "Rifle";
+        rifle.details.type = "Ranged";
+        rifle.details.rank = 3;
+        rifle.details.range = 6;
+        rifle.details.unlocks = "Deadeye";
+        rifle.idx = "Rifle" + IDMaker.NewID();
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(rifle);
+        CurrentGame.game.memoryGeneral.shopWares.weapons.Add(rifle);
+
+        
     }
 
 }
