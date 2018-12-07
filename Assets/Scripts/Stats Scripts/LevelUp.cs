@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour {
 
-    public void LevelUpNow()
+    public static void LevelUpNow()
     {
         UnitHumanClass hum = CurrentGame.game.memoryGeneral.humanClassProgress;
         UnitViraClass vira = CurrentGame.game.memoryGeneral.viraClassProgress;
@@ -36,6 +36,7 @@ public class LevelUp : MonoBehaviour {
         }
 
         MapRewards rewards = GameObject.FindObjectOfType<MapRewards>();
+        rewards.unitXp = CurrentGame.game.memoryGeneral.currentLevel.xpReward;
         if (CurrentGame.game.memoryGeneral.humanClassProgress.warrior.present == true)
         {
 
@@ -1273,7 +1274,7 @@ public class LevelUp : MonoBehaviour {
          }
      }*/
 
-    public void UnitLearn(string skill, string idx)
+    public static void UnitLearn(string skill, string idx)
     {
         Unit u = CurrentGame.game.storeroom.units.Find(x => x.idx == idx);
         UnitHumanClass hum = u.unitClass.main.human;
@@ -1305,24 +1306,28 @@ public class LevelUp : MonoBehaviour {
         if (hum.warrior.present == true)
         {
             WarriorLoader.AssignSkill(skill, u.unitClass.main.human.warrior.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (hum.mage.present == true)
         {
             MageLoader.AssignSkill(skill, u.unitClass.main.human.mage.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (hum.priest.present == true)
         {
             PriestLoader.AssignSkill(skill, u.unitClass.main.human.priest.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (hum.rogue.present == true)
         {
             RogueLoader.AssignSkill(skill, u.unitClass.main.human.rogue.pickSkill);
+            ClassUnlock.CheckOnClass(u);
 
         }
         else if (hum.cavalier.present == true)
         {
             CavalierLoader.AssignSkill(skill, u.unitClass.main.human.cavalier.pickSkill);
-
+            ClassUnlock.CheckOnClass(u);
         }
         else if (hum.bard.present == true)
         {
@@ -1332,33 +1337,39 @@ public class LevelUp : MonoBehaviour {
         else if (hum.archer.present == true)
         {
             ArcherLoader.AssignSkill(skill, u.unitClass.main.human.archer.pickSkill);
-
+            ClassUnlock.CheckOnClass(u);
         }
 
         else if (imp.dread.present == true)
         {
             DreadLoader.AssignSkill(skill, u.unitClass.main.imp.dread.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (imp.fusilier.present == true)
         {
             FusilierLoader.AssignSkill(skill, u.unitClass.main.imp.fusilier.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
     
         else if (imp.shrike.present == true)
         {
             ShrikeLoader.AssignSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (imp.swashbuckler.present == true)
         {
             SwashbucklerLoader.AssignSkill(skill, u.unitClass.main.imp.swashbuckler.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (imp.shadow.present == true)
         {
             ShadowLoader.AssignSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
         else if (imp.duelist.present == true)
         {
-            //.AssignSkill(skill, u.unitClass.main.imp.magus.pickSkill);
+            //DuelistLoader.AssignSkill(skill, u.unitClass.main.imp.duelist.pickSkill);
+            ClassUnlock.CheckOnClass(u);
         }
 
     }
@@ -1389,7 +1400,7 @@ public class LevelUp : MonoBehaviour {
            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.wardancer.pickSkill);
        }*/
 
-    public bool HasSkill(string skill, string idx)
+    public static bool HasSkill(string skill, string idx)
     {
         Unit u = CurrentGame.game.storeroom.units.Find(x => x.idx == idx);
         UnitHumanClass hum = u.unitClass.main.human;

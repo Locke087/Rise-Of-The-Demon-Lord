@@ -24,6 +24,9 @@ public class UnitImpClass {
         shadow = new UnitClassDetail();
         dread = new UnitClassDetail();
         duelist = new UnitClassDetail();
-
+        cannoneer = new UnitClassDetail();
+        demonrider = new UnitClassDetail();
+        nightblade = new UnitClassDetail();
+        darkknight = new UnitClassDetail();
     }
 }

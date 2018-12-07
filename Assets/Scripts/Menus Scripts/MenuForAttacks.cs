@@ -78,7 +78,7 @@ public class MenuForAttacks : MonoBehaviour {
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
-            GUILayout.Space(10);
+          //  GUILayout.Space(10);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
            
             turnCon = GameObject.FindObjectOfType<SpeedCenterTurns>();
@@ -107,6 +107,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -139,6 +140,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -172,6 +174,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -205,6 +208,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -237,6 +241,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -269,6 +274,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -302,6 +308,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -334,6 +341,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -367,6 +375,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -399,6 +408,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -431,6 +441,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -463,6 +474,7 @@ public class MenuForAttacks : MonoBehaviour {
                     {
                         attack.UniqueAttack();
                         checking = false;
+                        currentMenu = Menu.HomeMenu;
                         menuPar.SetActive(false);
                     }
                     if (GUILayout.Button("No"))
@@ -478,6 +490,7 @@ public class MenuForAttacks : MonoBehaviour {
             {
                 checking = false;
                 attack.currentAttack = empty;
+                currentMenu = Menu.HomeMenu;
                 menuPar.SetActive(false);
 
             }
@@ -520,6 +533,7 @@ public class MenuForAttacks : MonoBehaviour {
                     attack.AssignMe();
                     MapManager manager = GameObject.FindObjectOfType<MapManager>();
                     manager.PlayerSkill();
+                    currentMenu = Menu.HomeMenu;
                     menuPar.SetActive(false);
                 }
 
@@ -534,6 +548,7 @@ public class MenuForAttacks : MonoBehaviour {
             if (GUILayout.Button("Exit Menu"))
             {
                 checking = false;
+                currentMenu = Menu.HomeMenu;
                 menuPar.SetActive(false);
 
             }
