@@ -548,6 +548,7 @@ public class MenuForAttacks : MonoBehaviour {
             if (GUILayout.Button("Exit Menu"))
             {
                 checking = false;
+                currentMenu = Menu.HomeMenu;
                 menuPar.SetActive(false);
 
             }
