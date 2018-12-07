@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114525751420389088}
   - component: {fileID: 54522093013849196}
   m_Layer: 0
-  m_Name: PlayerCopy
+  m_Name: Alice
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114981297170187514}
-  unitID: Sascha
+  unitID: Alice
   hp: 0
   str: 0
   def: 0

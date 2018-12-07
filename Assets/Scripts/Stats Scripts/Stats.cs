@@ -1141,7 +1141,7 @@ public class Stats : MonoBehaviour
 
         StatRange(me.unitInfo.bases);
       
-        allClassesBase.Add(new TheClassesBase(calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
+        allClassesBase.Add(new TheClassesBase(calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, me.unitInfo.main.movement));
         //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
         allClassesCaps.Add(new TheClassesCap(me.unitInfo.main.caps));
         allClassesMods.Add(new TheClassesMod(me.unitInfo.main.modifiers));
