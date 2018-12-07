@@ -16,6 +16,7 @@ public class CurrentLevel {
     public string itemReward;
     public string weaponReward;
     public string assessoryReward;
+    public int xpReward;
     public EnemiesInMap enemiesInMap;
     public CurrentLevel()
     {
@@ -27,6 +28,7 @@ public class CurrentLevel {
         powerRanking = 0;
         deployLimit = 0;
         goldReward = 0;
+        xpReward = 0;
         unitReward = "";
         itemReward = "";
         weaponReward = "";

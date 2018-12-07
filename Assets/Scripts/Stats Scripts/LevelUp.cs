@@ -36,6 +36,7 @@ public class LevelUp : MonoBehaviour {
         }
 
         MapRewards rewards = GameObject.FindObjectOfType<MapRewards>();
+        rewards.unitXp = CurrentGame.game.memoryGeneral.currentLevel.xpReward;
         if (CurrentGame.game.memoryGeneral.humanClassProgress.warrior.present == true)
         {
 
