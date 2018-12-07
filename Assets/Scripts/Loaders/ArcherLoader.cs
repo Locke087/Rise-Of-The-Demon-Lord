@@ -17,6 +17,47 @@ public class ArcherLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Archer.Clear();
+        Archer.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.name = "Archer";
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement = 5;
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon1.type = "Close";
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon1.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon2.type = "Ranged";
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon2.rank = 3;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Archer.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.level = CurrentGame.game.memoryGeneral.humanClassProgress.archer.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.modifiers = Archer.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.human.archer.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.archer.modifiers;
+                    u.unitClass.main.human.archer.level = CurrentGame.game.memoryGeneral.humanClassProgress.archer.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.archer.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;

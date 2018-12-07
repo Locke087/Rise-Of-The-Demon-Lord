@@ -16,6 +16,47 @@ public class ShrikeLoader : MonoBehaviour {
 
     }
 
+    public static void NewClass()
+    {
+        Shrike.Clear();
+        Shrike.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.name = "Shrike";
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement = 5;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon1.type = "Athames";
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon2.type = "Spears";
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Shrike.LevelUp();
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.level = CurrentGame.game.memoryGeneral.impClassProgress.shrike.level + 1;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.modifiers = Shrike.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.imp.shrike.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.shrike.modifiers;
+                    u.unitClass.main.imp.shrike.level = CurrentGame.game.memoryGeneral.impClassProgress.shrike.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.imp.shrike.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;

@@ -16,6 +16,47 @@ public class ShadowLoader : MonoBehaviour {
 
     }
 
+    public static void NewClass()
+    {
+        Shadow.Clear();
+        Shadow.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.name = "Shadow";
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement = 5;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon1.type = "Athames";
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon2.type = "Light Blades";
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Shadow.LevelUp();
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.level = CurrentGame.game.memoryGeneral.impClassProgress.shadow.level + 1;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.modifiers = Shadow.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.imp.shadow.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.shadow.modifiers;
+                    u.unitClass.main.imp.shadow.level = CurrentGame.game.memoryGeneral.impClassProgress.shadow.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.imp.shadow.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;

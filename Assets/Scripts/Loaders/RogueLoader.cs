@@ -17,6 +17,47 @@ public class RogueLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Rogue.Clear();
+        Rogue.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.name = "Rogue";
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement = 5;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon1.type = "Close";
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon2.type = "Light Blades";
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Rogue.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.modifiers = Rogue.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.human.rogue.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.modifiers;
+                    u.unitClass.main.human.rogue.level = CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.rogue.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;

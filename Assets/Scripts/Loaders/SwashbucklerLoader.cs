@@ -17,6 +17,47 @@ public class SwashbucklerLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Swashbuckler.Clear();
+        Swashbuckler.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level = 0;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.name = "Swashbuckler";
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement = 5;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon1.type = "Light Blades";
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon2.type = "Ranged";
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Swashbuckler.LevelUp();
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level + 1;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.modifiers = Swashbuckler.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.imp.swashbuckler.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.modifiers;
+                    u.unitClass.main.imp.swashbuckler.level = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.imp.swashbuckler.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;

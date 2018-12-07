@@ -17,6 +17,47 @@ public class MageLoader : MonoBehaviour
 
     }
 
+    public static void NewClass()
+    {
+        Mage.Clear();
+        Mage.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.level = 0;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.name = "Mage";
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement = 4;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon1.type = "Tomes";
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon1.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon2.type = "Athames";
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon2.rank = 2;
+
+        LevelUpClass();
+    }
+
+
+    public static void LevelUpClass()
+    {
+        Mage.LevelUp();
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.level = CurrentGame.game.memoryGeneral.humanClassProgress.mage.level + 1;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.modifiers = Mage.ModList();
+
+        foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed)
+        {
+            Unit me = new Unit();
+            foreach (Unit u in CurrentGame.game.storeroom.units)
+            {
+                if (id == u.unitID)
+                {
+                    u.unitClass.main.human.mage.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.mage.modifiers;
+                    u.unitClass.main.human.mage.level = CurrentGame.game.memoryGeneral.humanClassProgress.mage.level;
+                }
+            }
+        }
+    }
+
+    public static void ClassUnlocked(Unit me)
+    {
+        me.unitClass.main.human.mage.unlocked = true;
+    }
+
     public static int HowManySkills(UnitClassSkill u)
     {
         int i = 0;
