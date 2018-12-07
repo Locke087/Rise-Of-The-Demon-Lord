@@ -98,11 +98,8 @@ public class UnitLoader : MonoBehaviour {
 
      
         me.unitClass.main.human.warrior.powerLevel = 1;
-        me.unitClass.main.human.warrior.unlocked = true;
-        me.unitClass.main.human.cavalier.unlocked = true;
-        me.unitClass.main.human.archer.unlocked = true;
-        me.unitClass.main.human.mage.unlocked = true;
-        me.unitClass.main.human.priest.unlocked = true;
+  ;
+      
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(me.unitID);
         WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
@@ -113,8 +110,13 @@ public class UnitLoader : MonoBehaviour {
         WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
+        me.unitClass.main.human.warrior.unlocked = true;
+        me.unitClass.main.human.cavalier.unlocked = true;
+        me.unitClass.main.human.archer.unlocked = true;
+        me.unitClass.main.human.mage.unlocked = true;
+        me.unitClass.main.human.priest.unlocked = true;
         me.unitInfo.main = me.unitClass.main.human.warrior;
-
+     
         // str, def, spd, skill, magic, will
         int[] bases = { 7, 5, 3, 5, 2, 1 };
         me.unitInfo.bases.AddRange(bases);
@@ -141,11 +143,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior.powerLevel = 1;
-        newMe.unitClass.main.human.warrior.unlocked = true;
-        newMe.unitClass.main.human.cavalier.unlocked = true;
-        newMe.unitClass.main.human.archer.unlocked = true;
-        newMe.unitClass.main.human.mage.unlocked = true;
-        newMe.unitClass.main.human.priest.unlocked = true;
+        
         newMe.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         newMe.unitInfo.currentMods = Warrior.ModList();
@@ -156,6 +154,11 @@ public class UnitLoader : MonoBehaviour {
         WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", newMe.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", newMe.unitClass.sub.human.warrior.pickSkill);
+        newMe.unitClass.main.human.warrior.unlocked = true;
+        newMe.unitClass.main.human.cavalier.unlocked = true;
+        newMe.unitClass.main.human.archer.unlocked = true;
+        newMe.unitClass.main.human.mage.unlocked = true;
+        newMe.unitClass.main.human.priest.unlocked = true;
         newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
 
         // str, def, spd, skill, magic, will
@@ -183,14 +186,11 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitInfo.human = true;
         newMe2.unitInfo.mugName = "Actor_FW01_8";
         newMe2.idx = me.unitID + IDMaker.NewID();
-        newMe2.unitClass.main.human.warrior.unlocked = true;
-        newMe2.unitClass.main.human.cavalier.unlocked = true;
-        newMe2.unitClass.main.human.archer.unlocked = true;
-        newMe2.unitClass.main.human.mage.unlocked = true;
-        newMe2.unitClass.main.human.priest.unlocked = true;
+  
 
         newMe2.unitClass.main.human.cavalier = CurrentGame.game.memoryGeneral.humanClassProgress.cavalier;
         newMe2.unitClass.main.human.cavalier.caps = Cavalier.Caplist();
+
         newMe2.unitInfo.currentMods = Cavalier.ModList();
         newMe2.unitClass.main.human.cavalier.powerLevel = 1;
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Add(newMe2.unitID);
@@ -201,6 +201,12 @@ public class UnitLoader : MonoBehaviour {
         CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        newMe2.unitClass.main.human.warrior.unlocked = true;
+        newMe2.unitClass.main.human.cavalier.unlocked = true;
+        newMe2.unitClass.main.human.archer.unlocked = true;
+        newMe2.unitClass.main.human.mage.unlocked = true;
+        newMe2.unitClass.main.human.priest.unlocked = true;
+
         newMe2.unitInfo.main = newMe2.unitClass.main.human.cavalier;
 
         // str, def, spd, skill, magic, will
@@ -230,11 +236,7 @@ public class UnitLoader : MonoBehaviour {
         newMe3.unitClass.main.race = "Human";
         newMe3.unitInfo.human = true;
         newMe3.unitClass.main.human.priest.powerLevel = 1;
-        newMe3.unitClass.main.human.warrior.unlocked = true;
-        newMe3.unitClass.main.human.cavalier.unlocked = true;
-        newMe3.unitClass.main.human.archer.unlocked = true;
-        newMe3.unitClass.main.human.mage.unlocked = true;
-        newMe3.unitClass.main.human.priest.unlocked = true;
+        
         newMe3.unitClass.main.human.priest = CurrentGame.game.memoryGeneral.humanClassProgress.priest;
         newMe3.unitClass.main.human.priest.caps = Priest.Caplist();
         newMe3.unitInfo.currentMods = Priest.ModList();
@@ -245,6 +247,13 @@ public class UnitLoader : MonoBehaviour {
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.sub.human.priest.pickSkill);
         PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
         PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
+
+        newMe3.unitClass.main.human.warrior.unlocked = true;
+        newMe3.unitClass.main.human.cavalier.unlocked = true;
+        newMe3.unitClass.main.human.archer.unlocked = true;
+        newMe3.unitClass.main.human.mage.unlocked = true;
+        newMe3.unitClass.main.human.priest.unlocked = true;
+
         newMe3.unitInfo.main = newMe3.unitClass.main.human.priest;
 
         // str, def, spd, skill, magic, will
@@ -275,12 +284,6 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.race = "Imp";
         newMe4.unitInfo.imp = true;
         newMe4.unitClass.main.imp.fusilier.powerLevel = 1;
-   
-        newMe4.unitClass.main.imp.swashbuckler.unlocked = true;
-        newMe4.unitClass.main.imp.shrike.unlocked = true;
-        newMe4.unitClass.main.imp.shadow.unlocked = true;
-        newMe4.unitClass.main.imp.dread.unlocked = true;
-        newMe4.unitClass.main.imp.fusilier.unlocked = true;
 
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Add(newMe4.unitID);
 
@@ -293,6 +296,12 @@ public class UnitLoader : MonoBehaviour {
         FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        newMe4.unitClass.main.imp.swashbuckler.unlocked = true;
+        newMe4.unitClass.main.imp.shrike.unlocked = true;
+        newMe4.unitClass.main.imp.shadow.unlocked = true;
+        newMe4.unitClass.main.imp.dread.unlocked = true;
+        newMe4.unitClass.main.imp.fusilier.unlocked = true;
+
         newMe4.unitInfo.main = newMe4.unitClass.main.imp.fusilier;
 
         // str, def, spd, skill, magic, will
