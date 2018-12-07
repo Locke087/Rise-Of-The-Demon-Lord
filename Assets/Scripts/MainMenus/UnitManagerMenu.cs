@@ -424,29 +424,29 @@ public class UnitManagerMenu : MonoBehaviour {
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement);// + CurrentGame.game.memoryGeneral.impClassProgress.fusilier);
                     }
                 }
-                if (unit.unitClass.main.imp.magus.unlocked)
+                if (unit.unitClass.main.imp.duelist.unlocked)
                 {
                     if (unit.unitClass.main.mainClass != "Magus")
                     {
                         if (GUILayout.Button("Switch to Magus"))
                         {
                             UnsignOldClass(unit);
-                            unit.unitClass.main.imp.magus.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.magus.modifiers;
-                            unit.unitClass.main.imp.magus.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.magus.classWeapons;
-                            unit.unitClass.main.imp.magus.caps = CurrentGame.game.memoryGeneral.impClassProgress.magus.caps;
-                            unit.unitClass.main.imp.magus.level = CurrentGame.game.memoryGeneral.impClassProgress.magus.level;
-                            unit.unitInfo.main = unit.unitClass.main.imp.magus;
+                            unit.unitClass.main.imp.duelist.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.duelist.modifiers;
+                            unit.unitClass.main.imp.duelist.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons;
+                            unit.unitClass.main.imp.duelist.caps = CurrentGame.game.memoryGeneral.impClassProgress.duelist.caps;
+                            unit.unitClass.main.imp.duelist.level = CurrentGame.game.memoryGeneral.impClassProgress.duelist.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.duelist;
                             unit.unitClass.main.mainClass = "Magus";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.magus);
-                            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Add(unit.idx);
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.duelist);
+                            CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Add(unit.idx);
                         }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.magus.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.magus.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
                     }
                     else
                     {
-                        GUILayout.Box("Currently Your a Magus" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.magus.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.magus.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
+                        GUILayout.Box("Currently Your a Magus" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
                     }
                 }
                 if (unit.unitClass.main.imp.shadow.unlocked)
@@ -1340,7 +1340,7 @@ public class UnitManagerMenu : MonoBehaviour {
 
         if (unit.unitClass.main.mainClass == "Magus")
         {
-            CurrentGame.game.memoryGeneral.impClassProgress.magus.subbed.Remove(unit.idx);
+            CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Remove(unit.idx);
         }
 
         if (unit.unitClass.main.mainClass == "Shadow")

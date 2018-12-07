@@ -10,7 +10,11 @@ public class UnitImpClass {
     public UnitClassDetail shrike;
     public UnitClassDetail shadow;
     public UnitClassDetail dread;
-    public UnitClassDetail magus;
+    public UnitClassDetail duelist;
+    public UnitClassDetail cannoneer;
+    public UnitClassDetail demonrider;
+    public UnitClassDetail nightblade;
+    public UnitClassDetail darkknight;
 
     public UnitImpClass()
     {
@@ -19,7 +23,7 @@ public class UnitImpClass {
         shrike = new UnitClassDetail();
         shadow = new UnitClassDetail();
         dread = new UnitClassDetail();
-        magus = new UnitClassDetail();
+        duelist = new UnitClassDetail();
 
     }
 }

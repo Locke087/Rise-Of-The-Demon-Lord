@@ -20,16 +20,16 @@ public class LevelUp : MonoBehaviour {
             else if (hum.bard.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.bard.present = true;
             else if (hum.archer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.archer.present = true;
 
-            else if (vira.chronos.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = true;
+           /* else if (vira.chronos.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = true;
             else if (vira.alchemist.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = true;
             else if (vira.geomancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = true;
             else if (vira.kensai.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = true;
             else if (vira.onmiyoji.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = true;
-            else if (vira.wardancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = true;
+            else if (vira.wardancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = true;*/
 
             else if (imp.dread.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.dread.present = true;
             else if (imp.fusilier.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present = true;
-            else if (imp.magus.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.magus.present = true;
+            else if (imp.duelist.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.duelist.present = true;
             else if (imp.shrike.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = true;
             else if (imp.swashbulkler.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.present = true;
             else if (imp.shadow.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = true;
@@ -331,258 +331,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = powerGain;
-                }
-
-                // ChronosLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = totalGain;
-                }
-            }
-        }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = powerGain;
-                }
-
-                // AlchemistLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = totalGain;
-                }
-            }
-        }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = powerGain;
-                }
-
-                // GeomancerLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = totalGain;
-                }
-            }
-        }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = powerGain;
-                }
-
-                // KensairLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = totalGain;
-                }
-            }
-        }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = powerGain;
-                }
-
-                // OnmiyojiLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = totalGain;
-                }
-            }
-        }
-        else if (CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = powerGain;
-                }
-
-                // WardancerLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = 0;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = totalGain;
-                }
-            }
-        }
+    
         else if (CurrentGame.game.memoryGeneral.impClassProgress.dread.present == true)
         {
             int levelUP = 100;
@@ -666,49 +415,7 @@ public class LevelUp : MonoBehaviour {
                     CurrentGame.game.memoryGeneral.impClassProgress.fusilier.xp = totalGain;
                 }
             }
-        }
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.magus.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
-            int totalGain = 0;
-            int powerGain = 0;
-            int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-            if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.magus.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp;
-            if (totalGain >= levelUP)
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = 0;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = powerGain;
-                }
-
-                // MagusLoader.LevelUpClass();
-            }
-            else
-            {
-                if (powerGain >= pLevelUp)
-                {
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = totalGain;
-                }
-                else
-                {
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = totalGain;
-                }
-            }
-        }
+        }  
         else if (CurrentGame.game.memoryGeneral.impClassProgress.shrike.present == true)
         {
             int levelUP = 100;
@@ -818,7 +525,7 @@ public class LevelUp : MonoBehaviour {
                     CurrentGame.game.memoryGeneral.impClassProgress.shadow.pxp = powerGain;
                 }
 
-                // ShadowLoader.LevelUpClass();
+                //ShadowLoader.LevelUpClass();
             }
             else
             {
@@ -844,15 +551,15 @@ public class LevelUp : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.present = false;
         CurrentGame.game.memoryGeneral.humanClassProgress.archer.present = false;
 
-        CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = false;
+       /* CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = false;
         CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = false;
         CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = false;
         CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = false;
         CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = false;
+        CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = false;*/
 
         CurrentGame.game.memoryGeneral.impClassProgress.dread.present = false;
-        CurrentGame.game.memoryGeneral.impClassProgress.magus.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.duelist.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = false;
@@ -860,12 +567,7 @@ public class LevelUp : MonoBehaviour {
 
 
         foreach (Unit unit in CurrentGame.game.memoryGeneral.unitsInParty)
-        {
-            // if (unit.inventory.invSlot1.weapon.equipped);
-            //if (unit.inventory.invSlot1.assessory.equipped);
-
-            //if (unit.inventory.invSlot2.weapon.equipped);
-            //if (unit.inventory.invSlot2.assessory.equipped);
+        {       
             if (unit.inventory.invSlot1.holding != "")
             {
                 if (unit.inventory.invSlot1.weapon.inSlot)
@@ -1030,10 +732,6 @@ public class LevelUp : MonoBehaviour {
                     }
                 }
             }
-
-            //if (unit.inventory.invSlot3.weapon.equipped);
-            //if (unit.inventory.invSlot3.assessory.equipped);
-
             if (unit.inventory.invSlot3.holding != "")
             {
                 if (unit.inventory.invSlot3.weapon.inSlot)
@@ -1115,11 +813,6 @@ public class LevelUp : MonoBehaviour {
                     }
                 }
             }
-
-
-            //if (unit.inventory.invSlot4.weapon.equipped);
-            //if (unit.inventory.invSlot4.assessory.equipped);
-
             if (unit.inventory.invSlot4.holding != "")
             {
                 if (unit.inventory.invSlot4.weapon.inSlot)
@@ -1201,10 +894,6 @@ public class LevelUp : MonoBehaviour {
                     }
                 }
             }
-
-
-            //if (unit.inventory.invSlot5.weapon.equipped);
-            //if (unit.inventory.invSlot5.assessory.equipped);
             if (unit.inventory.invSlot5.holding != "")
             {
                 if (unit.inventory.invSlot5.weapon.inSlot)
@@ -1285,11 +974,304 @@ public class LevelUp : MonoBehaviour {
                     }
                 }
             }
-
-
         }
 
     }
+
+    /* else if (CurrentGame.game.memoryGeneral.impClassProgress.magus.present == true)
+       {
+      int levelUP = 100;
+      int pLevelUp = 500;
+      int totalGain = 0;
+      int powerGain = 0;
+      int reduce = 0;
+      reduce = CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+      if (reduce < 1) reduce = 1;
+      totalGain = CurrentGame.game.memoryGeneral.impClassProgress.magus.xp + (rewards.unitXp / reduce);
+      powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp;
+      if (totalGain >= levelUP)
+      {
+          if (powerGain >= pLevelUp)
+          {
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = 0;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel += 1;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = 0;
+          }
+          else
+          {
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = 0;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = powerGain;
+          }
+
+          // MagusLoader.LevelUpClass();
+      }
+      else
+      {
+          if (powerGain >= pLevelUp)
+          {
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = 0;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.powerLevel += 1;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = totalGain;
+          }
+          else
+          {
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.pxp = powerGain;
+              CurrentGame.game.memoryGeneral.impClassProgress.magus.xp = totalGain;
+          }
+      }
+    }*/
+    /* else if (CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = powerGain;
+             }
+
+             // ChronosLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.chronos.xp = totalGain;
+             }
+         }
+     }
+     else if (CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = powerGain;
+             }
+
+             // AlchemistLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.xp = totalGain;
+             }
+         }
+     }
+     else if (CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = powerGain;
+             }
+
+             // GeomancerLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.xp = totalGain;
+             }
+         }
+     }
+     else if (CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = powerGain;
+             }
+
+             // KensairLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.kensai.xp = totalGain;
+             }
+         }
+     }
+     else if (CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = powerGain;
+             }
+
+             // OnmiyojiLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.xp = totalGain;
+             }
+         }
+     }
+     else if (CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present == true)
+     {
+         int levelUP = 100;
+         int pLevelUp = 500;
+         int totalGain = 0;
+         int powerGain = 0;
+         int reduce = 0;
+         reduce = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+         if (reduce < 1) reduce = 1;
+         totalGain = CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp + (rewards.unitXp / reduce);
+         powerGain = totalGain + CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp;
+         if (totalGain >= levelUP)
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = 0;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = powerGain;
+             }
+
+             // WardancerLoader.LevelUpClass();
+         }
+         else
+         {
+             if (powerGain >= pLevelUp)
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = 0;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.powerLevel += 1;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = totalGain;
+             }
+             else
+             {
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.pxp = powerGain;
+                 CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.xp = totalGain;
+             }
+         }
+     }*/
 
     public void UnitLearn(string skill, string idx)
     {
@@ -1305,16 +1287,16 @@ public class LevelUp : MonoBehaviour {
         else if (hum.bard.name == u.unitClass.main.mainClass) hum.bard.present = true;
         else if (hum.archer.name == u.unitClass.main.mainClass) hum.archer.present = true;
 
-        else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
+      /*  else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
         else if (vira.chronos.name == u.unitClass.main.mainClass) vira.chronos.present = true;
         else if (vira.geomancer.name == u.unitClass.main.mainClass) vira.geomancer.present = true;
         else if (vira.kensai.name == u.unitClass.main.mainClass) vira.kensai.present = true;
         else if (vira.onmiyoji.name == u.unitClass.main.mainClass) vira.onmiyoji.present = true;
-        else if (vira.wardancer.name == u.unitClass.main.mainClass) vira.wardancer.present = true;
+        else if (vira.wardancer.name == u.unitClass.main.mainClass) vira.wardancer.present = true;*/
 
         else if (imp.dread.name == u.unitClass.main.mainClass) imp.dread.present = true;
         else if (imp.fusilier.name == u.unitClass.main.mainClass) imp.fusilier.present = true;
-        else if (imp.magus.name == u.unitClass.main.mainClass) imp.magus.present = true;
+         else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
         else if (imp.swashbulkler.name == u.unitClass.main.mainClass) imp.swashbulkler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
@@ -1326,88 +1308,86 @@ public class LevelUp : MonoBehaviour {
         }
         else if (hum.mage.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.mage.pickSkill);
+            MageLoader.AssignSkill(skill, u.unitClass.main.human.mage.pickSkill);
         }
         else if (hum.priest.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.priest.pickSkill);
+            PriestLoader.AssignSkill(skill, u.unitClass.main.human.priest.pickSkill);
         }
         else if (hum.rogue.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.rogue.pickSkill);
+            RogueLoader.AssignSkill(skill, u.unitClass.main.human.rogue.pickSkill);
 
         }
         else if (hum.cavalier.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.cavalier.pickSkill);
+            CavalierLoader.AssignSkill(skill, u.unitClass.main.human.cavalier.pickSkill);
 
         }
         else if (hum.bard.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.bard.pickSkill);
+            //.AssignSkill(skill, u.unitClass.main.human.bard.pickSkill);
 
         }
         else if (hum.archer.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.archer.pickSkill);
+            ArcherLoader.AssignSkill(skill, u.unitClass.main.human.archer.pickSkill);
 
-        }
-
-        else if (vira.chronos.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.chronos.pickSkill);
-
-        }
-        else if (vira.alchemist.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.alchemist.pickSkill);
-        }
-        else if (vira.geomancer.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.geomancer.pickSkill);
-        }
-        else if (vira.kensai.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.kensai.pickSkill);
-        }
-        else if (vira.onmiyoji.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.onmiyoji.pickSkill);
-        }
-        else if (vira.wardancer.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.wardancer.pickSkill);
         }
 
         else if (imp.dread.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.dread.pickSkill);
+            DreadLoader.AssignSkill(skill, u.unitClass.main.imp.dread.pickSkill);
         }
         else if (imp.fusilier.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.fusilier.pickSkill);
+            FusilierLoader.AssignSkill(skill, u.unitClass.main.imp.fusilier.pickSkill);
         }
-        else if (imp.magus.present == true)
-        {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.magus.pickSkill);
-        }
+    
         else if (imp.shrike.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
+            ShrikeLoader.AssignSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
         }
         else if (imp.swashbulkler.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
+            SwashbucklerLoader.AssignSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
         }
         else if (imp.shadow.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
+            ShadowLoader.AssignSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
         }
-
+        else if (imp.duelist.present == true)
+        {
+            //.AssignSkill(skill, u.unitClass.main.imp.magus.pickSkill);
+        }
 
     }
 
+    /*  else if (vira.chronos.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.chronos.pickSkill);
 
+       }
+       else if (vira.alchemist.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.alchemist.pickSkill);
+       }
+       else if (vira.geomancer.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.geomancer.pickSkill);
+       }
+       else if (vira.kensai.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.kensai.pickSkill);
+       }
+       else if (vira.onmiyoji.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.onmiyoji.pickSkill);
+       }
+       else if (vira.wardancer.present == true)
+       {
+           WarriorLoader.AssignSkill(skill, u.unitClass.main.vira.wardancer.pickSkill);
+       }*/
 
     public bool HasSkill(string skill, string idx)
     {
@@ -1423,16 +1403,16 @@ public class LevelUp : MonoBehaviour {
         else if (hum.bard.name == u.unitClass.main.mainClass) hum.bard.present = true;
         else if (hum.archer.name == u.unitClass.main.mainClass) hum.archer.present = true;
 
-        else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
+        /*else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
         else if (vira.chronos.name == u.unitClass.main.mainClass) vira.chronos.present = true;
         else if (vira.geomancer.name == u.unitClass.main.mainClass) vira.geomancer.present = true;
         else if (vira.kensai.name == u.unitClass.main.mainClass) vira.kensai.present = true;
         else if (vira.onmiyoji.name == u.unitClass.main.mainClass) vira.onmiyoji.present = true;
-        else if (vira.wardancer.name == u.unitClass.main.mainClass) vira.wardancer.present = true;
+        else if (vira.wardancer.name == u.unitClass.main.mainClass) vira.wardancer.present = true;*/
 
         else if (imp.dread.name == u.unitClass.main.mainClass) imp.dread.present = true;
         else if (imp.fusilier.name == u.unitClass.main.mainClass) imp.fusilier.present = true;
-        else if (imp.magus.name == u.unitClass.main.mainClass) imp.magus.present = true;
+        else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
         else if (imp.swashbulkler.name == u.unitClass.main.mainClass) imp.swashbulkler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
@@ -1440,7 +1420,7 @@ public class LevelUp : MonoBehaviour {
 
         if (hum.warrior.present == true)
         {
-           return WarriorLoader.HasSkill(skill, u.unitClass.main.human.warrior.pickSkill);
+            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.warrior.pickSkill);
         }
         else if (hum.mage.present == true)
         {
@@ -1471,55 +1451,56 @@ public class LevelUp : MonoBehaviour {
 
         }
 
-        else if (vira.chronos.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.chronos.pickSkill);
+        /*   else if (vira.chronos.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.chronos.pickSkill);
 
-        }
-        else if (vira.alchemist.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.alchemist.pickSkill);
-        }
-        else if (vira.geomancer.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.geomancer.pickSkill);
-        }
-        else if (vira.kensai.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.kensai.pickSkill);
-        }
-        else if (vira.onmiyoji.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.onmiyoji.pickSkill);
-        }
-        else if (vira.wardancer.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.wardancer.pickSkill);
-        }
+           }
+           else if (vira.alchemist.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.alchemist.pickSkill);
+           }
+           else if (vira.geomancer.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.geomancer.pickSkill);
+           }
+           else if (vira.kensai.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.kensai.pickSkill);
+           }
+           else if (vira.onmiyoji.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.onmiyoji.pickSkill);
+           }
+           else if (vira.wardancer.present == true)
+           {
+               return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.wardancer.pickSkill);
+           }*/
 
         else if (imp.dread.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.dread.pickSkill);
+           // return DreadLoader.HasSkill(skill, u.unitClass.main.imp.dread.pickSkill);
         }
         else if (imp.fusilier.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.fusilier.pickSkill);
+           return FusilierLoader.HasSkill(skill, u.unitClass.main.imp.fusilier.pickSkill);
         }
-        else if (imp.magus.present == true)
-        {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.magus.pickSkill);
-        }
+
         else if (imp.shrike.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
+          //  return ShrikeLoader.HasSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
         }
         else if (imp.swashbulkler.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
+            //return SwashbucklerLoader.HasSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
         }
         else if (imp.shadow.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
+          //  return ShadowLoader.HasSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
+        }
+        else if (imp.duelist.present == true)
+        {
+            //return .HasSkill(skill, u.unitClass.main.imp.magus.pickSkill);
         }
 
         return false;
