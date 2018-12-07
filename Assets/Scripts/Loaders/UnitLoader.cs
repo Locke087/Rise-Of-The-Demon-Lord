@@ -79,11 +79,40 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.paladin.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.assassin.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.bard.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.archmage.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.charger.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.knight.subbed.Clear();;
+        CurrentGame.game.memoryGeneral.humanClassProgress.sniper.subbed.Clear();
+
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.nightblade.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.demonrider.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Clear();
+
         WarriorLoader.NewClass();
-        FusilierLoader.NewClass();
         PriestLoader.NewClass();
         CavalierLoader.NewClass();
+        ArcherLoader.NewClass();
+        RogueLoader.NewClass();
+        MageLoader.NewClass();
+
+        FusilierLoader.NewClass();
+        ShadowLoader.NewClass();
+        DreadLoader.NewClass();
+        ShrikeLoader.NewClass();
+        SwashbucklerLoader.NewClass();
 
         Unit me = new Unit();
 
@@ -102,12 +131,8 @@ public class UnitLoader : MonoBehaviour {
       
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(me.unitID);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
         me.unitClass.main.human.warrior.unlocked = true;
@@ -152,8 +177,6 @@ public class UnitLoader : MonoBehaviour {
         WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill);
         WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.sub.human.warrior.pickSkill);
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
         newMe.unitClass.main.human.archer.unlocked = true;
@@ -195,12 +218,12 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.human.cavalier.powerLevel = 1;
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Add(newMe2.unitID);
         CavalierLoader.AssignSkill("Trample", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("Lance", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Protect Flanks", newMe2.unitClass.sub.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        //  CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("Protect Flanks", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
+        //CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
         newMe2.unitClass.main.human.warrior.unlocked = true;
         newMe2.unitClass.main.human.cavalier.unlocked = true;
         newMe2.unitClass.main.human.archer.unlocked = true;
@@ -245,8 +268,8 @@ public class UnitLoader : MonoBehaviour {
         PriestLoader.AssignSkill("Smite", newMe3.unitClass.sub.human.priest.pickSkill);
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.main.human.priest.pickSkill);
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.sub.human.priest.pickSkill);
-        PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
-        PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
+      //  PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
+       // PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
 
         newMe3.unitClass.main.human.warrior.unlocked = true;
         newMe3.unitClass.main.human.cavalier.unlocked = true;
@@ -291,11 +314,13 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.imp.fusilier.caps = Fusilier.Caplist();
         newMe4.unitInfo.currentMods = Priest.ModList();
         FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        // FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         newMe4.unitClass.main.imp.swashbuckler.unlocked = true;
         newMe4.unitClass.main.imp.shrike.unlocked = true;
         newMe4.unitClass.main.imp.shadow.unlocked = true;
