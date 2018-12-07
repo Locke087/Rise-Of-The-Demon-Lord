@@ -276,7 +276,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitInfo.imp = true;
         newMe4.unitClass.main.imp.fusilier.powerLevel = 1;
    
-        newMe4.unitClass.main.imp.swashbulkler.unlocked = true;
+        newMe4.unitClass.main.imp.swashbuckler.unlocked = true;
         newMe4.unitClass.main.imp.shrike.unlocked = true;
         newMe4.unitClass.main.imp.shadow.unlocked = true;
         newMe4.unitClass.main.imp.dread.unlocked = true;

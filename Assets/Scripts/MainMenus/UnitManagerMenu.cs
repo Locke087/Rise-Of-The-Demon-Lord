@@ -499,7 +499,7 @@ public class UnitManagerMenu : MonoBehaviour {
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement);
                     }
                 }
-                if (unit.unitClass.main.imp.swashbulkler.unlocked)
+                if (unit.unitClass.main.imp.swashbuckler.unlocked)
                 {
 
                     if (unit.unitClass.main.mainClass != "Swashbulkler")
@@ -507,22 +507,22 @@ public class UnitManagerMenu : MonoBehaviour {
                         if (GUILayout.Button("Switch to Swashbulkler"))
                         {
                             UnsignOldClass(unit);
-                            unit.unitClass.main.imp.swashbulkler.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.modifiers;
-                            unit.unitClass.main.imp.swashbulkler.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.classWeapons;
-                            unit.unitClass.main.imp.swashbulkler.caps = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.caps;
-                            unit.unitClass.main.imp.swashbulkler.level = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level;
-                            unit.unitInfo.main = unit.unitClass.main.imp.swashbulkler;
+                            unit.unitClass.main.imp.swashbuckler.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.modifiers;
+                            unit.unitClass.main.imp.swashbuckler.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons;
+                            unit.unitClass.main.imp.swashbuckler.caps = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.caps;
+                            unit.unitClass.main.imp.swashbuckler.level = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level;
+                            unit.unitInfo.main = unit.unitClass.main.imp.swashbuckler;
                             unit.unitClass.main.mainClass = "Swashbulkler";
-                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.swashbulkler);
-                            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Add(unit.idx);
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.swashbuckler);
+                            CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed.Add(unit.idx);
                         }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.movement);
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
                     }
                     else
                     {
-                        GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.movement);
+                        GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
                     }
                 }
             }
@@ -1357,7 +1357,7 @@ public class UnitManagerMenu : MonoBehaviour {
 
         if (unit.unitClass.main.mainClass == "Swashbulkler")
         {
-            CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.subbed.Remove(unit.idx);
+            CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed.Remove(unit.idx);
         }
 
 

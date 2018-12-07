@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class UnitImpClass {
 
-    public UnitClassDetail swashbulkler;
+    public UnitClassDetail swashbuckler;
     public UnitClassDetail fusilier;
     public UnitClassDetail shrike;
     public UnitClassDetail shadow;
@@ -18,7 +18,7 @@ public class UnitImpClass {
 
     public UnitImpClass()
     {
-        swashbulkler = new UnitClassDetail();
+        swashbuckler = new UnitClassDetail();
         fusilier = new UnitClassDetail();
         shrike = new UnitClassDetail();
         shadow = new UnitClassDetail();

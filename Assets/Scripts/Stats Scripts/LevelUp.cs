@@ -31,7 +31,7 @@ public class LevelUp : MonoBehaviour {
             else if (imp.fusilier.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present = true;
             else if (imp.duelist.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.duelist.present = true;
             else if (imp.shrike.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = true;
-            else if (imp.swashbulkler.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.present = true;
+            else if (imp.swashbuckler.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present = true;
             else if (imp.shadow.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = true;
         }
 
@@ -458,29 +458,29 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.present == true)
+        else if (CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present == true)
         {
             int levelUP = 100;
             int pLevelUp = 500;
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
-            reduce = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            reduce = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
             if (reduce < 1) reduce = 1;
-            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.xp + (rewards.unitXp / reduce);
-            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.pxp;
+            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pxp;
             if (totalGain >= levelUP)
             {
                 if (powerGain >= pLevelUp)
                 {
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.pxp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.xp = 0;
                 }
                 else
                 {
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.xp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pxp = powerGain;
                 }
 
                 // SwashbulklerLoader.LevelUpClass();
@@ -489,14 +489,14 @@ public class LevelUp : MonoBehaviour {
             {
                 if (powerGain >= pLevelUp)
                 {
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.pxp = 0;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.powerLevel += 1;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.xp = totalGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.xp = totalGain;
                 }
                 else
                 {
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.pxp = powerGain;
-                    CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.xp = totalGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.xp = totalGain;
                 }
             }
         }
@@ -563,7 +563,7 @@ public class LevelUp : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = false;
-        CurrentGame.game.memoryGeneral.impClassProgress.swashbulkler.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present = false;
 
 
         foreach (Unit unit in CurrentGame.game.memoryGeneral.unitsInParty)
@@ -1298,7 +1298,7 @@ public class LevelUp : MonoBehaviour {
         else if (imp.fusilier.name == u.unitClass.main.mainClass) imp.fusilier.present = true;
          else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
-        else if (imp.swashbulkler.name == u.unitClass.main.mainClass) imp.swashbulkler.present = true;
+        else if (imp.swashbuckler.name == u.unitClass.main.mainClass) imp.swashbuckler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
 
 
@@ -1348,9 +1348,9 @@ public class LevelUp : MonoBehaviour {
         {
             ShrikeLoader.AssignSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
         }
-        else if (imp.swashbulkler.present == true)
+        else if (imp.swashbuckler.present == true)
         {
-            SwashbucklerLoader.AssignSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
+            SwashbucklerLoader.AssignSkill(skill, u.unitClass.main.imp.swashbuckler.pickSkill);
         }
         else if (imp.shadow.present == true)
         {
@@ -1414,7 +1414,7 @@ public class LevelUp : MonoBehaviour {
         else if (imp.fusilier.name == u.unitClass.main.mainClass) imp.fusilier.present = true;
         else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
-        else if (imp.swashbulkler.name == u.unitClass.main.mainClass) imp.swashbulkler.present = true;
+        else if (imp.swashbuckler.name == u.unitClass.main.mainClass) imp.swashbuckler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
 
 
@@ -1490,7 +1490,7 @@ public class LevelUp : MonoBehaviour {
         {
           //  return ShrikeLoader.HasSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
         }
-        else if (imp.swashbulkler.present == true)
+        else if (imp.swashbuckler.present == true)
         {
             //return SwashbucklerLoader.HasSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
         }

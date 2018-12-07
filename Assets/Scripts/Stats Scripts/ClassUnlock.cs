@@ -54,7 +54,7 @@ public class ClassUnlock : MonoBehaviour {
         if (u.unitInfo.imp)
         {
 
-           if ( SwashbucklerLoader.HowManySkills(u.unitClass.main.imp.swashbulkler.pickSkill) >= 2
+           if ( SwashbucklerLoader.HowManySkills(u.unitClass.main.imp.swashbuckler.pickSkill) >= 2
                 && FusilierLoader.HowManySkills(u.unitClass.main.imp.fusilier.pickSkill) >= 3)
             {
               // CannoneerLoader.ClassUnlocked(u);
@@ -64,7 +64,7 @@ public class ClassUnlock : MonoBehaviour {
             {
                 // NightbladeLoader.ClassUnlocked(u);
             }
-            if (SwashbucklerLoader.HowManySkills(u.unitClass.main.imp.swashbulkler.pickSkill) >= 4)           
+            if (SwashbucklerLoader.HowManySkills(u.unitClass.main.imp.swashbuckler.pickSkill) >= 4)           
             {
                 // DuelistLoader.ClassUnlocked(u);
             }
