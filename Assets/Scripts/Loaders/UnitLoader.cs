@@ -20,12 +20,12 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitInfo.main = me.unitClass.main.human.warrior;
         
         // str, def, spd, skill, magic, will
@@ -533,12 +533,12 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitInfo.main = me.unitClass.main.human.warrior;
 
         // str, def, spd, skill, magic, will
