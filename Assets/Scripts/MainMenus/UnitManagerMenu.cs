@@ -1274,7 +1274,7 @@ public class UnitManagerMenu : MonoBehaviour {
         }
         else
         {
-            if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type)) unit.inventory.invSlot1.weapon.equipped = false;
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type, unit.inventory.invSlot1.weapon.details.rank)) unit.inventory.invSlot1.weapon.equipped = false;
         }
 
         if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot2.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
@@ -1287,7 +1287,7 @@ public class UnitManagerMenu : MonoBehaviour {
         }
         else
         {
-            if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type)) unit.inventory.invSlot2.weapon.equipped = false;
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type, unit.inventory.invSlot2.weapon.details.rank)) unit.inventory.invSlot2.weapon.equipped = false;
         }
 
         if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot3.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
@@ -1300,7 +1300,7 @@ public class UnitManagerMenu : MonoBehaviour {
         }
         else
         {
-            if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type)) unit.inventory.invSlot3.weapon.equipped = false;
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type, unit.inventory.invSlot3.weapon.details.rank)) unit.inventory.invSlot3.weapon.equipped = false;
         }
 
         if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot4.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
@@ -1313,7 +1313,7 @@ public class UnitManagerMenu : MonoBehaviour {
         }
         else
         {
-            if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type)) unit.inventory.invSlot4.weapon.equipped = false;
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type, unit.inventory.invSlot4.weapon.details.rank)) unit.inventory.invSlot4.weapon.equipped = false;
         }
 
         if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot5.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
@@ -1326,7 +1326,7 @@ public class UnitManagerMenu : MonoBehaviour {
         }
         else
         {
-            if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type)) unit.inventory.invSlot5.weapon.equipped = false;
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type, unit.inventory.invSlot5.weapon.details.rank)) unit.inventory.invSlot5.weapon.equipped = false;
         }
     }
 
@@ -1345,7 +1345,7 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
-                if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type)) return false;
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type, unit.inventory.invSlot1.weapon.details.rank)) return false;
                 else return true;
             }
         }
@@ -1362,7 +1362,7 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
-                if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type)) return false;
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type, unit.inventory.invSlot2.weapon.details.rank)) return false;
                 else return true;
             }
         }
@@ -1379,7 +1379,7 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
-                if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type)) return false;
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type, unit.inventory.invSlot3.weapon.details.rank)) return false;
                 else return true;
             }
         }
@@ -1396,7 +1396,7 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
-                if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type)) return false;
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type, unit.inventory.invSlot4.weapon.details.rank)) return false;
                 else return true;
             }
         }
@@ -1413,50 +1413,50 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
-                if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type)) return false;
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type, unit.inventory.invSlot5.weapon.details.rank)) return false;
                 else return true;
             }
         }
         return false;
     }
 
-    public bool UnitWeaponRankCheck(string name)
+    public bool UnitWeaponRankCheck(string name, int rank)
     {
         if (unit.unitInfo.weaponRanks.HeavyBlade.name == name)
         {
-            if (unit.unitInfo.weaponRanks.HeavyBlade.canUse) return true;
+            if (unit.unitInfo.weaponRanks.HeavyBlade.canUse && unit.unitInfo.weaponRanks.HeavyBlade.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Spear.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Spear.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Spear.canUse && unit.unitInfo.weaponRanks.Spear.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Stave.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Stave.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Stave.canUse && unit.unitInfo.weaponRanks.Stave.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Tome.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Tome.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Tome.canUse && unit.unitInfo.weaponRanks.Tome.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.LightBlades.name == name)
         {
-            if (unit.unitInfo.weaponRanks.LightBlades.canUse) return true;
+            if (unit.unitInfo.weaponRanks.LightBlades.canUse && unit.unitInfo.weaponRanks.LightBlades.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Athames.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Athames.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Athames.canUse && unit.unitInfo.weaponRanks.Athames.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Axe.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Axe.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Axe.canUse && unit.unitInfo.weaponRanks.Axe.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Close.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Close.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Close.canUse && unit.unitInfo.weaponRanks.Close.rank <= rank) return true;
         }
         else if (unit.unitInfo.weaponRanks.Ranged.name == name)
         {
-            if (unit.unitInfo.weaponRanks.Ranged.canUse) return true;
+            if (unit.unitInfo.weaponRanks.Ranged.canUse && unit.unitInfo.weaponRanks.Ranged.rank <= rank) return true;
         }
         return false;
         //Axes, Heavy Blades, Light Blades, Close, Ranged, Tomes, Staves, Athames, Spears

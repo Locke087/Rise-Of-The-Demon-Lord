@@ -122,19 +122,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitInfo.mugName = "Dude";
+    
         //  me.unitActor.mapActor.groupName = "sdsjkhsd";
         //   me.unitActor.mapActor.personalID = "goblin";
 
-     
+
         me.unitClass.main.human.warrior.powerLevel = 1;
   ;
       
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(me.unitID);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
+  
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
         me.unitClass.main.human.archer.unlocked = true;
@@ -173,10 +175,10 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         newMe.unitInfo.currentMods = Warrior.ModList();
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(newMe.unitID);
-        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill, newMe);
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
         newMe.unitClass.main.human.archer.unlocked = true;

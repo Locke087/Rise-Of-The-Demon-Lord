@@ -1306,7 +1306,7 @@ public class LevelUp : MonoBehaviour {
 
         if (hum.warrior.present == true)
         {
-            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.warrior.pickSkill);
+            WarriorLoader.AssignSkill(skill, u.unitClass.main.human.warrior.pickSkill, u);
             ClassUnlock.CheckOnClass(u);
         }
         else if (hum.mage.present == true)
