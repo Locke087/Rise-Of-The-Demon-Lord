@@ -54,7 +54,77 @@ public class WarriorLoader : MonoBehaviour {
         me.unitClass.main.human.warrior.unlocked = true;
     }
 
- 
+    public static int HowManySkills(UnitClassSkill u)
+    {
+        int i = 0;
+
+        if (u.skill1.name != "")
+        {
+            i++;
+        }
+        else if (u.skill2.name != "")
+        {
+            i++;
+        }
+        else if (u.skill3.name != "")
+        {
+            i++;
+        }
+        else if (u.skill4.name != "")
+        {
+            i++;
+        }
+        else if (u.skill5.name != "")
+        {
+            i++;
+        }
+        else if (u.skill6.name != "")
+        {
+            i++;
+        }
+        else if (u.skill7.name != "")
+        {
+            i++;
+        }
+        return i;
+    }
+
+    public static bool HasSkill(string sk, UnitClassSkill u)
+    {
+
+        if (u.skill1.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill2.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill3.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill4.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill5.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill6.name == sk)
+        {
+            return true;
+        }
+        else if (u.skill7.name == sk)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
+
     public static void AssignSkill(string sk, UnitClassSkill u)
     {
         UnitSkillDetail focused = new UnitSkillDetail();
@@ -136,39 +206,5 @@ public class WarriorLoader : MonoBehaviour {
     }
 
 
-    public static bool HasSkill(string sk, UnitClassSkill u)
-    {
-      
-        if (u.skill1.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill2.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill3.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill4.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill5.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill6.name == sk)
-        {
-            return true;
-        }
-        else if (u.skill7.name == sk)
-        {
-            return true;
-        }
-
-        return false;
-
-    }
+ 
 }

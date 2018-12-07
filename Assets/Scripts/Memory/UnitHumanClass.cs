@@ -12,6 +12,12 @@ public class UnitHumanClass
     public UnitClassDetail mage;
     public UnitClassDetail priest;
     public UnitClassDetail bard;
+    public UnitClassDetail knight;
+    public UnitClassDetail sniper;
+    public UnitClassDetail assassin;
+    public UnitClassDetail charger;
+    public UnitClassDetail archmage;
+    public UnitClassDetail paladin;
 
     public UnitHumanClass()
     {
@@ -22,5 +28,11 @@ public class UnitHumanClass
         mage = new UnitClassDetail();
         priest = new UnitClassDetail();
         bard = new UnitClassDetail();
+        knight = new UnitClassDetail();
+        sniper = new UnitClassDetail();
+        assassin = new UnitClassDetail();
+        charger = new UnitClassDetail();
+        archmage = new UnitClassDetail();
+        paladin = new UnitClassDetail();
     }
 }
