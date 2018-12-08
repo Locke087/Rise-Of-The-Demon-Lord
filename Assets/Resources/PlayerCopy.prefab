@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114525751420389088}
   - component: {fileID: 54522093013849196}
   m_Layer: 0
-  m_Name: Alice
+  m_Name: PlayerCopy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
