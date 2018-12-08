@@ -24,6 +24,30 @@ public class AssessoryLoader : MonoBehaviour {
 
     }
 
+    public static List<UnitAssessory> ChestAssessories()
+    {
+        List<UnitAssessory> assessories = new List<UnitAssessory>();
+        UnitAssessory ruby = new UnitAssessory();
+        ruby.name = "Ruby";
+        ruby.details.boost = 0.2f;
+        ruby.details.weight = 1;
+        ruby.details.boostStr = true;
+        ruby.idx = "Ruby" + IDMaker.NewID();
+        ruby.cost = 150;
+        assessories.Add(ruby);
+
+        UnitAssessory topaz = new UnitAssessory();
+        topaz.name = "Topaz";
+        topaz.details.boost = 0.2f;
+        topaz.details.weight = 0;
+        topaz.details.boostSpd = true;
+        topaz.idx = "Topaz" + IDMaker.NewID();
+        topaz.cost = 150;
+        assessories.Add(topaz);
+
+        return assessories;
+    }
+
     public static void StartingInventoryAssessory()
     {
 
@@ -45,6 +69,16 @@ public class AssessoryLoader : MonoBehaviour {
         ruby2.details.weight = 1;
         ruby2.details.boostStr = true;
         ruby2.idx = "Ruby" + IDMaker.NewID();
+
+        UnitAssessory topaz = new UnitAssessory();
+        topaz.name = "Topaz";
+        topaz.details.boost = 0.2f;
+        topaz.details.weight = 0;
+        topaz.details.boostSpd = true;
+        topaz.idx = "Topaz" + IDMaker.NewID();
+        topaz.cost = 150;
+        CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(topaz);
+        CurrentGame.game.memoryGeneral.shopWares.assessories.Add(topaz);
 
         CurrentGame.game.memoryGeneral.itemsOwned.assessories.Add(ruby2);
     }

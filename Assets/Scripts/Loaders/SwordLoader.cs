@@ -55,6 +55,65 @@ public class SwordLoader : MonoBehaviour
         if (sw == vemonBlade.name) u.details = vemonBlade;
 
     }
+    public static List<UnitWeapon> ChestWeapons()
+    {
+        List<UnitWeapon> weapons = new List<UnitWeapon>();
+        UnitWeapon vemonBlade = new UnitWeapon();
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.cost = 200;
+        vemonBlade.details.might = 12;
+        vemonBlade.details.weight = 8;
+        vemonBlade.details.hitrate = 65;
+        vemonBlade.details.critrate = 3;
+        vemonBlade.details.critchance = 1;
+        vemonBlade.details.effects.poison = true;
+        vemonBlade.details.physical = true;
+        vemonBlade.details.name = "Vemon Blade";
+        vemonBlade.details.type = "HeavyBlade";
+        vemonBlade.details.rank = 2;
+        vemonBlade.details.range = 1;
+        vemonBlade.details.unlocks = "Blitz";
+        vemonBlade.idx = "Vemon Blade" + IDMaker.NewID();
+        weapons.Add(vemonBlade);
+       
+
+        UnitWeapon warhammer = new UnitWeapon();
+        warhammer.name = "Warhammer";
+        warhammer.cost = 180;
+        warhammer.details.might = 14;
+        warhammer.details.weight = 10;
+        warhammer.details.hitrate = 55;
+        warhammer.details.critrate = 3;
+        warhammer.details.critchance = 1;
+        warhammer.details.physical = true;
+        warhammer.details.name = "Warhammer";
+        warhammer.details.type = "Axes";
+        warhammer.details.rank = 2;
+        warhammer.details.range = 1;
+        warhammer.details.unlocks = "Smite";
+        warhammer.idx = "Warhammer" + IDMaker.NewID();
+        weapons.Add(warhammer);
+      
+
+        UnitWeapon rifle = new UnitWeapon();
+        rifle.name = "Rifle";
+        rifle.cost = 230;
+        rifle.details.might = 9;
+        rifle.details.weight = 9;
+        rifle.details.hitrate = 75;
+        rifle.details.critrate = 3;
+        rifle.details.critchance = 1;
+        rifle.details.physical = true;
+        rifle.details.name = "Rifle";
+        rifle.details.type = "Ranged";
+        rifle.details.rank = 3;
+        rifle.details.range = 6;
+        rifle.details.unlocks = "Deadeye";
+        rifle.idx = "Rifle" + IDMaker.NewID();
+        weapons.Add(rifle);
+
+        return weapons;
+    }
 
     public static void StartingInventoryWeapon()
     {

@@ -871,15 +871,15 @@ public class RoutLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("LockedDoor")) as GameObject;
                         tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
-                        f++;
+                       
                         tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
-                        tiles.tag = "Door";
-                        // tiles.AddComponent<GridTiles>();
-                        // tiles.GetComponent<GridTiles>().walkable = false;
+                        tiles.tag = "Door";                     
                         tiles.GetComponentInChildren<GridTiles>().walkable = false;
+                        tiles.name = "og" + f + "r" + r;
+                        tiles.GetComponentInChildren<GridTiles>().name = "og" + f + "r" + r;
+                        f++;
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
                         Material material = Resources.Load<Material>(tile.TileColor());
@@ -894,13 +894,15 @@ public class RoutLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("LockedDoor")) as GameObject;
                         tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
-                        f++;
+                        
                         tiles.transform.localPosition = new Vector3(j, 0, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Door";
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
                         tiles.GetComponentInChildren<GridTiles>().walkable = false;
+                        tiles.name = "og" + f + "r" + r;
+                        tiles.GetComponentInChildren<GridTiles>().name = "og" + f + "r" + r;
+                        f++;
                         // tiles.AddComponent<GridTiles>();
                         // tiles.GetComponent<GridTiles>().walkable = false;
 
@@ -913,16 +915,16 @@ public class RoutLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("Chest")) as GameObject;
                         tiles.transform.parent = newRow.transform;
-                        tiles.name = "og" + f + "r" + r;
-                        f++;
+                      
                         tiles.transform.localPosition = new Vector3(j, tile.transform.localPosition.y + 0.75f, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
 
                         tiles.tag = "Chest";
-
                         tiles.GetComponentInChildren<GridTiles>().walkable = false;
-
+                        tiles.name = "og" + f + "r" + r;
+                        tiles.GetComponentInChildren<GridTiles>().name = "og" + f + "r" + r;
+                        f++;
                         GameObject tilesn = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         tilesn.transform.parent = newRow.transform;
                         Material material = Resources.Load<Material>(tile.TileColor());
@@ -937,12 +939,15 @@ public class RoutLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("Chest")) as GameObject;
                         tiles.transform.parent = newRow.transform;
+                       
                         tiles.transform.localPosition = new Vector3(j, 0.75f, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Chest";
                         tiles.GetComponentInChildren<GridTiles>().TransferColor(tile.TileColor());
                         tiles.GetComponentInChildren<GridTiles>().walkable = false;
-
+                        tiles.name = "og" + f + "r" + r;                    
+                        tiles.GetComponentInChildren<GridTiles>().name = "og" + f + "r" + r;
+                        f++;
 
                     }
                 }
@@ -1165,7 +1170,7 @@ public class RoutLoader : MonoBehaviour {
 
                 GameObject uiOveraly = GameObject.Instantiate(Resources.Load("UIoverlay")) as GameObject;
                 uiOveraly.transform.parent = tile.transform;
-                uiOveraly.transform.localPosition = new Vector3(0, 0.53f, 0);
+                uiOveraly.transform.localPosition = new Vector3(0, 0.56f, 0);
 
             }
             r++;

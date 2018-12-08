@@ -18,9 +18,11 @@ public class CurrentLevel {
     public string assessoryReward;
     public int xpReward;
     public EnemiesInMap enemiesInMap;
+    public ChestPool chestPool;
     public CurrentLevel()
     {
         enemiesInMap = new EnemiesInMap();
+        chestPool = new ChestPool();
         complete = false;
         name = "";
         sceneName = "";

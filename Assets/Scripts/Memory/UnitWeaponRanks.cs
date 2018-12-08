@@ -7,7 +7,7 @@ public class UnitWeaponRanks {
 
     public WeaponRankDetails HeavyBlade;
     public WeaponRankDetails Close;
-    public WeaponRankDetails Bow;
+    public WeaponRankDetails Ranged;
     public WeaponRankDetails Instrument;
     public WeaponRankDetails Spear;
     public WeaponRankDetails Axe;
@@ -19,7 +19,7 @@ public class UnitWeaponRanks {
     public UnitWeaponRanks()
     {
         HeavyBlade = new WeaponRankDetails();
-        Bow = new WeaponRankDetails();
+        Ranged = new WeaponRankDetails();
         Instrument = new WeaponRankDetails();
         Spear = new WeaponRankDetails();
         Close = new WeaponRankDetails();

@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4588848389215626}
+  - component: {fileID: 114801183339687024}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -470,3 +471,18 @@ MonoBehaviour:
   f: 0
   g: 0
   h: 0
+--- !u!114 &114801183339687024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526538919179176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93708a0d72c8a8a42a6d91f79576630c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  top: {fileID: 1951086702673588}
+  lockp: {fileID: 1716364884895596}
+  basep: {fileID: 1862553515431800}
+  tiles: {fileID: 114003421524282290}

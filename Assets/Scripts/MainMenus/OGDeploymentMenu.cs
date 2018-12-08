@@ -340,28 +340,31 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 if (!unit.inventory.invSlot1.weapon.equipped && !unit.inventory.invSlot1.assessory.equipped)
                 {
-                    if (GUILayout.Button("Equip: " + unit.inventory.invSlot1.holding))
+                    if (CanEquip(unit, unit.unitInfo.main, "slot1"))
                     {
-                        if (unit.inventory.invSlot1.weapon.inSlot)
+                        if (GUILayout.Button("Equip: " + unit.inventory.invSlot1.holding))
                         {
-                            unit.inventory.invSlot1.weapon.equipped = true;
-                            if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
-                            if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
-                            if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
-                            if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
-                        }
-                        else if (unit.inventory.invSlot1.assessory.inSlot)
-                        {
-                            int i = 0;
-                            if (unit.inventory.invSlot1.assessory.equipped) i++;
-                            if (unit.inventory.invSlot2.assessory.equipped) i++;
-                            if (unit.inventory.invSlot3.assessory.equipped) i++;
-                            if (unit.inventory.invSlot4.assessory.equipped) i++;
-                            if (unit.inventory.invSlot5.assessory.equipped) i++;
-                            if (i < 2) unit.inventory.invSlot1.assessory.equipped = true;
-                            else GUILayout.Box("Only 3 Assessories Can Be Equipped");
-                        }
+                            if (unit.inventory.invSlot1.weapon.inSlot)
+                            {
+                                unit.inventory.invSlot1.weapon.equipped = true;
+                                if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
+                                if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
+                                if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
+                                if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
+                            }
+                            else if (unit.inventory.invSlot1.assessory.inSlot)
+                            {
+                                int i = 0;
+                                if (unit.inventory.invSlot1.assessory.equipped) i++;
+                                if (unit.inventory.invSlot2.assessory.equipped) i++;
+                                if (unit.inventory.invSlot3.assessory.equipped) i++;
+                                if (unit.inventory.invSlot4.assessory.equipped) i++;
+                                if (unit.inventory.invSlot5.assessory.equipped) i++;
+                                if (i < 2) unit.inventory.invSlot1.assessory.equipped = true;
+                                else GUILayout.Box("Only 3 Assessories Can Be Equipped");
+                            }
 
+                        }
                     }
                 }
                 else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot1.holding))
@@ -406,28 +409,31 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 if (!unit.inventory.invSlot2.weapon.equipped && !unit.inventory.invSlot2.assessory.equipped)
                 {
-                    if (GUILayout.Button("Equip: " + unit.inventory.invSlot2.holding))
+                    if (CanEquip(unit, unit.unitInfo.main, "slot2"))
                     {
-                        if (unit.inventory.invSlot2.weapon.inSlot)
+                        if (GUILayout.Button("Equip: " + unit.inventory.invSlot2.holding))
                         {
-                            unit.inventory.invSlot2.weapon.equipped = true;
-                            if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
-                            if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
-                            if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
-                            if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
-                        }
-                        else if (unit.inventory.invSlot2.assessory.inSlot)
-                        {
-                            int i = 0;
-                            if (unit.inventory.invSlot1.assessory.equipped) i++;
-                            if (unit.inventory.invSlot2.assessory.equipped) i++;
-                            if (unit.inventory.invSlot3.assessory.equipped) i++;
-                            if (unit.inventory.invSlot4.assessory.equipped) i++;
-                            if (unit.inventory.invSlot5.assessory.equipped) i++;
-                            if (i < 2) unit.inventory.invSlot2.assessory.equipped = true;
-                            else GUILayout.Box("Only 3 Assessories Can Be Equipped");
-                        }
+                            if (unit.inventory.invSlot2.weapon.inSlot)
+                            {
+                                unit.inventory.invSlot2.weapon.equipped = true;
+                                if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
+                                if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
+                                if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
+                                if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
+                            }
+                            else if (unit.inventory.invSlot2.assessory.inSlot)
+                            {
+                                int i = 0;
+                                if (unit.inventory.invSlot1.assessory.equipped) i++;
+                                if (unit.inventory.invSlot2.assessory.equipped) i++;
+                                if (unit.inventory.invSlot3.assessory.equipped) i++;
+                                if (unit.inventory.invSlot4.assessory.equipped) i++;
+                                if (unit.inventory.invSlot5.assessory.equipped) i++;
+                                if (i < 2) unit.inventory.invSlot2.assessory.equipped = true;
+                                else GUILayout.Box("Only 3 Assessories Can Be Equipped");
+                            }
 
+                        }
                     }
                 }
                 else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot2.holding))
@@ -472,28 +478,31 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 if (!unit.inventory.invSlot3.weapon.equipped && !unit.inventory.invSlot3.assessory.equipped)
                 {
-                    if (GUILayout.Button("Equip: " + unit.inventory.invSlot3.holding))
+                    if (CanEquip(unit, unit.unitInfo.main, "slot3"))
                     {
-                        if (unit.inventory.invSlot3.weapon.inSlot)
+                        if (GUILayout.Button("Equip: " + unit.inventory.invSlot3.holding))
                         {
-                            unit.inventory.invSlot3.weapon.equipped = true;
-                            if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
-                            if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
-                            if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
-                            if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
-                        }
-                        else if (unit.inventory.invSlot3.assessory.inSlot)
-                        {
-                            int i = 0;
-                            if (unit.inventory.invSlot1.assessory.equipped) i++;
-                            if (unit.inventory.invSlot2.assessory.equipped) i++;
-                            if (unit.inventory.invSlot3.assessory.equipped) i++;
-                            if (unit.inventory.invSlot4.assessory.equipped) i++;
-                            if (unit.inventory.invSlot5.assessory.equipped) i++;
-                            if (i < 2) unit.inventory.invSlot3.assessory.equipped = true;
-                            else GUILayout.Box("Only 3 Assessories Can Be Equipped");
-                        }
+                            if (unit.inventory.invSlot3.weapon.inSlot)
+                            {
+                                unit.inventory.invSlot3.weapon.equipped = true;
+                                if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
+                                if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
+                                if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
+                                if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
+                            }
+                            else if (unit.inventory.invSlot3.assessory.inSlot)
+                            {
+                                int i = 0;
+                                if (unit.inventory.invSlot1.assessory.equipped) i++;
+                                if (unit.inventory.invSlot2.assessory.equipped) i++;
+                                if (unit.inventory.invSlot3.assessory.equipped) i++;
+                                if (unit.inventory.invSlot4.assessory.equipped) i++;
+                                if (unit.inventory.invSlot5.assessory.equipped) i++;
+                                if (i < 2) unit.inventory.invSlot3.assessory.equipped = true;
+                                else GUILayout.Box("Only 3 Assessories Can Be Equipped");
+                            }
 
+                        }
                     }
                 }
                 else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot3.holding))
@@ -537,28 +546,31 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 if (!unit.inventory.invSlot4.weapon.equipped && !unit.inventory.invSlot4.assessory.equipped)
                 {
-                    if (GUILayout.Button("Equip: " + unit.inventory.invSlot4.holding))
+                    if (CanEquip(unit, unit.unitInfo.main, "slot4"))
                     {
-                        if (unit.inventory.invSlot4.weapon.inSlot)
+                        if (GUILayout.Button("Equip: " + unit.inventory.invSlot4.holding))
                         {
-                            unit.inventory.invSlot4.weapon.equipped = true;
-                            if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
-                            if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
-                            if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
-                            if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
-                        }
-                        else if (unit.inventory.invSlot4.assessory.inSlot)
-                        {
-                            int i = 0;
-                            if (unit.inventory.invSlot1.assessory.equipped) i++;
-                            if (unit.inventory.invSlot2.assessory.equipped) i++;
-                            if (unit.inventory.invSlot3.assessory.equipped) i++;
-                            if (unit.inventory.invSlot4.assessory.equipped) i++;
-                            if (unit.inventory.invSlot5.assessory.equipped) i++;
-                            if (i < 2) unit.inventory.invSlot4.assessory.equipped = true;
-                            else GUILayout.Box("Only 3 Assessories Can Be Equipped");
-                        }
+                            if (unit.inventory.invSlot4.weapon.inSlot)
+                            {
+                                unit.inventory.invSlot4.weapon.equipped = true;
+                                if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
+                                if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
+                                if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
+                                if (unit.inventory.invSlot5.weapon.equipped) unit.inventory.invSlot5.weapon.equipped = false;
+                            }
+                            else if (unit.inventory.invSlot4.assessory.inSlot)
+                            {
+                                int i = 0;
+                                if (unit.inventory.invSlot1.assessory.equipped) i++;
+                                if (unit.inventory.invSlot2.assessory.equipped) i++;
+                                if (unit.inventory.invSlot3.assessory.equipped) i++;
+                                if (unit.inventory.invSlot4.assessory.equipped) i++;
+                                if (unit.inventory.invSlot5.assessory.equipped) i++;
+                                if (i < 2) unit.inventory.invSlot4.assessory.equipped = true;
+                                else GUILayout.Box("Only 3 Assessories Can Be Equipped");
+                            }
 
+                        }
                     }
                 }
                 else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot4.holding))
@@ -591,7 +603,7 @@ public class OGDeploymentMenu : MonoBehaviour
             }
             GUILayout.Space(3);
 
-            GUILayout.Box("Slot 5: " + unit.inventory.invSlot4.holding);
+            GUILayout.Box("Slot 5: " + unit.inventory.invSlot5.holding);
             if (unit.inventory.invSlot5.weapon.equipped) GUILayout.Label("Equipped Weapon");
             if (unit.inventory.invSlot5.assessory.equipped) GUILayout.Label("Equipped Assessory");
             if (GUILayout.Button("Get New Item"))
@@ -603,28 +615,31 @@ public class OGDeploymentMenu : MonoBehaviour
             {
                 if (!unit.inventory.invSlot5.weapon.equipped && !unit.inventory.invSlot5.assessory.equipped)
                 {
-                    if (GUILayout.Button("Equip: " + unit.inventory.invSlot5.holding))
+                    if (CanEquip(unit, unit.unitInfo.main, "slot5"))
                     {
-                        if (unit.inventory.invSlot5.weapon.inSlot)
+                        if (GUILayout.Button("Equip: " + unit.inventory.invSlot5.holding))
                         {
-                            unit.inventory.invSlot5.weapon.equipped = true;
-                            if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
-                            if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
-                            if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
-                            if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
-                        }
-                        else if (unit.inventory.invSlot5.assessory.inSlot)
-                        {
-                            int i = 0;
-                            if (unit.inventory.invSlot1.assessory.equipped) i++;
-                            if (unit.inventory.invSlot2.assessory.equipped) i++;
-                            if (unit.inventory.invSlot3.assessory.equipped) i++;
-                            if (unit.inventory.invSlot4.assessory.equipped) i++;
-                            if (unit.inventory.invSlot5.assessory.equipped) i++;
-                            if (i < 2) unit.inventory.invSlot5.assessory.equipped = true;
-                            else GUILayout.Box("Only 3 Assessories Can Be Equipped");
-                        }
+                            if (unit.inventory.invSlot5.weapon.inSlot)
+                            {
+                                unit.inventory.invSlot5.weapon.equipped = true;
+                                if (unit.inventory.invSlot1.weapon.equipped) unit.inventory.invSlot1.weapon.equipped = false;
+                                if (unit.inventory.invSlot2.weapon.equipped) unit.inventory.invSlot2.weapon.equipped = false;
+                                if (unit.inventory.invSlot3.weapon.equipped) unit.inventory.invSlot3.weapon.equipped = false;
+                                if (unit.inventory.invSlot4.weapon.equipped) unit.inventory.invSlot4.weapon.equipped = false;
+                            }
+                            else if (unit.inventory.invSlot5.assessory.inSlot)
+                            {
+                                int i = 0;
+                                if (unit.inventory.invSlot1.assessory.equipped) i++;
+                                if (unit.inventory.invSlot2.assessory.equipped) i++;
+                                if (unit.inventory.invSlot3.assessory.equipped) i++;
+                                if (unit.inventory.invSlot4.assessory.equipped) i++;
+                                if (unit.inventory.invSlot5.assessory.equipped) i++;
+                                if (i < 2) unit.inventory.invSlot5.assessory.equipped = true;
+                                else GUILayout.Box("Only 3 Assessories Can Be Equipped");
+                            }
 
+                        }
                     }
                 }
                 else if (GUILayout.Button("Unequip: " + unit.inventory.invSlot5.holding))
@@ -986,6 +1001,206 @@ public class OGDeploymentMenu : MonoBehaviour
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
+    }
+
+    public void UnequipNonClassWeapons(Unit unit, UnitClassDetail unitClass)
+    {
+        if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot1.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot1.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type)) unit.inventory.invSlot1.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot2.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot2.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type)) unit.inventory.invSlot2.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot3.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot3.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type)) unit.inventory.invSlot3.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot4.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot4.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type)) unit.inventory.invSlot4.weapon.equipped = false;
+        }
+
+        if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot5.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+        {
+
+        }
+        else if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot5.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+        {
+
+        }
+        else
+        {
+            if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type)) unit.inventory.invSlot5.weapon.equipped = false;
+        }
+    }
+
+
+    public bool CanEquip(Unit unit, UnitClassDetail unitClass, string name)
+    {
+        if (name == "slot1")
+        {
+            if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot1.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+            {
+                return true;
+            }
+            else if (unit.inventory.invSlot1.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot1.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+            {
+                return true;
+            }
+            else
+            {
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot1.weapon.details.type)) return false;
+                else return true;
+            }
+        }
+
+        if (name == "slot2")
+        {
+            if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot2.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+            {
+                return true;
+            }
+            else if (unit.inventory.invSlot2.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot2.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+            {
+                return true;
+            }
+            else
+            {
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type)) return false;
+                else return true;
+            }
+        }
+
+        if (name == "slot3")
+        {
+            if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot3.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+            {
+                return true;
+            }
+            else if (unit.inventory.invSlot3.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot3.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+            {
+                return true;
+            }
+            else
+            {
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot3.weapon.details.type)) return false;
+                else return true;
+            }
+        }
+
+        if (name == "slot4")
+        {
+            if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot4.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+            {
+                return true;
+            }
+            else if (unit.inventory.invSlot4.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot4.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+            {
+                return true;
+            }
+            else
+            {
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot4.weapon.details.type)) return false;
+                else return true;
+            }
+        }
+
+        if (name == "slot5")
+        {
+            if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon1.type && unit.inventory.invSlot5.weapon.details.rank >= unitClass.classWeapons.classWeapon1.rank)
+            {
+                return true;
+            }
+            else if (unit.inventory.invSlot5.weapon.details.type == unitClass.classWeapons.classWeapon2.type && unit.inventory.invSlot5.weapon.details.rank >= unitClass.classWeapons.classWeapon2.rank)
+            {
+                return true;
+            }
+            else
+            {
+                if (!UnitWeaponRankCheck(unit.inventory.invSlot5.weapon.details.type)) return false;
+                else return true;
+            }
+        }
+        return false;
+    }
+
+    public bool UnitWeaponRankCheck(string name)
+    {
+        if (unit.unitInfo.weaponRanks.HeavyBlade.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.HeavyBlade.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Spear.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Spear.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Stave.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Stave.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Tome.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Tome.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.LightBlades.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.LightBlades.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Athames.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Athames.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Axe.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Axe.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Close.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Close.canUse) return true;
+        }
+        else if (unit.unitInfo.weaponRanks.Ranged.name == name)
+        {
+            if (unit.unitInfo.weaponRanks.Ranged.canUse) return true;
+        }
+        return false;
+        //Axes, Heavy Blades, Light Blades, Close, Ranged, Tomes, Staves, Athames, Spears
     }
 
     public int FindSlotCount(Unit j)

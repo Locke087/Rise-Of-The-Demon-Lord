@@ -125,7 +125,7 @@ public class WarriorLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail focused = new UnitSkillDetail();
         focused.name = "Focused";
@@ -200,11 +200,14 @@ public class WarriorLoader : MonoBehaviour {
         {
             u.skill7 = counter;
         }
-
+        else if (sk == "SwordMaster1")
+        {
+            un.unitInfo.weaponRanks.HeavyBlade.canUse = true;
+            un.unitInfo.weaponRanks.HeavyBlade.rank = 3;
+        }
 
 
     }
 
 
- 
 }

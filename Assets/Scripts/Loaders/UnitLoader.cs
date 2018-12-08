@@ -20,12 +20,12 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitInfo.main = me.unitClass.main.human.warrior;
         
         // str, def, spd, skill, magic, will
@@ -79,11 +79,40 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.paladin.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.assassin.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.bard.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.archmage.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.charger.subbed.Clear();
+        CurrentGame.game.memoryGeneral.humanClassProgress.knight.subbed.Clear();;
+        CurrentGame.game.memoryGeneral.humanClassProgress.sniper.subbed.Clear();
+
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.nightblade.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.demonrider.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Clear();
+
         WarriorLoader.NewClass();
-        FusilierLoader.NewClass();
         PriestLoader.NewClass();
         CavalierLoader.NewClass();
+        ArcherLoader.NewClass();
+        RogueLoader.NewClass();
+        MageLoader.NewClass();
+
+        FusilierLoader.NewClass();
+        ShadowLoader.NewClass();
+        DreadLoader.NewClass();
+        ShrikeLoader.NewClass();
+        SwashbucklerLoader.NewClass();
 
         Unit me = new Unit();
 
@@ -93,23 +122,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitInfo.mugName = "Dude";
+    
         //  me.unitActor.mapActor.groupName = "sdsjkhsd";
         //   me.unitActor.mapActor.personalID = "goblin";
 
-     
+
         me.unitClass.main.human.warrior.powerLevel = 1;
   ;
       
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(me.unitID);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill);
+  
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Lunge", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitClass.main.human.warrior.unlocked = true;
         me.unitClass.main.human.cavalier.unlocked = true;
         me.unitClass.main.human.archer.unlocked = true;
@@ -148,12 +175,10 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
         newMe.unitInfo.currentMods = Warrior.ModList();
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(newMe.unitID);
-        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Lunge", newMe.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.main.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Double Edged", newMe.unitClass.sub.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.main.human.warrior.pickSkill, newMe);
+        WarriorLoader.AssignSkill("Focused", newMe.unitClass.sub.human.warrior.pickSkill, newMe);
         newMe.unitClass.main.human.warrior.unlocked = true;
         newMe.unitClass.main.human.cavalier.unlocked = true;
         newMe.unitClass.main.human.archer.unlocked = true;
@@ -195,12 +220,12 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.human.cavalier.powerLevel = 1;
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Add(newMe2.unitID);
         CavalierLoader.AssignSkill("Trample", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
         CavalierLoader.AssignSkill("Lance", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Protect Flanks", newMe2.unitClass.sub.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
-        CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        //  CavalierLoader.AssignSkill("Joust", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("Protect Flanks", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("Vault", newMe2.unitClass.main.human.cavalier.pickSkill);
+        //CavalierLoader.AssignSkill("Hospitalier", newMe2.unitClass.sub.human.cavalier.pickSkill);
+        // CavalierLoader.AssignSkill("War Trained Mount", newMe2.unitClass.sub.human.cavalier.pickSkill);
         newMe2.unitClass.main.human.warrior.unlocked = true;
         newMe2.unitClass.main.human.cavalier.unlocked = true;
         newMe2.unitClass.main.human.archer.unlocked = true;
@@ -245,8 +270,8 @@ public class UnitLoader : MonoBehaviour {
         PriestLoader.AssignSkill("Smite", newMe3.unitClass.sub.human.priest.pickSkill);
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.main.human.priest.pickSkill);
         PriestLoader.AssignSkill("Healing Light", newMe3.unitClass.sub.human.priest.pickSkill);
-        PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
-        PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
+      //  PriestLoader.AssignSkill("Purify", newMe3.unitClass.main.human.priest.pickSkill);
+       // PriestLoader.AssignSkill("Purify", newMe3.unitClass.sub.human.priest.pickSkill);
 
         newMe3.unitClass.main.human.warrior.unlocked = true;
         newMe3.unitClass.main.human.cavalier.unlocked = true;
@@ -291,11 +316,13 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.imp.fusilier.caps = Fusilier.Caplist();
         newMe4.unitInfo.currentMods = Priest.ModList();
         FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
-        FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        // FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         newMe4.unitClass.main.imp.swashbuckler.unlocked = true;
         newMe4.unitClass.main.imp.shrike.unlocked = true;
         newMe4.unitClass.main.imp.shadow.unlocked = true;
@@ -346,6 +373,9 @@ public class UnitLoader : MonoBehaviour {
         level1.sceneName = "SWMap1";
         level1.goldReward = 100;
         level1.xpReward = 100;
+        level1.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level1);
         CurrentLevel level2 = new CurrentLevel();
@@ -357,6 +387,9 @@ public class UnitLoader : MonoBehaviour {
         level2.sceneName = "SWMap1";
         level2.goldReward = 150;
         level2.xpReward = 100;
+        level2.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level2);
         CurrentLevel level3 = new CurrentLevel();
@@ -368,6 +401,9 @@ public class UnitLoader : MonoBehaviour {
         level3.sceneName = "SWMap1";
         level3.goldReward = 200;
         level3.xpReward = 100;
+        level3.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level3);
     }
@@ -385,6 +421,9 @@ public class UnitLoader : MonoBehaviour {
         level1.sceneName = "OGLMap1";
         level1.goldReward = 100;
         level1.xpReward = 100;
+        level1.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level1);
         CurrentLevel level2 = new CurrentLevel();
@@ -396,6 +435,9 @@ public class UnitLoader : MonoBehaviour {
         level2.sceneName = "OGLMap1";
         level2.goldReward = 150;
         level2.xpReward = 100;
+        level2.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level2);
         CurrentLevel level3 = new CurrentLevel();
@@ -407,6 +449,9 @@ public class UnitLoader : MonoBehaviour {
         level3.sceneName = "OGLMap1";
         level3.goldReward = 200;
         level3.xpReward = 100;
+        level3.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level3);
 
@@ -418,7 +463,7 @@ public class UnitLoader : MonoBehaviour {
     {
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Clear();
 
-         CurrentLevel level1G = new CurrentLevel();
+        CurrentLevel level1G = new CurrentLevel();
         level1G.deployLimit = 2;
         level1G.powerRanking = 2;
         level1G.enemiesInMap.units = LoadEnemies(level1G.powerRanking);
@@ -427,6 +472,9 @@ public class UnitLoader : MonoBehaviour {
         level1G.sceneName = "GDMap1";
         level1G.goldReward = 100;
         level1G.xpReward = 100;
+        level1G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level1G);
         CurrentLevel level2G = new CurrentLevel();
@@ -438,6 +486,9 @@ public class UnitLoader : MonoBehaviour {
         level2G.sceneName = "GDMap1";
         level2G.goldReward = 150;
         level2G.xpReward = 100;
+        level2G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level2G);
         CurrentLevel level3G = new CurrentLevel();
@@ -449,6 +500,9 @@ public class UnitLoader : MonoBehaviour {
         level3G.sceneName = "GDMap1";
         level3G.goldReward = 200;
         level3G.xpReward = 100;
+        level3G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level3G);
     }
@@ -467,6 +521,9 @@ public class UnitLoader : MonoBehaviour {
         level1F.sceneName = "FTMap1";
         level1F.goldReward = 100;
         level1F.xpReward = 100;
+        level1F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1F.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level1F);
         CurrentLevel level2F = new CurrentLevel();
@@ -478,6 +535,9 @@ public class UnitLoader : MonoBehaviour {
         level2F.sceneName = "FTMap1";
         level2F.goldReward = 150;
         level2F.xpReward = 100;
+        level2F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2F.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level2F);
         CurrentLevel level3F = new CurrentLevel();
@@ -489,10 +549,15 @@ public class UnitLoader : MonoBehaviour {
         level3F.sceneName = "FTMap1";
         level3F.goldReward = 200;
         level3F.xpReward = 100;
-
-        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
+        level3F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3F.chestPool.gold = 75;
+       CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
     }
 
+    
+    
+         
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();
@@ -506,12 +571,12 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.warrior.movement = 5;
         me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
         me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill, me);
+        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill, me);
         me.unitInfo.main = me.unitClass.main.human.warrior;
 
         // str, def, spd, skill, magic, will
