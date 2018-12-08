@@ -246,6 +246,8 @@ public class MenuScript
         {
             foreach (GameObject t in tiles)
             {
+
+                if (t.GetComponent<GridTiles>() != null)
                 t.GetComponent<GridTiles>().ColorSelf();
             }
         }
