@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class UnitSkillEffects
 {
+    public bool kill;
+    public bool increaseAccuracy;
     public bool increaseDebuffs;
     public bool randomDebuff;
     public bool invisible;
@@ -53,6 +55,8 @@ public class UnitSkillEffects
 
     public UnitSkillEffects()
     {
+        kill = false;
+        increaseAccuracy = true;
         increaseDebuffs = false;
         randomDebuff = false;
         invisible = false;
