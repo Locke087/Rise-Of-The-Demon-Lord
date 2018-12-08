@@ -373,6 +373,9 @@ public class UnitLoader : MonoBehaviour {
         level1.sceneName = "SWMap1";
         level1.goldReward = 100;
         level1.xpReward = 100;
+        level1.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level1);
         CurrentLevel level2 = new CurrentLevel();
@@ -384,6 +387,9 @@ public class UnitLoader : MonoBehaviour {
         level2.sceneName = "SWMap1";
         level2.goldReward = 150;
         level2.xpReward = 100;
+        level2.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level2);
         CurrentLevel level3 = new CurrentLevel();
@@ -395,6 +401,9 @@ public class UnitLoader : MonoBehaviour {
         level3.sceneName = "SWMap1";
         level3.goldReward = 200;
         level3.xpReward = 100;
+        level3.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level3);
     }
@@ -412,6 +421,9 @@ public class UnitLoader : MonoBehaviour {
         level1.sceneName = "OGLMap1";
         level1.goldReward = 100;
         level1.xpReward = 100;
+        level1.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level1);
         CurrentLevel level2 = new CurrentLevel();
@@ -423,6 +435,9 @@ public class UnitLoader : MonoBehaviour {
         level2.sceneName = "OGLMap1";
         level2.goldReward = 150;
         level2.xpReward = 100;
+        level2.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level2);
         CurrentLevel level3 = new CurrentLevel();
@@ -434,6 +449,9 @@ public class UnitLoader : MonoBehaviour {
         level3.sceneName = "OGLMap1";
         level3.goldReward = 200;
         level3.xpReward = 100;
+        level3.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level3);
 
@@ -445,7 +463,7 @@ public class UnitLoader : MonoBehaviour {
     {
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Clear();
 
-         CurrentLevel level1G = new CurrentLevel();
+        CurrentLevel level1G = new CurrentLevel();
         level1G.deployLimit = 2;
         level1G.powerRanking = 2;
         level1G.enemiesInMap.units = LoadEnemies(level1G.powerRanking);
@@ -454,6 +472,9 @@ public class UnitLoader : MonoBehaviour {
         level1G.sceneName = "GDMap1";
         level1G.goldReward = 100;
         level1G.xpReward = 100;
+        level1G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level1G);
         CurrentLevel level2G = new CurrentLevel();
@@ -465,6 +486,9 @@ public class UnitLoader : MonoBehaviour {
         level2G.sceneName = "GDMap1";
         level2G.goldReward = 150;
         level2G.xpReward = 100;
+        level2G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level2G);
         CurrentLevel level3G = new CurrentLevel();
@@ -476,6 +500,9 @@ public class UnitLoader : MonoBehaviour {
         level3G.sceneName = "GDMap1";
         level3G.goldReward = 200;
         level3G.xpReward = 100;
+        level3G.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3G.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level3G);
     }
@@ -494,6 +521,9 @@ public class UnitLoader : MonoBehaviour {
         level1F.sceneName = "FTMap1";
         level1F.goldReward = 100;
         level1F.xpReward = 100;
+        level1F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level1F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level1F.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level1F);
         CurrentLevel level2F = new CurrentLevel();
@@ -505,6 +535,9 @@ public class UnitLoader : MonoBehaviour {
         level2F.sceneName = "FTMap1";
         level2F.goldReward = 150;
         level2F.xpReward = 100;
+        level2F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level2F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level2F.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level2F);
         CurrentLevel level3F = new CurrentLevel();
@@ -516,10 +549,15 @@ public class UnitLoader : MonoBehaviour {
         level3F.sceneName = "FTMap1";
         level3F.goldReward = 200;
         level3F.xpReward = 100;
-
-        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
+        level3F.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level3F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level3F.chestPool.gold = 75;
+       CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
     }
 
+    
+    
+         
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();

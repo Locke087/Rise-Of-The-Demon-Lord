@@ -508,11 +508,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 224163246911865200, guid: bc52fe734fcbf7e42b27d3a5a94f5543,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 224163246911865200, guid: bc52fe734fcbf7e42b27d3a5a94f5543,
-        type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -601,10 +596,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1892476866992730, guid: bc52fe734fcbf7e42b27d3a5a94f5543, type: 2}
-      propertyPath: m_Name
-      value: Menus
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc52fe734fcbf7e42b27d3a5a94f5543, type: 2}
   m_IsPrefabAsset: 0
@@ -619,7 +610,6 @@ GameObject:
   - component: {fileID: 1113644675}
   - component: {fileID: 1113644674}
   - component: {fileID: 1113644673}
-  - component: {fileID: 1113644678}
   - component: {fileID: 1113644677}
   m_Layer: 0
   m_Name: Map Overlay
@@ -720,23 +710,6 @@ MonoBehaviour:
   sw: 0
   gd: 0
   ft: 0
---- !u!114 &1113644678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1113644672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528635675cf61374f997e0d760c7e0ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gold: 100
-  unitRewardID: 
-  weaponRewardID: 
-  itemRewardID: 
-  weaponXP: 0
-  unitXp: 0
 --- !u!1001 &1614977411
 Prefab:
   m_ObjectHideFlags: 0

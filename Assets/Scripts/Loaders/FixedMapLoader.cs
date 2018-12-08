@@ -689,6 +689,8 @@ public class FixedMapLoader : MonoBehaviour {
                     {
                         GameObject tiles = GameObject.Instantiate(Resources.Load("Chest")) as GameObject;
                         tiles.transform.parent = newRow.transform;
+                        tiles.name = "og" + f + "r" + r;
+                        f++;
                         tiles.transform.localPosition = new Vector3(j, 0.75f, 0);
                         tiles.transform.localRotation = tile.transform.localRotation;
                         tiles.tag = "Chest";
