@@ -79,12 +79,15 @@ public class UnitManagerMenu : MonoBehaviour {
                 if (GUILayout.Button("Inventory"))
                 {
                     unit = u;
+                 
                     currentMenu = Menu.Inventory;
                 }
                 if (GUILayout.Button("Class") )
                 {
                     unit = u;
                     
+                    stats.unitID = unit.unitID;
+                    stats.StartUp();             
                     currentMenu = Menu.ClassChange;
                 }
                 GUILayout.Space(5);
@@ -115,8 +118,8 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.FlexibleSpace();
             GUILayout.Space(10);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width / 1.5f), GUILayout.Height(Screen.height * 1.5f));
-            stats.unitID = unit.unitID;
-         
+       
+           
             /*var croppedTexture = new Texture2D((int)image.sprite.rect.width, (int)image.sprite.rect.height);
             if (!done)
             {
@@ -234,21 +237,27 @@ public class UnitManagerMenu : MonoBehaviour {
                         if (GUILayout.Button("Switch to Warrior"))
                         {
                             UnsignOldClass(unit);
+                            unit.unitClass.main.human.warrior.caps.Clear();
+                            unit.unitClass.main.human.warrior.modifiers.Clear();
                             unit.unitClass.main.human.warrior.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.modifiers;
                             unit.unitClass.main.human.warrior.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons;
                             unit.unitClass.main.human.warrior.caps = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps;
+                        
                             unit.unitClass.main.human.warrior.level = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level;
                             unit.unitClass.main.human.warrior.movement = CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement;
                             unit.unitClass.main.mainClass = "Warrior";
                             unit.unitInfo.main = unit.unitClass.main.human.warrior;
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.warrior);
                             CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(unit.idx);
+                            stats.Clean();
+                            stats.StartUp();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.warrior);
                     }
                     else
                     {
+                        Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps.Count + " how many now?");
                         GUILayout.Box("Currently Your a Warrior" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.warrior);
                     }
@@ -269,6 +278,8 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Rogue";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.rogue);
                             CurrentGame.game.memoryGeneral.humanClassProgress.rogue.subbed.Add(unit.idx);
+                            stats.Clean();
+                            stats.StartUp();
                         }
                         GUILayout.Label("Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.rogue);
@@ -286,6 +297,8 @@ public class UnitManagerMenu : MonoBehaviour {
                         if (GUILayout.Button("Switch to Mage"))
                         {
                             UnsignOldClass(unit);
+                            unit.unitClass.main.human.mage.caps.Clear();
+                            unit.unitClass.main.human.mage.modifiers.Clear();
                             unit.unitClass.main.human.mage.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.mage.modifiers;
                             unit.unitClass.main.human.mage.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons;
                             unit.unitClass.main.human.mage.caps = CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps;
@@ -295,12 +308,15 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Mage";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.mage);
                             CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed.Add(unit.idx);
+                            stats.Clean();
+                            stats.StartUp();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.mage);
                     }
                     else
                     {
+                        Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps.Count + " how many now?");
                         GUILayout.Box("Currently Your a Mage" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.mage);
                     }
@@ -323,6 +339,8 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Archer";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.archer);
                             CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Add(unit.idx);
+                            stats.Clean();
+                            stats.StartUp();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.archer);
@@ -349,6 +367,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitInfo.main = unit.unitClass.main.human.bard;
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.bard);
                             CurrentGame.game.memoryGeneral.humanClassProgress.bard.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.bard):
@@ -375,6 +394,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Cavalier";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.human.cavalier);
                             CurrentGame.game.memoryGeneral.humanClassProgress.archer.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement); // + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier);
@@ -386,7 +406,7 @@ public class UnitManagerMenu : MonoBehaviour {
                     }
                 }
               
-            }        
+            }
             if (unit.unitInfo.imp)
             {
                 if (unit.unitClass.main.imp.dread.unlocked)
@@ -405,6 +425,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Dread";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.dread);
                             CurrentGame.game.memoryGeneral.impClassProgress.dread.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.dread.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.dread);
@@ -431,6 +452,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Fusilier";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.fusilier);
                             CurrentGame.game.memoryGeneral.impClassProgress.fusilier.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement); // + CurrentGame.game.memoryGeneral.impClassProgress.fusilier);
@@ -441,7 +463,6 @@ public class UnitManagerMenu : MonoBehaviour {
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement);// + CurrentGame.game.memoryGeneral.impClassProgress.fusilier);
                     }
                 }
-               
                 if (unit.unitClass.main.imp.shadow.unlocked)
                 {
                     if (unit.unitClass.main.mainClass != "Shadow")
@@ -458,6 +479,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Shadow";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.shadow);
                             CurrentGame.game.memoryGeneral.impClassProgress.shadow.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.level +
                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.shadow);
@@ -484,6 +506,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Shrike";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.shrike);
                             CurrentGame.game.memoryGeneral.impClassProgress.shrike.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement);
@@ -496,7 +519,6 @@ public class UnitManagerMenu : MonoBehaviour {
                 }
                 if (unit.unitClass.main.imp.swashbuckler.unlocked)
                 {
-
                     if (unit.unitClass.main.mainClass != "Swashbulkler")
                     {
                         if (GUILayout.Button("Switch to Swashbulkler"))
@@ -511,15 +533,17 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Swashbulkler";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.swashbuckler);
                             CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+
+                            GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
                         }
-                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
-                    }
-                    else
-                    {
-                        GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
-                    }
+                        else
+                        {
+                            GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
+                            " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
+                        }
+                    }            
                 }
                 if (unit.unitClass.main.imp.duelist.unlocked)
                 {
@@ -537,6 +561,7 @@ public class UnitManagerMenu : MonoBehaviour {
                             unit.unitClass.main.mainClass = "Duelist";
                             UnequipNonClassWeapons(unit, unit.unitClass.main.imp.duelist);
                             CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Add(unit.idx);
+                            stats.RefreshIt();
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement); //+ CurrentGame.game.memoryGeneral.impClassProgress.magus);
@@ -548,7 +573,6 @@ public class UnitManagerMenu : MonoBehaviour {
                     }
                 }
             }
-
             if (GUILayout.Button("Confirm & Exit"))
             {
                 done = false;
@@ -556,12 +580,14 @@ public class UnitManagerMenu : MonoBehaviour {
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
                 CurrentGame.game.storeroom.units[num] = unit;
                 CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                stats.Clean();
                 currentMenu = Menu.UnitMenu;
             }
             GUILayout.Space(5);
             if (GUILayout.Button("Cancel & Exit"))
             {
                 done = false;
+                stats.Clean();
                 currentMenu = Menu.UnitMenu;
             }
             GUILayout.Label("", GUILayout.Width(Screen.width / 1.5f), GUILayout.Height(Screen.height * 1.5f));
@@ -572,6 +598,7 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
+
 
 
 
@@ -953,8 +980,6 @@ public class UnitManagerMenu : MonoBehaviour {
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
-   
-
 
         else if (currentMenu == Menu.WeaponOrAssessory)
         {
@@ -1108,11 +1133,13 @@ public class UnitManagerMenu : MonoBehaviour {
                 int num1 = CurrentGame.game.memoryGeneral.unitsInRoster.FindIndex(x => x.unitID == unit.unitID);
                 CurrentGame.game.storeroom.units[num] = unit;
                 CurrentGame.game.memoryGeneral.unitsInRoster[num1] = unit;
+                
                 currentMenu = Menu.UnitMenu;
             }
             GUILayout.Space(5);
             if (GUILayout.Button("Cancel & Exit"))
             {
+               
                 currentMenu = Menu.UnitMenu;
             }
             GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
@@ -1141,6 +1168,7 @@ public class UnitManagerMenu : MonoBehaviour {
                 if (!u.inSlot)
                 {
                     GUILayout.Box(u.name);
+                  
                     if (u.details.weight > 0) GUILayout.Label("Weight " + u.details.weight.ToString());
                     if (u.details.boostStr) GUILayout.Label("Boost Str" + " By " + u.details.boost.ToString());
                     if (u.details.boostDef) GUILayout.Label("Boost Def" + " By " + u.details.boost.ToString());
@@ -1362,6 +1390,9 @@ public class UnitManagerMenu : MonoBehaviour {
             }
             else
             {
+                Debug.Log("what?");
+                Debug.Log(unit.inventory.invSlot2.weapon.details.type);
+                Debug.Log(unit.inventory.invSlot2.weapon.details.rank);
                 if (!UnitWeaponRankCheck(unit.inventory.invSlot2.weapon.details.type, unit.inventory.invSlot2.weapon.details.rank)) return false;
                 else return true;
             }

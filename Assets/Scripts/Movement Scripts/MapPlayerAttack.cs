@@ -9,6 +9,7 @@ public class MapPlayerAttack : ShowAttackRange {
     public bool attacked = false;
     public string shape;
     public UnitSkillDetail currentAttack;
+    public UnitWeapon weapon;
     MapPlayerMove playerMove;
     void Start()
     {

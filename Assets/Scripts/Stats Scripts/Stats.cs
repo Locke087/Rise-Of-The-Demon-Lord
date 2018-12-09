@@ -423,39 +423,47 @@ public class Stats : MonoBehaviour
 
     public void attacked(Stats attacker)
     {
-        //AttackPreview(attacker);
-        int aAttackSpeed = spd - weaponWeight;
-        int dAttackSpeed = attacker.spd - attacker.weaponWeight;
-        DefenderDamaged(attacker);
-        if ((aAttackSpeed) < 0) aAttackSpeed = 0;
-        if ((dAttackSpeed) < 0) dAttackSpeed = 0;
-        //Double Attack if: (Attack Speed – enemy Attack Speed) >= 4
-        if ( (aAttackSpeed - dAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
+        if (gameObject.tag == "player")
         {
-            DefenderDamaged(attacker);
+            UnitWeapon aWeapon = gameObject.GetComponent<MapPlayerAttack>().weapon;
+            UnitWeapon bWeapon = attacker.GetComponent<MapEnemyMove>().weapon;
+          
+            attackedControl(attacker, bWeapon, aWeapon);
         }
-        else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0) AttackerDamaged(attacker);
-
-       //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
+        else
+        {
+            UnitWeapon bWeapon = gameObject.GetComponent<MapPlayerAttack>().weapon;
+            UnitWeapon aWeapon = attacker.GetComponent<MapPlayerAttack>().weapon;
+            attackedControl(attacker, aWeapon, bWeapon);
+        }
     }
 
-    public void attackedMag(Stats attacker)
+    public void attackedControl(Stats attacker, UnitWeapon weaponAtk, UnitWeapon weaponDef)
     {
         //AttackPreview(attacker);
         int aAttackSpeed = spd - weaponWeight;
         int dAttackSpeed = attacker.spd - attacker.weaponWeight;
-        DefenderMagDamaged(attacker);
+
+        if(weaponAtk.details.physical) DefenderDamaged(attacker);
+        else DefenderMagDamaged(attacker);
         if ((aAttackSpeed) < 0) aAttackSpeed = 0;
         if ((dAttackSpeed) < 0) dAttackSpeed = 0;
         //Double Attack if: (Attack Speed – enemy Attack Speed) >= 4
         if ((aAttackSpeed - dAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
         {
-            DefenderMagDamaged(attacker);
+            if (weaponAtk.details.physical) DefenderDamaged(attacker);
+            else DefenderMagDamaged(attacker);
         }
-        else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0) AttackerMagDamaged(attacker);
+        else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
+        {
+            if (weaponDef.details.physical) AttackerDamaged(attacker);
+            else AttackerMagDamaged(attacker);
+        }
 
         //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
     }
+
+
 
 
     public void Death()

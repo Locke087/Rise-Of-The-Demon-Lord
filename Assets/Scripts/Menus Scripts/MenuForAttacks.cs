@@ -44,7 +44,7 @@ public class MenuForAttacks : MonoBehaviour {
     void OnGUI()
     {
 
-        GUILayout.BeginArea(new Rect(0, 0, Screen.width / 2, Screen.height));
+        GUILayout.BeginArea(new Rect(0, 0, Screen.width / 2, Screen.height/2));
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
@@ -52,11 +52,7 @@ public class MenuForAttacks : MonoBehaviour {
 
         if (currentMenu == Menu.HomeMenu)
         {
-
-            GUILayout.Box("Shop");
-            GUILayout.Space(10);
-
-            if (GUILayout.Button("Select Skill"))
+            if (GUILayout.Button("Select Action"))
             {
                 currentMenu = Menu.SkillSelection;
             }
@@ -76,7 +72,7 @@ public class MenuForAttacks : MonoBehaviour {
         else if (currentMenu == Menu.SkillSelection)
         {
 
-            GUILayout.BeginArea(new Rect(0, 0, Screen.width / 2, Screen.height / 2f));
+            GUILayout.BeginArea(new Rect(0, 0, Screen.width / 2, Screen.height * 1.5f));
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical();
@@ -88,6 +84,25 @@ public class MenuForAttacks : MonoBehaviour {
             unitObj = turnCon.activeUnit;
             unit = unitObj.GetComponent<Stats>().FindMyself();
             attack = unitObj.GetComponent<MapPlayerAttack>();
+            UnitWeapon weapon = FindEquippedWeapon();
+            if (weapon.equipped)
+            {
+                if (GUILayout.Button("Attack with " + weapon.name))
+                {
+
+                    attack.attackArea = weapon.details.range;
+                    attack.weapon = weapon;
+                    attack.ShowAttack();
+                    checking = false;
+                    currentMenu = Menu.HomeMenu;
+                    menuPar.SetActive(false);
+                }
+                if (weapon.details.physical) GUILayout.Label("Physical Damage");
+                if (weapon.details.magic) GUILayout.Label("Magic Damage");
+                if (weapon.details.effects.poison) GUILayout.Label("Poison");
+                if (weapon.details.effects.fireDamage) GUILayout.Label("Fire Damage");
+            }
+            GUILayout.Space(3);
             if (unit.unitInfo.main.pickSkill.skill1.name != "")
             {
                 UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill1;
@@ -497,7 +512,7 @@ public class MenuForAttacks : MonoBehaviour {
                 menuPar.SetActive(false);
 
             }
-            GUILayout.Label("", GUILayout.Width(Screen.width / 2f), GUILayout.Height(Screen.height * 1.5f));
+            GUILayout.Label("", GUILayout.Width(Screen.width / 2.3f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
@@ -520,7 +535,9 @@ public class MenuForAttacks : MonoBehaviour {
 
             turnCon = GameObject.FindObjectOfType<SpeedCenterTurns>();
             unitObj = turnCon.activeUnit;
+         
             unit = unitObj.GetComponent<Stats>().FindMyself();
+    
             attack = unitObj.GetComponent<MapPlayerAttack>();
             EquipmentOwned e = CurrentGame.game.memoryGeneral.itemsOwned;
             ItemHolder potionSmall = CurrentGame.game.memoryGeneral.itemsOwned.items.Find(x => x.name == "Potion Small");
@@ -709,6 +726,47 @@ public class MenuForAttacks : MonoBehaviour {
     void AssignArray(List<GameObject> list, string me)
     {
         list.AddRange(GameObject.FindGameObjectsWithTag(me));
+    }
+
+    UnitWeapon FindEquippedWeapon()
+    {
+        UnitWeapon none = new UnitWeapon();
+        if(unit.inventory.invSlot1.holding != "")
+        {
+            if (unit.inventory.invSlot1.weapon.equipped)
+            {
+                return unit.inventory.invSlot1.weapon;
+            }
+        }
+        if (unit.inventory.invSlot2.holding != "")
+        {
+            if (unit.inventory.invSlot2.weapon.equipped)
+            {
+                return unit.inventory.invSlot2.weapon;
+            }
+        }
+        if (unit.inventory.invSlot3.holding != "")
+        {
+            if (unit.inventory.invSlot3.weapon.equipped)
+            {
+                return unit.inventory.invSlot3.weapon;
+            }
+        }
+        if (unit.inventory.invSlot4.holding != "")
+        {
+            if (unit.inventory.invSlot4.weapon.equipped)
+            {
+                return unit.inventory.invSlot4.weapon;
+            }
+        }
+        if (unit.inventory.invSlot5.holding != "")
+        {
+            if (unit.inventory.invSlot5.weapon.equipped)
+            {
+                return unit.inventory.invSlot5.weapon;
+            }
+        }
+        return none;
     }
 
     bool SomethingClose(string me, GameObject you)

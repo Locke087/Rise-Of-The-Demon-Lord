@@ -22,6 +22,12 @@ public class UnitInfo {
         main = new UnitClassDetail();
         sub = new UnitClassDetail();
         weaponRanks = new UnitWeaponRanks();
+        nature = "";
+        currentCaps = new List<float>();
+        currentMods = new List<float>();
+        human = false;
+        imp = false;
+        vira = false;
         nature = "random";
     }
 }

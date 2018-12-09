@@ -153,6 +153,17 @@ public class DisplayStats : MonoBehaviour {
 
  
     }
+
+
+    public void Clean()
+    {
+        allClassesBase.Clear();
+        // public List<TheClassesInc> allClassesInc;
+        allClassesMods.Clear();
+        allClassesCaps.Clear();
+        allClassesMaster.Clear();
+}
+
     public void StartUp()
     {
 
@@ -160,6 +171,10 @@ public class DisplayStats : MonoBehaviour {
         startClassesUp();
         ReflectStat();
        // StartCoroutine(RefreshStat());
+    }
+    public void RefreshIt()
+    {
+        StartCoroutine(RefreshStat());
     }
 
     public Unit FindMyself()
@@ -172,9 +187,11 @@ public class DisplayStats : MonoBehaviour {
         return me;
     }
 
+ 
+
     public IEnumerator RefreshStat()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(0.2f);
         classesRefresh();
         ReflectStat();
     }

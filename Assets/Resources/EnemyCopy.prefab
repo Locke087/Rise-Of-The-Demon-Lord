@@ -381,6 +381,8 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      kill: 0
+      increaseAccuracy: 1
       increaseDebuffs: 0
       randomDebuff: 0
       invisible: 0
@@ -756,6 +758,33 @@ MonoBehaviour:
   west: 0
   halfHeight: 1.4
   actualTargetTile: {fileID: 0}
+  weapon:
+    idx: 
+    cost: 0
+    name: 
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      might: 0
+      weight: 0
+      hitrate: 0
+      critrate: 0
+      critchance: 0
+      range: 0
+      magic: 0
+      physical: 0
+      unlocks: 
+      type: 
+      rank: 0
+      xp: 0
+      uniqueWeaponXps: []
+      effects:
+        sleep: 0
+        vampire: 0
+        poison: 0
+        fireDamage: 0
+        devil: 0
 --- !u!114 &114641385255928904
 MonoBehaviour:
   m_ObjectHideFlags: 1

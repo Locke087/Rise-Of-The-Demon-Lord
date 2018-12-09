@@ -26,6 +26,8 @@ public class SwordLoader : MonoBehaviour
         warhammer.name = "Warhammer";
         warhammer.unlocks = "Smite";
         warhammer.rank = 2;
+        warhammer.range = 1;
+        warhammer.physical = true;
         warhammer.type = "Axes";
         if (sw == warhammer.name) u.details = warhammer;
 
@@ -38,7 +40,9 @@ public class SwordLoader : MonoBehaviour
         rifle.name = "Rifle";
         rifle.unlocks = "Deadeye";
         rifle.rank = 2;
+        rifle.range = 6;
         rifle.type = "Ranged";
+        rifle.physical = true;
         if (sw == rifle.name) u.details = rifle;
 
         UnitWeaponDetails vemonBlade = new UnitWeaponDetails();
@@ -51,12 +55,29 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.name = "Vemon Blade";
         vemonBlade.unlocks = "Blitz";
         vemonBlade.rank = 2;
+        vemonBlade.range = 1;
         vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
         if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails lightingSword = new UnitWeaponDetails();
+        lightingSword.might = 10;
+        lightingSword.weight = 7;
+        lightingSword.hitrate = 60;
+        lightingSword.critrate = 3;
+        lightingSword.critchance = 1;
+        lightingSword.name = "Lighting Sword";
+        lightingSword.unlocks = "SwordMaster1";
+        lightingSword.rank = 3;
+        lightingSword.range = 2;
+        lightingSword.type = "HeavyBlade";
+        lightingSword.magic = true;
+        if (sw == lightingSword.name) u.details = lightingSword;
 
     }
     public static List<UnitWeapon> ChestWeapons()
     {
+
         List<UnitWeapon> weapons = new List<UnitWeapon>();
         UnitWeapon vemonBlade = new UnitWeapon();
         vemonBlade.name = "Vemon Blade";
@@ -111,6 +132,23 @@ public class SwordLoader : MonoBehaviour
         rifle.details.unlocks = "Deadeye";
         rifle.idx = "Rifle" + IDMaker.NewID();
         weapons.Add(rifle);
+
+        UnitWeapon lightingSword = new UnitWeapon();
+        rifle.name = "Lighting Sword";
+        rifle.cost = 230;
+        lightingSword.details.might = 10;
+        lightingSword.details.weight = 7;
+        lightingSword.details.hitrate = 60;
+        lightingSword.details.critrate = 3;
+        lightingSword.details.critchance = 1;
+        lightingSword.details.name = "Lighting Sword";
+        lightingSword.details.unlocks = "SwordMaster1";
+        lightingSword.details.rank = 3;
+        lightingSword.details.range = 2;
+        lightingSword.details.type = "HeavyBlade";
+        lightingSword.details.magic = true;
+        lightingSword.idx = "Lighting Sword" + IDMaker.NewID();
+        weapons.Add(lightingSword);
 
         return weapons;
     }
@@ -174,7 +212,25 @@ public class SwordLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(rifle);
         CurrentGame.game.memoryGeneral.shopWares.weapons.Add(rifle);
 
-        
+        UnitWeapon lightingSword = new UnitWeapon();
+        lightingSword.name = "Lighting Sword";
+        lightingSword.cost = 230;
+        lightingSword.details.might = 10;
+        lightingSword.details.weight = 7;
+        lightingSword.details.hitrate = 60;
+        lightingSword.details.critrate = 3;
+        lightingSword.details.critchance = 1;
+        lightingSword.details.name = "Lighting Sword";
+        lightingSword.details.unlocks = "SwordMaster1";
+        lightingSword.details.rank = 3;
+        lightingSword.details.range = 2;
+        lightingSword.details.type = "HeavyBlade";
+        lightingSword.details.magic = true;
+        lightingSword.idx = "Lighting Sword" + IDMaker.NewID();
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(lightingSword);
+        CurrentGame.game.memoryGeneral.shopWares.weapons.Add(lightingSword);
+      
     }
 
 }

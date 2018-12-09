@@ -7,6 +7,7 @@ public class MapEnemyMove : GridMovement {
     GameObject target;
     bool attackState;
     Rigidbody rb;
+    public UnitWeapon weapon;
     // Use this for initialization
     void Start () {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -32,7 +33,7 @@ public class MapEnemyMove : GridMovement {
             tile = actualTargetTile.gameObject;
         }
         Move();
-
+        weapon = FindEquippedWeapon(gameObject.GetComponent<Stats>().FindMyself());
         do
         {
             Move();
@@ -42,8 +43,8 @@ public class MapEnemyMove : GridMovement {
         {
             if (gameObject.transform.localRotation != tile.transform.localRotation) gameObject.transform.localRotation = tile.transform.localRotation;
         }
-
-        float nextTo = 1;
+      
+        float nextTo = weapon.details.range;
         float thePlayer = Vector3.Distance(transform.position, target.transform.position);
         if (nextTo >= thePlayer)
             attackState = true;
@@ -66,8 +67,10 @@ public class MapEnemyMove : GridMovement {
                     nearest = obj;
                 }
             }
-            GameObject Enemy = nearest;
-            Stats newEnemy = Enemy.GetComponent<Stats>();
+         
+            GameObject enemy = nearest;
+            Stats newEnemy = enemy.GetComponent<Stats>();
+            enemy.GetComponent<MapPlayerAttack>().weapon = FindEquippedWeapon(enemy.GetComponent<Stats>().FindMyself());
             newEnemy.attacked(gameObject.GetComponent<Stats>());
             attackState = false;
         }
@@ -108,6 +111,47 @@ public class MapEnemyMove : GridMovement {
     void AssignArray(List<GameObject> list)
     {
         list.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+    }
+
+    UnitWeapon FindEquippedWeapon(Unit unit)
+    {
+        UnitWeapon none = new UnitWeapon();
+        if (unit.inventory.invSlot1.holding != "")
+        {
+            if (unit.inventory.invSlot1.weapon.equipped)
+            {
+                return unit.inventory.invSlot1.weapon;
+            }
+        }
+        if (unit.inventory.invSlot2.holding != "")
+        {
+            if (unit.inventory.invSlot2.weapon.equipped)
+            {
+                return unit.inventory.invSlot2.weapon;
+            }
+        }
+        if (unit.inventory.invSlot3.holding != "")
+        {
+            if (unit.inventory.invSlot3.weapon.equipped)
+            {
+                return unit.inventory.invSlot3.weapon;
+            }
+        }
+        if (unit.inventory.invSlot4.holding != "")
+        {
+            if (unit.inventory.invSlot4.weapon.equipped)
+            {
+                return unit.inventory.invSlot4.weapon;
+            }
+        }
+        if (unit.inventory.invSlot5.holding != "")
+        {
+            if (unit.inventory.invSlot5.weapon.equipped)
+            {
+                return unit.inventory.invSlot5.weapon;
+            }
+        }
+        return none;
     }
 
 }

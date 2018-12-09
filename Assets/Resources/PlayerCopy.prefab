@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114981297170187514}
-  unitID: Sascha
+  unitID: Jeorge
   hp: 0
   str: 0
   def: 0
@@ -380,6 +380,8 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      kill: 0
+      increaseAccuracy: 1
       increaseDebuffs: 0
       randomDebuff: 0
       invisible: 0
@@ -691,6 +693,8 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      kill: 0
+      increaseAccuracy: 1
       increaseDebuffs: 0
       randomDebuff: 0
       invisible: 0
@@ -737,6 +741,33 @@ MonoBehaviour:
       movementDown: 0
       statusHeal: 0
     attackPattern: 
+  weapon:
+    idx: 
+    cost: 0
+    name: 
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      might: 0
+      weight: 0
+      hitrate: 0
+      critrate: 0
+      critchance: 0
+      range: 0
+      magic: 0
+      physical: 0
+      unlocks: 
+      type: 
+      rank: 0
+      xp: 0
+      uniqueWeaponXps: []
+      effects:
+        sleep: 0
+        vampire: 0
+        poison: 0
+        fireDamage: 0
+        devil: 0
 --- !u!114 &114613888620989128
 MonoBehaviour:
   m_ObjectHideFlags: 1

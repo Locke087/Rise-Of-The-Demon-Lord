@@ -28,6 +28,7 @@ public class MageLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon2.type = "Athames";
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps = Mage.Caplist();
 
         LevelUpClass();
     }
@@ -38,7 +39,7 @@ public class MageLoader : MonoBehaviour
         Mage.LevelUp();
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.level = CurrentGame.game.memoryGeneral.humanClassProgress.mage.level + 1;
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.modifiers = Mage.ModList();
-
+       
         foreach (string id in CurrentGame.game.memoryGeneral.humanClassProgress.mage.subbed)
         {
             Unit me = new Unit();

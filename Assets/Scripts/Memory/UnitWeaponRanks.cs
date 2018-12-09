@@ -19,15 +19,14 @@ public class UnitWeaponRanks {
     public UnitWeaponRanks()
     {
         HeavyBlade = new WeaponRankDetails();
+        Close = new WeaponRankDetails();
         Ranged = new WeaponRankDetails();
         Instrument = new WeaponRankDetails();
         Spear = new WeaponRankDetails();
-        Close = new WeaponRankDetails();
+        Axe = new WeaponRankDetails();      
         Stave = new WeaponRankDetails();
-        Athames = new WeaponRankDetails();
-        Tome = new WeaponRankDetails();
+        Athames = new WeaponRankDetails();     
         LightBlades = new WeaponRankDetails();
         Tome = new WeaponRankDetails();
-
     }
 }
