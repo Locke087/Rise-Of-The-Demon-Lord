@@ -62,27 +62,27 @@ public class AssassinLoader : MonoBehaviour {
         {
             i++;
         }
-        else if (u.skill2.name != "")
+        if (u.skill2.name != "")
         {
             i++;
         }
-        else if (u.skill3.name != "")
+        if (u.skill3.name != "")
         {
             i++;
         }
-        else if (u.skill4.name != "")
+        if (u.skill4.name != "")
         {
             i++;
         }
-        else if (u.skill5.name != "")
+        if (u.skill5.name != "")
         {
             i++;
         }
-        else if (u.skill6.name != "")
+        if (u.skill6.name != "")
         {
             i++;
         }
-        else if (u.skill7.name != "")
+        if (u.skill7.name != "")
         {
             i++;
         }

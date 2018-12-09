@@ -561,80 +561,47 @@ public class UnitLoader : MonoBehaviour {
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();
-        Unit me = new Unit();
+        int armysize = 0;
+        int armylevel = 0;
+        int amin = 3;
+        int amax = 10;
+        if(rating == 1)
+        {
+            armysize = 2;
+            armylevel = 1;
+        }
+        for (int i = 0; i < armysize; i++)
+        {
+            Unit me = new Unit();
 
-        me.unitID = "BadGuy";
-        me.unitClass.main.mainClass = "Warrior";
-        me.unitClass.main.race = "Human";
-        me.unitClass.main.human.warrior.level = rating;
-     
-        me.unitClass.main.human.warrior.movement = 5;
-        me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
-        me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.main.human.warrior.pickSkill, me);
-        WarriorLoader.AssignSkill("Bull Rush", me.unitClass.sub.human.warrior.pickSkill, me);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.main.human.warrior.pickSkill, me);
-        WarriorLoader.AssignSkill("Focused", me.unitClass.sub.human.warrior.pickSkill, me);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.main.human.warrior.pickSkill, me);
-        WarriorLoader.AssignSkill("Wild Rush", me.unitClass.sub.human.warrior.pickSkill, me);
-        me.unitInfo.main = me.unitClass.main.human.warrior;
+            me.unitID = "Goblin" + IDMaker.NewID();
+            me.unitClass.main.mainClass = "Warrior";
+            me.unitClass.main.race = "Imp";
+            me.unitClass.main.human.warrior.level = armylevel;
+            me.unitClass.main.human.warrior.movement = 5;
+            me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+            me.unitClass.main.human.warrior.caps = Warrior.Caplist();
+            me.unitInfo.main = me.unitClass.main.human.warrior;
 
-        // str, def, spd, skill, magic, will
-        int[] bases = { 7, 5, 3, 5, 2, 1 };
-        me.unitInfo.bases.AddRange(bases);
-        me.unitInfo.nature = "Nimble";
-        me.inventory.invSlot1.weapon.equipped = true;
-       
-        me.inventory.invSlot1.weapon.name = "Vemon Blade";
-        me.inventory.invSlot1.weapon.inSlot = true;
-        me.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
-        SwordLoader.AssignSword("Vemon Blade", me.inventory.invSlot1.weapon);
-      
-        enemiesInMap.Add(me);
-        enemiesInMap.Add(me);
-        enemiesInMap.Add(me);
-        enemiesInMap.Add(me);
-        enemiesInMap.Add(me);
-        CurrentGame.game.storeroom.units.Add(me);
+            // str, def, spd, skill, magic, will
+            int[] bases = {RB(amin,amax,2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1)};
+            me.unitInfo.bases.AddRange(bases);
+            me.unitInfo.nature = ARandomNature.RandomNature();
+            me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+            me.inventory.invSlot1.weapon.inSlot = true;
+            me.inventory.invSlot1.weapon.equipped = true;
 
-        // str, def, spd, skill, magic, will
-
-        Unit newMe = new Unit();
-
-        newMe.unitID = "DadGuy";
-        newMe.unitClass.main.mainClass = "Warrior";
-        newMe.unitClass.main.race = "Human";
-        newMe.unitClass.main.human.warrior.level = rating;
+            enemiesInMap.Add(me);
+            CurrentGame.game.storeroom.units.Add(me);
+            Warrior.Clear();
+        }
    
-        newMe.unitClass.main.human.warrior.movement = 5;
-        newMe.unitClass.main.human.warrior.modifiers = Warrior.ModList();
-        newMe.unitClass.main.human.warrior.caps = Warrior.Caplist();
-        newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
-
-        // str, def, spd, skill, magic, will
-        int[] bases2 = { 8, 4, 2, 6, 1, 2 };
-        newMe.unitInfo.bases.AddRange(bases2);
-        newMe.unitInfo.nature = "Hardy";
-        newMe.inventory.invSlot1.weapon.equipped = true;
-
-        newMe.inventory.invSlot1.weapon.name = "Vemon Blade";
-        newMe.inventory.invSlot1.weapon.inSlot = true;
-        newMe.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
-        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
-
-        enemiesInMap.Add(newMe);
-        enemiesInMap.Add(newMe);
-        enemiesInMap.Add(newMe);
-        enemiesInMap.Add(newMe);
-        enemiesInMap.Add(newMe);
-        enemiesInMap.Add(newMe);
-        CurrentGame.game.storeroom.units.Add(newMe);
-
-
-
-
-
 
         return enemiesInMap;
+    }
+
+    public static int RB(int min, int max, int alt)
+    {
+        return Random.Range(min + alt, max + alt);
     }
 }

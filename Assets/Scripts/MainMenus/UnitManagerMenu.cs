@@ -263,73 +263,73 @@ public class UnitManagerMenu : MonoBehaviour {
                         if (unit.unitInfo.main.pickSkill.skill1.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill1;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }
                         if (unit.unitInfo.main.pickSkill.skill2.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill2;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }
                         if (unit.unitInfo.main.pickSkill.skill3.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill3;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }
                         if (unit.unitInfo.main.pickSkill.skill4.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill4;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                      
                         if (unit.unitInfo.main.pickSkill.skill5.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill5;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                     
                         if (unit.unitInfo.main.pickSkill.skill6.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill6;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                      
                         if (unit.unitInfo.main.pickSkill.skill7.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill7;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                    
                         if (unit.unitInfo.main.pickSkill.skill8.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill8;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                   
                         if (unit.unitInfo.main.pickSkill.skill9.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill9;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                     
                         if (unit.unitInfo.main.pickSkill.skill10.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill10;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }                     
                         if (unit.unitInfo.main.pickSkill.skill11.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill11;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }
                         if (unit.unitInfo.main.pickSkill.skill12.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill12;
-                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Label("Has Skill " + u.name);
                             GUILayout.Space(1);
                         }
                     }
