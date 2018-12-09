@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class UnitSkillEffects
 {
+    public bool absorbDamage;
+    public bool reduceDefense;
+    public bool reduceAttack;
     public bool kill;
     public bool increaseAccuracy;
     public bool increaseDebuffs;
@@ -27,6 +30,7 @@ public class UnitSkillEffects
     public bool healing;
     public bool extraTurn;
     public bool revive;
+    public bool magicBoost;
     public bool willBoost;
     public bool skillUseRestore;
     public bool poison;
@@ -51,12 +55,17 @@ public class UnitSkillEffects
     public bool trueDamage;
     public bool overRun;
     public bool movementDown;
+    public bool movementIncrease;
     public bool statusHeal;
 
     public UnitSkillEffects()
     {
+        reduceAttack = false;
+        magicBoost = false;
+        absorbDamage = false;
+        reduceDefense = false;
         kill = false;
-        increaseAccuracy = true;
+        increaseAccuracy = false;
         increaseDebuffs = false;
         randomDebuff = false;
         invisible = false;
@@ -101,5 +110,6 @@ public class UnitSkillEffects
         stealMoney = false;
         overRun = false;
         movementDown = false;
+        movementIncrease = false;
     }
 }
