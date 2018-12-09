@@ -96,6 +96,9 @@ public class Stats : MonoBehaviour
     public string affitity;
     public float attackBonus;
     public UnitSkillDetail currentAttack;
+    public UnitAssessory currentAssessory1;
+    public UnitAssessory currentAssessory2;
+    public UnitAssessory currentAssessory3;
     void Start()
     {
        // confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
@@ -157,7 +160,9 @@ public class Stats : MonoBehaviour
         currentHp = hp;
        
         startClassesUp();
-
+        currentAssessory1 = new UnitAssessory();
+        currentAssessory2 = new UnitAssessory();
+        currentAssessory3 = new UnitAssessory();
 
         Debug.Log("hsfsifhdj");
         if (gameObject.GetComponent<MapPlayerMove>() != null)
@@ -192,7 +197,7 @@ public class Stats : MonoBehaviour
         }
         if (currentHp + num > hp)
         {
-            info.attackText.color = Color.green;
+            info.attackText.faceColor = Color.green;
             info.attackText.text = hp.ToString() + " Hp Now Full";
             currentHp = hp;
             UpdateHp();
@@ -201,7 +206,7 @@ public class Stats : MonoBehaviour
         else
         {
 
-            info.attackText.color = Color.green;
+            info.attackText.faceColor = Color.green;
             info.attackText.text = hp.ToString() + " Healed";
             currentHp += num;
             UpdateHp();
@@ -211,7 +216,7 @@ public class Stats : MonoBehaviour
 
     public void DamageHp(int num, float type)
     {
-        info.attackText.color = Color.red;
+        info.attackText.faceColor = Color.red;
         info.attackText.text = num.ToString();
         if (info.attackText.text != "")
         {
@@ -721,6 +726,18 @@ public class Stats : MonoBehaviour
         if (info.hpText != null) info.hpText.text = currentHp.ToString(); 
     }
 
+    public void StealInfo(int num)
+    {
+
+        info.attackText.faceColor = Color.green;
+        info.attackText.text = hp.ToString() + " Healed";
+        currentHp += num;
+        UpdateHp();
+        StartCoroutine(ClearNoticeText());
+
+
+    }
+
     public void Skill(Stats attacker)
     {
         attackBonus = 0;
@@ -745,6 +762,10 @@ public class Stats : MonoBehaviour
         }
         else if (currentAttack.support)
         {
+            if (currentAttack.effects.stealMoney)
+            {
+                currentAttack.effects
+            }
             if (currentAttack.effects.healing)
             {
                 if (affitity != "Undead")
@@ -1057,6 +1078,39 @@ public class Stats : MonoBehaviour
             weaponCritRate = me.inventory.invSlot5.weapon.details.critrate;
         }
        
+    }
+
+    public void SetAssessories()
+    {
+        Unit me = FindMyself();
+        if (me.inventory.invSlot1.assessory.equipped)
+        {
+            currentAssessory1 = me.inventory.invSlot1.assessory;
+        }
+        if (me.inventory.invSlot2.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot2.assessory;
+            else currentAssessory2 = me.inventory.invSlot2.assessory;
+        }
+        if (me.inventory.invSlot3.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot3.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot3.assessory;
+            else currentAssessory3 = me.inventory.invSlot3.assessory;
+        }
+        if (me.inventory.invSlot4.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot4.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot4.assessory;
+            else currentAssessory3 = me.inventory.invSlot4.assessory;
+        }
+        if (me.inventory.invSlot5.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot5.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot5.assessory;
+            else currentAssessory3 = me.inventory.invSlot5.assessory;
+        }
+
     }
 
     public float CalcEnemyHitRate(int enemySkill, int enemyWeaponHit)
