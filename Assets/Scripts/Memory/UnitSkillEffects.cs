@@ -60,6 +60,7 @@ public class UnitSkillEffects
     public bool movementDown;
     public bool movementIncrease;
     public bool statusHeal;
+    public bool analyze;
 
     public UnitSkillEffects()
     {

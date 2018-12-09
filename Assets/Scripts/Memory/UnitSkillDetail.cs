@@ -15,6 +15,7 @@ public class UnitSkillDetail {
     public bool magicDamage;
     public bool physicalDamage;
     public UnitSkillEffects effects;
+    public List<UnitMonsterTells> monsterTells;
     // public GameObject attackPattern;
     public string attackPattern;
 
@@ -31,6 +32,6 @@ public class UnitSkillDetail {
         magicDamage = false;
         physicalDamage = false;
         attackPattern = "";
-
+        monsterTells = new List<UnitMonsterTells>();
     }
 }

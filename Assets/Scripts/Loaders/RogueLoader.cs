@@ -137,6 +137,7 @@ public class RogueLoader : MonoBehaviour
         mug.physicalDamage = true;
         mug.range = 1;
         mug.effects.stealMoney = true;
+        mug.baseEffect = 100;
 
         UnitSkillDetail knifeThrow = new UnitSkillDetail();
         knifeThrow.name = "Knife Throw";

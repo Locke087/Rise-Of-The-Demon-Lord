@@ -26,6 +26,7 @@ public class BardLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.type = "Athames";
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.caps = Bard.Caplist();
+    .
         LevelUpClass();
     }
 
@@ -48,6 +49,15 @@ public class BardLoader : MonoBehaviour {
                 }
             }
         }
+    }
+
+
+    public static void TalktoMe(UnitSkillDetail u)
+    {
+        UnitMonsterTells ghost = new UnitMonsterTells();
+        ghost.monsterName = "Ghost";
+        ghost.description = "Ghosts: ghosts are strong against physical damage due to being intangible, but weak against magic and especially holy magic!Give that a try";
+        u.monsterTells.Add(ghost);
     }
 
     public static void ClassUnlocked(Unit me)

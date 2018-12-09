@@ -729,10 +729,7 @@ public class Stats : MonoBehaviour
     public void StealInfo(int num)
     {
 
-        info.attackText.faceColor = Color.green;
-        info.attackText.text = hp.ToString() + " Healed";
-        currentHp += num;
-        UpdateHp();
+        info.attackText.faceColor = Color.red;
         StartCoroutine(ClearNoticeText());
 
 
@@ -743,7 +740,12 @@ public class Stats : MonoBehaviour
         attackBonus = 0;
         if (currentAttack.physicalDamage)
         {
-            if(currentAttack.effects.fireDamage && affitity == "Wood")
+            if (currentAttack.effects.stealMoney)
+            {
+                attacker.StealInfo(currentAttack.baseEffect);
+                DefenderDamaged(attacker);
+            }
+            if (currentAttack.effects.fireDamage && affitity == "Wood")
             {
 
                 attacker.attackBonus = 1.5f;
@@ -762,10 +764,7 @@ public class Stats : MonoBehaviour
         }
         else if (currentAttack.support)
         {
-            if (currentAttack.effects.stealMoney)
-            {
-                currentAttack.effects
-            }
+       
             if (currentAttack.effects.healing)
             {
                 if (affitity != "Undead")

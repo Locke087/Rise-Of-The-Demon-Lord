@@ -552,6 +552,7 @@ public class UnitLoader : MonoBehaviour {
         level3G.deployLimit = 8;
         level3G.powerRanking = 4;
         level3G.enemiesInMap.units = LoadEnemies(level3G.powerRanking);
+     
         level3G.name = "The Burning Hellscape";
         level3G.idx = "3" + IDMaker.NewID();
         level3G.sceneName = "GDMap1";
