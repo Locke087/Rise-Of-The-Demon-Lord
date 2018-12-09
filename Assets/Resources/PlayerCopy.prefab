@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114525751420389088}
   - component: {fileID: 54522093013849196}
   m_Layer: 0
-  m_Name: Sascha
+  m_Name: PlayerCopy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,6 +436,69 @@ MonoBehaviour:
       movementIncrease: 0
       statusHeal: 0
     attackPattern: 
+  currentAssessory1:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
+  currentAssessory2:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
+  currentAssessory3:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
 --- !u!114 &114153448445137506
 MonoBehaviour:
   m_ObjectHideFlags: 1

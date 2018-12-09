@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114264914214728258}
-  unitID: DadGuy
+  unitID: Goblin493719.78992Sunday, December 09, 20186:13:14 AM
   hp: 0
   str: 0
   def: 0
@@ -381,6 +381,11 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      fourth: 0
+      reflectDamage: 0
+      absorbDamage: 0
+      reduceDefense: 0
+      reduceAttack: 0
       kill: 0
       increaseAccuracy: 1
       increaseDebuffs: 0
@@ -403,6 +408,8 @@ MonoBehaviour:
       healing: 0
       extraTurn: 0
       revive: 0
+      speedBoost: 0
+      magicBoost: 0
       willBoost: 0
       skillUseRestore: 0
       poison: 0
@@ -427,8 +434,72 @@ MonoBehaviour:
       trueDamage: 0
       overRun: 0
       movementDown: 0
+      movementIncrease: 0
       statusHeal: 0
     attackPattern: 
+  currentAssessory1:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
+  currentAssessory2:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
+  currentAssessory3:
+    idx: 
+    name: 
+    cost: 0
+    inSlot: 0
+    equipped: 0
+    details:
+      name: 
+      boost: 0
+      weight: 0
+      boostHp: 0
+      boostSkill: 0
+      boostDef: 0
+      boostWill: 0
+      boostStr: 0
+      boostMag: 0
+      boostSpd: 0
+      unlocks: 
+      rank: 0
+      xp: 0
+      uniqueAssessoryXps: []
 --- !u!114 &114227765253399570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,6 +855,11 @@ MonoBehaviour:
         vampire: 0
         poison: 0
         fireDamage: 0
+        darkDamage: 0
+        waterDamage: 0
+        natureDamage: 0
+        earthDamage: 0
+        metalDamage: 0
         devil: 0
 --- !u!114 &114641385255928904
 MonoBehaviour:
