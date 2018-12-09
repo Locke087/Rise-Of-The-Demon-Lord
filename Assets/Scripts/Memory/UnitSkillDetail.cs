@@ -7,8 +7,7 @@ public class UnitSkillDetail {
 
     public string name;
     public float extraDamageMod;
-    public float boostMod;
-    public float reduceMod;
+    public float mod;  
     public int restore;
     public int baseEffect;
     public int range;
@@ -28,6 +27,7 @@ public class UnitSkillDetail {
         restore = 0;
         range = 0;
         baseEffect = 0;
+        mod = 0;
         support = false;
         self = false;
         effects = new UnitSkillEffects();
