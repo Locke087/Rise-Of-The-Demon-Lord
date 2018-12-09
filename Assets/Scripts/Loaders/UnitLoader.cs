@@ -158,7 +158,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(me.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(me);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(me);
-        CurrentGame.game.memoryGeneral.unitsInParty.Add(me);
+     
         // str, def, spd, skill, magic, will
 
         Unit newMe = new Unit();
@@ -201,7 +201,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe);
-        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe);
+     
 
         Unit newMe2 = new Unit();
 
@@ -249,7 +249,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe2.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
-        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
+    
 
 
         Unit newMe3 = new Unit();
@@ -296,7 +296,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe3.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe3);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe3);
-        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe3);
+    
 
 
 
@@ -346,7 +346,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe4.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe4);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe4);
-        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe4);
+       
 
 
 

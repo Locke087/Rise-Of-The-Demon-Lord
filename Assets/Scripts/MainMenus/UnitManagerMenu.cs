@@ -252,14 +252,14 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement +
-                           " Has Learned  " + WarriorLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.warrior.pickSkill) + " Skills");
+                           " Has Learned  " + WarriorLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + " Skills");
                     }
                     else
                     {
                         Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps.Count + " how many now?");
                         GUILayout.Box("Currently Your a Warrior" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement +
-                           " Has Learned  " + WarriorLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.warrior.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement);
+                        GUILayout.Box("Has Learned " + WarriorLoader.HowManySkills(unit.unitClass.main.human.warrior.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.rogue.unlocked)
@@ -282,13 +282,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label("Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement +
-                           " Has Learned  " + RogueLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.rogue.pickSkill) + " Skills");
+                           " Has Learned  " + RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Rogue" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement +
-                           " Has Learned  " + RogueLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.rogue.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement);
+                        GUILayout.Box("Has Learned " + RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.mage.unlocked)
@@ -311,14 +311,14 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement +
-                           " Has Learned  " + MageLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.mage.pickSkill) + " Skills");
+                           " Has Learned  " + MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + " Skills");
                     }
                     else
                     {
                         Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps.Count + " how many now?");
                         GUILayout.Box("Currently Your a Mage" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement +
-                           " Has Learned  " + MageLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.mage.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement);
+                        GUILayout.Box("Has Learned " + MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.archer.unlocked)
@@ -343,13 +343,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement +
-                           " Has Learned  " + ArcherLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.archer.pickSkill) + " Skills");
+                           " Has Learned  " + ArcherLoader.HowManySkills(unit.unitClass.main.human.archer.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Archer" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement +
-                           " Has Learned  " + ArcherLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.archer.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.archer.movement);
+                        GUILayout.Box("Has Learned " + ArcherLoader.HowManySkills(unit.unitClass.main.human.archer.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.bard.unlocked)
@@ -372,13 +372,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement +
-                           " Has Learned  " + BardLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.bard.pickSkill) + " Skills");
+                           " Has Learned  " + BardLoader.HowManySkills(unit.unitClass.main.human.bard.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Bard" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement +
-                           " Has Learned  " + BardLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.bard.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.bard.movement);
+                        GUILayout.Box("Has Learned " + BardLoader.HowManySkills(unit.unitClass.main.human.bard.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.cavalier.unlocked)
@@ -401,13 +401,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement +
-                           " Has Learned  " + CavalierLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.pickSkill) + " Skills");
+                           " Has Learned  " + CavalierLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Cavalier" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement +
-                           " Has Learned  " + CavalierLoader.HowManySkills(CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.movement);
+                        GUILayout.Box("Has Learned " + CavalierLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + " Skills");
                     }
                 }
               
@@ -434,13 +434,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.dread.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement +
-                           " Has Learned  " + DreadLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.dread.pickSkill) + " Skills");
+                           " Has Learned  " + DreadLoader.HowManySkills(unit.unitClass.main.imp.dread.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Dread" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.dread.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement +
-                           " Has Learned  " + DreadLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.dread.pickSkill) + " Skills");
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.dread.movement);
+                        GUILayout.Box("Has Learned " + DreadLoader.HowManySkills(unit.unitClass.main.imp.dread.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.imp.fusilier.unlocked)
@@ -463,13 +463,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement +
-                           " Has Learned  " + FusilierLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.fusilier.pickSkill) + " Skills");
+                           " Has Learned  " + FusilierLoader.HowManySkills(unit.unitClass.main.imp.fusilier.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Fusilier" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement +
-                           " Has Learned  " + FusilierLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.fusilier.pickSkill) + " Skills");
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.fusilier.movement);
+                        GUILayout.Box("Has Learned " + FusilierLoader.HowManySkills(unit.unitClass.main.imp.fusilier.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.imp.shadow.unlocked)
@@ -492,13 +492,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.level +
                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement +
-                           " Has Learned  " + ShadowLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.shadow.pickSkill) + " Skills");
+                           " Has Learned  " + ShadowLoader.HowManySkills(unit.unitClass.main.imp.shadow.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Shadow" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement +
-                           " Has Learned  " + ShadowLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.shadow.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shadow.movement);
+                        GUILayout.Box("Has Learned " + ShadowLoader.HowManySkills(unit.unitClass.main.imp.shadow.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.imp.shrike.unlocked)
@@ -521,13 +521,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement +
-                           " Has Learned  " + ShrikeLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.shrike.pickSkill) + " Skills");
+                           " Has Learned  " + ShrikeLoader.HowManySkills(unit.unitClass.main.imp.shrike.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Shrike" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.level +
-                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement +
-                           " Has Learned  " + ShrikeLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.shrike.pickSkill) + " Skills");
+                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.shrike.movement);
+                        GUILayout.Box("Has Learned " + ShrikeLoader.HowManySkills(unit.unitClass.main.imp.shrike.pickSkill) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.imp.swashbuckler.unlocked)
@@ -550,13 +550,13 @@ public class UnitManagerMenu : MonoBehaviour {
 
                             GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
                         " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement +
-                           " Has Learned  " + SwashbucklerLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pickSkill) + " Skills");
+                           " Has Learned  " + SwashbucklerLoader.HowManySkills(unit.unitClass.main.imp.swashbuckler.pickSkill) + " Skills");
                         }
                         else
                         {
                             GUILayout.Box("Currently Your a Swashbulkler" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.level +
-                            " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement +
-                           " Has Learned  " + SwashbucklerLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.pickSkill) + " Skills");
+                            " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.movement);
+                            GUILayout.Box("Has Learned " + SwashbucklerLoader.HowManySkills(unit.unitClass.main.imp.swashbuckler.pickSkill) + " Skills");
                         }
                     }            
                 }
@@ -580,13 +580,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement +
-                           " Has Learned  " + DuelistLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.duelist.pickSkill) + " Skills");
+                           " Has Learned  " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.duelist.pickSkill) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Duelist" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
-                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement +
-                           " Has Learned  " + DuelistLoader.HowManySkills(CurrentGame.game.memoryGeneral.impClassProgress.duelist.pickSkill) + " Skills");
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement);
+                        GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.duelist.pickSkill) + " Skills");
                     }
                 }
             }
@@ -607,7 +607,7 @@ public class UnitManagerMenu : MonoBehaviour {
                 stats.Clean();
                 currentMenu = Menu.UnitMenu;
             }
-            GUILayout.Label("", GUILayout.Width(Screen.width / 1.3f), GUILayout.Height(Screen.height * 1.5f));
+            GUILayout.Label("", GUILayout.Width(Screen.width /2f), GUILayout.Height(Screen.height * 1.5f));
             GUILayout.EndScrollView();
             GUILayout.FlexibleSpace();
             GUILayout.EndVertical();
