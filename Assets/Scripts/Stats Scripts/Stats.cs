@@ -134,7 +134,7 @@ public class Stats : MonoBehaviour
         allNatures.Add(new TheNatures("Ripper", 1, 3, 1, 1, 1, 1, 0)); //+str -will
         allNatures.Add(new TheNatures("Fighter", 1, 3, 1, 1, 1, 0, 1)); //+str -mag 
         allNatures.Add(new TheNatures("Wild", 1, 3, 1, 0, 1, 1, 1)); //+str -skill 
-        allNatures.Add(new TheNatures("", 1, 3, 1, 1, 0, 1, 1)); //+str -hp 
+        allNatures.Add(new TheNatures("Hulk", 1, 3, 1, 1, 0, 1, 1)); //+str -hp 
                                              //sp st de sk hp mag will
         allNatures.Add(new TheNatures("Handy", 1, 1, 1, 3, 0, 1, 1)); //+skl -hp 
         allNatures.Add(new TheNatures("Sure", 1, 1, 0, 3, 1, 1, 1)); //+skl -def 
