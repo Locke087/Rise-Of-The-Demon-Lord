@@ -26,7 +26,7 @@ public class DarkKnightLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.classWeapons.classWeapon2.type = "Axes";
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.caps = DarkKnight.Caplist();
         LevelUpClass();
     }
 

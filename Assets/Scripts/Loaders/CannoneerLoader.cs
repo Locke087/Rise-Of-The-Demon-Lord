@@ -17,8 +17,8 @@ public class CannoneerLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-       // Cannoneer.Clear();
-        //Cannoneer.level = 0;
+        Cannoneer.Clear();
+        Cannoneer.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.name = "Cannoneer";
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.movement = 5;
@@ -26,7 +26,7 @@ public class CannoneerLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon2.rank = 3;
-       // CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.caps = Cannoneer.Caplist();
+        CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.caps = Cannoneer.Caplist();
         LevelUpClass();
     }
 

@@ -26,7 +26,7 @@ public class NightBladeLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.impClassProgress.nightblade.caps = Nightblade.Caplist();
         LevelUpClass();
     }
 

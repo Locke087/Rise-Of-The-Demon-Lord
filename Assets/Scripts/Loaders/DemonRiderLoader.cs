@@ -26,7 +26,7 @@ public class DemonRiderLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.impClassProgress.demonRider.caps = DemonRider.Caplist();
         LevelUpClass();
     }
 

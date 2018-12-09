@@ -26,7 +26,7 @@ public class DuelistLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon2.rank = 3;
-      //  CurrentGame.game.memoryGeneral.impClassProgress.duelist.caps = Duelist.Caplist();
+        CurrentGame.game.memoryGeneral.impClassProgress.duelist.caps = Duelist.Caplist();
         LevelUpClass();
     }
 
