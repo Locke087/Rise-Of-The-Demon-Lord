@@ -252,14 +252,14 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement +
-                           " Has Learned  " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + 1) + " Skills");
+                           " Has Learned  " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill)) + " Skills");
                     }
                     else
                     {
                        
                         GUILayout.Box("Currently Your a Warrior" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement);
-                        GUILayout.Box("Has Learned " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.warrior.pickSkill) + 1) + " Skills");
+                        GUILayout.Box("Has Learned " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.warrior.pickSkill)) + " Skills");
                         if (unit.unitInfo.main.pickSkill.skill1.name != "")
                         {
                             UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill1;
@@ -360,7 +360,7 @@ public class UnitManagerMenu : MonoBehaviour {
                     {
                         GUILayout.Box("Currently Your a Rogue" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement);
-                        GUILayout.Box("Has Learned " + (RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + 1) + " Skills");
+                        GUILayout.Box("Has Learned " + (RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill)) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.mage.unlocked)
@@ -383,14 +383,14 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement +
-                           " Has Learned  " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + 1) + " Skills");
+                           " Has Learned  " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill)) + " Skills");
                     }
                     else
                     {
                      
                         GUILayout.Box("Currently Your a Mage" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement);
-                        GUILayout.Box("Has Learned " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + 1) + " Skills");
+                        GUILayout.Box("Has Learned " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill)) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.archer.unlocked)

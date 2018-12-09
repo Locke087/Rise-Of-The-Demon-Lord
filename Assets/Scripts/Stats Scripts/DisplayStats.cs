@@ -783,9 +783,9 @@ public class DisplayStats : MonoBehaviour {
         allClassesMods = new List<TheClassesMod>();
         allClassesMaster = new List<TheClassesMaster>();
 
-        StatRange(me.unitInfo.bases);
+       // StatRange(me.unitInfo.bases);
 
-        allClassesBase.Add(new TheClassesBase(calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
+        allClassesBase.Add(new TheClassesBase(me.unitInfo.bases[0], me.unitInfo.bases[1], me.unitInfo.bases[2], me.unitInfo.bases[3], me.unitInfo.bases[4], me.unitInfo.bases[5], 15, me.unitInfo.main.movement));
         //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
         allClassesCaps.Add(new TheClassesCap(me.unitInfo.main.caps));
         allClassesMods.Add(new TheClassesMod(me.unitInfo.main.modifiers));
