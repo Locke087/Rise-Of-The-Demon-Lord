@@ -63,19 +63,19 @@ public class UnitSkillEffects
 
     public UnitSkillEffects()
     {
-        fourth = false;//decrease health by 1/4
-        reduceAttack = false;//lower attack
-        absorbDamage = false;//take half damage for target, they take other half
+        fourth = false;//decrease targets health by 1/4
+        reduceAttack = false;//lower targets attack 3 turns
+        absorbDamage = false;//take half the damage the target would take, they take other half
         reflectDamage = false;//Target takes half of the damage you take for 1 turn
         reduceDefense = false;//defense -1
         kill = false;//minor chance to auto kill 
-        increaseAccuracy = false;//
+        increaseAccuracy = false;//skill +1
         increaseDebuffs = false;//increase chance to cause debuffs
         randomDebuff = false;//cause random debuff
-        invisible = false;
+        invisible = false;//become invisible 3 turns or until you attack
         critIncrease = false;//increase crit chance 3 turns
         shaken = false;//damage reduced 50% 3 turns
-        randomDamage = false;
+        randomDamage = false;//deal random damage to foe
         root = false;//cannot move 3 turns
         confuse = false;//50% chance to hit self 3 turns
         stun = false;//target cannot attack next turn
@@ -83,21 +83,22 @@ public class UnitSkillEffects
         statusHeal = false;//heal debuffs
         counter = false;//counter type skill
         mpRestore = false;//restore mp
-        nullDamage = false;//nullify damage
+        nullDamage = false;//nullify damage from next source
         selfDamage = false;//damage self
         hitReduction = false;//reduce my accuracy 
+        hitrateReduce = false;//reduce their accuracy
         knockBack = false;//knock target back one tile
         attackBoost = false;//boost physical damage
         defenseBoost = false;//boost physical defense
         magicBoost = false;//boost magic damage
         speedBoost = false;//boost speed
-        skillUseRestore = false;//Mp restore part 2?
         willBoost = false;//boost magic defense
-        damageReduction = false;//reduce damage taken
+        skillUseRestore = false;//Mp restore part 2?
+        damageReduction = false;//reduce all damage taken
         extraHit = false;//hit another time
         extraTurn = false;//get extra turn
-        poison = false;//take 1/16 hp total each turn
-        sleep = false;//unit takes no actions 3 turns
+        poison = false;//take 1/16 max hp in damage each turn
+        sleep = false;//unit takes no actions for 3 turns or until hit
         berserk = false;//nope?
         vampire = false;//become undead and uncontrolled
         holyDamage = false;//deal holy damage
@@ -110,7 +111,6 @@ public class UnitSkillEffects
         trueDamage = false;//deal damage that ignores defense/magic defense
         healing = false;//heal
         revive = false;//revive
-        hitrateReduce = false;//reduce their accuracy
         dodge = false;//chance to dodge attacks and take no damage
         stealItem = false;//steal things
         stealMoney = false;//steal money
