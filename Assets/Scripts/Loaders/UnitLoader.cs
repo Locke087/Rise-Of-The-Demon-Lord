@@ -360,7 +360,6 @@ public class UnitLoader : MonoBehaviour {
     
     }
 
-
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();
@@ -379,12 +378,12 @@ public class UnitLoader : MonoBehaviour {
 
             me.unitID = "Goblin" + IDMaker.NewID();
             me.unitClass.main.mainClass = "Warrior";
-            me.unitClass.main.race = "Imp";
-            me.unitClass.main.human.warrior.level = armylevel;
-            me.unitClass.main.human.warrior.movement = 5;
-            me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
-            me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-            me.unitInfo.main = me.unitClass.main.human.warrior;
+            me.unitClass.main.race = "Goblin";
+            me.unitClass.main.monster.goblinCharger.level = armylevel;
+            me.unitClass.main.monster.goblinCharger.movement = 5;
+            me.unitClass.main.monster.goblinCharger.modifiers = Warrior.ModList();
+            me.unitClass.main.monster.goblinCharger.caps = Warrior.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.goblinCharger;
 
             // str, def, spd, skill, magic, will
             int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
