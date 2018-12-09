@@ -24,6 +24,7 @@ public class ChargerLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.charger.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.charger.classWeapons.classWeapon2.type = "Spears";
         CurrentGame.game.memoryGeneral.humanClassProgress.charger.classWeapons.classWeapon2.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.charger.caps = Charger.Caplist();
 
         LevelUpClass();
     }

@@ -25,6 +25,7 @@ public class SniperLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.sniper.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.sniper.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.humanClassProgress.sniper.classWeapons.classWeapon2.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.sniper.caps = Sniper.Caplist();
 
         LevelUpClass();
     }

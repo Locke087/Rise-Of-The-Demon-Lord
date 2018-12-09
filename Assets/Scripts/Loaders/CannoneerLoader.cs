@@ -17,8 +17,8 @@ public class CannoneerLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-        Cannoneer.Clear();
-        Cannoneer.level = 0;
+       // Cannoneer.Clear();
+        //Cannoneer.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.name = "Cannoneer";
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.movement = 5;
@@ -26,16 +26,16 @@ public class CannoneerLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons.classWeapon2.rank = 3;
-
+       // CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.caps = Cannoneer.Caplist();
         LevelUpClass();
     }
 
 
     public static void LevelUpClass()
     {
-        Cannoneer.LevelUp();
+       // Cannoneer.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level + 1;
-        CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.modifiers = Cannoneer.ModList();
+       // CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.modifiers = Cannoneer.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.subbed)
         {
@@ -127,7 +127,7 @@ public class CannoneerLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail lightItUp = new UnitSkillDetail();
         lightItUp.name = "Light it Up!";

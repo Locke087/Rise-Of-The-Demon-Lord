@@ -27,6 +27,7 @@ public class ShrikeLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon2.type = "Spears";
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.impClassProgress.shrike.caps = Shrike.Caplist();
 
         LevelUpClass();
     }

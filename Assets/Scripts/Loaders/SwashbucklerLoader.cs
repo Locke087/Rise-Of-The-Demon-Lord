@@ -28,6 +28,7 @@ public class SwashbucklerLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon2.type = "Ranged";
         CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.caps = Swashbuckler.Caplist();
 
         LevelUpClass();
     }

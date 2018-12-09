@@ -28,7 +28,7 @@ public class ArcherLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon1.rank = 2;
         CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon2.type = "Ranged";
         CurrentGame.game.memoryGeneral.humanClassProgress.archer.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.humanClassProgress.archer.caps = Archer.Caplist();
         LevelUpClass();
     }
 

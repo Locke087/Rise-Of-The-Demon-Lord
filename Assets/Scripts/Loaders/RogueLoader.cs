@@ -28,6 +28,7 @@ public class RogueLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon2.type = "Light Blades";
         CurrentGame.game.memoryGeneral.humanClassProgress.rogue.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.rogue.caps = Rogue.Caplist();
 
         LevelUpClass();
     }

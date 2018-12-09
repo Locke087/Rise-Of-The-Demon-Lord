@@ -25,6 +25,7 @@ public class WarriorLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.type = "Axe";
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps = Warrior.Caplist();
 
         LevelUpClass();
     }

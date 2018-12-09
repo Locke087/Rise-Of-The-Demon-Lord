@@ -28,6 +28,7 @@ public class PriestLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.type = "Staves";
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.priest.caps = Priest.Caplist();
 
         LevelUpClass();
     }

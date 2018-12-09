@@ -27,6 +27,7 @@ public class CavalierLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon2.type = "Axes";
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.caps = Cavalier.Caplist();
 
         LevelUpClass();
     }

@@ -25,7 +25,7 @@ public class BardLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.type = "Athames";
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.humanClassProgress.bard.caps = Bard.Caplist();
         LevelUpClass();
     }
 

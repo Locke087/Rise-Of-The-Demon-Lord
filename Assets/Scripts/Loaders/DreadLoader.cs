@@ -28,6 +28,7 @@ public class DreadLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.dread.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.dread.classWeapons.classWeapon2.type = "Axes";
         CurrentGame.game.memoryGeneral.impClassProgress.dread.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.impClassProgress.dread.caps = Dread.Caplist();
 
         LevelUpClass();
     }

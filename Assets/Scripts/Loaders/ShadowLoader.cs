@@ -27,6 +27,7 @@ public class ShadowLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon2.type = "Light Blades";
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.impClassProgress.shadow.caps = Shadow.Caplist();
 
         LevelUpClass();
     }

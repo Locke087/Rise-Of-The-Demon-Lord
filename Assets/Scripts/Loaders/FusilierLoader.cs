@@ -28,6 +28,7 @@ public class FusilierLoader : MonoBehaviour
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon1.type = "Axe";
         CurrentGame.game.memoryGeneral.impClassProgress.fusilier.classWeapons.classWeapon2.rank = 2;
+        CurrentGame.game.memoryGeneral.impClassProgress.fusilier.caps = Fusilier.Caplist();
 
         LevelUpClass();
     }

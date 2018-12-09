@@ -25,6 +25,7 @@ public class KnightLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.knight.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.knight.classWeapons.classWeapon2.type = "Axe";
         CurrentGame.game.memoryGeneral.humanClassProgress.knight.classWeapons.classWeapon2.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.knight.caps = Knight.Caplist();
 
         LevelUpClass();
     }

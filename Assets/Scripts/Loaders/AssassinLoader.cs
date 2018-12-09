@@ -24,7 +24,7 @@ public class AssassinLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.assassin.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.assassin.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.humanClassProgress.assassin.classWeapons.classWeapon2.rank = 3;
-
+        CurrentGame.game.memoryGeneral.humanClassProgress.assassin.caps = Assassin.Caplist();
         LevelUpClass();
     }
 

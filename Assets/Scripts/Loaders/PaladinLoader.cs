@@ -24,6 +24,7 @@ public class PaladinLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.paladin.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.paladin.classWeapons.classWeapon2.type = "Staves";
         CurrentGame.game.memoryGeneral.humanClassProgress.paladin.classWeapons.classWeapon2.rank = 3;
+        CurrentGame.game.memoryGeneral.humanClassProgress.paladin.caps = Paladin.Caplist();
 
         LevelUpClass();
     }

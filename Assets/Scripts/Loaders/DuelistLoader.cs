@@ -17,8 +17,8 @@ public class DuelistLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-        Duelist.Clear();
-        Duelist.level = 0;
+       // Duelist.Clear();
+      //  Duelist.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.name = "Duelist";
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement = 5;
@@ -26,16 +26,16 @@ public class DuelistLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon1.rank = 3;
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon2.type = "Close";
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.classWeapons.classWeapon2.rank = 3;
-
+      //  CurrentGame.game.memoryGeneral.impClassProgress.duelist.caps = Duelist.Caplist();
         LevelUpClass();
     }
 
 
     public static void LevelUpClass()
     {
-        Duelist.LevelUp();
+      //  Duelist.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.level = CurrentGame.game.memoryGeneral.impClassProgress.duelist.level + 1;
-        CurrentGame.game.memoryGeneral.impClassProgress.duelist.modifiers = Duelist.ModList();
+      //  CurrentGame.game.memoryGeneral.impClassProgress.duelist.modifiers = Duelist.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed)
         {
@@ -127,7 +127,7 @@ public class DuelistLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail firstBlood = new UnitSkillDetail();
         firstBlood.name = "First Blood";
