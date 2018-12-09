@@ -360,6 +360,55 @@ public class UnitLoader : MonoBehaviour {
     
     }
 
+
+    public List<Unit> LoadEnemies(int rating)
+    {
+        List<Unit> enemiesInMap = new List<Unit>();
+        int armysize = 0;
+        int armylevel = 0;
+        int amin = 3;
+        int amax = 10;
+        if (rating == 1)
+        {
+            armysize = 2;
+            armylevel = 1;
+        }
+        for (int i = 0; i < armysize; i++)
+        {
+            Unit me = new Unit();
+
+            me.unitID = "Goblin" + IDMaker.NewID();
+            me.unitClass.main.mainClass = "Warrior";
+            me.unitClass.main.race = "Imp";
+            me.unitClass.main.human.warrior.level = armylevel;
+            me.unitClass.main.human.warrior.movement = 5;
+            me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
+            me.unitClass.main.human.warrior.caps = Warrior.Caplist();
+            me.unitInfo.main = me.unitClass.main.human.warrior;
+
+            // str, def, spd, skill, magic, will
+            int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+            me.unitInfo.bases.AddRange(bases);
+            me.unitInfo.nature = ARandomNature.RandomNature();
+            me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+            me.inventory.invSlot1.weapon.inSlot = true;
+            me.inventory.invSlot1.weapon.equipped = true;
+
+            enemiesInMap.Add(me);
+            CurrentGame.game.storeroom.units.Add(me);
+            Warrior.Clear();
+        }
+
+
+        return enemiesInMap;
+    }
+
+    public static int RB(int min, int max, int alt)
+    {
+        return Random.Range(min + alt, max + alt);
+    }
+
+
     public void NewSWLevel()
     {
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Clear();
@@ -558,50 +607,5 @@ public class UnitLoader : MonoBehaviour {
     
     
          
-    public List<Unit> LoadEnemies(int rating)
-    {
-        List<Unit> enemiesInMap = new List<Unit>();
-        int armysize = 0;
-        int armylevel = 0;
-        int amin = 3;
-        int amax = 10;
-        if(rating == 1)
-        {
-            armysize = 2;
-            armylevel = 1;
-        }
-        for (int i = 0; i < armysize; i++)
-        {
-            Unit me = new Unit();
-
-            me.unitID = "Goblin" + IDMaker.NewID();
-            me.unitClass.main.mainClass = "Warrior";
-            me.unitClass.main.race = "Imp";
-            me.unitClass.main.human.warrior.level = armylevel;
-            me.unitClass.main.human.warrior.movement = 5;
-            me.unitClass.main.human.warrior.modifiers = Warrior.ModList();
-            me.unitClass.main.human.warrior.caps = Warrior.Caplist();
-            me.unitInfo.main = me.unitClass.main.human.warrior;
-
-            // str, def, spd, skill, magic, will
-            int[] bases = {RB(amin,amax,2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1)};
-            me.unitInfo.bases.AddRange(bases);
-            me.unitInfo.nature = ARandomNature.RandomNature();
-            me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
-            me.inventory.invSlot1.weapon.inSlot = true;
-            me.inventory.invSlot1.weapon.equipped = true;
-
-            enemiesInMap.Add(me);
-            CurrentGame.game.storeroom.units.Add(me);
-            Warrior.Clear();
-        }
    
-
-        return enemiesInMap;
-    }
-
-    public static int RB(int min, int max, int alt)
-    {
-        return Random.Range(min + alt, max + alt);
-    }
 }
