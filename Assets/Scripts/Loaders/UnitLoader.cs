@@ -379,24 +379,25 @@ public class UnitLoader : MonoBehaviour {
         return enemiesInMap;
     }
 
-    IEnumerator DelayedGoblin(int level, List<Unit> enemiesInMap)
+    void DelayedGoblin(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
         for (int i = 0; i < level; i++)
         {
-            Goblin.LevelUp();
+            Goblin.LevelUp();      
+            me.unitClass.main.monster.goblinCharger.modifiers = Goblin.ModList();
+            me.unitClass.main.monster.goblinCharger.caps = Goblin.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.goblinCharger;
         }
-        yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Goblin" + IDMaker.NewID();
         me.unitClass.main.mainClass = "Warrior";
         me.unitClass.main.race = "Goblin";
         me.unitClass.main.monster.goblinCharger.level = level;
         me.unitClass.main.monster.goblinCharger.movement = 5;
-        me.unitClass.main.monster.goblinCharger.modifiers = Goblin.ModList();
-        me.unitClass.main.monster.goblinCharger.caps = Goblin.Caplist();
-        me.unitInfo.main = me.unitClass.main.monster.goblinCharger;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Goblin" + IDMaker.NewID();
+      
         // str, def, spd, skill, magic, will
         int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
         me.unitInfo.bases.AddRange(bases);
