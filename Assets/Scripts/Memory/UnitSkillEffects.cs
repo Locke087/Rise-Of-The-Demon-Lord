@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class UnitSkillEffects
 {
+    public bool fourth;
+    public bool reflectDamage;
     public bool absorbDamage;
     public bool reduceDefense;
     public bool reduceAttack;
@@ -30,6 +32,7 @@ public class UnitSkillEffects
     public bool healing;
     public bool extraTurn;
     public bool revive;
+    public bool speedBoost;
     public bool magicBoost;
     public bool willBoost;
     public bool skillUseRestore;
@@ -60,56 +63,59 @@ public class UnitSkillEffects
 
     public UnitSkillEffects()
     {
-        reduceAttack = false;
-        magicBoost = false;
-        absorbDamage = false;
-        reduceDefense = false;
-        kill = false;
-        increaseAccuracy = false;
-        increaseDebuffs = false;
-        randomDebuff = false;
+        fourth = false;//decrease health by 1/4
+        reduceAttack = false;//lower attack
+        absorbDamage = false;//take half damage for target, they take other half
+        reflectDamage = false;//Target takes half of the damage you take for 1 turn
+        reduceDefense = false;//defense -1
+        kill = false;//minor chance to auto kill 
+        increaseAccuracy = false;//
+        increaseDebuffs = false;//increase chance to cause debuffs
+        randomDebuff = false;//cause random debuff
         invisible = false;
-        critIncrease = false;
-        shaken = false;
+        critIncrease = false;//increase crit chance 3 turns
+        shaken = false;//damage reduced 50% 3 turns
         randomDamage = false;
-        root = false;
-        confuse = false;
-        stun = false;
-        swapPosition = false;
-        statusHeal = false;
-        counter = false;
-        mpRestore = false;
-        nullDamage = false;
-        selfDamage = false;
-        hitReduction = false;
-        knockBack = false;
-        attackBoost = false;
-        defenseBoost = false;
-        skillUseRestore = false;
-        willBoost = false;
-        damageReduction = false;
-        extraHit = false;
-        extraTurn = false;
-        poison = false;
-        sleep = false;
-        berserk = false;
-        vampire = false;
-        holyDamage = false;
-        darkDamage = false;
-        fireDamage = false;
-        waterDamage = false;
-        earthDamage = false;
-        natureDamage = false;
-        metalDamage = false;
-        trueDamage = false;
-        healing = false;
-        revive = false;
-        hitrateReduce = false;
-        dodge = false;
-        stealItem = false;
-        stealMoney = false;
-        overRun = false;
-        movementDown = false;
-        movementIncrease = false;
+        root = false;//cannot move 3 turns
+        confuse = false;//50% chance to hit self 3 turns
+        stun = false;//target cannot attack next turn
+        swapPosition = false;//swap positions with target
+        statusHeal = false;//heal debuffs
+        counter = false;//counter type skill
+        mpRestore = false;//restore mp
+        nullDamage = false;//nullify damage
+        selfDamage = false;//damage self
+        hitReduction = false;//reduce my accuracy 
+        knockBack = false;//knock target back one tile
+        attackBoost = false;//boost physical damage
+        defenseBoost = false;//boost physical defense
+        magicBoost = false;//boost magic damage
+        speedBoost = false;//boost speed
+        skillUseRestore = false;//Mp restore part 2?
+        willBoost = false;//boost magic defense
+        damageReduction = false;//reduce damage taken
+        extraHit = false;//hit another time
+        extraTurn = false;//get extra turn
+        poison = false;//take 1/16 hp total each turn
+        sleep = false;//unit takes no actions 3 turns
+        berserk = false;//nope?
+        vampire = false;//become undead and uncontrolled
+        holyDamage = false;//deal holy damage
+        darkDamage = false;//deal dark damage
+        fireDamage = false;//deal fire damage
+        waterDamage = false;//deal water damage
+        earthDamage = false;//deal earth damage
+        natureDamage = false;//deal nature damage
+        metalDamage = false;//deal metal damage
+        trueDamage = false;//deal damage that ignores defense/magic defense
+        healing = false;//heal
+        revive = false;//revive
+        hitrateReduce = false;//reduce their accuracy
+        dodge = false;//chance to dodge attacks and take no damage
+        stealItem = false;//steal things
+        stealMoney = false;//steal money
+        overRun = false;//run over foe and deal damage
+        movementDown = false;//decrease movement 3 turns
+        movementIncrease = false;//increase movement 3 turns
     }
 }
