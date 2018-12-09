@@ -136,6 +136,7 @@ public class RogueLoader : MonoBehaviour
         mug.name = "Mug";
         mug.physicalDamage = true;
         mug.range = 1;
+        mug.effects.stealMoney = true;
 
         UnitSkillDetail knifeThrow = new UnitSkillDetail();
         knifeThrow.name = "Knife Throw";
@@ -143,15 +144,17 @@ public class RogueLoader : MonoBehaviour
         knifeThrow.range = 3;
         
 
-        UnitSkillDetail steal = new UnitSkillDetail();
-        steal.name = "Steal";
-        steal.range = 1;
-        steal.support = true;
+        UnitSkillDetail disarm = new UnitSkillDetail();
+        disarm.name = "Disarm";
+        disarm.range = 1;
+        disarm.physicalDamage = true;
+        disarm.effects.reduceAttack = true;
 
         UnitSkillDetail hamstring = new UnitSkillDetail();
         hamstring.physicalDamage = true;
         hamstring.range = 1;
         hamstring.name = "Hamstring";
+        hamstring.effects.movementDown = true;
 
         UnitSkillDetail gouge = new UnitSkillDetail();
         gouge.name = "Gouge";
@@ -163,11 +166,13 @@ public class RogueLoader : MonoBehaviour
         UnitSkillDetail vanish = new UnitSkillDetail();
         vanish.name = "Vanish";
         vanish.attackPattern = "Self";
-        vanish.support = true;
+        vanish.range = 1;
+        vanish.effects.invisible = true;
 
         UnitSkillDetail sanguinarian = new UnitSkillDetail();
         sanguinarian.name = "Sanguinarian";
-        sanguinarian.support = true;
+        sanguinarian.range = 1;
+        sanguinarian.effects.poison = true;
         sanguinarian.effects.counter = true;
 
         if (sk == mug.name)
@@ -178,9 +183,9 @@ public class RogueLoader : MonoBehaviour
         {
             u.skill2 = knifeThrow;
         }
-        else if (sk == steal.name)
+        else if (sk == disarm.name)
         {
-            u.skill3 = steal;
+            u.skill3 = disarm;
         }
         else if (sk == hamstring.name)
         {

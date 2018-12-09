@@ -19,9 +19,9 @@ public class SwordLoader : MonoBehaviour
     {
         //--------------------------------AXES-----------------------------------
         UnitWeaponDetails battleAxe = new UnitWeaponDetails();
-        battleAxe.might = 14;
-        battleAxe.weight = 10;
-        battleAxe.hitrate = 55;
+        battleAxe.might = 10;
+        battleAxe.weight = 7;
+        battleAxe.hitrate = 65;
         battleAxe.critrate = 3;
         battleAxe.critchance = 1;
         battleAxe.name = "Battle Axe";
@@ -33,9 +33,9 @@ public class SwordLoader : MonoBehaviour
         if (sw == battleAxe.name) u.details = battleAxe;
 
         UnitWeaponDetails waraxe = new UnitWeaponDetails();
-        waraxe.might = 14;
+        waraxe.might = 13;
         waraxe.weight = 10;
-        waraxe.hitrate = 55;
+        waraxe.hitrate = 60;
         waraxe.critrate = 3;
         waraxe.critchance = 1;
         waraxe.name = "War Axe";
@@ -47,8 +47,8 @@ public class SwordLoader : MonoBehaviour
         if (sw == waraxe.name) u.details = waraxe;
 
         UnitWeaponDetails greatAxe = new UnitWeaponDetails();
-        greatAxe.might = 14;
-        greatAxe.weight = 10;
+        greatAxe.might = 15;
+        greatAxe.weight = 12;
         greatAxe.hitrate = 55;
         greatAxe.critrate = 3;
         greatAxe.critchance = 1;
@@ -61,8 +61,8 @@ public class SwordLoader : MonoBehaviour
         if (sw == greatAxe.name) u.details = greatAxe;
 
         UnitWeaponDetails demonAxe = new UnitWeaponDetails();
-        demonAxe.might = 14;
-        demonAxe.weight = 10;
+        demonAxe.might = 17;
+        demonAxe.weight = 14;
         demonAxe.hitrate = 55;
         demonAxe.critrate = 3;
         demonAxe.critchance = 1;
@@ -76,8 +76,8 @@ public class SwordLoader : MonoBehaviour
 
         UnitWeaponDetails warhammer = new UnitWeaponDetails();
         warhammer.might = 14;
-        warhammer.weight = 10;
-        warhammer.hitrate = 55;
+        warhammer.weight = 12;
+        warhammer.hitrate = 65;
         warhammer.critrate = 3;
         warhammer.critchance = 1;
         warhammer.name = "Warhammer";
@@ -89,9 +89,9 @@ public class SwordLoader : MonoBehaviour
         if (sw == warhammer.name) u.details = warhammer;
 
         UnitWeaponDetails mattock = new UnitWeaponDetails();
-        mattock.might = 14;
-        mattock.weight = 10;
-        mattock.hitrate = 55;
+        mattock.might = 16;
+        mattock.weight = 13;
+        mattock.hitrate = 60;
         mattock.critrate = 3;
         mattock.critchance = 1;
         mattock.name = "Mattock";
@@ -103,9 +103,9 @@ public class SwordLoader : MonoBehaviour
         if (sw == mattock.name) u.details = mattock;
 
         UnitWeaponDetails earthBreaker = new UnitWeaponDetails();
-        earthBreaker.might = 14;
-        earthBreaker.weight = 10;
-        earthBreaker.hitrate = 55;
+        earthBreaker.might = 18;
+        earthBreaker.weight = 14;
+        earthBreaker.hitrate = 60;
         earthBreaker.critrate = 3;
         earthBreaker.critchance = 1;
         earthBreaker.name = "Earth Breaker";
@@ -117,15 +117,16 @@ public class SwordLoader : MonoBehaviour
         if (sw == earthBreaker.name) u.details = earthBreaker;
 
         UnitWeaponDetails titansMaul = new UnitWeaponDetails();
-        titansMaul.might = 14;
-        titansMaul.weight = 10;
-        titansMaul.hitrate = 55;
+        titansMaul.might = 20;
+        titansMaul.weight = 16;
+        titansMaul.hitrate = 60;
         titansMaul.critrate = 3;
         titansMaul.critchance = 1;
         titansMaul.name = "Titans Maul";
         titansMaul.unlocks = "Smite";
         titansMaul.rank = 3;
         titansMaul.range = 1;
+        titansMaul.magic = true;
         titansMaul.effects.metalDamage = true;
         titansMaul.type = "Axes";
         if (sw == titansMaul.name) u.details = titansMaul;
