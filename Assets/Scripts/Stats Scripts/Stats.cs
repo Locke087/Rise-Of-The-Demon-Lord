@@ -1143,29 +1143,18 @@ public class Stats : MonoBehaviour
       
        
         allClassesBase = new List<TheClassesBase>();
-        //allClassesInc = new List<TheClassesInc>();
+    
         allClassesMods = new List<TheClassesMod>();
         allClassesMaster = new List<TheClassesMaster>();
 
-        StatRange(me.unitInfo.bases);
+      //  StatRange(me.unitInfo.bases);
       
-        allClassesBase.Add(new TheClassesBase(calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, me.unitInfo.main.movement));
-        //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
+        allClassesBase.Add(new TheClassesBase(me.unitInfo.bases[0], me.unitInfo.bases[1], me.unitInfo.bases[2], me.unitInfo.bases[3], me.unitInfo.bases[4], me.unitInfo.bases[5], 15, me.unitInfo.main.movement));
+   
         allClassesCaps.Add(new TheClassesCap(me.unitInfo.main.caps));
         allClassesMods.Add(new TheClassesMod(me.unitInfo.main.modifiers));
 
-        /*allClassesBase.Add(new TheClassesBase("Cavalier", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
-          //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
-          allClassesMods.Add(new TheClassesMod("Cavalier", Cavalier.ModList()));
-          StatRange(7, 5, 3, 5, 2, 1);
-          allClassesBase.Add(new TheClassesBase("WarriorE", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 5));
-          //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
-          allClassesMods.Add(new TheClassesMod("WarriorE", WarriorE.ModList()));
-          StatRange(6, 6, 5, 4, 1, 2);
-          allClassesBase.Add(new TheClassesBase("CavalierE", calcStr, calcDef, calcSpd, calcSkill, calcMagic, calcWill, 15, 7));
-          //allClassesInc.Add(new TheClassesInc("Cavalier", Cavalier.IncList()));
-          allClassesMods.Add(new TheClassesMod("CavalierE", CavalierE.ModList()));*/
-
+  
         allClassesMaster.Add(new TheClassesMaster(allClassesBase[0], allClassesMods[0], allClassesCaps[0]));
 
         FindStats();
