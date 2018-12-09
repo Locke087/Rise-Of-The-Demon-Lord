@@ -9,6 +9,12 @@ public class UnitWeaponEffects {
     public bool vampire;
     public bool poison;
     public bool fireDamage;
+    public bool darkDamage;
+    public bool waterDamage;
+    public bool natureDamage;
+    public bool earthDamage;
+    public bool metalDamage;
+
     public bool devil;
 
     public UnitWeaponEffects()
@@ -16,7 +22,13 @@ public class UnitWeaponEffects {
         sleep = false;
         poison = false;
         fireDamage = false;
+        waterDamage = false;
+        natureDamage = false;
+        darkDamage = false;
+        earthDamage = false;
+        metalDamage = false;
         devil = false;
         vampire = false;
+        
     }
 }

@@ -17,6 +17,63 @@ public class SwordLoader : MonoBehaviour
 
     public static void AssignSword(string sw, UnitWeapon u)
     {
+        //--------------------------------AXES-----------------------------------
+        UnitWeaponDetails battleAxe = new UnitWeaponDetails();
+        battleAxe.might = 14;
+        battleAxe.weight = 10;
+        battleAxe.hitrate = 55;
+        battleAxe.critrate = 3;
+        battleAxe.critchance = 1;
+        battleAxe.name = "Battle Axe";
+        battleAxe.unlocks = "Smite";
+        battleAxe.rank = 2;
+        battleAxe.range = 1;
+        battleAxe.physical = true;
+        battleAxe.type = "Axes";
+        if (sw == battleAxe.name) u.details = battleAxe;
+
+        UnitWeaponDetails waraxe = new UnitWeaponDetails();
+        waraxe.might = 14;
+        waraxe.weight = 10;
+        waraxe.hitrate = 55;
+        waraxe.critrate = 3;
+        waraxe.critchance = 1;
+        waraxe.name = "War Axe";
+        waraxe.unlocks = "Smite";
+        waraxe.rank = 2;
+        waraxe.range = 1;
+        waraxe.physical = true;
+        waraxe.type = "Axes";
+        if (sw == waraxe.name) u.details = waraxe;
+
+        UnitWeaponDetails greatAxe = new UnitWeaponDetails();
+        greatAxe.might = 14;
+        greatAxe.weight = 10;
+        greatAxe.hitrate = 55;
+        greatAxe.critrate = 3;
+        greatAxe.critchance = 1;
+        greatAxe.name = "Great Axe";
+        greatAxe.unlocks = "Smite";
+        greatAxe.rank = 3;
+        greatAxe.range = 1;
+        greatAxe.physical = true;
+        greatAxe.type = "Axes";
+        if (sw == greatAxe.name) u.details = greatAxe;
+
+        UnitWeaponDetails demonAxe = new UnitWeaponDetails();
+        demonAxe.might = 14;
+        demonAxe.weight = 10;
+        demonAxe.hitrate = 55;
+        demonAxe.critrate = 3;
+        demonAxe.critchance = 1;
+        demonAxe.name = "Demon Axe";
+        demonAxe.unlocks = "Smite";
+        demonAxe.rank = 3;
+        demonAxe.range = 1;
+        demonAxe.effects.darkDamage = true;
+        demonAxe.type = "Axes";
+        if (sw == demonAxe.name) u.details = demonAxe;
+
         UnitWeaponDetails warhammer = new UnitWeaponDetails();
         warhammer.might = 14;
         warhammer.weight = 10;
@@ -31,6 +88,49 @@ public class SwordLoader : MonoBehaviour
         warhammer.type = "Axes";
         if (sw == warhammer.name) u.details = warhammer;
 
+        UnitWeaponDetails mattock = new UnitWeaponDetails();
+        mattock.might = 14;
+        mattock.weight = 10;
+        mattock.hitrate = 55;
+        mattock.critrate = 3;
+        mattock.critchance = 1;
+        mattock.name = "Mattock";
+        mattock.unlocks = "Smite";
+        mattock.rank = 2;
+        mattock.range = 1;
+        mattock.physical = true;
+        mattock.type = "Axes";
+        if (sw == mattock.name) u.details = mattock;
+
+        UnitWeaponDetails earthBreaker = new UnitWeaponDetails();
+        earthBreaker.might = 14;
+        earthBreaker.weight = 10;
+        earthBreaker.hitrate = 55;
+        earthBreaker.critrate = 3;
+        earthBreaker.critchance = 1;
+        earthBreaker.name = "Earth Breaker";
+        earthBreaker.unlocks = "Smite";
+        earthBreaker.rank = 3;
+        earthBreaker.range = 1;
+        earthBreaker.effects.earthDamage = true;
+        earthBreaker.type = "Axes";
+        if (sw == earthBreaker.name) u.details = earthBreaker;
+
+        UnitWeaponDetails titansMaul = new UnitWeaponDetails();
+        titansMaul.might = 14;
+        titansMaul.weight = 10;
+        titansMaul.hitrate = 55;
+        titansMaul.critrate = 3;
+        titansMaul.critchance = 1;
+        titansMaul.name = "Titans Maul";
+        titansMaul.unlocks = "Smite";
+        titansMaul.rank = 3;
+        titansMaul.range = 1;
+        titansMaul.effects.metalDamage = true;
+        titansMaul.type = "Axes";
+        if (sw == titansMaul.name) u.details = titansMaul;
+
+        //--------------------------------------------RANGED--------------------------------
         UnitWeaponDetails rifle = new UnitWeaponDetails();
         rifle.might = 10;
         rifle.weight = 10;
@@ -45,6 +145,8 @@ public class SwordLoader : MonoBehaviour
         rifle.physical = true;
         if (sw == rifle.name) u.details = rifle;
 
+
+        //Heavy Blades
         UnitWeaponDetails vemonBlade = new UnitWeaponDetails();
         vemonBlade.might = 12;
         vemonBlade.weight = 8;
@@ -73,6 +175,248 @@ public class SwordLoader : MonoBehaviour
         lightingSword.type = "HeavyBlade";
         lightingSword.magic = true;
         if (sw == lightingSword.name) u.details = lightingSword;
+
+        UnitWeaponDetails bastardSword = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails falchion = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails greatSword = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails executionersSword = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails endEdge = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails runeBlade = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "HeavyBlade";
+        vemonBlade.magic = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+
+
+        //--------------------------------------------Light Blades--------------------------------------------
+
+        UnitWeaponDetails estoc = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails sabre = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails swordCane = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails scimitar = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails spiralBalde = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails razorWhip = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails katana = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+        UnitWeaponDetails piercer = new UnitWeaponDetails();
+        vemonBlade.might = 12;
+        vemonBlade.weight = 8;
+        vemonBlade.hitrate = 65;
+        vemonBlade.critrate = 3;
+        vemonBlade.critchance = 1;
+        vemonBlade.effects.poison = true;
+        vemonBlade.name = "Vemon Blade";
+        vemonBlade.unlocks = "Blitz";
+        vemonBlade.rank = 2;
+        vemonBlade.range = 1;
+        vemonBlade.type = "LightBlade";
+        vemonBlade.physical = true;
+        if (sw == vemonBlade.name) u.details = vemonBlade;
+
+
+        //--------------------------------------------Spears--------------------------------------------
+
+
+
+
+        //--------------------------------------------Close--------------------------------------------
+
+
+
+
+
+
+
+        //--------------------------------------------Staves--------------------------------------------
+
+
+
+
+        //--------------------------------------------Tomes--------------------------------------------
+
+
+
+
+
+        //--------------------------------------------Athames--------------------------------------------
+
 
     }
     public static List<UnitWeapon> ChestWeapons()
