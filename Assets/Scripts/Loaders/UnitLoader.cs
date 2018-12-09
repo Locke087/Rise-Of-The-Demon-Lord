@@ -365,7 +365,11 @@ public class UnitLoader : MonoBehaviour {
         List<Unit> enemiesInMap = new List<Unit>();
         int armysize = 0;
         int armylevel = 0;
-         
+        if (rating == 1)
+        {
+            armysize = 5;
+            armylevel = 1;
+        }
         for (int i = 0; i < armysize; i++)
         {
             DelayedGoblin(armylevel, enemiesInMap);

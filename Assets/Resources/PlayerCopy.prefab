@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114525751420389088}
   - component: {fileID: 54522093013849196}
   m_Layer: 0
-  m_Name: PlayerCopy
+  m_Name: Sascha
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114981297170187514}
-  unitID: Jeorge
+  unitID: Sascha
   hp: 0
   str: 0
   def: 0
@@ -380,6 +380,11 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      fourth: 0
+      reflectDamage: 0
+      absorbDamage: 0
+      reduceDefense: 0
+      reduceAttack: 0
       kill: 0
       increaseAccuracy: 1
       increaseDebuffs: 0
@@ -402,6 +407,8 @@ MonoBehaviour:
       healing: 0
       extraTurn: 0
       revive: 0
+      speedBoost: 0
+      magicBoost: 0
       willBoost: 0
       skillUseRestore: 0
       poison: 0
@@ -426,6 +433,7 @@ MonoBehaviour:
       trueDamage: 0
       overRun: 0
       movementDown: 0
+      movementIncrease: 0
       statusHeal: 0
     attackPattern: 
 --- !u!114 &114153448445137506
@@ -693,6 +701,11 @@ MonoBehaviour:
     magicDamage: 0
     physicalDamage: 0
     effects:
+      fourth: 0
+      reflectDamage: 0
+      absorbDamage: 0
+      reduceDefense: 0
+      reduceAttack: 0
       kill: 0
       increaseAccuracy: 1
       increaseDebuffs: 0
@@ -715,6 +728,8 @@ MonoBehaviour:
       healing: 0
       extraTurn: 0
       revive: 0
+      speedBoost: 0
+      magicBoost: 0
       willBoost: 0
       skillUseRestore: 0
       poison: 0
@@ -739,6 +754,7 @@ MonoBehaviour:
       trueDamage: 0
       overRun: 0
       movementDown: 0
+      movementIncrease: 0
       statusHeal: 0
     attackPattern: 
   weapon:
@@ -767,6 +783,11 @@ MonoBehaviour:
         vampire: 0
         poison: 0
         fireDamage: 0
+        darkDamage: 0
+        waterDamage: 0
+        natureDamage: 0
+        earthDamage: 0
+        metalDamage: 0
         devil: 0
 --- !u!114 &114613888620989128
 MonoBehaviour:
