@@ -98,7 +98,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.subbed.Clear();
         CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.subbed.Clear();
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Clear();
-        CurrentGame.game.memoryGeneral.impClassProgress.demonrider.subbed.Clear();
+        CurrentGame.game.memoryGeneral.impClassProgress.demonRider.subbed.Clear();
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.subbed.Clear();
 
         WarriorLoader.NewClass();

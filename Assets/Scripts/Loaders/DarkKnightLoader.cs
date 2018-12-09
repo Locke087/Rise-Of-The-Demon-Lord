@@ -17,8 +17,8 @@ public class DarkKnightLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-        DarkKnight.Clear();
-        DarkKnight.level = 0;
+      //  DarkKnight.Clear();
+      //  DarkKnight.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.name = "Dark Knight";
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.movement = 5;
@@ -33,9 +33,9 @@ public class DarkKnightLoader : MonoBehaviour {
 
     public static void LevelUpClass()
     {
-        DarkKnight.LevelUp();
+        //DarkKnight.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level + 1;
-        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.modifiers = DarkKnight.ModList();
+       // CurrentGame.game.memoryGeneral.impClassProgress.darkknight.modifiers = DarkKnight.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed)
         {
@@ -127,7 +127,7 @@ public class DarkKnightLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail darkness = new UnitSkillDetail();
         darkness.name = "Darkness";
@@ -214,14 +214,14 @@ public class DarkKnightLoader : MonoBehaviour {
 
         else if (sk == "HeavyBladesMaster1")
         {
-            un.unitInfo.weaponRanks.HeavyBlades.canUse = true;
-            un.unitInfo.weaponRanks.HeavyBlades.rank = 3;
+            un.unitInfo.weaponRanks.HeavyBlade.canUse = true;
+            un.unitInfo.weaponRanks.HeavyBlade.rank = 3;
         }
         else if (sk == "AxesMaster1")
         {
-            un.unitInfo.weaponRanks.Axes.canUse = true;
-            un.unitInfo.weaponRanks.Axes.rank = 3;
+            un.unitInfo.weaponRanks.Axe.canUse = true;
+            un.unitInfo.weaponRanks.Axe.rank = 3;
         }
     }
 }
-}
+

@@ -17,8 +17,8 @@ public class NightBladeLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-        Nightblade.Clear();
-        Nightblade.level = 0;
+       // Nightblade.Clear();
+       // Nightblade.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.name = "Nightblade";
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.movement = 5;
@@ -33,9 +33,9 @@ public class NightBladeLoader : MonoBehaviour {
 
     public static void LevelUpClass()
     {
-        Nightblade.LevelUp();
+       // Nightblade.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.nightblade.level = CurrentGame.game.memoryGeneral.impClassProgress.nightblade.level + 1;
-        CurrentGame.game.memoryGeneral.impClassProgress.nightblade.modifiers = Nightblade.ModList();
+        //CurrentGame.game.memoryGeneral.impClassProgress.nightblade.modifiers = Nightblade.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.nightblade.subbed)
         {
@@ -127,7 +127,7 @@ public class NightBladeLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail vampirism = new UnitSkillDetail();
         vampirism.name = "Vampirism";

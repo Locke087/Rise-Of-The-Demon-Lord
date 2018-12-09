@@ -17,8 +17,8 @@ public class DemonRiderLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-        DemonRider.Clear();
-        DemonRider.level = 0;
+       // DemonRider.Clear();
+       // DemonRider.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.name = "Demon Rider";
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement = 5;
@@ -33,9 +33,9 @@ public class DemonRiderLoader : MonoBehaviour {
 
     public static void LevelUpClass()
     {
-        DemonRider.LevelUp();
+      //  DemonRider.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level + 1;
-        CurrentGame.game.memoryGeneral.impClassProgress.demonRider.modifiers = DemonRider.ModList();
+       // CurrentGame.game.memoryGeneral.impClassProgress.demonRider.modifiers = DemonRider.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.demonRider.subbed)
         {
@@ -127,7 +127,7 @@ public class DemonRiderLoader : MonoBehaviour {
 
     }
 
-    public static void AssignSkill(string sk, UnitClassSkill u)
+    public static void AssignSkill(string sk, UnitClassSkill u, Unit un)
     {
         UnitSkillDetail possess = new UnitSkillDetail();
         possess.name = "Possess";
@@ -157,7 +157,7 @@ public class DemonRiderLoader : MonoBehaviour {
         callTheDarkSpirits.physicalDamage = true;
         callTheDarkSpirits.effects.shaken = true;
         callTheDarkSpirits.effects.confuse = true;
-        callTheDarkSpirits.name = "Call te Dark Spirits";
+        callTheDarkSpirits.name = "Call to Dark Spirits";
         callTheDarkSpirits.attackPattern = "cross";
 
 
@@ -214,8 +214,8 @@ public class DemonRiderLoader : MonoBehaviour {
 
         else if (sk == "HeavyBladesMaster1")
         {
-            un.unitInfo.weaponRanks.Heavy.canUse = true;
-            un.unitInfo.weaponRanks.Heavy.rank = 3;
+            un.unitInfo.weaponRanks.HeavyBlade.canUse = true;
+            un.unitInfo.weaponRanks.HeavyBlade.rank = 3;
         }
         else if (sk == "SpearMaster1")
         {
