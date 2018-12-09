@@ -16,16 +16,21 @@ public class LevelUp : MonoBehaviour {
             else if (hum.mage.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.mage.present = true;
             else if (hum.priest.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.priest.present = true;
             else if (hum.rogue.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.rogue.present = true;
-            else if (hum.cavalier.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present = true;
-            else if (hum.bard.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.bard.present = true;
+            else if (hum.cavalier.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present = true;       
             else if (hum.archer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.archer.present = true;
+            else if (hum.bard.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.bard.present = true;
+            else if (hum.knight.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.knight.present = true;
+            else if (hum.paladin.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.paladin.present = true;
+            else if (hum.sniper.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.sniper.present = true;
+            else if (hum.assassin.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.assassin.present = true;
+            else if (hum.charger.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.humanClassProgress.charger.present = true;
 
-           /* else if (vira.chronos.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = true;
-            else if (vira.alchemist.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = true;
-            else if (vira.geomancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = true;
-            else if (vira.kensai.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = true;
-            else if (vira.onmiyoji.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = true;
-            else if (vira.wardancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = true;*/
+            /* else if (vira.chronos.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = true;
+             else if (vira.alchemist.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = true;
+             else if (vira.geomancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = true;
+             else if (vira.kensai.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = true;
+             else if (vira.onmiyoji.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = true;
+             else if (vira.wardancer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = true;*/
 
             else if (imp.dread.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.dread.present = true;
             else if (imp.fusilier.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present = true;
@@ -33,16 +38,20 @@ public class LevelUp : MonoBehaviour {
             else if (imp.shrike.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = true;
             else if (imp.swashbuckler.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present = true;
             else if (imp.shadow.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = true;
+            else if (imp.cannoneer.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.present = true;
+            else if (imp.darkknight.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.darkknight.present = true;
+            else if (imp.nightblade.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.nightblade.present = true;
+            else if (imp.demonRider.name == u.unitClass.main.mainClass) CurrentGame.game.memoryGeneral.impClassProgress.demonRider.present = true;
         }
 
         MapRewards rewards = GameObject.FindObjectOfType<MapRewards>();
         rewards.unitXp = CurrentGame.game.memoryGeneral.currentLevel.xpReward;
         rewards.weaponXP = CurrentGame.game.memoryGeneral.currentLevel.xpReward;
-        if (CurrentGame.game.memoryGeneral.humanClassProgress.warrior.present == true)
-        {
+        int levelUP = 100;
+        int pLevelUp = 200;
 
-            int levelUP = 100;
-            int pLevelUp = 500;
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.warrior.present == true)
+        {        
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -83,8 +92,7 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.mage.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+          
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -125,8 +133,6 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.priest.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -167,8 +173,6 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.rogue.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -209,8 +213,7 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+          
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -251,8 +254,7 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.bard.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+          
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -293,8 +295,7 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.humanClassProgress.archer.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+           
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -336,8 +337,6 @@ public class LevelUp : MonoBehaviour {
     
         else if (CurrentGame.game.memoryGeneral.impClassProgress.dread.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -377,9 +376,7 @@ public class LevelUp : MonoBehaviour {
             }
         }
         else if (CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present == true)
-        {
-            int levelUP = 100;
-            int pLevelUp = 500;
+        { 
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -420,8 +417,7 @@ public class LevelUp : MonoBehaviour {
         }  
         else if (CurrentGame.game.memoryGeneral.impClassProgress.shrike.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+           
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -462,8 +458,8 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+         
+          
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -504,8 +500,7 @@ public class LevelUp : MonoBehaviour {
         }
         else if (CurrentGame.game.memoryGeneral.impClassProgress.shadow.present == true)
         {
-            int levelUP = 100;
-            int pLevelUp = 500;
+           
             int totalGain = 0;
             int powerGain = 0;
             int reduce = 0;
@@ -552,13 +547,17 @@ public class LevelUp : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present = false;
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.present = false;
         CurrentGame.game.memoryGeneral.humanClassProgress.archer.present = false;
-
-       /* CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = false;
-        CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = false;*/
+        CurrentGame.game.memoryGeneral.humanClassProgress.knight.present = true;
+        CurrentGame.game.memoryGeneral.humanClassProgress.paladin.present = false;
+        CurrentGame.game.memoryGeneral.humanClassProgress.sniper.present = false;
+        CurrentGame.game.memoryGeneral.humanClassProgress.assassin.present = false;
+        CurrentGame.game.memoryGeneral.humanClassProgress.charger.present = false;
+        /* CurrentGame.game.memoryGeneral.viraClassProgress.chronos.present = false;
+         CurrentGame.game.memoryGeneral.viraClassProgress.alchemist.present = false;
+         CurrentGame.game.memoryGeneral.viraClassProgress.geomancer.present = false;
+         CurrentGame.game.memoryGeneral.viraClassProgress.kensai.present = false;
+         CurrentGame.game.memoryGeneral.viraClassProgress.onmiyoji.present = false;
+         CurrentGame.game.memoryGeneral.viraClassProgress.wardancer.present = false;*/
 
         CurrentGame.game.memoryGeneral.impClassProgress.dread.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.duelist.present = false;
@@ -566,7 +565,13 @@ public class LevelUp : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.shadow.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.shrike.present = false;
         CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.nightblade.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.present = false;
+        CurrentGame.game.memoryGeneral.impClassProgress.demonRider.present = false;
 
+
+        levelUP = 100;
 
         foreach (Unit unit in CurrentGame.game.memoryGeneral.unitsInParty)
         {       
@@ -576,7 +581,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot1.weapon.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
@@ -616,7 +621,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot1.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
@@ -659,7 +664,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot2.weapon.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                      
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
@@ -698,7 +703,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot2.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                      
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
@@ -740,7 +745,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot3.weapon.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
@@ -779,7 +784,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot3.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                        
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
@@ -821,7 +826,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot4.weapon.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                        
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
@@ -860,7 +865,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot4.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
@@ -902,7 +907,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
@@ -940,7 +945,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
                     {
-                        int levelUP = 100;
+                      
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);

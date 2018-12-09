@@ -573,6 +573,65 @@ public class UnitManagerMenu : MonoBehaviour {
                         GUILayout.Box("Has Learned " + BardLoader.HowManySkills(unit.unitClass.main.human.paladin.pickSkill) + " Skills");
                     }
                 }
+                if (unit.unitClass.main.human.sniper.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Sniper")
+                    {
+                        if (GUILayout.Button("Switch to Sniper"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.sniper.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.modifiers;
+                            unit.unitClass.main.human.sniper.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.classWeapons;
+                            unit.unitClass.main.human.sniper.caps = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.caps;
+                            unit.unitClass.main.human.sniper.level = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.level;
+                            unit.unitClass.main.human.sniper.movement = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.movement;
+                            unit.unitClass.main.mainClass = "Sniper";
+                            unit.unitInfo.main = unit.unitClass.main.human.sniper;
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.sniper);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.sniper.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.movement +
+                           " Has Learned  " + BardLoader.HowManySkills(unit.unitClass.main.human.sniper.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Sniper" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.movement);
+                        GUILayout.Box("Has Learned " + BardLoader.HowManySkills(unit.unitClass.main.human.sniper.pickSkill) + " Skills");
+                    }
+                }
+                if (unit.unitClass.main.human.assassin.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Assassin")
+                    {
+                        if (GUILayout.Button("Switch to Assassin"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.human.assassin.modifiers = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.modifiers;
+                            unit.unitClass.main.human.assassin.classWeapons = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.classWeapons;
+                            unit.unitClass.main.human.assassin.caps = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.caps;
+                            unit.unitClass.main.human.assassin.level = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.level;
+                            unit.unitClass.main.human.assassin.movement = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.movement;
+                            unit.unitClass.main.mainClass = "Assassin";
+                            unit.unitInfo.main = unit.unitClass.main.human.assassin;
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.human.assassin);
+                            CurrentGame.game.memoryGeneral.humanClassProgress.assassin.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.assassin.level +
+                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.assassin.movement +
+                           " Has Learned  " + BardLoader.HowManySkills(unit.unitClass.main.human.assassin.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Assassin" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.assassin.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.assassin.movement);
+                        GUILayout.Box("Has Learned " + BardLoader.HowManySkills(unit.unitClass.main.human.assassin.pickSkill) + " Skills");
+                    }
+                }
+             
             }
             if (unit.unitInfo.imp)
             {
@@ -749,6 +808,122 @@ public class UnitManagerMenu : MonoBehaviour {
                         GUILayout.Box("Currently Your a Duelist" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.level +
                        " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.duelist.movement);
                         GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.duelist.pickSkill) + " Skills");
+                    }
+                }
+                if (unit.unitClass.main.imp.cannoneer.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Cannoneer")
+                    {
+                        if (GUILayout.Button("Switch to Cannoneer"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.cannoneer.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.modifiers;
+                            unit.unitClass.main.imp.cannoneer.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.classWeapons;
+                            unit.unitClass.main.imp.cannoneer.caps = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.caps;
+                            unit.unitClass.main.imp.cannoneer.level = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level;
+                            unit.unitClass.main.imp.cannoneer.movement = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.movement;
+                            unit.unitInfo.main = unit.unitClass.main.imp.cannoneer;
+                            unit.unitClass.main.mainClass = "Cannoneer";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.cannoneer);
+                            CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.movement +
+                           " Has Learned  " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.cannoneer.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Cannoneer" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.movement);
+                        GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.cannoneer.pickSkill) + " Skills");
+                    }
+                }
+                if (unit.unitClass.main.imp.darkknight.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Dark Knight")
+                    {
+                        if (GUILayout.Button("Switch to Dark Knight"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.darkknight.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.modifiers;
+                            unit.unitClass.main.imp.darkknight.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.classWeapons;
+                            unit.unitClass.main.imp.darkknight.caps = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.caps;
+                            unit.unitClass.main.imp.darkknight.level = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level;
+                            unit.unitClass.main.imp.darkknight.movement = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.movement;
+                            unit.unitInfo.main = unit.unitClass.main.imp.darkknight;
+                            unit.unitClass.main.mainClass = "Dark Knight";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.darkknight);
+                            CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.darkknight.movement +
+                           " Has Learned  " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.darkknight.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Dark Knight" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.darkknight.movement);
+                        GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.darkknight.pickSkill) + " Skills");
+                    }
+                }
+                if (unit.unitClass.main.imp.demonRider.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Demon Rider")
+                    {
+                        if (GUILayout.Button("Switch to Demon Rider"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.demonRider.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.modifiers;
+                            unit.unitClass.main.imp.demonRider.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.classWeapons;
+                            unit.unitClass.main.imp.demonRider.caps = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.caps;
+                            unit.unitClass.main.imp.demonRider.level = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level;
+                            unit.unitClass.main.imp.demonRider.movement = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement;
+                            unit.unitInfo.main = unit.unitClass.main.imp.demonRider;
+                            unit.unitClass.main.mainClass = "Demon Rider";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.demonRider);
+                            CurrentGame.game.memoryGeneral.impClassProgress.demonRider.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement +
+                           " Has Learned  " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.demonRider.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Demon Rider" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement);
+                        GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.demonRider.pickSkill) + " Skills");
+                    }
+                }
+                if (unit.unitClass.main.imp.nightblade.unlocked)
+                {
+                    if (unit.unitClass.main.mainClass != "Night Blade")
+                    {
+                        if (GUILayout.Button("Switch to Night Blade"))
+                        {
+                            UnsignOldClass(unit);
+                            unit.unitClass.main.imp.demonRider.modifiers = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.modifiers;
+                            unit.unitClass.main.imp.demonRider.classWeapons = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.classWeapons;
+                            unit.unitClass.main.imp.demonRider.caps = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.caps;
+                            unit.unitClass.main.imp.demonRider.level = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level;
+                            unit.unitClass.main.imp.demonRider.movement = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement;
+                            unit.unitInfo.main = unit.unitClass.main.imp.demonRider;
+                            unit.unitClass.main.mainClass = "Night Blade";
+                            UnequipNonClassWeapons(unit, unit.unitClass.main.imp.demonRider);
+                            CurrentGame.game.memoryGeneral.impClassProgress.demonRider.subbed.Add(unit.idx);
+                            stats.RefreshIt();
+                        }
+                        GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement +
+                           " Has Learned  " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.demonRider.pickSkill) + " Skills");
+                    }
+                    else
+                    {
+                        GUILayout.Box("Currently Your a Night Blade" + " Level: " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.level +
+                       " Movement " + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.movement);
+                        GUILayout.Box("Has Learned " + DuelistLoader.HowManySkills(unit.unitClass.main.imp.demonRider.pickSkill) + " Skills");
                     }
                 }
             }

@@ -13,6 +13,7 @@ public class UnitInfo {
     public bool vira;
     public bool imp;
     public string mugName;
+    public string affinity;
     public UnitWeaponRanks weaponRanks;
     public UnitClassDetail main;
     public UnitClassDetail sub;
@@ -23,6 +24,7 @@ public class UnitInfo {
         sub = new UnitClassDetail();
         weaponRanks = new UnitWeaponRanks();
         nature = "";
+        affinity = "";
         currentCaps = new List<float>();
         currentMods = new List<float>();
         human = false;

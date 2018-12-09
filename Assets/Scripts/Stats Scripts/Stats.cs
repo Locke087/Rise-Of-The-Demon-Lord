@@ -8,6 +8,7 @@ public class Stats : MonoBehaviour
 {
     public InfoForUnit info;
     public string unitID;
+    public string unitIdx;
     public int hp;
     public int str;
     public int def;
@@ -22,6 +23,13 @@ public class Stats : MonoBehaviour
     public int baseSkill;
     public int baseMagic;
     public int baseWill;
+
+    public int effectStr;
+    public int effectDef;
+    public int effectSpd;
+    public int effectSkill;
+    public int effectMagic;
+    public int effectWill;
 
     public int movement;
     public float finalHit;
@@ -66,7 +74,8 @@ public class Stats : MonoBehaviour
     public bool dead = false;
     public bool friend = false;
     public bool foe = false;
-  //  public Button confirm;
+  
+    //  public Button confirm;
     //public Button cancel;
     /* public int hpModStat;
      public int strModStat;
@@ -93,8 +102,23 @@ public class Stats : MonoBehaviour
     public int calcSkill;
     public int calcMagic;
     public int calcWill;
-    public string affitity;
+    public string affinity;
     public float attackBonus;
+    public float strBonus;
+    public float spdBonus;
+    public float defBonus;
+    public float skillBonus;
+    public float magBonus;
+    public float willBonus;
+    public float attackNeg;
+    public float strNeg;
+    public float spdNeg;
+    public float defNeg;
+    public float skillNeg;
+    public float magNeg;
+    public float willNeg;
+    public bool beneficial = false;
+    public bool Enmity = false;
     public UnitSkillDetail currentAttack;
     public UnitAssessory currentAssessory1;
     public UnitAssessory currentAssessory2;
@@ -156,6 +180,12 @@ public class Stats : MonoBehaviour
 
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
         attackBonus = 0;
+        strBonus = 0;
+        defBonus = 0;
+        spdBonus = 0;
+        skillBonus = 0;      
+        magBonus = 0;
+        willBonus = 0;
         if (nature == null) nature = "Neutral";
         currentHp = hp;
        
@@ -244,7 +274,7 @@ public class Stats : MonoBehaviour
         Unit me = new Unit();
         foreach (Unit u in CurrentGame.game.storeroom.units)
         {
-            if (unitID == u.unitID) me = u;
+            if (unitIdx == u.unitID) me = u;
         }
         return me;
     }
@@ -442,6 +472,29 @@ public class Stats : MonoBehaviour
             attackedControl(attacker, aWeapon, bWeapon);
         }
     }
+
+    public void EffectiveStats()
+    {
+        // attackBonus = 0;
+        int tempA = 0;
+        int tempB = 0;
+        if(strBonus != 0) tempA = (int)(str * (1 + strBonus));
+        if (strNeg != 0) tempB = (int)(str * strNeg);
+        if (tempA != 0 && tempB == 0) effectStr = tempA;
+        else if (tempA == 0 && tempB != 0) effectStr = tempB;
+        else if (tempA - tempB > 0) effectStr = tempA - tempB;
+        if (defBonus != 0) tempA = (int)(def * (1 + defBonus));
+        if (defNeg != 0) tempB = (int)(def * defNeg);
+        if (tempA != 0 && tempB == 0) effectDef = tempA;
+        else if (tempA == 0 && tempB != 0) effectDef = tempB;
+        else if (tempA - tempB > 0) effectDef = tempA - tempB;
+        if (defBonus != 0) tempA = (int)(def * (1 + defBonus));
+        if (defNeg != 0) tempB = (int)(def * defNeg);
+        if (tempA != 0 && tempB == 0) effectDef = tempA;
+        else if (tempA == 0 && tempB != 0) effectDef = tempB;
+        else if (tempA - tempB > 0) effectDef = tempA - tempB;
+    }
+
 
     public void attackedControl(Stats attacker, UnitWeapon weaponAtk, UnitWeapon weaponDef)
     {
@@ -746,18 +799,22 @@ public class Stats : MonoBehaviour
                 attacker.StealInfo(currentAttack.baseEffect);
                 DefenderDamaged(attacker);
             }
-            if (currentAttack.effects.fireDamage && affitity == "Wood")
+            if (currentAttack.effects.fireDamage && affinity == "Wood")
             {
 
                 attacker.attackBonus = 1.5f;
                 attacker.attackBonus = 1.5f;
+                DefenderDamaged(attacker);
+            }
+            else if (currentAttack.effects.fireDamage && affinity == "Wood")
+            {
 
             }
-            DefenderDamaged(attacker);
+          
         }
         else if (currentAttack.magicDamage)
         {
-            if (currentAttack.effects.fireDamage && affitity == "Wood")
+            if (currentAttack.effects.fireDamage && affinity == "Wood")
             {
                 attacker.attackBonus = 1.5f;
             }
@@ -768,7 +825,7 @@ public class Stats : MonoBehaviour
        
             if (currentAttack.effects.healing)
             {
-                if (affitity != "Undead")
+                if (affinity != "Undead")
                 {
                     currentHp += currentAttack.restore;
                     HealHp(currentAttack.restore);
@@ -788,7 +845,7 @@ public class Stats : MonoBehaviour
             if (currentAttack.effects.revive)
             {
                
-                if (affitity != "Undead")
+                if (affinity != "Undead")
                 {
                     if (dead)
                     {
