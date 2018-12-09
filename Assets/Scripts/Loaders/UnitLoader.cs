@@ -395,7 +395,7 @@ public class UnitLoader : MonoBehaviour {
 
             enemiesInMap.Add(me);
             CurrentGame.game.storeroom.units.Add(me);
-            Warrior.Clear();
+            Goblin.Clear();
         }
 
 
