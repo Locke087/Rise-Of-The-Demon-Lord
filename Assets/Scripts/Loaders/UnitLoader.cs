@@ -381,8 +381,8 @@ public class UnitLoader : MonoBehaviour {
             me.unitClass.main.race = "Goblin";
             me.unitClass.main.monster.goblinCharger.level = armylevel;
             me.unitClass.main.monster.goblinCharger.movement = 5;
-            me.unitClass.main.monster.goblinCharger.modifiers = Warrior.ModList();
-            me.unitClass.main.monster.goblinCharger.caps = Warrior.Caplist();
+            me.unitClass.main.monster.goblinCharger.modifiers = Goblin.ModList();
+            me.unitClass.main.monster.goblinCharger.caps = Goblin.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.goblinCharger;
 
             // str, def, spd, skill, magic, will
