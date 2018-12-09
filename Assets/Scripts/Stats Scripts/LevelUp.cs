@@ -703,7 +703,7 @@ public class LevelUp : MonoBehaviour {
                 {
                     if (!HasSkill(unit.inventory.invSlot2.assessory.details.unlocks, unit.idx))
                     {
-                      
+                       
                         int totalGain = 0;
                         int reduce = 0;
                         int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);

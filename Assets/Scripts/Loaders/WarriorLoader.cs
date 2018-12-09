@@ -132,6 +132,7 @@ public class WarriorLoader : MonoBehaviour {
         focused.name = "Focused";
         focused.effects.attackBoost = true;
         focused.support = true;
+        focused.mod = 0.25f;
         focused.attackPattern = "SupportTile";
         focused.range = 0;
 
