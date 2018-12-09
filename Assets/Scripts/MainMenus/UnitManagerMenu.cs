@@ -252,14 +252,86 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement +
-                           " Has Learned  " + WarriorLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + " Skills");
+                           " Has Learned  " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.cavalier.pickSkill) + 1) + " Skills");
                     }
                     else
                     {
-                        Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.warrior.caps.Count + " how many now?");
+                       
                         GUILayout.Box("Currently Your a Warrior" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.warrior.movement);
-                        GUILayout.Box("Has Learned " + WarriorLoader.HowManySkills(unit.unitClass.main.human.warrior.pickSkill) + " Skills");
+                        GUILayout.Box("Has Learned " + (WarriorLoader.HowManySkills(unit.unitClass.main.human.warrior.pickSkill) + 1) + " Skills");
+                        if (unit.unitInfo.main.pickSkill.skill1.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill1;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }
+                        if (unit.unitInfo.main.pickSkill.skill2.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill2;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }
+                        if (unit.unitInfo.main.pickSkill.skill3.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill3;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }
+                        if (unit.unitInfo.main.pickSkill.skill4.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill4;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                      
+                        if (unit.unitInfo.main.pickSkill.skill5.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill5;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                     
+                        if (unit.unitInfo.main.pickSkill.skill6.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill6;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                      
+                        if (unit.unitInfo.main.pickSkill.skill7.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill7;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                    
+                        if (unit.unitInfo.main.pickSkill.skill8.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill8;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                   
+                        if (unit.unitInfo.main.pickSkill.skill9.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill9;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                     
+                        if (unit.unitInfo.main.pickSkill.skill10.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill10;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }                     
+                        if (unit.unitInfo.main.pickSkill.skill11.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill11;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }
+                        if (unit.unitInfo.main.pickSkill.skill12.name != "")
+                        {
+                            UnitSkillDetail u = unit.unitInfo.main.pickSkill.skill12;
+                            GUILayout.Label("Has Skill" + u.name);
+                            GUILayout.Space(1);
+                        }
                     }
                 }
                 if (unit.unitClass.main.human.rogue.unlocked)
@@ -282,13 +354,13 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label("Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement +
-                           " Has Learned  " + RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + " Skills");
+                           " Has Learned  " + (RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + 1) + " Skills");
                     }
                     else
                     {
                         GUILayout.Box("Currently Your a Rogue" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.rogue.movement);
-                        GUILayout.Box("Has Learned " + RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + " Skills");
+                        GUILayout.Box("Has Learned " + (RogueLoader.HowManySkills(unit.unitClass.main.human.rogue.pickSkill) + 1) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.mage.unlocked)
@@ -311,14 +383,14 @@ public class UnitManagerMenu : MonoBehaviour {
                         }
                         GUILayout.Label(" Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                         " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement +
-                           " Has Learned  " + MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + " Skills");
+                           " Has Learned  " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + 1) + " Skills");
                     }
                     else
                     {
-                        Debug.Log(CurrentGame.game.memoryGeneral.humanClassProgress.mage.caps.Count + " how many now?");
+                     
                         GUILayout.Box("Currently Your a Mage" + " Level: " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.level +
                        " Movement " + CurrentGame.game.memoryGeneral.humanClassProgress.mage.movement);
-                        GUILayout.Box("Has Learned " + MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + " Skills");
+                        GUILayout.Box("Has Learned " + (MageLoader.HowManySkills(unit.unitClass.main.human.mage.pickSkill) + 1) + " Skills");
                     }
                 }
                 if (unit.unitClass.main.human.archer.unlocked)

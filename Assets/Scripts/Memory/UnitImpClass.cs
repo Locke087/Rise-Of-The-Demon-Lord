@@ -12,7 +12,7 @@ public class UnitImpClass {
     public UnitClassDetail dread;
     public UnitClassDetail duelist;
     public UnitClassDetail cannoneer;
-    public UnitClassDetail demonrider;
+    public UnitClassDetail demonRider;
     public UnitClassDetail nightblade;
     public UnitClassDetail darkknight;
 
@@ -25,7 +25,7 @@ public class UnitImpClass {
         dread = new UnitClassDetail();
         duelist = new UnitClassDetail();
         cannoneer = new UnitClassDetail();
-        demonrider = new UnitClassDetail();
+        demonRider = new UnitClassDetail();
         nightblade = new UnitClassDetail();
         darkknight = new UnitClassDetail();
     }
