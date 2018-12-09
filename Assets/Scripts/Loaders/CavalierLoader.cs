@@ -150,11 +150,11 @@ public class CavalierLoader : MonoBehaviour
         lance.attackPattern = "2TileLine";
         lance.physicalDamage = true;
 
-        UnitSkillDetail protectFlanks = new UnitSkillDetail();
-        protectFlanks.physicalDamage = true;
-        protectFlanks.range = 1;
-        protectFlanks.name = "Protect Flanks";
-        protectFlanks.attackPattern = "BackAndFront";
+        UnitSkillDetail flanking = new UnitSkillDetail();
+        flanking.physicalDamage = true;
+        flanking.range = 1;
+        flanking.name = "Flanking";
+        flanking.attackPattern = "BackAndFront";
 
         UnitSkillDetail vault = new UnitSkillDetail();
         vault.name = "Vault";
@@ -182,9 +182,9 @@ public class CavalierLoader : MonoBehaviour
         {
             u.skill3 = lance;
         }
-        else if (sk == protectFlanks.name)
+        else if (sk == flanking.name)
         {
-            u.skill4 = protectFlanks;
+            u.skill4 = flanking;
         }
         else if (sk == vault.name)
         {
