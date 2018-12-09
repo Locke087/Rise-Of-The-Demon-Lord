@@ -26,7 +26,7 @@ public class BardLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.type = "Athames";
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.classWeapons.classWeapon2.rank = 3;
         CurrentGame.game.memoryGeneral.humanClassProgress.bard.caps = Bard.Caplist();
-    .
+    
         LevelUpClass();
     }
 
@@ -56,7 +56,7 @@ public class BardLoader : MonoBehaviour {
     {
         UnitMonsterTells ghost = new UnitMonsterTells();
         ghost.monsterName = "Ghost";
-        ghost.description = "Ghosts: ghosts are strong against physical damage due to being intangible, but weak against magic and especially holy magic!Give that a try";
+        ghost.description = "Ghosts: ghosts are strong against physical damage due to being intangible, but weak against magic and especially holy magic! Give that a try";
         u.monsterTells.Add(ghost);
     }
 
@@ -172,8 +172,8 @@ public class BardLoader : MonoBehaviour {
 
         UnitSkillDetail riddleOfSteel = new UnitSkillDetail();
         riddleOfSteel.name = "Riddle of Steel";
-        riddleOfSteel.effects.attackBoost = true;//if target is suffering a debuff, deal extra damage
-        riddleOfSteel.effects.defenseBoost = true;//Use Def instead of Str for counter
+        riddleOfSteel.effects.attackBoost = true;//
+        riddleOfSteel.effects.defenseBoost = true;//
         riddleOfSteel.range = 4;
 
         UnitSkillDetail dirgeOfSpelldeath = new UnitSkillDetail();
@@ -190,9 +190,14 @@ public class BardLoader : MonoBehaviour {
         raptureOfTheSong.effects.magicDefenseBoost = true;
         raptureOfTheSong.effects.defenseBoost = true;//increase debuff duration
 
+        UnitSkillDetail talkToMe = new UnitSkillDetail();
+        talkToMe.name = "Talk to Me!";
+        talkToMe.range = 4;
+        talkToMe.effects.analyze = true;//learn monster strengths and weaknesses TalktoMe(talkToMe);
+
         if (sk == burningMelody.name)
         {
-            u.skill1 = burningMelody;
+            u.skill8 = burningMelody;
         }
         else if (sk == hymnOfFrozenLoss.name)
         {
@@ -218,6 +223,11 @@ public class BardLoader : MonoBehaviour {
         {
             u.skill7 = raptureOfTheSong;
         }
+        else if (sk == talkToMe.name)
+        {
+            u.skill1 = talkToMe;
+        }
+
         else if (sk == "AthamesMaster1")
         {
             un.unitInfo.weaponRanks.Athames.canUse = true;
