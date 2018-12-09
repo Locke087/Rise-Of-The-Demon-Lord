@@ -57,6 +57,7 @@ public class SwordLoader : MonoBehaviour
     }
     public static List<UnitWeapon> ChestWeapons()
     {
+        //Heavy Blades
         List<UnitWeapon> weapons = new List<UnitWeapon>();
         UnitWeapon vemonBlade = new UnitWeapon();
         vemonBlade.name = "Vemon Blade";
@@ -76,7 +77,7 @@ public class SwordLoader : MonoBehaviour
         vemonBlade.idx = "Vemon Blade" + IDMaker.NewID();
         weapons.Add(vemonBlade);
        
-
+        //Axes
         UnitWeapon warhammer = new UnitWeapon();
         warhammer.name = "Warhammer";
         warhammer.cost = 180;
@@ -94,7 +95,7 @@ public class SwordLoader : MonoBehaviour
         warhammer.idx = "Warhammer" + IDMaker.NewID();
         weapons.Add(warhammer);
       
-
+        //Ranged
         UnitWeapon rifle = new UnitWeapon();
         rifle.name = "Rifle";
         rifle.cost = 230;

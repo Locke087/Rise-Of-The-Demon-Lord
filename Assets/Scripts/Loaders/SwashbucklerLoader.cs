@@ -167,13 +167,13 @@ public class SwashbucklerLoader : MonoBehaviour
         scatterShot.physicalDamage = true;
 
 
-        UnitSkillDetail parryAndRiposte = new UnitSkillDetail();
-        parryAndRiposte.name = "Parry and Riposte";
-        parryAndRiposte.range = 1;
-        parryAndRiposte.support = true;
-        parryAndRiposte.attackPattern = "self";
-        parryAndRiposte.physicalDamage = true;
-        parryAndRiposte.effects.counter = true;
+        UnitSkillDetail parry = new UnitSkillDetail();
+        parry.name = "Parry";
+        parry.range = 0;
+        parry.support = true;
+        parry.attackPattern = "self";
+        parry.effects.dodge = true;
+        parry.effects.counter = true;
 
 
         UnitSkillDetail shotOffTheBow = new UnitSkillDetail();
@@ -204,9 +204,9 @@ public class SwashbucklerLoader : MonoBehaviour
         {
             u.skill5 = scatterShot;
         }
-        else if (sk == parryAndRiposte.name)
+        else if (sk == parry.name)
         {
-            u.skill6 = parryAndRiposte;
+            u.skill6 = parry;
         }
         else if (sk == shotOffTheBow.name)
         {
