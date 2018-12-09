@@ -738,6 +738,7 @@ public class Stats : MonoBehaviour
     public void Skill(Stats attacker)
     {
         attackBonus = 0;
+      
         if (currentAttack.physicalDamage)
         {
             if (currentAttack.effects.stealMoney)
@@ -1007,7 +1008,7 @@ public class Stats : MonoBehaviour
         }
         attacker.DamageHp(enemyDamage, reduce);
         attacker.UpdateHp();
-
+       
         Debug.Log(attacker.gameObject.name + "lost " + enemyDamage + " HP" + " Normal Atk was" + totalAtk + "-" + will);
         Debug.Log("Is Now This Much HP: " + attacker.currentHp);
         if (GameObject.Find("DefTD").GetComponent<Text>().text != "0")

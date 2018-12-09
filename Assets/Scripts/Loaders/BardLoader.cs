@@ -58,6 +58,7 @@ public class BardLoader : MonoBehaviour {
         ghost.monsterName = "Ghost";
         ghost.description = "Ghosts: ghosts are strong against physical damage due to being intangible, but weak against magic and especially holy magic!Give that a try";
         u.monsterTells.Add(ghost);
+     
     }
 
     public static void ClassUnlocked(Unit me)
@@ -145,7 +146,8 @@ public class BardLoader : MonoBehaviour {
         burningMelody.magicDamage = true;
         burningMelody.range = 4;
         burningMelody.attackPattern = "cross";
-
+       
+      
         UnitSkillDetail hymnOfFrozenLoss = new UnitSkillDetail();
         hymnOfFrozenLoss.name = "Frozen Dirge";
         hymnOfFrozenLoss.effects.waterDamage = true;
