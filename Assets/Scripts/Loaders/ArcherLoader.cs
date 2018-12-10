@@ -132,7 +132,7 @@ public class ArcherLoader : MonoBehaviour
     {
         UnitSkillDetail volley = new UnitSkillDetail();
         volley.name = "Volley";
-        volley.attackPattern = "Cross Attack";
+        volley.attackPattern = "cross";
         volley.physicalDamage = true;
         volley.range = 5;
 
@@ -154,7 +154,6 @@ public class ArcherLoader : MonoBehaviour
         pierce.range = 5;
         pierce.extraDamageMod = 1.2f;
         pierce.name = "Pierce";
-        pierce.effects.selfDamage = true;
 
         UnitSkillDetail armShot = new UnitSkillDetail();
         armShot.name = "Arm Shot";
@@ -165,8 +164,8 @@ public class ArcherLoader : MonoBehaviour
 
         UnitSkillDetail legShot = new UnitSkillDetail();
         legShot.name = "Leg Shot";
-        legShot.range = 1;
-        legShot.attackPattern = "2TileLine";
+        legShot.range = 4;
+        legShot.effects.movementDown = true;
         legShot.physicalDamage = true;
 
         UnitSkillDetail stabbingArrow = new UnitSkillDetail();

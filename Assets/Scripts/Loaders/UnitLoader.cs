@@ -372,7 +372,7 @@ public class UnitLoader : MonoBehaviour {
         }
         for (int i = 0; i < armysize; i++)
         {
-            DelayedGoblin(armylevel, enemiesInMap);
+            DelayedGoblin(armylevel, enemiesInMap);//are all the delayed scripts supposed to be added here?
         }
 
 
@@ -410,6 +410,403 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         Goblin.Clear();
     }
+
+    void DelayedBlueSlime(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            BlueSlimeE.LevelUp();
+            me.unitClass.main.monster.blueSlime.modifiers = BlueSlimeE.ModList();
+            me.unitClass.main.monster.blueSlime.caps = BlueSlimeE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.blueSlime;
+        }
+        me.unitClass.main.mainClass = "Slime";
+        me.unitClass.main.race = "Blue Slime";
+        me.unitClass.main.monster.blueSlime.level = level;
+        me.unitClass.main.monster.blueSlime.movement = 3;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Blue Slime" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        BlueSlimeE.Clear();
+    }
+
+
+    void DelayedGreenSlime(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            GreenSlimeE.LevelUp();
+            me.unitClass.main.monster.greenSlime.modifiers = GreenSlimeE.ModList();
+            me.unitClass.main.monster.greenSlime.caps = GreenSlimeE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.greenSlime;
+        }
+        me.unitClass.main.mainClass = "Slime";
+        me.unitClass.main.race = "Green Slime";
+        me.unitClass.main.monster.greenSlime.level = level;
+        me.unitClass.main.monster.greenSlime.movement = 3;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Green Slime" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        GreenSlimeE.Clear();
+    }
+
+
+    void DelayedBabyDevil(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            BabyDevil.LevelUp();
+            me.unitClass.main.monster.babyDevil.modifiers = BabyDevil.ModList();
+            me.unitClass.main.monster.babyDevil.caps = BabyDevil.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.babyDevil;
+        }
+        me.unitClass.main.mainClass = "Devil";
+        me.unitClass.main.race = "Baby Devil";
+        me.unitClass.main.monster.babyDevil.level = level;
+        me.unitClass.main.monster.babyDevil.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Baby Devil" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        BabyDevil.Clear();
+    }
+
+
+    void DelayedBabyGreenDragon(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            BabyGreenDragonE.LevelUp();
+            me.unitClass.main.monster.babyGreenDragon.modifiers = BabyGreenDragonE.ModList();
+            me.unitClass.main.monster.babyGreenDragon.caps = BabyGreenDragonE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.babyGreenDragon;
+        }
+        me.unitClass.main.mainClass = "Dragon";
+        me.unitClass.main.race = "Baby Green Dragon";
+        me.unitClass.main.monster.babyGreenDragon.level = level;
+        me.unitClass.main.monster.babyGreenDragon.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Baby Green Dragon" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        BabyGreenDragonE.Clear();
+    }
+
+
+    void DelayedBabyRedDragon(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            BabyRedDragonE.LevelUp();
+            me.unitClass.main.monster.babyRedDragon.modifiers = BabyRedDragonE.ModList();
+            me.unitClass.main.monster.babyRedDragon.caps = BabyRedDragonE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.babyRedDragon;
+        }
+        me.unitClass.main.mainClass = "Dragon";
+        me.unitClass.main.race = "Baby Red Dragon";
+        me.unitClass.main.monster.babyRedDragon.level = level;
+        me.unitClass.main.monster.babyRedDragon.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Baby Red Dragon" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        BabyRedDragonE.Clear();
+    }
+
+
+    void DelayedBlueVinetrap(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            BlueVinetrapE.LevelUp();
+            me.unitClass.main.monster.blueVineTrap.modifiers = BlueVinetrapE.ModList();
+            me.unitClass.main.monster.blueVineTrap.caps = BlueVinetrapE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.blueVineTrap;
+        }
+        me.unitClass.main.mainClass = "Vinetrap";
+        me.unitClass.main.race = "Blue Vinetrap";
+        me.unitClass.main.monster.blueVineTrap.level = level;
+        me.unitClass.main.monster.blueVineTrap.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Blue Vinetrap" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        BlueVinetrapE.Clear();
+    }
+
+
+    void DelayedRedVinetrap(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            RedVinetrapE.LevelUp();
+            me.unitClass.main.monster.redVineTrap.modifiers = RedVinetrapE.ModList();
+            me.unitClass.main.monster.redVineTrap.caps = RedVinetrapE.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.blueSlime;
+        }
+        me.unitClass.main.mainClass = "Vinetrap";
+        me.unitClass.main.race = "Red Vinetrap";
+        me.unitClass.main.monster.redVineTrap.level = level;
+        me.unitClass.main.monster.redVineTrap.movement = 3;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Red Vinetrap" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        RedVinetrapE.Clear();
+    }
+
+
+    void DelayedDevil(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Devil.LevelUp();
+            me.unitClass.main.monster.devil.modifiers = Devil.ModList();
+            me.unitClass.main.monster.devil.caps = Devil.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.devil;
+        }
+        me.unitClass.main.mainClass = "Devil";
+        me.unitClass.main.race = "Devil";
+        me.unitClass.main.monster.devil.level = level;
+        me.unitClass.main.monster.devil.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Devil" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        Devil.Clear();
+    }
+
+
+    void DelayedEfreet(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Efreet.LevelUp();
+            me.unitClass.main.monster.efreet.modifiers = Efreet.ModList();
+            me.unitClass.main.monster.efreet.caps = Efreet.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.efreet;
+        }
+        me.unitClass.main.mainClass = "Efree";
+        me.unitClass.main.race = "Efreet";
+        me.unitClass.main.monster.efreet.level = level;
+        me.unitClass.main.monster.efreet.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Efreet" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        Efreet.Clear();
+    }
+
+
+    void DelayedGhost(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Ghost.LevelUp();
+            me.unitClass.main.monster.ghost.modifiers = Ghost.ModList();
+            me.unitClass.main.monster.ghost.caps = Ghost.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.ghost;
+        }
+        me.unitClass.main.mainClass = "Undead";
+        me.unitClass.main.race = "Ghost";
+        me.unitClass.main.monster.ghost.level = level;
+        me.unitClass.main.monster.ghost.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Ghost" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        Ghost.Clear();
+    }
+
+
+    void DelayedReaper(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Reaper.LevelUp();
+            me.unitClass.main.monster.reaper.modifiers = Reaper.ModList();
+            me.unitClass.main.monster.reaper.caps = Reaper.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.reaper;
+        }
+        me.unitClass.main.mainClass = "Undead";
+        me.unitClass.main.race = "Reaper";
+        me.unitClass.main.monster.reaper.level = level;
+        me.unitClass.main.monster.reaper.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Reaper" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        Reaper.Clear();
+    }
+
+
+    void DelayedSkeleton(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Skeleton.LevelUp();
+            me.unitClass.main.monster.skeleton.modifiers = Skeleton.ModList();
+            me.unitClass.main.monster.skeleton.caps = Skeleton.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.skeleton;
+        }
+        me.unitClass.main.mainClass = "Undead";
+        me.unitClass.main.race = "Skeleton";
+        me.unitClass.main.monster.skeleton.level = level;
+        me.unitClass.main.monster.skeleton.movement = 5;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Skeleton" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        Skeleton.Clear();
+    }
+
+
 
     public static int RB(int min, int max, int alt)
     {

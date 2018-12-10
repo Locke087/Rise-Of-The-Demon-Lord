@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class d : MonoBehaviour {
+public class Devil : MonoBehaviour {
 
     /* public static int strStatIncrease = 0;
                        public static int defStatIncrease = 0;

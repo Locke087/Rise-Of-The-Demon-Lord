@@ -154,7 +154,7 @@ public class BardLoader : MonoBehaviour {
         hymnOfFrozenLoss.magicDamage = true;
         hymnOfFrozenLoss.effects.stun = true;
         hymnOfFrozenLoss.range = 4;
-        hymnOfFrozenLoss.attackPattern = "4 tile line";
+        hymnOfFrozenLoss.attackPattern = "4tileLine";
 
         UnitSkillDetail thunderAnthem = new UnitSkillDetail();
         thunderAnthem.name = "Thunder Anthem";
@@ -162,13 +162,13 @@ public class BardLoader : MonoBehaviour {
         thunderAnthem.effects.confuse = true;
         thunderAnthem.magicDamage = true;
         thunderAnthem.range = 4;
-        thunderAnthem.attackPattern = "4x5 cone";
+        thunderAnthem.attackPattern = "3x3Cone";
 
         UnitSkillDetail songOfLife = new UnitSkillDetail();
         songOfLife.restore = 1;//restore half magic stat life
         songOfLife.range = 3;
         songOfLife.effects.statusHeal = true;
-        songOfLife.attackPattern = "3 tile cross";
+        songOfLife.attackPattern = "cross";
         songOfLife.name = "Song of Life";
 
 
