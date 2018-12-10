@@ -127,12 +127,11 @@ public class Stats : MonoBehaviour
     public UnitAssessory currentAssessory3;
     public List<ActiveEffects> activeEffects;
     public UnitWeaponDetails theWeapon;
+    public List<WeaknessChart> weaknessChart;
     void Start()
     {
-       // confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
-       // cancel = GameObject.Find("AttackCancel").GetComponent<Button>();
-      //  confirm.onClick.AddListener(ButtonTrue);
-     //   cancel.onClick.AddListener(ButtonFalse);
+        allNatures = new List<TheNatures>();
+        weaknessChart = new List<WeaknessChart>();
         //                                    spd|str|def|skl|Hp|Mag|Will |order
         allNatures.Add(new TheNatures("Nimble", 3, 1, 0, 1, 1, 1, 1)); //+spd -def 
         allNatures.Add(new TheNatures("Quick", 3, 1, 1, 1, 1, 1, 0)); //+spd -will 
@@ -183,6 +182,12 @@ public class Stats : MonoBehaviour
         allNatures.Add(new TheNatures("Lame", 1, 1, 1, 0, 3, 1, 1)); //+hp -skill
 
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
+
+        weaknessChart.Add(new WeaknessChart("Dark", "b", "n", "n", "n", "n", "n", "e"));
+        weaknessChart.Add(new WeaknessChart("Light", "e", "n", "n", "n", "n", "n", "b"));
+                                                  //  d    n    m    f    w    e    l
+        weaknessChart.Add(new WeaknessChart("Water", "n", "n", "n", "n", "b", "e", "n"));
+        weaknessChart.Add(new WeaknessChart("Fire", "n", "n", "e", "n", "n", "b", "n"));
         activeEffects = new List<ActiveEffects>();
         attackBonus = 0;
         strBoost = 0;
@@ -909,6 +914,30 @@ public class Stats : MonoBehaviour
     {
         attackBonus = 0;
         EffectiveStats();
+        if (currentAttack.effects.poison)
+        {
+            if(StatusHitEnemy(attacker))poison = true;
+        }
+        if (currentAttack.effects.sleep)
+        {
+            if (StatusHitEnemy(attacker)) sleep = true;
+        }
+        if (currentAttack.effects.movementDown)
+        {
+            if (StatusHitEnemy(attacker)) hobble = true;
+        }
+        if (currentAttack.effects.reduceAttack) 
+        {
+            if (StatusHitEnemy(attacker)) strReduce = 0.15f;
+        }
+        if (currentAttack.effects.)
+        {
+            if (StatusHitEnemy(attacker)) defReduce = 0.15f;
+        }
+        if (currentAttack.effects.)
+        {
+            if (StatusHitEnemy(attacker)) sdpReduce = 0.15f;
+        }
         if (currentAttack.physicalDamage)
         {
             if (currentAttack.effects.stealMoney)
@@ -1007,7 +1036,45 @@ public class Stats : MonoBehaviour
 
         }
     }
-  
+
+    public bool StatusHitEnemy(Stats attacker)
+    {
+        int hitE = (int)CalcStatusHitE(attacker.will, attacker.weaponHit);
+        //int hitP = (int)CalcStatusHit(attacker.spd, attacker.weaponWeight);
+        if (CalcIfHit(hitE))
+        {
+            return true;
+        }
+        return true;
+    }
+
+    public float CalcStatusHit(int enemySpd, int enemyWeaponWeight)
+    {
+        float accurary = weaponHit + (will * 2);
+        float avoid = (enemySpd - enemyWeaponWeight) * 2;
+        float hit = accurary - avoid;
+
+        return hit;
+        //where hitRate will be calculated
+    }
+
+    public float CalcStatusHitE(int enemyWill, int enemyWeaponHit)
+    {
+        float accurary = enemyWeaponHit + (enemyWill * 2);
+        float avoid = (spd - weaponWeight) * 2;
+        float hit = accurary - avoid;
+
+        return hit;
+        //where hitRate will be calculated
+    }
+
+    public bool CalcIfHit(int hitRate)
+    {
+        if (hitRate >= 100) return true;
+        if (Random.Range(0, 101) <= hitRate) return true;
+        if (Random.Range(0, 101) <= hitRate) return true;
+        return false;
+    }
 
     public void DefenderDamaged(Stats attacker)
     {
@@ -1364,33 +1431,7 @@ public class Stats : MonoBehaviour
         //where hitRate will be calculated
     }
 
-    public float CalcStatusHit(int enemySpd, int enemyWeaponWeight)
-    {
-        float accurary = weaponHit + (will * 2);
-        float avoid = (enemySpd - enemyWeaponWeight) * 2;
-        float hit = accurary - avoid;
-
-        return hit;
-        //where hitRate will be calculated
-    }
-
-    public float CalcStatusHitE(int enemyWill, int enemyWeaponHit)
-    {
-        float accurary = enemyWeaponHit + (enemyWill * 2);
-        float avoid = (spd - weaponWeight) * 2;
-        float hit = accurary - avoid;
-
-        return hit;
-        //where hitRate will be calculated
-    }
-
-    public bool CalcIfHit(int hitRate)
-    {
-        if (hitRate >= 100) return true;
-        if (Random.Range(0, 101) <= hitRate) return true;
-        if (Random.Range(0, 101) <= hitRate) return true;
-        return false;
-    }
+  
 
     public float CalcFinalHit(int hitRate)
     {
@@ -1577,18 +1618,24 @@ public class Stats : MonoBehaviour
     public class WeaknessChart
     {
         public string name;
-        public bool dark;
-        public bool nature;
-        public bool metal;
-        public bool fire;
-        public bool light;
+        public string dark;
+        public string nature;
+        public string metal;
+        public string fire;
+        public string earth;
+        public string water;
+        public string light;
 
-        public WeaknessChart(string nam, bool dar, bool nat, bool met, bool fir, bool lig)
+        public WeaknessChart(string nam, string dar, string nat, string met, string fir, string wat, string ear, string lig)
         {
             name = nam;
             dark = dar;
             nature = nat;
             metal = met;
+            fire = fir;
+            light = lig;
+            earth = ear;
+            water = wat;
         }
 
     }
