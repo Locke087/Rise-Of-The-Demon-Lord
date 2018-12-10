@@ -17,7 +17,7 @@ public class CutScene1 : CutSceneController {
         string temp = "";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place1", FindMyself("Ryoma").unitActor.cutsceneActor.right.neutral, temp, "ActRyoma");
+        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place1", "ActMelvin", temp, "ActRyoma");
         sceneActors.Add(scene1a1);
 
         string[] actingOrder = { "ActMelvin"};
@@ -48,13 +48,13 @@ public class CutScene1 : CutSceneController {
         string temp = "";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place10", FindMyself("Ryoma").unitActor.cutsceneActor.right.neutral, temp, "ActRyoma");
+        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place10", "ActMelvin", temp, "ActRyoma");
         scene1Actors.Add(scene1a1);
 
         file = "scene2Jane";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a2 = new CurrentSceneActorInfo("place5", FindMyself("Brenda").unitActor.cutsceneActor.right.neutral, temp, "ActBrenda");
+        CurrentSceneActorInfo scene1a2 = new CurrentSceneActorInfo("place5", "ActAlice", temp, "ActBrenda");
         scene1Actors.Add(scene1a2);
         string[] actingOrder = { "ActJane", "ActMelvin" };
         order.AddRange(actingOrder);

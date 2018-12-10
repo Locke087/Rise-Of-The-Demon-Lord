@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneController : MonoBehaviour {
 
@@ -56,9 +57,14 @@ public class CutSceneController : MonoBehaviour {
             yield return new WaitUntil(() => allDone >= currentScene.order.Count);
             allDone = 0;
         }
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Town");
     }
+}
+
+
 
    
 
   
-}
+

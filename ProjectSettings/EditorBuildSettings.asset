@@ -26,4 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UserEndMapEditor.unity
     guid: 7beffa076d25e4e428dfa3d7c0b1fb0e
+  - enabled: 1
+    path: Assets/Scenes/CutScene.unity
+    guid: 85b021b924ae3d042a95858b3892c354
+  - enabled: 1
+    path: Assets/Scenes/SWBossMap.unity
+    guid: 41697de04c35fa74b991eb6df02420d9
+  - enabled: 1
+    path: Assets/Scenes/OGLBossMap.unity
+    guid: c5e4384ed491fd143b5a0cc5d423caf1
+  - enabled: 1
+    path: Assets/Scenes/GDBossMap.unity
+    guid: 404631eaf75539644b54fbfbbda5a7fe
+  - enabled: 1
+    path: Assets/Scenes/FTBossMap.unity
+    guid: 155078437cab2cb49a76f3d78b46c870
+  - enabled: 1
+    path: Assets/Scenes/DemonKingMap.unity
+    guid: b67acdeeb648924448747c7981b29c1c
   m_configObjects: {}
