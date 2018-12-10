@@ -16,10 +16,13 @@ public class TownGeneralMenu : MonoBehaviour {
     public GameObject shopM;
     public Text changer;
     public Button changeButton;
-	void Start () {
+    public Button demonKing;
+    public GameObject demonKingMenu;
+    void Start () {
         CurrentGame.game.memoryGeneral.unitsInParty.Clear();
       // changeButton.onClick.AddListener(ChangeText);
       mapEditor.onClick.AddListener(LoadEditor);
+        demonKing.onClick.AddListener(Demon);
         shopMenu.onClick.AddListener(ShopMenu);
         save.onClick.AddListener(Save);
         unitMenu.onClick.AddListener(UnitMenu);
@@ -33,6 +36,12 @@ public class TownGeneralMenu : MonoBehaviour {
         CurrentGame.game.memoryGeneral.doISave = "chess";
         changer.text = CurrentGame.game.memoryGeneral.doISave;
     }*/
+
+
+    void Demon()
+    {
+      
+    }
     void ShopMenu()
     {
         shopM.SetActive(true);

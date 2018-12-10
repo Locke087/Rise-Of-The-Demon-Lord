@@ -1182,7 +1182,7 @@ public class UnitLoader : MonoBehaviour {
 
         CurrentLevel level1 = new CurrentLevel();
         level1.deployLimit = 2;
-        level1.powerRanking = 2;
+        level1.powerRanking = 3;
         level1.enemiesInMap.units = LoadEnemies(level1.powerRanking);
         level1.name = "A Sweaty Welcome";
         level1.idx = "1" + IDMaker.NewID();
@@ -1359,7 +1359,7 @@ public class UnitLoader : MonoBehaviour {
         Naga(7, level5.enemiesInMap.boss);
         level5.name = "Naga's Flame";
         level5.idx = "5" + IDMaker.NewID();
-        level5.sceneName = "OGLBossMap";
+        level5.sceneName = "GDBossMap";
         level5.goldReward = 200;
         level5.xpReward = 100;
         level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
@@ -1415,21 +1415,35 @@ public class UnitLoader : MonoBehaviour {
         level3F.chestPool.gold = 75;
        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
 
+        CurrentLevel level6 = new CurrentLevel();
+        level6.deployLimit = 8;
+        level6.powerRanking = 7;
+        level6.enemiesInMap.units = LoadEnemies(level6.powerRanking);
+        NineTails(7, level6.enemiesInMap.boss);
+        level6.name = "The Ninetailed Throne";
+        level6.idx = "5" + IDMaker.NewID();
+        level6.sceneName = "FTBossMap";
+        level6.goldReward = 200;
+        level6.xpReward = 100;
+        level6.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level6.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level6.chestPool.gold = 75;
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level6);
 
         CurrentLevel level5 = new CurrentLevel();
         level5.deployLimit = 8;
-        level5.powerRanking = 7;
+        level5.powerRanking = 8;
         level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
-        NineTails(7, level5.enemiesInMap.boss);
-        level5.name = "Naga's Flame";
+        DemonKing(8, level5.enemiesInMap.boss);
+        level5.name = "True Evil";
         level5.idx = "5" + IDMaker.NewID();
-        level5.sceneName = "The Ninetailed Throne";
+        level5.sceneName = "DemonKingMap";
         level5.goldReward = 200;
         level5.xpReward = 100;
         level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
         level5.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
         level5.chestPool.gold = 75;
-        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level5);
+        CurrentGame.game.memoryGeneral.TheDemonKing = level5;
 
     }
 
