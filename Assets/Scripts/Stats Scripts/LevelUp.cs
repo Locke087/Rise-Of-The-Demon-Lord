@@ -807,6 +807,7 @@ public class LevelUp : MonoBehaviour {
                                 unit.inventory.invSlot3.assessory.details.xp = 0;
                                 CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
                                 UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                                if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr])
                                 unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                                 // ShadowLoader.LevelUpClass();
                             }

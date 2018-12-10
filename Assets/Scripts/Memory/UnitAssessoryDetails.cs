@@ -18,6 +18,7 @@ public class UnitAssessoryDetails {
     public string unlocks;
     public int rank;
     public int xp;
+    public List<string> moreUnlocks;
     public List<UnitUniqueAssessoryXp> uniqueAssessoryXps;
     public UnitAssessoryDetails()
     {
@@ -31,6 +32,7 @@ public class UnitAssessoryDetails {
         boostMag = false;
         boostHp = false;
         boostSpd = false;
+        moreUnlocks = new List<string>();
         unlocks = "";
         rank = 0;
         uniqueAssessoryXps = new List<UnitUniqueAssessoryXp>();
