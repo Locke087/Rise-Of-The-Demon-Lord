@@ -150,7 +150,7 @@ public class ShadowLoader : MonoBehaviour {
         UnitSkillDetail dirtyTrick = new UnitSkillDetail();
         dirtyTrick.name = "Dirty Trick";
         dirtyTrick.effects.randomDebuff = true;
-        dirtyTrick.range = 0;
+        dirtyTrick.range = 1;
 
 
         UnitSkillDetail shades = new UnitSkillDetail();
@@ -166,7 +166,7 @@ public class ShadowLoader : MonoBehaviour {
         smokeBomb.range = 3;
         smokeBomb.effects.hitrateReduce = true;
         smokeBomb.effects.poison = true;
-        smokeBomb.attackPattern = "burst";
+        smokeBomb.attackPattern = "cross";
 
 
         UnitSkillDetail darkIntentions = new UnitSkillDetail();

@@ -144,7 +144,7 @@ public class DarkKnightLoader : MonoBehaviour {
         darkrift.effects.darkDamage = true;
         darkrift.effects.shaken = true;
         darkrift.range = 4;
-        darkrift.attackPattern = "4 tile line";
+        darkrift.attackPattern = "4tileLine";
 
 
         UnitSkillDetail crushingDarkness = new UnitSkillDetail();

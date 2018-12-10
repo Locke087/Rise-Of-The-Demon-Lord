@@ -134,7 +134,7 @@ public class PriestLoader : MonoBehaviour
     {
         UnitSkillDetail healingLight = new UnitSkillDetail();
         healingLight.name = "Healing Light";
-        healingLight.restore = 0;//magic / 2
+        healingLight.restore = 1;//magic / 2
         healingLight.range = 4;
         healingLight.effects.healing = true;
 

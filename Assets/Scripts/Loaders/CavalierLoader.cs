@@ -154,7 +154,7 @@ public class CavalierLoader : MonoBehaviour
         flanking.physicalDamage = true;
         flanking.range = 1;
         flanking.name = "Flanking";
-        flanking.attackPattern = "BackAndFront";
+        flanking.attackPattern = "cross";
 
         UnitSkillDetail vault = new UnitSkillDetail();
         vault.name = "Vault";

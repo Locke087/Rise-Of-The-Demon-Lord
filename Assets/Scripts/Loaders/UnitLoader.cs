@@ -121,7 +121,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.race = "Human";
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
-        me.unitInfo.mugName = "Dude";
+        me.unitInfo.mugName = "ActJeorge";
     
         //  me.unitActor.mapActor.groupName = "sdsjkhsd";
         //   me.unitActor.mapActor.personalID = "goblin";
@@ -166,7 +166,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitID = "Melvin";
         newMe.idx = newMe.unitID + IDMaker.NewID();
         newMe.unitClass.main.mainClass = "Warrior";
-        newMe.unitInfo.mugName = "Actor_FW01_4";
+        newMe.unitInfo.mugName = "ActMelvin";
         newMe.unitClass.main.race = "Human";
         newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior.powerLevel = 1;
@@ -209,7 +209,7 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.mainClass = "Cavalier";
         newMe2.unitClass.main.race = "Human";
         newMe2.unitInfo.human = true;
-        newMe2.unitInfo.mugName = "Actor_FW01_8";
+        newMe2.unitInfo.mugName = "ActJesel";
         newMe2.idx = me.unitID + IDMaker.NewID();
   
 
@@ -257,7 +257,7 @@ public class UnitLoader : MonoBehaviour {
         newMe3.unitID = "Alice";
         newMe3.idx = newMe.unitID + IDMaker.NewID();
         newMe3.unitClass.main.mainClass = "Priest";
-        newMe3.unitInfo.mugName = "Actor_FW01_4";
+        newMe3.unitInfo.mugName = "ActAlice";
         newMe3.unitClass.main.race = "Human";
         newMe3.unitInfo.human = true;
         newMe3.unitClass.main.human.priest.powerLevel = 1;
@@ -305,7 +305,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitID = "Sascha";
         newMe4.idx = newMe.unitID + IDMaker.NewID();
         newMe4.unitClass.main.mainClass = "Fusilier";
-        newMe4.unitInfo.mugName = "Actor_FW02_Sascha";
+        newMe4.unitInfo.mugName = "ActSascha";
         newMe4.unitClass.main.race = "Imp";
         newMe4.unitInfo.imp = true;
         newMe4.unitClass.main.imp.fusilier.powerLevel = 1;

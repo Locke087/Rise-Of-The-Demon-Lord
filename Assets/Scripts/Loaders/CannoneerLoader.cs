@@ -154,7 +154,7 @@ public class CannoneerLoader : MonoBehaviour {
 
         UnitSkillDetail breachBlast = new UnitSkillDetail();
         breachBlast.range = 2;
-        breachBlast.attackPattern = "2 tile cross";
+        breachBlast.attackPattern = "cross";
         breachBlast.physicalDamage = true;//deal half physical, half fire damage to surrounding foes and self
         breachBlast.effects.fireDamage = true;
         breachBlast.effects.selfDamage = true;
@@ -164,7 +164,7 @@ public class CannoneerLoader : MonoBehaviour {
         UnitSkillDetail blowTheGates = new UnitSkillDetail();
         blowTheGates.name = "Blow the Gates";
         blowTheGates.range = 4;
-        blowTheGates.attackPattern = "4 tile line";
+        blowTheGates.attackPattern = "4tileLine";
         blowTheGates.magicDamage = true;
         blowTheGates.effects.metalDamage = true;
 
@@ -181,7 +181,7 @@ public class CannoneerLoader : MonoBehaviour {
         UnitSkillDetail flechette = new UnitSkillDetail();
         flechette.name = "Flechette";
         flechette.range = 3;
-        flechette.attackPattern = "3x3 tile cone";
+        flechette.attackPattern = "3x3cone";
         flechette.effects.reduceDefense = true;//reduce enemy defense
 
 

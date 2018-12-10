@@ -162,7 +162,7 @@ public class BardLoader : MonoBehaviour {
         thunderAnthem.effects.confuse = true;
         thunderAnthem.magicDamage = true;
         thunderAnthem.range = 4;
-        thunderAnthem.attackPattern = "3x3Cone";
+        thunderAnthem.attackPattern = "3x3cone";
 
         UnitSkillDetail songOfLife = new UnitSkillDetail();
         songOfLife.restore = 1;//restore half magic stat life

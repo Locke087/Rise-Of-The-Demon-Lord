@@ -153,7 +153,7 @@ public class FusilierLoader : MonoBehaviour
 
         UnitSkillDetail backBlast = new UnitSkillDetail();
         backBlast.range = 4;
-        backBlast.attackPattern = "1 tile behind, 4 in front line";
+        backBlast.attackPattern = "4tileLine";
         backBlast.effects.fireDamage = true;
         backBlast.magicDamage = true;//50% life
         backBlast.name = "Backblast";
@@ -161,7 +161,7 @@ public class FusilierLoader : MonoBehaviour
 
         UnitSkillDetail cauterize = new UnitSkillDetail();
         cauterize.name = "Cauterize";
-        cauterize.attackPattern = "self";
+        cauterize.range = 0;
         cauterize.effects.selfDamage = true;
         cauterize.effects.fireDamage = true;
         cauterize.effects.statusHeal = true;
@@ -170,7 +170,7 @@ public class FusilierLoader : MonoBehaviour
         UnitSkillDetail flashAndFire = new UnitSkillDetail();
         flashAndFire.name = "Flash and Fire";
         flashAndFire.range = 3;
-        flashAndFire.attackPattern = "2x3 cone";
+        flashAndFire.attackPattern = "3x3cone";
         flashAndFire.effects.fireDamage = true;
         flashAndFire.effects.hitReduction = true;
 

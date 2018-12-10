@@ -149,7 +149,7 @@ public class DreadLoader : MonoBehaviour {
         fear.name = "Fear";
         fear.effects.shaken = true;
         fear.range = 4;
-        fear.attackPattern = "2tiles adjacent";
+        fear.attackPattern = "cross";
 
 
         UnitSkillDetail darkBlast = new UnitSkillDetail();
@@ -157,7 +157,7 @@ public class DreadLoader : MonoBehaviour {
         darkBlast.magicDamage = true;
         darkBlast.effects.darkDamage = true;
         darkBlast.name = "Dark Blast";
-        darkBlast.attackPattern = "burst";
+        darkBlast.attackPattern = "cross";
 
 
         UnitSkillDetail viciousness = new UnitSkillDetail();

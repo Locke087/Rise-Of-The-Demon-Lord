@@ -130,7 +130,7 @@ public class ChargerLoader : MonoBehaviour {
     {
         UnitSkillDetail spearThrust = new UnitSkillDetail();
         spearThrust.name = "Spear Thrust";
-        spearThrust.attackPattern = "2-tile line";
+        spearThrust.attackPattern = "2tileLine";
         spearThrust.physicalDamage = true;
         spearThrust.range = 2;
 
@@ -138,7 +138,7 @@ public class ChargerLoader : MonoBehaviour {
         hammerAndNail.name = "Hammer and Nail";
         hammerAndNail.physicalDamage = true;
         hammerAndNail.range = 1;
-        hammerAndNail.attackPattern = "1 tile front and back";
+        hammerAndNail.attackPattern = "cross";
 
         UnitSkillDetail pierceDefenses = new UnitSkillDetail();
         pierceDefenses.name = "Pierce Defenses";
@@ -149,7 +149,7 @@ public class ChargerLoader : MonoBehaviour {
         UnitSkillDetail hurl = new UnitSkillDetail();
         hurl.physicalDamage = true;
         hurl.range = 4;
-        hurl.attackPattern = "4 tile line";
+        hurl.attackPattern = "4tileLine";
         hurl.name = "Hurl";
 
 

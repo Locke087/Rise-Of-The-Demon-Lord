@@ -163,7 +163,7 @@ public class SwashbucklerLoader : MonoBehaviour
         UnitSkillDetail scatterShot = new UnitSkillDetail();
         scatterShot.name = "Scattershot";
         scatterShot.range = 3;
-        scatterShot.attackPattern = "2x3 cone";
+        scatterShot.attackPattern = "3x3cone";
         scatterShot.effects.randomDamage = true;//deals random damage (weapon + atk * 2 max)
         scatterShot.physicalDamage = true;
 
@@ -181,7 +181,7 @@ public class SwashbucklerLoader : MonoBehaviour
         shotOffTheBow.name = "Shot off the Bow";
         shotOffTheBow.range = 5;
         shotOffTheBow.effects.shaken = true;
-        shotOffTheBow.attackPattern = "5 tile line";
+        shotOffTheBow.attackPattern = "4tileLine";
         shotOffTheBow.physicalDamage = true;
 
 

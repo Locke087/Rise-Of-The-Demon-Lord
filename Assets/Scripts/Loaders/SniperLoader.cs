@@ -137,7 +137,7 @@ public class SniperLoader : MonoBehaviour {
         UnitSkillDetail enfiliade = new UnitSkillDetail();
         enfiliade.name = "Enfilade";
         enfiliade.physicalDamage = true;
-        enfiliade.attackPattern = "3x3 cone";
+        enfiliade.attackPattern = "3x3cone";
 
         UnitSkillDetail hailOfArrows = new UnitSkillDetail();
         hailOfArrows.name = "Hail of Arrows";

@@ -154,7 +154,7 @@ public class ShrikeLoader : MonoBehaviour {
         razorWings.range = 4;
         razorWings.magicDamage = true;
         razorWings.effects.darkDamage = true;
-        razorWings.attackPattern = "2x3 cone";
+        razorWings.attackPattern = "3x3cone";
         razorWings.name = "Razor Wings";
 
 
@@ -168,7 +168,6 @@ public class ShrikeLoader : MonoBehaviour {
         UnitSkillDetail abyssalImpact = new UnitSkillDetail();
         abyssalImpact.name = "Abyssal Inheritor";
         abyssalImpact.range = 1;
-        abyssalImpact.attackPattern = "melee";
         abyssalImpact.effects.darkDamage = true;
         abyssalImpact.physicalDamage = true;
 

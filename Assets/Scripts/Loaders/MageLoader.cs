@@ -147,13 +147,13 @@ public class MageLoader : MonoBehaviour
         UnitSkillDetail auraBurst = new UnitSkillDetail();
         auraBurst.name = "Aura Burst";
         auraBurst.magicDamage = true;
-        auraBurst.attackPattern = "adjacentEnemies";
-        auraBurst.range = 1;
+        auraBurst.attackPattern = "cross";
+        auraBurst.range = 0;
 
 
         UnitSkillDetail meditation = new UnitSkillDetail();
         meditation.range = 0;
-        meditation.effects.mpRestore = true;//1/5 magic stat
+        meditation.effects.healing = true;//1/5 magic stat
         meditation.name = "Meditation";
 
 
@@ -174,6 +174,7 @@ public class MageLoader : MonoBehaviour
         UnitSkillDetail arcaneMastery = new UnitSkillDetail();
         arcaneMastery.name = "Arcane Mastery";
         arcaneMastery.support = true;
+        arcaneMastery.range = 0;
         arcaneMastery.extraDamageMod = 1.2f;
 
 
