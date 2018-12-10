@@ -20,6 +20,7 @@ public class MemoryGeneralGame {
     public UnitHumanClass humanClassProgress;
     public UnitImpClass impClassProgress;
     public UnitViraClass viraClassProgress;
+    public CurrentLevel TheDemonKing; 
     public string doISave;
 	public MemoryGeneralGame()
     {
@@ -36,6 +37,7 @@ public class MemoryGeneralGame {
         humanClassProgress = new UnitHumanClass();
         impClassProgress = new UnitImpClass();
         viraClassProgress = new UnitViraClass();
+        TheDemonKing = new CurrentLevel();
         currentLevelID = "";
         doISave = "";
         gold = 0;
