@@ -210,6 +210,8 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.race = "Human";
         newMe2.unitInfo.human = true;
         newMe2.unitInfo.mugName = "Actor_FW01_8";
+        newMe2.unitActor.neutralPortrait.groupName = "";
+        newMe2.unitActor.neutralPortrait.personalID = "";
         newMe2.idx = me.unitID + IDMaker.NewID();
   
 
