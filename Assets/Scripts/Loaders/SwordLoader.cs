@@ -315,11 +315,12 @@ public class SwordLoader : MonoBehaviour
         lightningSword.range = 2;
         lightningSword.type = "HeavyBlade";
         lightningSword.magic = true;
+        lightningSword.effects.natureDamage = true;
         if (sw == lightningSword.name) u.details = lightningSword;
 
         UnitWeaponDetails bastardSword = new UnitWeaponDetails();
-        bastardSword.might = 12;
-        bastardSword.weight = 8;
+        bastardSword.might = 13;
+        bastardSword.weight = 7;
         bastardSword.hitrate = 65;
         bastardSword.critrate = 3;
         bastardSword.critchance = 1;
@@ -336,8 +337,8 @@ public class SwordLoader : MonoBehaviour
         if (sw == bastardSword.name) u.details = bastardSword;
 
         UnitWeaponDetails falchion = new UnitWeaponDetails();
-        falchion.might = 12;
-        falchion.weight = 8;
+        falchion.might = 15;
+        falchion.weight = 10;
         falchion.hitrate = 65;
         falchion.critrate = 3;
         falchion.critchance = 1;
@@ -353,8 +354,8 @@ public class SwordLoader : MonoBehaviour
         if (sw == falchion.name) u.details = falchion;
 
         UnitWeaponDetails greatSword = new UnitWeaponDetails();
-        greatSword.might = 12;
-        greatSword.weight = 8;
+        greatSword.might = 17;
+        greatSword.weight = 12;
         greatSword.hitrate = 65;
         greatSword.critrate = 3;
         greatSword.critchance = 1;
@@ -370,8 +371,8 @@ public class SwordLoader : MonoBehaviour
         if (sw == greatSword.name) u.details = greatSword;
 
         UnitWeaponDetails executionersSword = new UnitWeaponDetails();
-        executionersSword.might = 12;
-        executionersSword.weight = 8;
+        executionersSword.might = 15;
+        executionersSword.weight = 11;
         executionersSword.hitrate = 65;
         executionersSword.critrate = 3;
         executionersSword.critchance = 1;
@@ -380,12 +381,13 @@ public class SwordLoader : MonoBehaviour
         executionersSword.rank = 3;
         executionersSword.range = 1;
         executionersSword.type = "HeavyBlade";
-        executionersSword.physical = true;
+        executionersSword.magic = true;
+        executionersSword.effects.metalDamage = true;
         if (sw == executionersSword.name) u.details = executionersSword;
 
         UnitWeaponDetails endEdge = new UnitWeaponDetails();
-        endEdge.might = 12;
-        endEdge.weight = 8;
+        endEdge.might = 14;
+        endEdge.weight = 10;
         endEdge.hitrate = 65;
         endEdge.critrate = 3;
         endEdge.critchance = 1;
@@ -397,12 +399,13 @@ public class SwordLoader : MonoBehaviour
         endEdge.rank = 3;
         endEdge.range = 1;
         endEdge.type = "HeavyBlade";
-        endEdge.physical = true;
+        endEdge.magic = true;
+        endEdge.effects.darkDamage = true;
         if (sw == endEdge.name) u.details = endEdge;
 
         UnitWeaponDetails runeBlade = new UnitWeaponDetails();
-        runeBlade.might = 12;
-        runeBlade.weight = 8;
+        runeBlade.might = 17;
+        runeBlade.weight = 13;
         runeBlade.hitrate = 65;
         runeBlade.critrate = 3;
         runeBlade.critchance = 1;
@@ -412,6 +415,7 @@ public class SwordLoader : MonoBehaviour
         runeBlade.range = 1;
         runeBlade.type = "HeavyBlade";
         runeBlade.magic = true;
+        runeBlade.effects.earthDamage = true;
         if (sw == runeBlade.name) u.details = runeBlade;
 
 
