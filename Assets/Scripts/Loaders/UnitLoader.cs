@@ -76,6 +76,7 @@ public class UnitLoader : MonoBehaviour {
         Fusilier.Clear();
         Priest.Clear();
         Cavalier.Clear();
+
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.subbed.Clear();
@@ -147,7 +148,7 @@ public class UnitLoader : MonoBehaviour {
         // str, def, spd, skill, magic, will
         int[] bases = { 7, 5, 3, 5, 2, 1 };
         me.unitInfo.bases.AddRange(bases);
-        me.unitInfo.nature = "Nimble";
+        me.unitInfo.nature = "Nimble"; 
         me.inventory.invSlot1.holding = "Vemon Blade";
         me.inventory.invSlot1.weapon.equipped = true;
         me.inventory.invSlot1.weapon.name = "Vemon Blade";
@@ -365,21 +366,30 @@ public class UnitLoader : MonoBehaviour {
     public int lastPick = 0;
     public int count = 0;
 
+   
+
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();
         int armysize = 0;
         int armylevel = 0;
-        if (rating == 1)
+        float size = 5 * (1 + (((rating * 12)) / 100));
+        float level = rating * (1 + ((rating * 30) / 100));
+        armysize = (int)size;
+        armylevel = (int)level;
+        if (rating <= 3)
         {
-            armysize = 6;
-            armylevel = 1;
-
             for (int i = 0; i < armysize; i++)
             {
                 pickOneLowLevel(Random.Range(0, 5), armylevel, enemiesInMap);
             }
-
+        }
+        else
+        { 
+            for (int i = 0; i < armysize; i++)
+            {
+                pickOneHigh(Random.Range(0, 8), armylevel, enemiesInMap);
+            }
         }
 
 
@@ -616,7 +626,6 @@ public class UnitLoader : MonoBehaviour {
         Goblin.Clear();
     }
 
-
     void DelayedBlueSlime(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -648,7 +657,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         BlueSlimeE.Clear();
     }
-
 
     void DelayedGreenSlime(int level, List<Unit> enemiesInMap)
     {
@@ -682,7 +690,6 @@ public class UnitLoader : MonoBehaviour {
         GreenSlimeE.Clear();
     }
 
-
     void DelayedBabyDevil(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -714,7 +721,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         BabyDevil.Clear();
     }
-
 
     void DelayedBabyGreenDragon(int level, List<Unit> enemiesInMap)
     {
@@ -748,7 +754,6 @@ public class UnitLoader : MonoBehaviour {
         BabyGreenDragonE.Clear();
     }
 
-
     void DelayedBabyRedDragon(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -780,7 +785,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         BabyRedDragonE.Clear();
     }
-
 
     void DelayedBlueVinetrap(int level, List<Unit> enemiesInMap)
     {
@@ -814,7 +818,6 @@ public class UnitLoader : MonoBehaviour {
         BlueVinetrapE.Clear();
     }
 
-
     void DelayedRedVinetrap(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -846,7 +849,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         RedVinetrapE.Clear();
     }
-
 
     void DelayedDevil(int level, List<Unit> enemiesInMap)
     {
@@ -880,7 +882,6 @@ public class UnitLoader : MonoBehaviour {
         Devil.Clear();
     }
 
-
     void DelayedEfreet(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -912,7 +913,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         Efreet.Clear();
     }
-
 
     void DelayedGhost(int level, List<Unit> enemiesInMap)
     {
@@ -946,7 +946,6 @@ public class UnitLoader : MonoBehaviour {
         Ghost.Clear();
     }
 
-
     void DelayedReaper(int level, List<Unit> enemiesInMap)
     {
         int amin = 3;
@@ -978,7 +977,6 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         Reaper.Clear();
     }
-
 
     void DelayedSkeleton(int level, List<Unit> enemiesInMap)
     {
@@ -1012,8 +1010,7 @@ public class UnitLoader : MonoBehaviour {
         Skeleton.Clear();
     }
 
-
-    void Ogre(int level, List<Unit> enemiesInMap)
+    void Ogre(int level, Unit enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
@@ -1040,12 +1037,12 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
 
-        enemiesInMap.Add(me);
+        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
         OgreBoss.Clear();
     }
 
-    void Dragon(int level, List<Unit> enemiesInMap)
+    void Dragon(int level, Unit enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
@@ -1072,12 +1069,12 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
 
-        enemiesInMap.Add(me);
+        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
         DragonBoss.Clear();
     }
 
-    void NineTails(int level, List<Unit> enemiesInMap)
+    void NineTails(int level, Unit enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
@@ -1104,12 +1101,12 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
 
-        enemiesInMap.Add(me);
+        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
         NinetailsBoss.Clear();
     }
 
-    void Naga(int level, List<Unit> enemiesInMap)
+    void Naga(int level, Unit enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
@@ -1136,12 +1133,12 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
 
-        enemiesInMap.Add(me);
+        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
         NagaBoss.Clear();
     }
 
-    void DemonKing(int level, List<Unit> enemiesInMap)
+    void DemonKing(int level, Unit enemiesInMap)
     {
         int amin = 3;
         int amax = 10;
@@ -1168,19 +1165,10 @@ public class UnitLoader : MonoBehaviour {
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
 
-        enemiesInMap.Add(me);
+        enemiesInMap = me ;
         CurrentGame.game.storeroom.units.Add(me);
         LichBoss.Clear();
     }
-
-
-
-
-
-
-
-
-
 
     public static int RB(int min, int max, int alt)
     {
@@ -1220,6 +1208,7 @@ public class UnitLoader : MonoBehaviour {
         level2.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level2);
+
         CurrentLevel level3 = new CurrentLevel();
         level3.deployLimit = 8;
         level3.powerRanking = 3;
@@ -1233,7 +1222,21 @@ public class UnitLoader : MonoBehaviour {
         level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
         level3.chestPool.gold = 75;
 
-        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level3);
+      
+        CurrentLevel level5 = new CurrentLevel();
+        level5.deployLimit = 8;
+        level5.powerRanking = 5;
+        level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
+        Dragon(5, level5.enemiesInMap.boss);
+        level5.name = "The Sandy Dracofiend";
+        level5.idx = "5" + IDMaker.NewID();
+        level5.sceneName = "SWBossMap";
+        level5.goldReward = 200;
+        level5.xpReward = 100;
+        level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level5.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level5.chestPool.gold = 75;
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level5);
     }
 
     public void NewOGLevel()
@@ -1283,6 +1286,20 @@ public class UnitLoader : MonoBehaviour {
 
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level3);
 
+        CurrentLevel level5 = new CurrentLevel();
+        level5.deployLimit = 8;
+        level5.powerRanking = 5;
+        level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
+        Ogre(5, level5.enemiesInMap.boss);
+        level5.name = "The Ogre's Falls";
+        level5.idx = "5" + IDMaker.NewID();
+        level5.sceneName = "OGLBossMap";
+        level5.goldReward = 200;
+        level5.xpReward = 100;
+        level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level5.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level5.chestPool.gold = 75;
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Add(level5);
 
     }
 
@@ -1334,6 +1351,21 @@ public class UnitLoader : MonoBehaviour {
         level3G.chestPool.gold = 75;
 
         CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level3G);
+
+        CurrentLevel level5 = new CurrentLevel();
+        level5.deployLimit = 8;
+        level5.powerRanking = 7;
+        level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
+        Naga(7, level5.enemiesInMap.boss);
+        level5.name = "Naga's Flame";
+        level5.idx = "5" + IDMaker.NewID();
+        level5.sceneName = "OGLBossMap";
+        level5.goldReward = 200;
+        level5.xpReward = 100;
+        level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level5.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level5.chestPool.gold = 75;
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Add(level5);
     }
 
 
@@ -1371,7 +1403,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level2F);
         CurrentLevel level3F = new CurrentLevel();
         level3F.deployLimit = 8;
-        level3F.powerRanking = 4;
+        level3F.powerRanking = 5;
         level3F.enemiesInMap.units = LoadEnemies(level3F.powerRanking);
         level3F.name = "Chilled Out Baddies";
         level3F.idx = "3" + IDMaker.NewID();
@@ -1382,6 +1414,23 @@ public class UnitLoader : MonoBehaviour {
         level3F.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
         level3F.chestPool.gold = 75;
        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level3F);
+
+
+        CurrentLevel level5 = new CurrentLevel();
+        level5.deployLimit = 8;
+        level5.powerRanking = 7;
+        level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
+        NineTails(7, level5.enemiesInMap.boss);
+        level5.name = "Naga's Flame";
+        level5.idx = "5" + IDMaker.NewID();
+        level5.sceneName = "The Ninetailed Throne";
+        level5.goldReward = 200;
+        level5.xpReward = 100;
+        level5.chestPool.weapons.AddRange(SwordLoader.ChestWeapons());
+        level5.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
+        level5.chestPool.gold = 75;
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Add(level5);
+
     }
 
     
