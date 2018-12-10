@@ -90,7 +90,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.mage.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.mage.present == true)
         {
           
             int totalGain = 0;
@@ -131,7 +131,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.priest.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.priest.present == true)
         {
             int totalGain = 0;
             int powerGain = 0;
@@ -171,7 +171,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.rogue.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.rogue.present == true)
         {
             int totalGain = 0;
             int powerGain = 0;
@@ -211,7 +211,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.present == true)
         {
           
             int totalGain = 0;
@@ -252,7 +252,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.bard.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.bard.present == true)
         {
           
             int totalGain = 0;
@@ -293,7 +293,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.humanClassProgress.archer.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.archer.present == true)
         {
            
             int totalGain = 0;
@@ -334,8 +334,215 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-    
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.dread.present == true)
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.assassin.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.humanClassProgress.assassin.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.humanClassProgress.assassin.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.xp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.pxp = powerGain;
+                }
+
+                // ArcherLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.assassin.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.sniper.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.humanClassProgress.sniper.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.xp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp = powerGain;
+                }
+
+                // ArcherLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.sniper.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.paladin.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.humanClassProgress.paladin.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.humanClassProgress.paladin.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.humanClassProgress.sniper.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.xp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.pxp = powerGain;
+                }
+
+                // ArcherLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.paladin.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.knight.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.humanClassProgress.knight.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.humanClassProgress.knight.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.xp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp = powerGain;
+                }
+
+                // ArcherLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.knight.xp = totalGain;
+                }
+            }
+
+        }
+        if (CurrentGame.game.memoryGeneral.humanClassProgress.charger.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.humanClassProgress.charger.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.humanClassProgress.charger.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.humanClassProgress.knight.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.xp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.pxp = powerGain;
+                }
+
+                // ArcherLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.pxp = 0;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.humanClassProgress.charger.xp = totalGain;
+                }
+            }
+
+        }
+
+        if (CurrentGame.game.memoryGeneral.impClassProgress.dread.present == true)
         {
             int totalGain = 0;
             int powerGain = 0;
@@ -375,7 +582,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present == true)
+        if (CurrentGame.game.memoryGeneral.impClassProgress.fusilier.present == true)
         { 
             int totalGain = 0;
             int powerGain = 0;
@@ -415,7 +622,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }  
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.shrike.present == true)
+        if (CurrentGame.game.memoryGeneral.impClassProgress.shrike.present == true)
         {
            
             int totalGain = 0;
@@ -456,7 +663,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present == true)
+        if (CurrentGame.game.memoryGeneral.impClassProgress.swashbuckler.present == true)
         {
          
           
@@ -498,7 +705,7 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
-        else if (CurrentGame.game.memoryGeneral.impClassProgress.shadow.present == true)
+        if (CurrentGame.game.memoryGeneral.impClassProgress.shadow.present == true)
         {
            
             int totalGain = 0;
@@ -539,7 +746,170 @@ public class LevelUp : MonoBehaviour {
                 }
             }
         }
+        if (CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.present == true)
+        {
 
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.pxp = powerGain;
+                }
+
+                //ShadowLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.cannoneer.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.impClassProgress.darkknight.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.darkknight.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.pxp = powerGain;
+                }
+
+                //ShadowLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.darkknight.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.impClassProgress.demonRider.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.demonRider.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.demonRider.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.pxp = powerGain;
+                }
+
+                //ShadowLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.demonRider.xp = totalGain;
+                }
+            }
+        }
+        if (CurrentGame.game.memoryGeneral.impClassProgress.nightblade.present == true)
+        {
+
+            int totalGain = 0;
+            int powerGain = 0;
+            int reduce = 0;
+            reduce = CurrentGame.game.memoryGeneral.impClassProgress.nightblade.powerLevel - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+            if (reduce < 1) reduce = 1;
+            totalGain = CurrentGame.game.memoryGeneral.impClassProgress.nightblade.xp + (rewards.unitXp / reduce);
+            powerGain = totalGain + CurrentGame.game.memoryGeneral.impClassProgress.nightblade.pxp;
+            if (totalGain >= levelUP)
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.xp = 0;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.xp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.pxp = powerGain;
+                }
+
+                //ShadowLoader.LevelUpClass();
+            }
+            else
+            {
+                if (powerGain >= pLevelUp)
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.pxp = 0;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.powerLevel += 1;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.xp = totalGain;
+                }
+                else
+                {
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.pxp = powerGain;
+                    CurrentGame.game.memoryGeneral.impClassProgress.nightblade.xp = totalGain;
+                }
+            }
+        }
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.present = false;
         CurrentGame.game.memoryGeneral.humanClassProgress.mage.present = false;
         CurrentGame.game.memoryGeneral.humanClassProgress.priest.present = false;
@@ -579,82 +949,93 @@ public class LevelUp : MonoBehaviour {
             {
                 if (unit.inventory.invSlot1.weapon.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot1.weapon.details.unlocks, unit.idx))
+
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot1.weapon.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
-                        {
-                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
-                            unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                        }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot1.weapon.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
-                                unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                            }
-                        }
-
+                        CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+                        unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
                     }
 
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
+                        {
+
+                            unit.inventory.invSlot1.weapon.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot1.weapon.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
+                            unit.inventory.invSlot1.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                        }
+                    }
                 }
                 else if (unit.inventory.invSlot1.assessory.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot1.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot1.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot1.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+
+                            unit.inventory.invSlot1.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot1.assessory.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot1.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
                             unit.inventory.invSlot1.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot1.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
-
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot1.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot1.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                            }
-                        }
-
                     }
                 }
             }
@@ -662,80 +1043,92 @@ public class LevelUp : MonoBehaviour {
             {
                 if (unit.inventory.invSlot2.weapon.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot2.weapon.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
                     {
-                      
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot2.weapon.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+                        unit.inventory.invSlot2.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+
+                            unit.inventory.invSlot2.weapon.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot2.weapon.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot2.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
                             unit.inventory.invSlot2.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot2.weapon.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot2.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
-                                unit.inventory.invSlot2.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                            }
-                        }
-
                     }
                 }
                 else if (unit.inventory.invSlot2.assessory.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot2.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot2.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot2.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+
+                            unit.inventory.invSlot2.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot2.assessory.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot2.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
                             unit.inventory.invSlot2.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot2.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot2.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot2.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                            }
-                        }
-
                     }
                 }
             }
@@ -743,81 +1136,91 @@ public class LevelUp : MonoBehaviour {
             {
                 if (unit.inventory.invSlot3.weapon.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot3.weapon.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot3.weapon.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+                        unit.inventory.invSlot3.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+
+                            unit.inventory.invSlot3.weapon.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot3.weapon.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot3.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
                             unit.inventory.invSlot3.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot3.weapon.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot3.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
-                                unit.inventory.invSlot3.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                            }
-                        }
-
                     }
+
                 }
                 else if (unit.inventory.invSlot3.assessory.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot3.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                        
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot3.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+
+                            unit.inventory.invSlot3.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot3.assessory.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
                             unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot3.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr])
-                                unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot3.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                            }
-                        }
-
                     }
                 }
             }
@@ -825,80 +1228,90 @@ public class LevelUp : MonoBehaviour {
             {
                 if (unit.inventory.invSlot4.weapon.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot4.weapon.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
                     {
-                        
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.weapons.FindIndex(x => x.idx == unit.inventory.invSlot4.weapon.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+                        unit.inventory.invSlot4.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.Add(new UnitUniqueWeaponXp(unit.idx));
+
+                            unit.inventory.invSlot4.weapon.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot4.weapon.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks)
+                                {
+                                    if (!HasSkill(name, unit.idx)) UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot4.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
                             unit.inventory.invSlot4.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot4.weapon.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot4.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.uniqueWeaponXps[numk].xp = totalGain;
-                                unit.inventory.invSlot4.weapon = CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr];
-                            }
-                        }
-
                     }
                 }
                 else if (unit.inventory.invSlot4.assessory.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot4.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot4.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot4.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+
+                            unit.inventory.invSlot4.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot4.assessory.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks)
+                                {
+                                    if (!HasSkill(name, unit.idx)) UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot4.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
                             unit.inventory.invSlot4.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot4.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot4.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot4.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                            }
-                        }
-
                     }
                 }
             }
@@ -906,79 +1319,90 @@ public class LevelUp : MonoBehaviour {
             {
                 if (unit.inventory.invSlot5.weapon.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                       
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
-                        {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
-                            unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                        }
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
 
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
 
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            if (totalGain >= levelUP)
+
+                            unit.inventory.invSlot5.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
                             {
-
-                                unit.inventory.invSlot5.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
                                 UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
                             }
-                            else
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks.Count > 0)
                             {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.weapons[numr].details.moreUnlocks)
+                                {
+                                    if (!HasSkill(name, unit.idx)) UnitLearn(name, unit.idx);
+                                }
                             }
+                            unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
+                            unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
                     }
                 }
                 else if (unit.inventory.invSlot5.assessory.inSlot)
                 {
-                    if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
+                    int totalGain = 0;
+                    int reduce = 0;
+                    int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
                     {
-                      
-                        int totalGain = 0;
-                        int reduce = 0;
-                        int numr = CurrentGame.game.memoryGeneral.itemsOwned.assessories.FindIndex(x => x.idx == unit.inventory.invSlot5.assessory.idx);
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Exists(x => x.idx == unit.idx))
+                        CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+                        unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                    }
+
+                    int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
+                    reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
+                    if (reduce < 1) reduce = 1;
+                    totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
+
+                    if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
+                    {
+                        if (totalGain >= levelUP)
                         {
-                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.Add(new UnitUniqueAssessoryXp(unit.idx));
+
+                            unit.inventory.invSlot5.assessory.details.xp = 0;
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
+                            if (!HasSkill(unit.inventory.invSlot5.assessory.details.unlocks, unit.idx))
+                            {
+                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
+                            }
+                            if (CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks.Count > 0)
+                            {
+                                foreach (string name in CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.moreUnlocks)
+                                {
+                                    UnitLearn(name, unit.idx);
+                                }
+                            }
+                            unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
+                            // ShadowLoader.LevelUpClass();
+                        }
+                        else
+                        {
+                            CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
                             unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
                         }
-
-                        int numk = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps.FindIndex(x => x.idx == unit.idx);
-                        reduce = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.rank - CurrentGame.game.memoryGeneral.currentLevel.powerRanking;
-                        if (reduce < 1) reduce = 1;
-                        totalGain = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp + (rewards.weaponXP / reduce);
-
-                        if (!CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done)
-                        {
-                            if (totalGain >= levelUP)
-                            {
-
-                                unit.inventory.invSlot5.assessory.details.xp = 0;
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].done = true;
-                                UnitLearn(CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.unlocks, unit.idx);
-                                unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                                // ShadowLoader.LevelUpClass();
-                            }
-                            else
-                            {
-                                CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr].details.uniqueAssessoryXps[numk].xp = totalGain;
-                                unit.inventory.invSlot5.assessory = CurrentGame.game.memoryGeneral.itemsOwned.assessories[numr];
-                            }
-                        }
-
                     }
                 }
             }
@@ -986,6 +1410,8 @@ public class LevelUp : MonoBehaviour {
 
     }
 
+
+   
     /* else if (CurrentGame.game.memoryGeneral.impClassProgress.magus.present == true)
        {
       int levelUP = 100;
@@ -1286,7 +1712,7 @@ public class LevelUp : MonoBehaviour {
         Unit u = CurrentGame.game.storeroom.units.Find(x => x.idx == idx);
         UnitHumanClass hum = u.unitClass.main.human;
         UnitViraClass vira = u.unitClass.main.vira;
-        UnitImpClass imp = u.unitClass.main.imp;      
+        UnitImpClass imp = u.unitClass.main.imp;
         if (hum.warrior.name == u.unitClass.main.mainClass) hum.warrior.present = true;
         else if (hum.mage.name == u.unitClass.main.mainClass) hum.mage.present = true;
         else if (hum.priest.name == u.unitClass.main.mainClass) hum.priest.present = true;
@@ -1294,8 +1720,12 @@ public class LevelUp : MonoBehaviour {
         else if (hum.cavalier.name == u.unitClass.main.mainClass) hum.cavalier.present = true;
         else if (hum.bard.name == u.unitClass.main.mainClass) hum.bard.present = true;
         else if (hum.archer.name == u.unitClass.main.mainClass) hum.archer.present = true;
-
-      /*  else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
+        else if (hum.assassin.name == u.unitClass.main.mainClass) hum.assassin.present = true;
+        else if (hum.charger.name == u.unitClass.main.mainClass) hum.charger.present = true;
+        else if (hum.sniper.name == u.unitClass.main.mainClass) hum.sniper.present = true;
+        else if (hum.paladin.name == u.unitClass.main.mainClass) hum.paladin.present = true;
+        else if (hum.knight.name == u.unitClass.main.mainClass) hum.knight.present = true;
+        /*else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
         else if (vira.chronos.name == u.unitClass.main.mainClass) vira.chronos.present = true;
         else if (vira.geomancer.name == u.unitClass.main.mainClass) vira.geomancer.present = true;
         else if (vira.kensai.name == u.unitClass.main.mainClass) vira.kensai.present = true;
@@ -1304,10 +1734,14 @@ public class LevelUp : MonoBehaviour {
 
         else if (imp.dread.name == u.unitClass.main.mainClass) imp.dread.present = true;
         else if (imp.fusilier.name == u.unitClass.main.mainClass) imp.fusilier.present = true;
-         else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
+        else if (imp.duelist.name == u.unitClass.main.mainClass) imp.duelist.present = true;
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
         else if (imp.swashbuckler.name == u.unitClass.main.mainClass) imp.swashbuckler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
+        else if (imp.cannoneer.name == u.unitClass.main.mainClass) imp.cannoneer.present = true;
+        else if (imp.darkknight.name == u.unitClass.main.mainClass) imp.darkknight.present = true;
+        else if (imp.demonRider.name == u.unitClass.main.mainClass) imp.demonRider.present = true;
+        else if (imp.nightblade.name == u.unitClass.main.mainClass) imp.nightblade.present = true;
 
 
         if (hum.warrior.present == true)
@@ -1338,7 +1772,8 @@ public class LevelUp : MonoBehaviour {
         }
         else if (hum.bard.present == true)
         {
-            //.AssignSkill(skill, u.unitClass.main.human.bard.pickSkill);
+            BardLoader.AssignSkill(skill, u.unitClass.main.human.bard.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
 
         }
         else if (hum.archer.present == true)
@@ -1346,6 +1781,32 @@ public class LevelUp : MonoBehaviour {
             ArcherLoader.AssignSkill(skill, u.unitClass.main.human.archer.pickSkill);
             ClassUnlock.CheckOnClass(u);
         }
+        else if (hum.sniper.present == true)
+        {
+            SniperLoader.AssignSkill(skill, u.unitClass.main.human.sniper.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (hum.charger.present == true)
+        {
+            ChargerLoader.AssignSkill(skill, u.unitClass.main.human.charger.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (hum.knight.present == true)
+        {
+            KnightLoader.AssignSkill(skill, u.unitClass.main.human.knight.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (hum.paladin.present == true)
+        {
+            SniperLoader.AssignSkill(skill, u.unitClass.main.human.paladin.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (hum.assassin.present == true)
+        {
+            AssassinLoader.AssignSkill(skill, u.unitClass.main.human.assassin.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+       
 
         else if (imp.dread.present == true)
         {
@@ -1375,7 +1836,27 @@ public class LevelUp : MonoBehaviour {
         }
         else if (imp.duelist.present == true)
         {
-            //DuelistLoader.AssignSkill(skill, u.unitClass.main.imp.duelist.pickSkill);
+            DuelistLoader.AssignSkill(skill, u.unitClass.main.imp.duelist.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (imp.cannoneer.present == true)
+        {
+            CannoneerLoader.AssignSkill(skill, u.unitClass.main.imp.cannoneer.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (imp.darkknight.present == true)
+        {
+            DarkKnightLoader.AssignSkill(skill, u.unitClass.main.imp.darkknight.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (imp.demonRider.present == true)
+        {
+            DemonRiderLoader.AssignSkill(skill, u.unitClass.main.imp.demonRider.pickSkill, u);
+            ClassUnlock.CheckOnClass(u);
+        }
+        else if (imp.nightblade.present == true)
+        {
+            NightBladeLoader.AssignSkill(skill, u.unitClass.main.imp.nightblade.pickSkill, u);
             ClassUnlock.CheckOnClass(u);
         }
 
@@ -1420,7 +1901,11 @@ public class LevelUp : MonoBehaviour {
         else if (hum.cavalier.name == u.unitClass.main.mainClass) hum.cavalier.present = true;
         else if (hum.bard.name == u.unitClass.main.mainClass) hum.bard.present = true;
         else if (hum.archer.name == u.unitClass.main.mainClass) hum.archer.present = true;
-
+        else if (hum.assassin.name == u.unitClass.main.mainClass) hum.assassin.present = true;
+        else if (hum.charger.name == u.unitClass.main.mainClass) hum.charger.present = true;
+        else if (hum.sniper.name == u.unitClass.main.mainClass) hum.sniper.present = true;
+        else if (hum.paladin.name == u.unitClass.main.mainClass) hum.paladin.present = true;
+        else if (hum.knight.name == u.unitClass.main.mainClass) hum.knight.present = true;
         /*else if (vira.alchemist.name == u.unitClass.main.mainClass) vira.alchemist.present = true;
         else if (vira.chronos.name == u.unitClass.main.mainClass) vira.chronos.present = true;
         else if (vira.geomancer.name == u.unitClass.main.mainClass) vira.geomancer.present = true;
@@ -1434,6 +1919,10 @@ public class LevelUp : MonoBehaviour {
         else if (imp.shrike.name == u.unitClass.main.mainClass) imp.shrike.present = true;
         else if (imp.swashbuckler.name == u.unitClass.main.mainClass) imp.swashbuckler.present = true;
         else if (imp.shadow.name == u.unitClass.main.mainClass) imp.shadow.present = true;
+        else if (imp.cannoneer.name == u.unitClass.main.mainClass) imp.cannoneer.present = true;
+        else if (imp.darkknight.name == u.unitClass.main.mainClass) imp.darkknight.present = true;
+        else if (imp.demonRider.name == u.unitClass.main.mainClass) imp.demonRider.present = true;
+        else if (imp.nightblade.name == u.unitClass.main.mainClass) imp.nightblade.present = true;
 
 
         if (hum.warrior.present == true)
@@ -1442,33 +1931,48 @@ public class LevelUp : MonoBehaviour {
         }
         else if (hum.mage.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.mage.pickSkill);
+            return MageLoader.HasSkill(skill, u.unitClass.main.human.mage.pickSkill);
         }
         else if (hum.priest.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.priest.pickSkill);
+            return PriestLoader.HasSkill(skill, u.unitClass.main.human.priest.pickSkill);
         }
         else if (hum.rogue.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.rogue.pickSkill);
-
+            return RogueLoader.HasSkill(skill, u.unitClass.main.human.rogue.pickSkill);
         }
         else if (hum.cavalier.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.cavalier.pickSkill);
-
+            return CavalierLoader.HasSkill(skill, u.unitClass.main.human.cavalier.pickSkill);
         }
         else if (hum.bard.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.bard.pickSkill);
-
+            return BardLoader.HasSkill(skill, u.unitClass.main.human.bard.pickSkill);
         }
         else if (hum.archer.present == true)
         {
-            return WarriorLoader.HasSkill(skill, u.unitClass.main.human.archer.pickSkill);
-
+            return ArcherLoader.HasSkill(skill, u.unitClass.main.human.archer.pickSkill);
         }
-
+        else if (hum.sniper.present == true)
+        {
+            return SniperLoader.HasSkill(skill, u.unitClass.main.human.sniper.pickSkill);
+        }
+        else if (hum.charger.present == true)
+        {
+            return ChargerLoader.HasSkill(skill, u.unitClass.main.human.charger.pickSkill);
+        }
+        else if (hum.knight.present == true)
+        {
+            return KnightLoader.HasSkill(skill, u.unitClass.main.human.knight.pickSkill);
+        }
+        else if (hum.paladin.present == true)
+        {
+            return PaladinLoader.HasSkill(skill, u.unitClass.main.human.paladin.pickSkill);
+        }
+        else if (hum.assassin.present == true)
+        {
+            return AssassinLoader.HasSkill(skill, u.unitClass.main.human.assassin.pickSkill);
+        }
         /*   else if (vira.chronos.present == true)
            {
                return WarriorLoader.HasSkill(skill, u.unitClass.main.vira.chronos.pickSkill);
@@ -1497,7 +2001,7 @@ public class LevelUp : MonoBehaviour {
 
         else if (imp.dread.present == true)
         {
-           // return DreadLoader.HasSkill(skill, u.unitClass.main.imp.dread.pickSkill);
+           return DreadLoader.HasSkill(skill, u.unitClass.main.imp.dread.pickSkill);
         }
         else if (imp.fusilier.present == true)
         {
@@ -1506,19 +2010,35 @@ public class LevelUp : MonoBehaviour {
 
         else if (imp.shrike.present == true)
         {
-          //  return ShrikeLoader.HasSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
+           return ShrikeLoader.HasSkill(skill, u.unitClass.main.imp.shrike.pickSkill);
         }
         else if (imp.swashbuckler.present == true)
         {
-            //return SwashbucklerLoader.HasSkill(skill, u.unitClass.main.imp.swashbulkler.pickSkill);
+            return SwashbucklerLoader.HasSkill(skill, u.unitClass.main.imp.swashbuckler.pickSkill);
         }
         else if (imp.shadow.present == true)
         {
-          //  return ShadowLoader.HasSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
+           return ShadowLoader.HasSkill(skill, u.unitClass.main.imp.shadow.pickSkill);
         }
         else if (imp.duelist.present == true)
         {
-            //return .HasSkill(skill, u.unitClass.main.imp.magus.pickSkill);
+            return DuelistLoader.HasSkill(skill, u.unitClass.main.imp.duelist.pickSkill);
+        }    
+        else if (imp.cannoneer.present == true)
+        {
+            return CannoneerLoader.HasSkill(skill, u.unitClass.main.imp.cannoneer.pickSkill);
+        }
+        else if (imp.darkknight.present == true)
+        {
+            return DarkKnightLoader.HasSkill(skill, u.unitClass.main.imp.darkknight.pickSkill);
+        }
+        else if (imp.demonRider.present == true)
+        {
+            return DemonRiderLoader.HasSkill(skill, u.unitClass.main.imp.demonRider.pickSkill);
+        }
+        else if (imp.nightblade.present == true)
+        {
+            return NightBladeLoader.HasSkill(skill, u.unitClass.main.imp.nightblade.pickSkill);
         }
 
         return false;

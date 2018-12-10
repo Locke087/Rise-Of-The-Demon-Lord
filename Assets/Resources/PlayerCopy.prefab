@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 114981297170187514}
   unitID: Sascha
+  unitIdx: 
   hp: 0
   str: 0
   def: 0
@@ -314,6 +315,12 @@ MonoBehaviour:
   baseSkill: 0
   baseMagic: 0
   baseWill: 0
+  effectStr: 0
+  effectDef: 0
+  effectSpd: 0
+  effectSkill: 0
+  effectMagic: 0
+  effectWill: 0
   movement: 0
   finalHit: 0
   currentHp: 0
@@ -355,6 +362,9 @@ MonoBehaviour:
   done: 0
   go: 0
   dead: 0
+  poison: 0
+  sleep: 0
+  hobble: 0
   friend: 0
   foe: 0
   allClassesBase: []
@@ -368,12 +378,29 @@ MonoBehaviour:
   calcSkill: 0
   calcMagic: 0
   calcWill: 0
-  affitity: 
+  affinity: 
   attackBonus: 0
+  strBoost: 0
+  spdBoost: 0
+  defBoost: 0
+  skillBoost: 0
+  magBoost: 0
+  willBoost: 0
+  attackReduce: 0
+  strReduce: 0
+  spdReduce: 0
+  defReduce: 0
+  skillReduce: 0
+  magReduce: 0
+  willReduce: 0
+  beneficial: 0
+  enmity: 0
   currentAttack:
     name: 
     extraDamageMod: 0
+    mod: 0
     restore: 0
+    baseEffect: 0
     range: 0
     self: 0
     support: 0
@@ -435,6 +462,8 @@ MonoBehaviour:
       movementDown: 0
       movementIncrease: 0
       statusHeal: 0
+      analyze: 0
+    monsterTells: []
     attackPattern: 
   currentAssessory1:
     idx: 
@@ -499,6 +528,34 @@ MonoBehaviour:
       rank: 0
       xp: 0
       uniqueAssessoryXps: []
+  activeEffects: []
+  theWeapon:
+    name: 
+    might: 0
+    weight: 0
+    hitrate: 0
+    critrate: 0
+    critchance: 0
+    range: 0
+    magic: 0
+    physical: 0
+    unlocks: 
+    moreUnlocks: []
+    type: 
+    rank: 0
+    xp: 0
+    uniqueWeaponXps: []
+    effects:
+      sleep: 0
+      vampire: 0
+      poison: 0
+      fireDamage: 0
+      darkDamage: 0
+      waterDamage: 0
+      natureDamage: 0
+      earthDamage: 0
+      metalDamage: 0
+      devil: 0
 --- !u!114 &114153448445137506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -715,7 +772,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300012, guid: a4cc310c851d8df49b85bcb42113917d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -757,7 +814,9 @@ MonoBehaviour:
   currentAttack:
     name: 
     extraDamageMod: 0
+    mod: 0
     restore: 0
+    baseEffect: 0
     range: 0
     self: 0
     support: 0
@@ -819,6 +878,8 @@ MonoBehaviour:
       movementDown: 0
       movementIncrease: 0
       statusHeal: 0
+      analyze: 0
+    monsterTells: []
     attackPattern: 
   weapon:
     idx: 
@@ -837,6 +898,7 @@ MonoBehaviour:
       magic: 0
       physical: 0
       unlocks: 
+      moreUnlocks: []
       type: 
       rank: 0
       xp: 0
