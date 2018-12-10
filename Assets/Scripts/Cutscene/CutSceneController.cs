@@ -35,7 +35,7 @@ public class CutSceneController : MonoBehaviour {
         {        
             foreach (CurrentSceneActorInfo actorInfo in currentScene.actors)
             {
-                ActorPlacementGroup actor = actors.Find(x => x.realname == actorInfo.groupName);
+                ActorPlacementGroup actor = actors.Find(x => x.realname == actorInfo.name);
                 actor.SwitchPostion(actorInfo.location, actorInfo.name);
                 yield return new WaitForSeconds(0.01f);
                 actor.CurrentPostion().NewMe(actorInfo.name);

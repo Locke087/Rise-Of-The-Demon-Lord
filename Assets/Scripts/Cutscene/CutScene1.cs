@@ -17,7 +17,7 @@ public class CutScene1 : CutSceneController {
         string temp = "";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place1", "ActMelvin", temp, "ActRyoma");
+        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place1", "ActMelvin", temp, "ActMelvin");
         sceneActors.Add(scene1a1);
 
         string[] actingOrder = { "ActMelvin"};
@@ -48,15 +48,15 @@ public class CutScene1 : CutSceneController {
         string temp = "";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place10", "ActMelvin", temp, "ActRyoma");
+        CurrentSceneActorInfo scene1a1 = new CurrentSceneActorInfo("place10", "ActMelvin", temp, "ActMelvin");
         scene1Actors.Add(scene1a1);
 
         file = "scene2Jane";
         book = File.ReadAllText("Assets/TextFiles/" + folder + "/" + file + ".txt");
         temp = book;
-        CurrentSceneActorInfo scene1a2 = new CurrentSceneActorInfo("place5", "ActAlice", temp, "ActBrenda");
+        CurrentSceneActorInfo scene1a2 = new CurrentSceneActorInfo("place5", "ActAlice", temp, "ActAlice");
         scene1Actors.Add(scene1a2);
-        string[] actingOrder = { "ActJane", "ActMelvin" };
+        string[] actingOrder = { "ActAlice", "ActMelvin" };
         order.AddRange(actingOrder);
         CurrentSceneInfo scene1 = new CurrentSceneInfo(scene1Actors, order);
         sceneInfos.Add(scene1);
