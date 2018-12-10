@@ -214,6 +214,7 @@ public class SpeedCenterTurns : MonoBehaviour {
        
         if (!stopped)
         {
+           
           //  unitOrder[upNext].gameObject.GetComponent<Renderer>().material.color = Color.green;
             cam.transform.position = new Vector3(unitOrder[upNext].transform.position.x, cam.transform.position.y, unitOrder[upNext].transform.position.z);
             activeUnit = unitOrder[upNext];
@@ -221,7 +222,25 @@ public class SpeedCenterTurns : MonoBehaviour {
             Debug.Log(unitOrder[upNext].name);
             if (unitOrder[upNext].tag == "Player")
             {
-               // GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
+                if (unitOrder[upNext].GetComponent<Stats>().sleep)
+                {
+                    if (unitOrder[upNext].GetComponent<Stats>().sleep)
+                    {
+                        unitOrder[upNext].GetComponent<MapManager>().DisableMove();
+                        unitOrder[upNext].GetComponent<MapManager>().PlayerSkill();
+                        unitOrder[upNext].GetComponent<Stats>().LowerCounter("sleep");
+                    }
+                    if (unitOrder[upNext].GetComponent<Stats>().poison)
+                    {
+                        unitOrder[upNext].GetComponent<Stats>().PoisonDamage();
+                        unitOrder[upNext].GetComponent<Stats>().LowerCounter("poison");
+                    }
+                    if (unitOrder[upNext].GetComponent<Stats>().strBoost != 0)
+                    {
+                        unitOrder[upNext].GetComponent<Stats>().LowerCounter("strBoost");
+                    }
+                }
+                // GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
                 if (temp + 1 >= unitOrder.Count)
                 {
                     //GameObject.Find("UpNext").GetComponent<Text>().text = unitOrder[0].name;
@@ -239,6 +258,15 @@ public class SpeedCenterTurns : MonoBehaviour {
             }
             else if (unitOrder[upNext].tag == "Enemy")
             {
+                if (unitOrder[upNext].GetComponent<Stats>().sleep)
+                {
+                    unitOrder[upNext].GetComponent<Stats>().LowerCounter("Sleep");
+                }
+                if (unitOrder[upNext].GetComponent<Stats>().poison)
+                {
+                    unitOrder[upNext].GetComponent<Stats>().PoisonDamage();
+                    unitOrder[upNext].GetComponent<Stats>().LowerCounter("Poison");
+                }
                 GameObject.Find("TheTurnOf").GetComponent<Text>().text = unitOrder[upNext].name;
                 if (temp + 1 >= unitOrder.Count)
                 {
@@ -299,7 +327,7 @@ public class SpeedCenterTurns : MonoBehaviour {
 
             for (int i = 0; i < unitOrder.Count; i++)
             {
-                if (unitOrder[upNext].tag == "Dead")
+                if (unitOrder[upNext].tag == "Dead" )
                 {
                     int what = upNext + 1;
                     if (what < unitOrder.Count)

@@ -8,9 +8,11 @@ public class MapEnemyMove : GridMovement {
     bool attackState;
     Rigidbody rb;
     public UnitWeapon weapon;
+    Stats stats;
     // Use this for initialization
     void Start () {
         rb = gameObject.GetComponent<Rigidbody>();
+        stats = gameObject.GetComponent<Stats>();
         if (rb.IsSleeping()) rb.WakeUp();
         rb.drag = 0;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
@@ -23,33 +25,36 @@ public class MapEnemyMove : GridMovement {
 
     public IEnumerator GoTime()
     {
-        GameObject tile = null;
-        FindNearestTarget();
-        CalculatePath();
-        FindSelectableTiles();
-        if (actualTargetTile != null)
+        if (!stats.sleep)
         {
-            actualTargetTile.target = true;
-            tile = actualTargetTile.gameObject;
-        }
-        Move();
-        weapon = FindEquippedWeapon(gameObject.GetComponent<Stats>().FindMyself());
-        do
-        {
+            GameObject tile = null;
+            FindNearestTarget();
+            CalculatePath();
+            FindSelectableTiles();
+            if (actualTargetTile != null)
+            {
+                actualTargetTile.target = true;
+                tile = actualTargetTile.gameObject;
+            }
             Move();
-            yield return new WaitForSeconds(0.01f);
-        } while (isMoving);
-        if (tile != null)
-        {
-            if (gameObject.transform.localRotation != tile.transform.localRotation) gameObject.transform.localRotation = tile.transform.localRotation;
+            weapon = FindEquippedWeapon(gameObject.GetComponent<Stats>().FindMyself());
+            do
+            {
+                Move();
+                yield return new WaitForSeconds(0.01f);
+            } while (isMoving);
+            if (tile != null)
+            {
+                if (gameObject.transform.localRotation != tile.transform.localRotation) gameObject.transform.localRotation = tile.transform.localRotation;
+            }
         }
-      
+
         float nextTo = weapon.details.range;
         float thePlayer = Vector3.Distance(transform.position, target.transform.position);
         if (nextTo >= thePlayer)
             attackState = true;
 
-        if (attackState)
+        if (attackState && !stats.sleep)
         {
             List<GameObject> newTargets = new List<GameObject>();
             AssignArray(newTargets);

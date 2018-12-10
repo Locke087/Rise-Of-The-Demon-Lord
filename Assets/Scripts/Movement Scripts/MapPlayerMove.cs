@@ -7,9 +7,11 @@ public class MapPlayerMove : GridMovement {
     // Use this for initialization
     public bool busy = false;
     MapPlayerAttack playerAttack;
+    Stats stats;
     Rigidbody rb;
 	void Start () {
       playerAttack = gameObject.GetComponent<MapPlayerAttack>();
+        stats = gameObject.GetComponent<Stats>();
       rb = gameObject.GetComponent<Rigidbody>();
         if (rb.IsSleeping()) rb.WakeUp();
         rb.drag = 0;
@@ -31,12 +33,17 @@ public class MapPlayerMove : GridMovement {
     public void ShowMove()
     {
         Debug.Log("nowWhat");
-        if (!playerAttack.inUse)
+        if (!playerAttack.inUse && !stats.sleep)
         {
             busy = true;
             AssignMe();
           
             FindSelectableTiles();
+        }
+        else if (stats.sleep)
+        {
+            MapManager manager = GameObject.FindObjectOfType<MapManager>();
+            manager.DisableMove();
         }
     }
 

@@ -72,9 +72,11 @@ public class Stats : MonoBehaviour
     public bool done = false;
     public bool go = false;
     public bool dead = false;
+    public bool poison = false;
+    public bool sleep = false;
     public bool friend = false;
     public bool foe = false;
-  
+
     //  public Button confirm;
     //public Button cancel;
     /* public int hpModStat;
@@ -89,7 +91,6 @@ public class Stats : MonoBehaviour
     /// class Stuff
     /// </summary>
     // Use this for initialization
-
     public List<TheClassesBase> allClassesBase;
     // public List<TheClassesInc> allClassesInc;
     public List<TheClassesMod> allClassesMods;
@@ -104,25 +105,27 @@ public class Stats : MonoBehaviour
     public int calcWill;
     public string affinity;
     public float attackBonus;
-    public float strBonus;
-    public float spdBonus;
-    public float defBonus;
-    public float skillBonus;
-    public float magBonus;
-    public float willBonus;
-    public float attackNeg;
-    public float strNeg;
-    public float spdNeg;
-    public float defNeg;
-    public float skillNeg;
-    public float magNeg;
-    public float willNeg;
+    public float strBoost;
+    public float spdBoost;
+    public float defBoost;
+    public float skillBoost;
+    public float magBoost;
+    public float willBoost;
+    public float attackReduce;
+    public float strReduce;
+    public float spdReduce;
+    public float defReduce;
+    public float skillReduce;
+    public float magReduce;
+    public float willReduce;
     public bool beneficial = false;
-    public bool Enmity = false;
+    public bool enmity = false;
     public UnitSkillDetail currentAttack;
     public UnitAssessory currentAssessory1;
     public UnitAssessory currentAssessory2;
     public UnitAssessory currentAssessory3;
+    public List<ActiveEffects> activeEffects;
+    public UnitWeaponDetails theWeapon;
     void Start()
     {
        // confirm = GameObject.Find("AttackConfirm").GetComponent<Button>();
@@ -179,13 +182,14 @@ public class Stats : MonoBehaviour
         allNatures.Add(new TheNatures("Lame", 1, 1, 1, 0, 3, 1, 1)); //+hp -skill
 
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
+        activeEffects = new List<ActiveEffects>();
         attackBonus = 0;
-        strBonus = 0;
-        defBonus = 0;
-        spdBonus = 0;
-        skillBonus = 0;      
-        magBonus = 0;
-        willBonus = 0;
+        strBoost = 0;
+        defBoost = 0;
+        spdBoost = 0;
+        skillBoost = 0;      
+        magBoost = 0;
+        willBoost = 0;
         if (nature == null) nature = "Neutral";
         currentHp = hp;
        
@@ -267,6 +271,19 @@ public class Stats : MonoBehaviour
             else if (type == 0) info.lowattackText.text = num.ToString() + " Missed 0% Dmg";
         }
         StartCoroutine(ClearNoticeText());      
+    }
+
+    public void PoisonDamage()
+    {
+        int num = 0;
+        num = (int)(hp * 0.15f);
+        info.attackText.faceColor = Color.magenta;
+        info.attackText.text = num.ToString() + " Poison Damage";
+        currentHp = currentHp - num;
+        if (currentHp < 0) currentHp = 0;
+        UpdateHp();
+        if (currentHp <= 0) Death();
+        StartCoroutine(ClearNoticeText());
     }
 
     public Unit FindMyself()
@@ -473,23 +490,76 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public void EffectGoAway(string which)
+    {
+        if (which == "strBoost") strBoost = 0;
+        else if (which == "defBonus") defBoost = 0;
+        else if (which == "spdBoost") spdBoost = 0;
+        else if (which == "skillBoost") skillBoost = 0;
+        else if (which == "magBoost") magBoost = 0;
+        else if (which == "willBoost") willBoost = 0;
+        else if (which == "strReduce") strReduce = 0;
+        else if (which == "defReduce") defReduce = 0;
+        else if (which == "spdReduce") spdReduce = 0;
+        else if (which == "skillReduce") skillReduce = 0;
+        else if (which == "magReduce") magReduce = 0;
+        else if (which == "willReduce") willReduce = 0;
+        else if (which == "sleep") sleep = false;
+        else if (which == "poison") poison = false;
+    }
+
+
+    public void StatusEffect(string which, int num)
+    {
+        if (which == "strBoost") strBoost = num;
+        else if (which == "defBonus") defBoost = num;
+        else if (which == "spdBoost") spdBoost = num;
+        else if (which == "skillBoost") skillBoost = num;
+        else if (which == "magBoost") magBoost = num;
+        else if (which == "willBoost") willBoost = num;
+        else if (which == "strReduce") strReduce = num;
+        else if (which == "defReduce") defReduce = num;
+        else if (which == "spdReduce") spdReduce = num;
+        else if (which == "skillReduce") skillReduce = num;
+        else if (which == "magReduce") magReduce = num;
+        else if (which == "willReduce") willReduce = num;
+        else if (which == "sleep") sleep = true;
+        else if (which == "poison") poison = true;
+    }
+    public void LowerCounter(string which)
+    {
+        if (activeEffects.Exists(x => x.name == which))
+        {
+            activeEffects.Find(x => x.name == which).timer--;
+            if (activeEffects.Find(x => x.name == which).timer <= 0) EffectGoAway(which);
+        }
+    }
+
+  
+
+
     public void EffectiveStats()
     {
         // attackBonus = 0;
         int tempA = 0;
         int tempB = 0;
-        if(strBonus != 0) tempA = (int)(str * (1 + strBonus));
-        if (strNeg != 0) tempB = (int)(str * strNeg);
+        if(strBoost != 0) tempA = (int)(str * (1 + strBoost));
+        if (strReduce != 0) tempB = (int)(str * strReduce);
+
         if (tempA != 0 && tempB == 0) effectStr = tempA;
         else if (tempA == 0 && tempB != 0) effectStr = tempB;
         else if (tempA - tempB > 0) effectStr = tempA - tempB;
-        if (defBonus != 0) tempA = (int)(def * (1 + defBonus));
-        if (defNeg != 0) tempB = (int)(def * defNeg);
+        else effectStr = str;
+
+        if (defBoost != 0) tempA = (int)(def * (1 + defBoost));
+        if (defReduce != 0) tempB = (int)(def * defReduce);
+
         if (tempA != 0 && tempB == 0) effectDef = tempA;
         else if (tempA == 0 && tempB != 0) effectDef = tempB;
         else if (tempA - tempB > 0) effectDef = tempA - tempB;
-        if (defBonus != 0) tempA = (int)(def * (1 + defBonus));
-        if (defNeg != 0) tempB = (int)(def * defNeg);
+        else effectDef = def;
+        if (defBoost != 0) tempA = (int)(def * (1 + defBoost));
+        if (defReduce != 0) tempB = (int)(def * defReduce);
         if (tempA != 0 && tempB == 0) effectDef = tempA;
         else if (tempA == 0 && tempB != 0) effectDef = tempB;
         else if (tempA - tempB > 0) effectDef = tempA - tempB;
@@ -514,8 +584,11 @@ public class Stats : MonoBehaviour
         }
         else if ((dAttackSpeed - aAttackSpeed) >= 4 && currentHp >= 0 && attacker.currentHp >= 0)
         {
-            if (weaponDef.details.physical) AttackerDamaged(attacker);
-            else AttackerMagDamaged(attacker);
+            if (!attacker.sleep)
+            {
+                if (weaponDef.details.physical) AttackerDamaged(attacker);
+                else AttackerMagDamaged(attacker);
+            }
         }
 
         //if (gameObject.tag == "Player") GameObject.FindObjectOfType<MapManager>().PlayerAttackTrue();
@@ -787,6 +860,11 @@ public class Stats : MonoBehaviour
 
 
     }
+    public void AffityBonus(string compare)
+    {
+
+    }
+
 
     public void Skill(Stats attacker)
     {
@@ -801,14 +879,15 @@ public class Stats : MonoBehaviour
             }
             if (currentAttack.effects.fireDamage && affinity == "Wood")
             {
-
-                attacker.attackBonus = 1.5f;
-                attacker.attackBonus = 1.5f;
+             
+                attacker.attackBonus = 0.5f;
+              
                 DefenderDamaged(attacker);
             }
             else if (currentAttack.effects.fireDamage && affinity == "Wood")
             {
-
+              // Bad Match Up
+                attacker.attackBonus = 0.5f;
             }
           
         }
@@ -876,6 +955,19 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public void WeaponEffects(Stats attacker)
+    {
+      int hitE = (int)CalcStatusHitE(attacker.will, attacker.weaponHit);
+      int hitP = (int)CalcStatusHit(attacker.spd, attacker.weaponWeight);
+        if(CalcIfHit(hitE))
+        {
+          //  attacker.
+        }
+        if (CalcIfHit(hitE))
+        {
+
+        }
+    }
   
 
     public void DefenderDamaged(Stats attacker)
@@ -1054,6 +1146,7 @@ public class Stats : MonoBehaviour
         }
 
 
+
         Debug.Log("Had This Much HP: " + attacker.currentHp);
 
         if (enemyDamage > 0)
@@ -1096,6 +1189,7 @@ public class Stats : MonoBehaviour
         Unit me = FindMyself();
         if (me.inventory.invSlot1.weapon.equipped)
         {
+            theWeapon = me.inventory.invSlot1.weapon.details;
             weaponHit = me.inventory.invSlot1.weapon.details.hitrate;
             weaponMight = me.inventory.invSlot1.weapon.details.might;
             weaponWeight = me.inventory.invSlot1.weapon.details.weight;
@@ -1104,6 +1198,7 @@ public class Stats : MonoBehaviour
         }
         else if (me.inventory.invSlot2.weapon.equipped)
         {
+            theWeapon = me.inventory.invSlot2.weapon.details;
             weaponHit = me.inventory.invSlot2.weapon.details.hitrate;
             weaponMight = me.inventory.invSlot2.weapon.details.might;
             weaponWeight = me.inventory.invSlot2.weapon.details.weight;
@@ -1112,6 +1207,7 @@ public class Stats : MonoBehaviour
         }
         else if (me.inventory.invSlot3.weapon.equipped)
         {
+            theWeapon = me.inventory.invSlot3.weapon.details;
             weaponHit = me.inventory.invSlot3.weapon.details.hitrate;
             weaponMight = me.inventory.invSlot3.weapon.details.might;
             weaponWeight = me.inventory.invSlot3.weapon.details.weight;
@@ -1120,6 +1216,7 @@ public class Stats : MonoBehaviour
         }
         else if (me.inventory.invSlot4.weapon.equipped)
         {
+            theWeapon = me.inventory.invSlot4.weapon.details;
             weaponHit = me.inventory.invSlot4.weapon.details.hitrate;
             weaponMight = me.inventory.invSlot4.weapon.details.might;
             weaponWeight = me.inventory.invSlot4.weapon.details.weight;
@@ -1128,6 +1225,7 @@ public class Stats : MonoBehaviour
         }
         else if (me.inventory.invSlot5.weapon.equipped)
         {
+            theWeapon = me.inventory.invSlot5.weapon.details;
             weaponHit = me.inventory.invSlot5.weapon.details.hitrate;
             weaponMight = me.inventory.invSlot5.weapon.details.might;
             weaponWeight = me.inventory.invSlot5.weapon.details.weight;
@@ -1188,6 +1286,34 @@ public class Stats : MonoBehaviour
 
         return hit;
         //where hitRate will be calculated
+    }
+
+    public float CalcStatusHit(int enemySpd, int enemyWeaponWeight)
+    {
+        float accurary = weaponHit + (will * 2);
+        float avoid = (enemySpd - enemyWeaponWeight) * 2;
+        float hit = accurary - avoid;
+
+        return hit;
+        //where hitRate will be calculated
+    }
+
+    public float CalcStatusHitE(int enemyWill, int enemyWeaponHit)
+    {
+        float accurary = enemyWeaponHit + (enemyWill * 2);
+        float avoid = (spd - weaponWeight) * 2;
+        float hit = accurary - avoid;
+
+        return hit;
+        //where hitRate will be calculated
+    }
+
+    public bool CalcIfHit(int hitRate)
+    {
+        if (hitRate >= 100) return true;
+        if (Random.Range(0, 101) <= hitRate) return true;
+        if (Random.Range(0, 101) <= hitRate) return true;
+        return false;
     }
 
     public float CalcFinalHit(int hitRate)
@@ -1341,6 +1467,7 @@ public class Stats : MonoBehaviour
     }
 
 
+ 
 
     [System.Serializable]
     public class TheNatures
@@ -1369,6 +1496,27 @@ public class Stats : MonoBehaviour
         }
 
     }
+
+    [System.Serializable]
+    public class WeaknessChart
+    {
+        public string name;
+        public bool dark;
+        public bool nature;
+        public bool metal;
+        public bool fire;
+        public bool light;
+
+        public WeaknessChart(string nam, bool dar, bool nat, bool met, bool fir, bool lig)
+        {
+            name = nam;
+            dark = dar;
+            nature = nat;
+
+        }
+
+    }
+
 
     [System.Serializable]
     public class CharacterSheet

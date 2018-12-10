@@ -39,6 +39,9 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+
+   
+
     public void PlayerAttack(GameObject tile, GameObject enemy)
     {
         if (currentUser != null)
@@ -62,6 +65,12 @@ public class MapManager : MonoBehaviour {
             currentUser.GetComponent<MapPlayerAttack>().attack();
         }
 
+    }
+
+    public void DisableMove()
+    {
+        GameObject.FindObjectOfType<PlayerUnitMenu>().movedFinished = true;
+        GameObject.FindObjectOfType<PlayerUnitMenu>().move.gameObject.GetComponent<Image>().color = Color.gray;
     }
 
     /* public void PlayerAttackTrue()

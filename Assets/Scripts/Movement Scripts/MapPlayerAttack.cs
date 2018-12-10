@@ -11,8 +11,12 @@ public class MapPlayerAttack : ShowAttackRange {
     public UnitSkillDetail currentAttack;
     public UnitWeapon weapon;
     MapPlayerMove playerMove;
+    Stats stats;
+  
     void Start()
     {
+
+        stats = gameObject.GetComponent<Stats>();
         shape = "";
         playerMove = gameObject.GetComponent<MapPlayerMove>();
     }
@@ -36,12 +40,17 @@ public class MapPlayerAttack : ShowAttackRange {
     public void ShowAttack()
     {
         Debug.Log("okay why");
-        if (!playerMove.busy)
+        if (!playerMove.busy && !stats.sleep)
         {
             inUse = true;
             AssignMe();
             FindSelectableTiles();
             
+        }
+        else if (stats.sleep)
+        {
+            MapManager manager = GameObject.FindObjectOfType<MapManager>();
+            manager.DisableMove();
         }
     }
 
@@ -50,13 +59,18 @@ public class MapPlayerAttack : ShowAttackRange {
     public void UniqueAttack()
     {
         Debug.Log("okay now");
-        if (!playerMove.busy)
+        if (!playerMove.busy && !stats.sleep)
         {
             attackArea = currentAttack.range;
             inUse = true;
             AssignMe();
             FindSelectableTiles();
 
+        }
+        else if (stats.sleep)
+        {
+            MapManager manager = GameObject.FindObjectOfType<MapManager>();
+            manager.DisableMove();
         }
     }
 
