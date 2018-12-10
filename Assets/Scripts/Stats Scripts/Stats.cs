@@ -930,7 +930,7 @@ public class Stats : MonoBehaviour
         {
             if (StatusHitEnemy(attacker)) strReduce = 0.15f;
         }
-        if (currentAttack.effects.)
+        if (currentAttack.effects.reduceDefense)
         {
             if (StatusHitEnemy(attacker)) defReduce = 0.15f;
         }
