@@ -934,10 +934,10 @@ public class Stats : MonoBehaviour
         {
             if (StatusHitEnemy(attacker)) defReduce = 0.15f;
         }
-        if (currentAttack.effects.)
+      /*  if (currentAttack.effects.)
         {
             if (StatusHitEnemy(attacker)) sdpReduce = 0.15f;
-        }
+        }*/
         if (currentAttack.physicalDamage)
         {
             if (currentAttack.effects.stealMoney)
