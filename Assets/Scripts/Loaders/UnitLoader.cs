@@ -1011,6 +1011,174 @@ public class UnitLoader : MonoBehaviour {
     }
 
 
+    void Ogre(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Skeleton.LevelUp();
+            me.unitClass.main.monster.Ogre.modifiers = OgreBoss.ModList();
+            me.unitClass.main.monster.Ogre.caps = OgreBoss.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.Ogre;
+        }
+        me.unitClass.main.mainClass = "Ogre";
+        me.unitClass.main.race = "Ogre";
+        me.unitClass.main.monster.Ogre.level = level;
+        me.unitClass.main.monster.Ogre.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Ogre" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        OgreBoss.Clear();
+    }
+
+    void Dragon(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            DragonBoss.LevelUp();
+            me.unitClass.main.monster.Dragon.modifiers = DragonBoss.ModList();
+            me.unitClass.main.monster.Dragon.caps = DragonBoss.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.Dragon;
+        }
+        me.unitClass.main.mainClass = "Dragon";
+        me.unitClass.main.race = "Dragon";
+        me.unitClass.main.monster.Dragon.level = level;
+        me.unitClass.main.monster.Dragon.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Dragon" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        DragonBoss.Clear();
+    }
+
+    void NineTails(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Skeleton.LevelUp();
+            me.unitClass.main.monster.NineTails.modifiers = NinetailsBoss.ModList();
+            me.unitClass.main.monster.NineTails.caps = NinetailsBoss.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.NineTails;
+        }
+        me.unitClass.main.mainClass = "Nine Tails";
+        me.unitClass.main.race = "Nine Tails";
+        me.unitClass.main.monster.NineTails.level = level;
+        me.unitClass.main.monster.NineTails.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Nine Tails" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        NinetailsBoss.Clear();
+    }
+
+    void Naga(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Skeleton.LevelUp();
+            me.unitClass.main.monster.Naga.modifiers = NagaBoss.ModList();
+            me.unitClass.main.monster.Naga.caps = NagaBoss.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.Naga;
+        }
+        me.unitClass.main.mainClass = "Naga";
+        me.unitClass.main.race = "Naga";
+        me.unitClass.main.monster.Naga.level = level;
+        me.unitClass.main.monster.Naga.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Naga" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        NagaBoss.Clear();
+    }
+
+    void DemonKing(int level, List<Unit> enemiesInMap)
+    {
+        int amin = 3;
+        int amax = 10;
+        Unit me = new Unit();
+        for (int i = 0; i < level; i++)
+        {
+            Skeleton.LevelUp();
+            me.unitClass.main.monster.DemonKing.modifiers = LichBoss.ModList();
+            me.unitClass.main.monster.DemonKing.caps = LichBoss.Caplist();
+            me.unitInfo.main = me.unitClass.main.monster.DemonKing;
+        }
+        me.unitClass.main.mainClass = "Lich";
+        me.unitClass.main.race = "Lich";
+        me.unitClass.main.monster.DemonKing.level = level;
+        me.unitClass.main.monster.DemonKing.movement = 4;
+        //yield return new WaitForSeconds(0.01f);      
+        me.unitID = "Demon King" + IDMaker.NewID();
+
+        // str, def, spd, skill, magic, will
+        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        me.unitInfo.bases.AddRange(bases);
+        me.unitInfo.nature = ARandomNature.RandomNature();
+        me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
+        me.inventory.invSlot1.weapon.inSlot = true;
+        me.inventory.invSlot1.weapon.equipped = true;
+
+        enemiesInMap.Add(me);
+        CurrentGame.game.storeroom.units.Add(me);
+        LichBoss.Clear();
+    }
+
+
+
+
+
+
+
+
+
 
     public static int RB(int min, int max, int alt)
     {

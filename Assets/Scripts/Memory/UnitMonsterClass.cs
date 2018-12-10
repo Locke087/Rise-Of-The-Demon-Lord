@@ -22,9 +22,20 @@ public class UnitMonsterClass {
     public UnitClassDetail reaper;
     public UnitClassDetail skeleton;
     public UnitClassDetail werewolf;
+    public UnitClassDetail Ogre;
+    public UnitClassDetail NineTails;
+    public UnitClassDetail Naga;
+    public UnitClassDetail Dragon;
+    public UnitClassDetail DemonKing;
+
 
     public UnitMonsterClass()
     {
+        DemonKing = new UnitClassDetail();
+        Dragon = new UnitClassDetail();
+        Naga = new UnitClassDetail();
+        NineTails = new UnitClassDetail();
+        Ogre = new UnitClassDetail();
         goblinCharger = new UnitClassDetail();
         goblinArcher = new UnitClassDetail();
         blueSlime = new UnitClassDetail();
