@@ -9,8 +9,10 @@ public class MapEnemyMove : GridMovement {
     Rigidbody rb;
     public UnitWeapon weapon;
     Stats stats;
+    public int oldmove;
     // Use this for initialization
     void Start () {
+        oldmove = 0;
         rb = gameObject.GetComponent<Rigidbody>();
         stats = gameObject.GetComponent<Stats>();
         if (rb.IsSleeping()) rb.WakeUp();
@@ -27,6 +29,15 @@ public class MapEnemyMove : GridMovement {
     {
         if (!stats.sleep)
         {
+            if (stats.hobble)
+            {
+                move = move - 2;
+            }
+            else
+            {
+                move = oldmove;
+            }
+
             GameObject tile = null;
             FindNearestTarget();
             CalculatePath();

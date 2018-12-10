@@ -26,7 +26,7 @@ public class SwordLoader : MonoBehaviour
         battleAxe.critchance = 1;
         battleAxe.name = "Battle Axe";
         battleAxe.unlocks = "Wild Strike";
-        battleAxe.unlocks = "Trample";
+        battleAxe.moreUnlocks.Add("Trample");
         battleAxe.rank = 2;
         battleAxe.range = 1;
         battleAxe.physical = true;

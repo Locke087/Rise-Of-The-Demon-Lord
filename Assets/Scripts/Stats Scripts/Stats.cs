@@ -74,6 +74,7 @@ public class Stats : MonoBehaviour
     public bool dead = false;
     public bool poison = false;
     public bool sleep = false;
+    public bool hobble = false;
     public bool friend = false;
     public bool foe = false;
 
@@ -208,6 +209,7 @@ public class Stats : MonoBehaviour
         {
             foe = true;
             gameObject.GetComponent<MapEnemyMove>().move = movement;
+            gameObject.GetComponent<MapEnemyMove>().oldmove = movement;
         }
 
 
@@ -475,6 +477,7 @@ public class Stats : MonoBehaviour
 
     public void attacked(Stats attacker)
     {
+        EffectiveStats();
         if (gameObject.tag == "player")
         {
             UnitWeapon aWeapon = gameObject.GetComponent<MapPlayerAttack>().weapon;
@@ -506,7 +509,9 @@ public class Stats : MonoBehaviour
         else if (which == "willReduce") willReduce = 0;
         else if (which == "sleep") sleep = false;
         else if (which == "poison") poison = false;
+        else if (which == "movementDown") hobble = false;
     }
+
 
 
     public void StatusEffect(string which, int num)
@@ -525,6 +530,7 @@ public class Stats : MonoBehaviour
         else if (which == "willReduce") willReduce = num;
         else if (which == "sleep") sleep = true;
         else if (which == "poison") poison = true;
+        else if (which == "movementDown") hobble = true;
     }
     public void LowerCounter(string which)
     {
@@ -543,6 +549,7 @@ public class Stats : MonoBehaviour
         // attackBonus = 0;
         int tempA = 0;
         int tempB = 0;
+        //str
         if(strBoost != 0) tempA = (int)(str * (1 + strBoost));
         if (strReduce != 0) tempB = (int)(str * strReduce);
 
@@ -551,6 +558,7 @@ public class Stats : MonoBehaviour
         else if (tempA - tempB > 0) effectStr = tempA - tempB;
         else effectStr = str;
 
+        //def
         if (defBoost != 0) tempA = (int)(def * (1 + defBoost));
         if (defReduce != 0) tempB = (int)(def * defReduce);
 
@@ -558,19 +566,50 @@ public class Stats : MonoBehaviour
         else if (tempA == 0 && tempB != 0) effectDef = tempB;
         else if (tempA - tempB > 0) effectDef = tempA - tempB;
         else effectDef = def;
-        if (defBoost != 0) tempA = (int)(def * (1 + defBoost));
-        if (defReduce != 0) tempB = (int)(def * defReduce);
-        if (tempA != 0 && tempB == 0) effectDef = tempA;
-        else if (tempA == 0 && tempB != 0) effectDef = tempB;
-        else if (tempA - tempB > 0) effectDef = tempA - tempB;
+
+        //spd
+        if (spdBoost != 0) tempA = (int)(spd * (1 + spdBoost));
+        if (spdReduce != 0) tempB = (int)(spd * spdReduce);
+
+        if (tempA != 0 && tempB == 0) effectSpd = tempA;
+        else if (tempA == 0 && tempB != 0) effectSpd = tempB;
+        else if (tempA - tempB > 0) effectSpd = tempA - tempB;
+        else effectSpd = spd;
+
+        //skill
+        if (skillBoost != 0) tempA = (int)(skill * (1 + skillBoost));
+        if (skillReduce != 0) tempB = (int)(skill * skillReduce);
+
+        if (tempA != 0 && tempB == 0) effectSkill = tempA;
+        else if (tempA == 0 && tempB != 0) effectSkill = tempB;
+        else if (tempA - tempB > 0) effectSkill = tempA - tempB;
+        else effectSkill = skill;
+
+        //mag
+        if (magBoost != 0) tempA = (int)(magic * (1 + magBoost));
+        if (magReduce != 0) tempB = (int)(magic * magReduce);
+
+        if (tempA != 0 && tempB == 0) effectMagic = tempA;
+        else if (tempA == 0 && tempB != 0) effectMagic = tempB;
+        else if (tempA - tempB > 0) effectMagic = tempA - tempB;
+        else effectMagic = magic;
+
+        //will
+        if (willBoost != 0) tempA = (int)(will * (1 + willBoost));
+        if (willReduce != 0) tempB = (int)(will * willReduce);
+
+        if (tempA != 0 && tempB == 0) effectWill = tempA;
+        else if (tempA == 0 && tempB != 0) effectWill = tempB;
+        else if (tempA - tempB > 0) effectWill = tempA - tempB;
+        else effectWill = will;
     }
 
 
     public void attackedControl(Stats attacker, UnitWeapon weaponAtk, UnitWeapon weaponDef)
     {
         //AttackPreview(attacker);
-        int aAttackSpeed = spd - weaponWeight;
-        int dAttackSpeed = attacker.spd - attacker.weaponWeight;
+        int aAttackSpeed = effectSpd - weaponWeight;
+        int dAttackSpeed = attacker.effectSpd - attacker.weaponWeight;
 
         if(weaponAtk.details.physical) DefenderDamaged(attacker);
         else DefenderMagDamaged(attacker);
@@ -869,7 +908,7 @@ public class Stats : MonoBehaviour
     public void Skill(Stats attacker)
     {
         attackBonus = 0;
-      
+        EffectiveStats();
         if (currentAttack.physicalDamage)
         {
             if (currentAttack.effects.stealMoney)
@@ -906,14 +945,14 @@ public class Stats : MonoBehaviour
             {
                 if (affinity != "Undead")
                 {
-                    currentHp += currentAttack.restore;
-                    HealHp(currentAttack.restore);
+                    currentHp +=  magic/2;
+                    HealHp(magic / 2);
                     UpdateHp();
                 }
                 else
                 {
-                    currentHp -= currentAttack.restore;
-                    HealHp(currentAttack.restore);
+                    currentHp -= magic / 2;
+                    HealHp(magic / 2);
                     if (currentHp < 0) currentHp = 0;
                     UpdateHp();
                     if (currentHp <= 0) Death();
@@ -929,21 +968,21 @@ public class Stats : MonoBehaviour
                     if (dead)
                     {
                         dead = false;
-                        currentHp += currentAttack.restore;
+                        currentHp += magic / 2;
                         gameObject.SetActive(true);
-                        HealHp(currentAttack.restore);
+                        HealHp(magic / 2);
                         UpdateHp();
                     }
                     else
                     {
-                        currentHp += currentAttack.restore;
-                        HealHp(currentAttack.restore);
+                        currentHp += magic / 2;
+                        HealHp(magic / 2);
                         UpdateHp();
                     }
                 }
                 else
                 {
-                    currentHp -= currentAttack.restore;
+                    currentHp -= magic / 2;
                     if (currentHp < 0) currentHp = 0;
                     HealHp(currentAttack.restore);
                     UpdateHp();
@@ -972,13 +1011,13 @@ public class Stats : MonoBehaviour
 
     public void DefenderDamaged(Stats attacker)
     {
+       
         //total atk includes weapons
-        enemyHitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
+        enemyHitRate = (int)CalcEnemyHitRate(attacker.effectSkill, attacker.weaponHit);
         baseEnemyHit = enemyHitRate;
-        int totalAtk = attacker.str + attacker.weaponMight;
-        damage = totalAtk  - def;
-        if (attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - def;
-   //     if (attackNeg != 0) damage = (int)(totalAtk / attacker.attackNeg) - def;
+        int totalAtk = attacker.effectStr + attacker.weaponMight;
+        damage = totalAtk  - effectDef;
+        if (attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - effectDef;
         float reduce = CalcFinalHit(enemyHitRate); 
         float hurt = damage * reduce;
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
@@ -1024,12 +1063,12 @@ public class Stats : MonoBehaviour
 
     public void AttackerDamaged(Stats attacker)
     {
-
-        playerHitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
+      
+        playerHitRate = (int)CalcHitRate(attacker.effectSpd, attacker.weaponWeight);
         basePlayerHit = playerHitRate;
-        int totalAtk = str + weaponMight;
-        enemyDamage = totalAtk - attacker.def;
-        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.def;
+        int totalAtk = effectStr + weaponMight;
+        enemyDamage = totalAtk - attacker.effectDef;
+        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.effectDef;
         float reduce = CalcFinalHit(playerHitRate);
         float hurt = enemyDamage * reduce;
         if (hurt < 0)
@@ -1081,11 +1120,12 @@ public class Stats : MonoBehaviour
     public void DefenderMagDamaged(Stats attacker)
     {
         //total atk includes weapons
-        enemyHitRate = (int)CalcEnemyHitRate(attacker.skill, attacker.weaponHit);
+       
+        enemyHitRate = (int)CalcEnemyHitRate(attacker.effectSkill, attacker.weaponHit);
         baseEnemyHit = enemyHitRate;
-        int totalAtk = attacker.magic + attacker.weaponMight;
-        damage = totalAtk - will;
-        if (attacker.attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - will;
+        int totalAtk = attacker.effectMagic + attacker.weaponMight;
+        damage = totalAtk - effectWill;
+        if (attacker.attackBonus != 0) damage = (int)(totalAtk * attacker.attackBonus) - effectWill;
         float reduce = CalcFinalHit(enemyHitRate);
         float hurt = damage * reduce;
         int newDamage = CalcCrit(hurt, attacker.weaponCritRate + attacker.critRate, attacker.weaponCritChance + attacker.critChance);
@@ -1131,11 +1171,11 @@ public class Stats : MonoBehaviour
     public void AttackerMagDamaged(Stats attacker)
     {
 
-        playerHitRate = (int)CalcHitRate(attacker.spd, attacker.weaponWeight);
+        playerHitRate = (int)CalcHitRate(attacker.effectSpd, attacker.weaponWeight);
         basePlayerHit = playerHitRate;
-        int totalAtk = magic + weaponMight;
-        enemyDamage = totalAtk - attacker.will;
-        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.will;
+        int totalAtk = effectMagic + weaponMight;
+        enemyDamage = totalAtk - attacker.effectWill;
+        if (attackBonus != 0) enemyDamage = (int)(totalAtk * attackBonus) - attacker.effectWill;
         float reduce = CalcFinalHit(playerHitRate);
         float hurt = enemyDamage * reduce;
         if (hurt < 0)
@@ -1235,6 +1275,41 @@ public class Stats : MonoBehaviour
        
     }
 
+    public void ActivateAssessories()
+    {
+        if (currentAssessory1.name != "")
+        {
+            if (currentAssessory1.details.boostStr) str += (int)(str * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostDef) def += (int)(def * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostSpd) spd += (int)(spd * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostSkill) skill += (int)(skill * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostMag) magic += (int)(magic * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostWill) will += (int)(will * currentAssessory1.details.boost);
+            weaponWeight += currentAssessory1.details.weight;
+        }
+        if (currentAssessory2.name != "")
+        {
+            if (currentAssessory2.details.boostStr) str += (int)(str * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostDef) def += (int)(def * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostSpd) spd += (int)(spd * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostSkill) skill += (int)(skill * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostMag) magic += (int)(magic * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostWill) will += (int)(will * currentAssessory2.details.boost);
+            weaponWeight += currentAssessory2.details.weight;
+        }
+        if (currentAssessory3.name != "")
+        {
+
+            if (currentAssessory3.details.boostStr) str += (int)(str * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostDef) def += (int)(def * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostSpd) spd += (int)(spd * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostSkill) skill += (int)(skill * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostMag) magic += (int)(magic * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostWill) will += (int)(will * currentAssessory3.details.boost);
+            weaponWeight += currentAssessory3.details.weight;
+        }
+    }
+
     public void SetAssessories()
     {
         Unit me = FindMyself();
@@ -1246,6 +1321,7 @@ public class Stats : MonoBehaviour
         {
             if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot2.assessory;
             else currentAssessory2 = me.inventory.invSlot2.assessory;
+            
         }
         if (me.inventory.invSlot3.assessory.equipped)
         {
@@ -1512,7 +1588,7 @@ public class Stats : MonoBehaviour
             name = nam;
             dark = dar;
             nature = nat;
-
+            metal = met;
         }
 
     }

@@ -15,6 +15,7 @@ public class UnitWeaponDetails {
     public bool magic;
     public bool physical;
     public string unlocks;
+    public List<string> moreUnlocks;
     public string type;
     public int rank;
     public int xp;
@@ -33,6 +34,7 @@ public class UnitWeaponDetails {
         type = "";
         rank = 0;
         xp = 0;
+        moreUnlocks = new List<string>();
         uniqueWeaponXps = new List<UnitUniqueWeaponXp>();
         effects = new UnitWeaponEffects();
     }
