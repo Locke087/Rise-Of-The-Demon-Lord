@@ -11,6 +11,8 @@ public class PlayerUnitMenu : MonoBehaviour {
     public Button move;
     public Button attack;
     public Button endTurn;
+    public Image image;
+    public Sprite sprite;
     public bool menuActive = false;
     public bool attackFinished = false;
     public bool movedFinished = false;
@@ -37,6 +39,8 @@ public class PlayerUnitMenu : MonoBehaviour {
     public void AssignUnit(GameObject unit)
     {
         unitfFor = unit;
+        sprite = Resources.Load<Sprite>(unit.GetComponent<Stats>().FindMyself().unitInfo.mugName); 
+        if(sprite != null) image.sprite = sprite;
     }
 
     public void RemoveUnit()
