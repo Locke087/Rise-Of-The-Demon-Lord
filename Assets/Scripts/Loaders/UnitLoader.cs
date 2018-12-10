@@ -191,13 +191,13 @@ public class UnitLoader : MonoBehaviour {
         int[] bases2 = { 8, 4, 2, 6, 1, 2 };
         newMe.unitInfo.bases.AddRange(bases2);
         newMe.unitInfo.nature = "Tough";
-        newMe.inventory.invSlot1.holding = "Vemon Blade";
+        newMe.inventory.invSlot1.holding = "Battle Axe";
         newMe.inventory.invSlot1.weapon.equipped = true;
-        newMe.inventory.invSlot1.weapon.name = "Vemon Blade";
+        newMe.inventory.invSlot1.weapon.name = "Battle Axe";
         newMe.inventory.invSlot1.weapon.inSlot = true;
         newMe.inventory.invSlot1.weapon.cost = 100;
-        newMe.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
-        SwordLoader.AssignSword("Vemon Blade", newMe.inventory.invSlot1.weapon);
+        newMe.inventory.invSlot1.weapon.idx = "Battle Axe" + IDMaker.NewID();
+        SwordLoader.AssignSword("Battle Axe", newMe.inventory.invSlot1.weapon);
        
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe);
@@ -241,13 +241,13 @@ public class UnitLoader : MonoBehaviour {
         int[] bases3 = { 8, 4, 2, 6, 1, 2 };
         newMe2.unitInfo.bases.AddRange(bases2);
         newMe2.unitInfo.nature = "Tough";
-        newMe2.inventory.invSlot1.holding = "Vemon Blade";
+        newMe2.inventory.invSlot1.holding = "Shortspear";
         newMe2.inventory.invSlot1.weapon.equipped = true;
-        newMe2.inventory.invSlot1.weapon.name = "Vemon Blade";
+        newMe2.inventory.invSlot1.weapon.name = "Shortspear";
         newMe2.inventory.invSlot1.weapon.inSlot = true;
         newMe2.inventory.invSlot1.weapon.cost = 100;
-        newMe2.inventory.invSlot1.weapon.idx = "Vemon Blade" + IDMaker.NewID();
-        SwordLoader.AssignSword("Vemon Blade", newMe2.inventory.invSlot1.weapon);
+        newMe2.inventory.invSlot1.weapon.idx = "Shortspear" + IDMaker.NewID();
+        SwordLoader.AssignSword("Shortspear", newMe2.inventory.invSlot1.weapon);
 
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe2.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe2);
