@@ -360,6 +360,9 @@ public class UnitLoader : MonoBehaviour {
     
     }
 
+    public int lastPick = 0;
+    public int count = 0;
+
     public List<Unit> LoadEnemies(int rating)
     {
         List<Unit> enemiesInMap = new List<Unit>();
@@ -367,16 +370,216 @@ public class UnitLoader : MonoBehaviour {
         int armylevel = 0;
         if (rating == 1)
         {
-            armysize = 5;
+            armysize = 6;
             armylevel = 1;
+
+            for (int i = 0; i < armysize; i++)
+            {
+                pickOneLowLevel(Random.Range(0, 5), armylevel, enemiesInMap);
+            }
+
         }
-        for (int i = 0; i < armysize; i++)
-        {
-            DelayedGoblin(armylevel, enemiesInMap);//are all the delayed scripts supposed to be added here?
-        }
+
+
 
 
         return enemiesInMap;
+    }
+
+   
+    void pickOneLowLevel(int num, int level, List<Unit> enemies)
+    {
+        if (num == 0)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedGoblin(level, enemies);
+            }
+        }
+        if (num == 1)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedSkeleton(level, enemies);
+            }
+        }
+        if (num == 2)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedBlueSlime(level, enemies);
+            }
+        }
+        if (num == 3)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedBabyDevil(level, enemies);
+            }
+        }
+        if (num == 4)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedGreenSlime(level, enemies);
+            }
+        }
+        
+
+    }
+
+    void pickOneHigh(int num, int level, List<Unit> enemies)
+    {
+        if (num == 0)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedBabyGreenDragon(level, enemies);
+            }
+        }
+        if (num == 1)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedBabyRedDragon(level, enemies);
+            }
+        }
+        if (num == 2)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedBlueVinetrap(level, enemies);
+            }
+        }
+        if (num == 3)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneLowLevel(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedDevil(level, enemies);
+            }
+        }
+        if (num == 4)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedEfreet(level, enemies);
+            }
+        }
+        if (num == 5)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedGhost(level, enemies);
+            }
+        }
+        if (num == 6)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedReaper(level, enemies);
+            }
+        }
+        if (num == 7)
+        {
+            if (num == lastPick && count > 1)
+            {
+                pickOneHigh(Random.Range(0, 4), level, enemies);
+            }
+            else
+            {
+                lastPick = num;
+                if (num == lastPick) count++;
+                else count = 0;
+                DelayedRedVinetrap(level, enemies);
+            }
+        }
+       
+
+
     }
 
     void DelayedGoblin(int level, List<Unit> enemiesInMap)
@@ -410,6 +613,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(me);
         Goblin.Clear();
     }
+
 
     void DelayedBlueSlime(int level, List<Unit> enemiesInMap)
     {
