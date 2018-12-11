@@ -408,9 +408,9 @@ public class UnitLoader : MonoBehaviour {
         newMe5.unitClass.main.imp.darkknight = CurrentGame.game.memoryGeneral.impClassProgress.darkknight;
         newMe5.unitClass.main.imp.darkknight.caps = Fusilier.Caplist();
         newMe5.unitInfo.currentMods = DarkKnight.ModList();
-        DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill);
-        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill);
-        DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill);
+        DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
+        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill, newMe5);
+        DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
         //DarkKnightLoader.AssignSkill("Deadeye", newMe5.unitClass.sub.imp.darkknight.pickSkill);
         //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
         //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
