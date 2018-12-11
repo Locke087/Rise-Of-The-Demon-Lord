@@ -13,6 +13,7 @@ public class PlayerUnitMenu : MonoBehaviour {
     public Button endTurn;
     public Image image;
     public Sprite sprite;
+    public Text text;
     public bool menuActive = false;
     public bool attackFinished = false;
     public bool movedFinished = false;
@@ -42,6 +43,7 @@ public class PlayerUnitMenu : MonoBehaviour {
         sprite = Resources.Load<Sprite>(unit.GetComponent<Stats>().FindMyself().unitInfo.mugName); 
 
         if(sprite != null) image.sprite = sprite;
+        text.text = unit.GetComponent<Stats>().FindMyself().unitID + " The " + unit.GetComponent<Stats>().FindMyself().unitClass.main.mainClass;
     }
 
     public void RemoveUnit()

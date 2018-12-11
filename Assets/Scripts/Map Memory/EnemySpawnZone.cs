@@ -59,7 +59,7 @@ public class EnemySpawnZone : MonoBehaviour {
            
             // temp.
         }
-
+        Debug.Log(" The Boss is here " + CurrentGame.game.memoryGeneral.enemiesInMaps.boss.unitID);
         if (CurrentGame.game.memoryGeneral.enemiesInMaps.boss.unitID != "")
         {
             EventDriver eventDrivers = GameObject.FindObjectOfType<EventDriver>();

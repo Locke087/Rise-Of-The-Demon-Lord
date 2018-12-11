@@ -63,6 +63,9 @@ public class DisplayStats : MonoBehaviour {
     public bool dead = false;
     public bool friend = false;
     public bool foe = false;
+    public UnitAssessory currentAssessory1;
+    public UnitAssessory currentAssessory2;
+    public UnitAssessory currentAssessory3;
     //  public Button confirm;
     //public Button cancel;
     /* public int hpModStat;
@@ -147,7 +150,9 @@ public class DisplayStats : MonoBehaviour {
         allNatures.Add(new TheNatures("Lame", 1, 1, 1, 0, 3, 1, 1)); //+hp -skill
 
         allNatures.Add(new TheNatures("Neutral", 1, 1, 1, 1, 1, 1, 1)); //neutral
-
+        currentAssessory1 = new UnitAssessory();
+        currentAssessory2 = new UnitAssessory();
+        currentAssessory3 = new UnitAssessory();
         if (nature == null) nature = "Neutral";
         currentHp = hp;
 
@@ -169,6 +174,7 @@ public class DisplayStats : MonoBehaviour {
 
         currentHp = hp;
         startClassesUp();
+        ActivateAssessories();
         ReflectStat();
        // StartCoroutine(RefreshStat());
     }
@@ -193,7 +199,9 @@ public class DisplayStats : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.2f);
         classesRefresh();
+        ActivateAssessories();
         ReflectStat();
+
     }
 
     // Update is called once per frame
@@ -691,6 +699,75 @@ public class DisplayStats : MonoBehaviour {
             weaponWeight = me.inventory.invSlot5.weapon.details.weight;
             weaponCritChance = me.inventory.invSlot5.weapon.details.critchance;
             weaponCritRate = me.inventory.invSlot5.weapon.details.critrate;
+        }
+
+    }
+
+    public void ActivateAssessories()
+    {
+        if (currentAssessory1.name != "")
+        {
+            if (currentAssessory1.details.boostStr) str += (int)(str * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostDef) def += (int)(def * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostSpd) spd += (int)(spd * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostSkill) skill += (int)(skill * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostMag) magic += (int)(magic * currentAssessory1.details.boost);
+            if (currentAssessory1.details.boostWill) will += (int)(will * currentAssessory1.details.boost);
+            weaponWeight += currentAssessory1.details.weight;
+        }
+        if (currentAssessory2.name != "")
+        {
+            if (currentAssessory2.details.boostStr) str += (int)(str * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostDef) def += (int)(def * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostSpd) spd += (int)(spd * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostSkill) skill += (int)(skill * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostMag) magic += (int)(magic * currentAssessory2.details.boost);
+            if (currentAssessory2.details.boostWill) will += (int)(will * currentAssessory2.details.boost);
+            weaponWeight += currentAssessory2.details.weight;
+        }
+        if (currentAssessory3.name != "")
+        {
+
+            if (currentAssessory3.details.boostStr) str += (int)(str * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostDef) def += (int)(def * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostSpd) spd += (int)(spd * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostSkill) skill += (int)(skill * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostMag) magic += (int)(magic * currentAssessory3.details.boost);
+            if (currentAssessory3.details.boostWill) will += (int)(will * currentAssessory3.details.boost);
+            weaponWeight += currentAssessory3.details.weight;
+        }
+    }
+
+    public void SetAssessories()
+    {
+        Unit me = FindMyself();
+        if (me.inventory.invSlot1.assessory.equipped)
+        {
+            currentAssessory1 = me.inventory.invSlot1.assessory;
+        }
+        if (me.inventory.invSlot2.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot2.assessory;
+            else currentAssessory2 = me.inventory.invSlot2.assessory;
+
+        }
+        if (me.inventory.invSlot3.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot3.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot3.assessory;
+            else currentAssessory3 = me.inventory.invSlot3.assessory;
+        }
+        if (me.inventory.invSlot4.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot4.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot4.assessory;
+            else currentAssessory3 = me.inventory.invSlot4.assessory;
+        }
+        if (me.inventory.invSlot5.assessory.equipped)
+        {
+            if (currentAssessory1.name == "") currentAssessory1 = me.inventory.invSlot5.assessory;
+            if (currentAssessory2.name == "") currentAssessory2 = me.inventory.invSlot5.assessory;
+            else currentAssessory3 = me.inventory.invSlot5.assessory;
         }
 
     }

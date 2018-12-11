@@ -99,7 +99,7 @@ public class EventDriver : MonoBehaviour
             {
                 if (tile.playerSpawn && tile.walkable)
                 {
-                    Debug.Log("got it");
+                  
                     if (tiles.Count > 0)
                     {
                         valid = true;
@@ -111,13 +111,13 @@ public class EventDriver : MonoBehaviour
                         }
                         if (valid)
                         {
-                            Debug.Log("got inp");
+                           
                             tiles.Add(tile);
                         }
                     }
                     else
                     {
-                        Debug.Log("got binp");
+                       
                         tiles.Add(tile);
                     }
                 }
@@ -138,7 +138,7 @@ public class EventDriver : MonoBehaviour
             {
                 if (tile.enemySpawn && tile.walkable)
                 {
-                    Debug.Log("got inj");
+                   
                     if (tiles.Count > 0)
                     {
                         valid = true;
@@ -156,7 +156,7 @@ public class EventDriver : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("got bine");
+                       
                         tiles.Add(tile);
                     }
                 }
