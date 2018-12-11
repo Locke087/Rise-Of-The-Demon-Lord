@@ -225,9 +225,6 @@ public class DarkKnightLoader : MonoBehaviour {
         }
     }
 
-    internal static void AssignSkill(string v, UnitClassSkill pickSkill)
-    {
-        throw new NotImplementedException();
-    }
+  
 }
 

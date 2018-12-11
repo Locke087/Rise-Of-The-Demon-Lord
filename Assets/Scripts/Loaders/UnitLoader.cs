@@ -75,11 +75,27 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Clear();
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Clear();
         Warrior.Clear();
-        Archer.Clear();
-        Rogue.Clear();
-        Fusilier.Clear();
         Priest.Clear();
         Cavalier.Clear();
+        Archer.Clear();
+        Rogue.Clear();
+        Mage.Clear();
+        Paladin.Clear();
+        Sniper.Clear();
+        Knight.Clear();
+        Charger.Clear();
+        Assassin.Clear();
+
+        Fusilier.Clear();
+        Shadow.Clear();
+        Dread.Clear();
+        Shrike.Clear();
+        Swashbuckler.Clear();
+        Duelist.Clear();
+        DarkKnight.Clear();
+        DemonRider.Clear();
+        Duelist.Clear();
+        Nightblade.Clear();
 
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Clear();
@@ -112,12 +128,23 @@ public class UnitLoader : MonoBehaviour {
         ArcherLoader.NewClass();
         RogueLoader.NewClass();
         MageLoader.NewClass();
+        PaladinLoader.NewClass();
+        SniperLoader.NewClass();
+        KnightLoader.NewClass();
+        ChargerLoader.NewClass();
+        AssassinLoader.NewClass();
 
         FusilierLoader.NewClass();
         ShadowLoader.NewClass();
         DreadLoader.NewClass();
         ShrikeLoader.NewClass();
         SwashbucklerLoader.NewClass();
+        DuelistLoader.NewClass();
+        DarkKnightLoader.NewClass();
+        DemonRiderLoader.NewClass();
+        DuelistLoader.NewClass();
+        NightBladeLoader.NewClass();
+
 
         Unit me = new Unit();
 
@@ -192,6 +219,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.archer.unlocked = true;
         newMe.unitClass.main.human.mage.unlocked = true;
         newMe.unitClass.main.human.priest.unlocked = true;
+        newMe.unitClass.main.human.paladin.unlocked = true;
         newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
       
         // str, def, spd, skill, magic, will
@@ -343,7 +371,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.imp.shadow.unlocked = true;
         newMe4.unitClass.main.imp.dread.unlocked = true;
         newMe4.unitClass.main.imp.fusilier.unlocked = true;
-
+        newMe4.unitClass.main.imp.darkknight.unlocked = true;
         newMe4.unitInfo.main = newMe4.unitClass.main.imp.fusilier;
 
         // str, def, spd, skill, magic, will
@@ -378,11 +406,11 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Add(newMe5.unitID);
 
         newMe5.unitClass.main.imp.darkknight = CurrentGame.game.memoryGeneral.impClassProgress.darkknight;
-        newMe5.unitClass.main.imp.darkknight.caps = Fusilier.Caplist();
+        newMe5.unitClass.main.imp.darkknight.caps = DarkKnight.Caplist();
         newMe5.unitInfo.currentMods = DarkKnight.ModList();
-        DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill);
-        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill);
-        DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill);
+        DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
+        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill, newMe5);
+        DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
         //DarkKnightLoader.AssignSkill("Deadeye", newMe5.unitClass.sub.imp.darkknight.pickSkill);
         //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
         //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
