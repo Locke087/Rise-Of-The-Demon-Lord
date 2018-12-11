@@ -300,9 +300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114264914214728258}
-  unitID: Ghost4676121.6987Tuesday, December 11, 20183:48:47 AM
+  unitID: 
   unitIdx: 
-  mapImage: {fileID: 0}
+  mapImage: {fileID: 114804035511584952}
   hp: 0
   str: 0
   def: 0

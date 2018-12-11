@@ -218,7 +218,7 @@ public class Stats : MonoBehaviour
             gameObject.GetComponent<MapEnemyMove>().oldmove = movement;
         }
 
-
+        mapImage.sprite = Resources.Load<Sprite>(FindMyself().unitActor.neutralPortrait.personalID);
         // gameObject.GetComponent<Weapon>().weaponStats();
 
         //confirm.gameObject.SetActive(false);

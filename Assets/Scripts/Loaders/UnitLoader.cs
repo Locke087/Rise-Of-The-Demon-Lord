@@ -112,12 +112,18 @@ public class UnitLoader : MonoBehaviour {
         ArcherLoader.NewClass();
         RogueLoader.NewClass();
         MageLoader.NewClass();
+        AssassinLoader.NewClass();
+        SniperLoader.NewClass();
+        KnightLoader.NewClass();
+        ChargerLoader.NewClass();
+        BardLoader.NewClass();
 
         FusilierLoader.NewClass();
         ShadowLoader.NewClass();
         DreadLoader.NewClass();
         ShrikeLoader.NewClass();
         SwashbucklerLoader.NewClass();
+
 
         Unit me = new Unit();
 
@@ -148,7 +154,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.mage.unlocked = true;
         me.unitClass.main.human.priest.unlocked = true;
         me.unitInfo.main = me.unitClass.main.human.warrior;
-     
+      
         // str, def, spd, skill, magic, will
         int[] bases = { 7, 5, 3, 5, 2, 1 };
         me.unitInfo.bases.AddRange(bases);
