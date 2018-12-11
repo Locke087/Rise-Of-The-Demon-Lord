@@ -79,7 +79,7 @@ public class MainMenu : MonoBehaviour {
                 SaveLoad.Save();
                 //Move on to game...=
   
-                SceneManager.LoadScene("CutScene");
+                SceneManager.LoadScene("Town");
 
             }
 

@@ -9,7 +9,7 @@ public class MenuScript
 
     //my tools
 
-   [MenuItem("Tools/Assign Custom Material")]
+ /*  [MenuItem("Tools/Assign Custom Material")]
     public static void AssignCustomMaterial()
     {
         GameObject something = GameObject.Find("StartMenuInField");
@@ -2196,7 +2196,7 @@ public class MenuScript
                         tiles.AddComponent<GridTiles>();
                         tiles.transform.parent = newRow.transform;
                         tiles.name = "rr" + f + "r" + r;
-                   }*/
+                   }
                     j++;
                 }
                 i++;
@@ -3699,5 +3699,5 @@ public class MenuScript
 
 
 
-
+    */
 }
