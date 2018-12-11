@@ -1129,7 +1129,7 @@ public class SwordLoader : MonoBehaviour
         shatteredDream.type = "Athames";
         shatteredDream.magic = true;
         shatteredDream.effects.natureDamage = true;
-        if (sw == vshatteredDream.name) u.details = shatteredDream;
+        if (sw == shatteredDream.name) u.details = shatteredDream;
 
         UnitWeaponDetails entropysGrasp = new UnitWeaponDetails();
         entropysGrasp.might = 12;
