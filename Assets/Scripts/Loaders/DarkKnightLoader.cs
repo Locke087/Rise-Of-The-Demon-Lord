@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -222,6 +223,11 @@ public class DarkKnightLoader : MonoBehaviour {
             un.unitInfo.weaponRanks.Axe.canUse = true;
             un.unitInfo.weaponRanks.Axe.rank = 3;
         }
+    }
+
+    internal static void AssignSkill(string v, UnitClassSkill pickSkill)
+    {
+        throw new NotImplementedException();
     }
 }
 

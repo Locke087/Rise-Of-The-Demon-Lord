@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 643f88a1f00a2cd4a83a85accaf568f8
+guid: 5e72bf85f66e668458950e4a76d26302
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Lich sprite_0
-    21300002: Lich sprite_1
-    21300004: Lich sprite_2
-    21300006: Lich sprite_3
-    21300008: Lich sprite_4
-    21300010: Lich sprite_5
-    21300012: Lich sprite_6
-    21300014: Lich sprite_7
-    21300016: Lich sprite_8
-    21300018: Lich sprite_9
-    21300020: Lich sprite_10
-    21300022: Lich sprite_11
+    21300000: South1
+    21300002: NinetailsBossIdle
+    21300004: South3
+    21300006: West1
+    21300008: WestIdle
+    21300010: West3
+    21300012: East1
+    21300014: EastIdle
+    21300016: East3
+    21300018: North1
+    21300020: NorthIdle
+    21300022: North3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -151,241 +151,241 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lich sprite_0
+      name: South1
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
-        width: 80
-        height: 96
+        y: 165
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd0ca92c162647b4bbbda523cd0c85d8
+      spriteID: 72c866c0c5a69924ea5b5c3a676705f3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_1
+      name: NinetailsBossIdle
       rect:
         serializedVersion: 2
-        x: 80
-        y: 288
-        width: 80
-        height: 96
+        x: 64
+        y: 165
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 473c3c200a5acc746a4fda5b3da4370b
+      spriteID: 2d8102f5159c5fd429d563969adbd94f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_2
+      name: South3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 288
-        width: 80
-        height: 96
+        x: 128
+        y: 165
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7ed1df269a6f54094c1ae6e4bd9b2b
+      spriteID: 8990f16aa04a3734697d6b6cbfdef286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 80
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f87127056a0cf74c95089e59e55d845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lich sprite_4
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 192
-        width: 80
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7212170ad1eb6f743885902a2ee58585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lich sprite_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 192
-        width: 80
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6327aa74a8b78d4899770fa65760ff3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lich sprite_6
+      name: West1
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 80
-        height: 96
+        y: 110
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92f0b1f63156ea44a83873c128bb7446
+      spriteID: cab8aab3bcf47fd42a200e4995836e87
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_7
+      name: WestIdle
       rect:
         serializedVersion: 2
-        x: 80
-        y: 96
-        width: 80
-        height: 96
+        x: 64
+        y: 111
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d91280e878fce764dbd9b80d0cb2b4cf
+      spriteID: 97440c8e4813e234fb0c843114690282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_8
+      name: West3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 96
-        width: 80
-        height: 96
+        x: 128
+        y: 109
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: facf14355d1b3fc4c89a6018c9e695cd
+      spriteID: 14a46e0f5b8a5c446abdac7e24349f2b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_9
+      name: East1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d838a896974a04e9479039bf2d1d46
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastIdle
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 55
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faea1c1945100b049908dfa92cb10ce2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: East3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 55
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa00440b349497143812b4f5291f1ae5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: North1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 96
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83db9d67b3c3bb048ac1f5bf4eaded59
+      spriteID: 96bd5a71a99030d4f8763cfc28f62b37
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_10
+      name: NorthIdle
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
-        height: 96
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0299febc01422e74cb0c78c740908969
+      spriteID: 9bd63b7ca81279a45932fa021e0e709a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lich sprite_11
+      name: North3
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 0
-        width: 80
-        height: 96
+        width: 64
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9da90271802ce984383b122e87e3f0ab
+      spriteID: d85d40a6c10a44342913f8989738fd0b
       vertices: []
       indices: 
       edges: []
@@ -393,7 +393,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ca3f01294907fc044a9422cecd9ceb3a
+    spriteID: fadacb5216adf784aba56620b18c3bc4
     vertices: []
     indices: 
     edges: []

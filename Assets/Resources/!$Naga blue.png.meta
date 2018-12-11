@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: 0a6f43dc15b38834c97087c89b7e9703
+guid: c4a0137e2fa4bac42a580d2bf01994a1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dragon1_0
-    21300002: dragon1_1
-    21300004: dragon1_2
-    21300006: dragon1_3
-    21300008: dragon1_4
-    21300010: dragon1_5
-    21300012: dragon1_6
-    21300014: dragon1_7
-    21300016: dragon1_8
-    21300018: dragon1_9
-    21300020: dragon1_10
-    21300022: dragon1_11
-    21300024: dragon1_12
-    21300026: dragon1_13
-    21300028: dragon1_14
-    21300030: dragon1_15
+    21300000: NagaBossIdle
+    21300002: '!$Naga blue_1'
+    21300004: '!$Naga blue_2'
+    21300006: '!$Naga blue_3'
+    21300008: '!$Naga blue_4'
+    21300010: '!$Naga blue_5'
+    21300012: '!$Naga blue_6'
+    21300014: '!$Naga blue_7'
+    21300016: '!$Naga blue_8'
+    21300018: '!$Naga blue_9'
+    21300020: '!$Naga blue_10'
+    21300022: '!$Naga blue_11'
+    21300024: '!$Naga blue_12'
+    21300026: '!$Naga blue_13'
+    21300028: '!$Naga blue_14'
+    21300030: '!$Naga blue_15'
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -155,321 +155,321 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragon1_0
+      name: NagaBossIdle
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
-        width: 96
-        height: 96
+        x: 7
+        y: 146
+        width: 32
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35967aaddc7c0d4a84b2f4338e6526e
+      spriteID: e390c623b64130343b8e58be23fc3c56
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_1
+      name: '!$Naga blue_1'
       rect:
         serializedVersion: 2
-        x: 96
-        y: 288
-        width: 96
-        height: 96
+        x: 53
+        y: 146
+        width: 34
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbeddbd24fa848a4bbe903b4748fae8b
+      spriteID: 1ca22158ae627c14cb0a579dd2d491ee
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_2
+      name: '!$Naga blue_2'
       rect:
         serializedVersion: 2
-        x: 192
-        y: 288
-        width: 96
-        height: 96
+        x: 105
+        y: 146
+        width: 27
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5938419df3e4c54fb7a903393fb40d4
+      spriteID: ed5e9cc27a8157a40b14fb352b6d1f9e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_3
+      name: '!$Naga blue_3'
       rect:
         serializedVersion: 2
-        x: 288
-        y: 288
-        width: 96
-        height: 96
+        x: 152
+        y: 146
+        width: 32
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a9dd0a387698c4e9c7c32a11643431
+      spriteID: 7594885e4d81abf4d8aa3208eaa021fb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_4
+      name: '!$Naga blue_4'
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 96
-        height: 96
+        x: 3
+        y: 98
+        width: 43
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 279f6077d1f3a53448d926f26861045b
+      spriteID: 79840c88639efba40a2530bb10d21993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_5
+      name: '!$Naga blue_5'
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 52
+        y: 98
+        width: 42
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7e97b1f76c937049a68805ea50c351b
+      spriteID: 2eddff06c8ce9a547ae52383501acf32
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_6
+      name: '!$Naga blue_6'
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
+        x: 101
+        y: 98
+        width: 40
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 403d27b765650044886fab6c129d9ee7
+      spriteID: 8bb1d36e94a466a4db940a4fa9a32ba0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_7
+      name: '!$Naga blue_7'
       rect:
         serializedVersion: 2
-        x: 288
-        y: 192
-        width: 96
-        height: 96
+        x: 148
+        y: 98
+        width: 43
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658a6a955e2e2e7468835c1ec6b9b8b8
+      spriteID: b9a64df2a2a6f8d42a3456f993e41e8b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_8
+      name: '!$Naga blue_8'
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 96
-        height: 96
+        x: 2
+        y: 50
+        width: 43
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b66a9888015e1945a72a9ababab9709
+      spriteID: 1c2d84c36074f7b4da035cc9044ddfa8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_9
+      name: '!$Naga blue_9'
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
+        x: 50
+        y: 50
+        width: 42
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b80299bf039b3ac43935ab4b5a3a36ce
+      spriteID: 7a39dce83b0ada842ab2335c59b5ee5b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_10
+      name: '!$Naga blue_10'
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
+        x: 99
+        y: 50
+        width: 40
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3216317bba3d7a74d8f7cf69581dd196
+      spriteID: af900a20c7727b148b91fd8ce68c30d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_11
+      name: '!$Naga blue_11'
       rect:
         serializedVersion: 2
-        x: 288
-        y: 96
-        width: 96
-        height: 96
+        x: 145
+        y: 50
+        width: 43
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d68b69262efa54d995943b327d9270
+      spriteID: cb9d21d4fd464da4b82cb74d40c2c802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_12
+      name: '!$Naga blue_12'
       rect:
         serializedVersion: 2
-        x: 0
+        x: 9
         y: 0
-        width: 96
-        height: 96
+        width: 26
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deace311f038a374bbffa77c01d67ba0
+      spriteID: f82bd0963a2bd594aa96c43f1c4761d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_13
+      name: '!$Naga blue_13'
       rect:
         serializedVersion: 2
-        x: 96
+        x: 59
         y: 0
-        width: 96
-        height: 96
+        width: 24
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bcd82a647c03714ba4ab1a22ab0529a
+      spriteID: d1dd015f0c652d14babf9d36251bb2c4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_14
+      name: '!$Naga blue_14'
       rect:
         serializedVersion: 2
-        x: 192
+        x: 108
         y: 0
-        width: 96
-        height: 96
+        width: 25
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cd2d95cfafcc5a4e8affe7a391b4f5c
+      spriteID: 8131dcdb9feebaa4c8af1fe0191bbda1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon1_15
+      name: '!$Naga blue_15'
       rect:
         serializedVersion: 2
-        x: 288
+        x: 155
         y: 0
-        width: 96
-        height: 96
+        width: 25
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de5b26cab8c66a244add857fa02a078b
+      spriteID: ae1cbcda139507c46aead7d34bc54d2d
       vertices: []
       indices: 
       edges: []
@@ -477,7 +477,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8f8b6d40ff5f96a4492ed995652b4c6a
+    spriteID: 6dfc213eb1c1a1f49bfe02769e632afe
     vertices: []
     indices: 
     edges: []

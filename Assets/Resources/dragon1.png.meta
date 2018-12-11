@@ -1,19 +1,23 @@
 fileFormatVersion: 2
-guid: 5e72bf85f66e668458950e4a76d26302
+guid: 0a6f43dc15b38834c97087c89b7e9703
 TextureImporter:
   fileIDToRecycleName:
-    21300000: South1
-    21300002: SouthIdle
-    21300004: South3
-    21300006: West1
-    21300008: WestIdle
-    21300010: West3
-    21300012: East1
-    21300014: EastIdle
-    21300016: East3
-    21300018: North1
-    21300020: NorthIdle
-    21300022: North3
+    21300000: DragonBossIdle
+    21300002: dragon1_1
+    21300004: dragon1_2
+    21300006: dragon1_3
+    21300008: dragon1_4
+    21300010: dragon1_5
+    21300012: dragon1_6
+    21300014: dragon1_7
+    21300016: dragon1_8
+    21300018: dragon1_9
+    21300020: dragon1_10
+    21300022: dragon1_11
+    21300024: dragon1_12
+    21300026: dragon1_13
+    21300028: dragon1_14
+    21300030: dragon1_15
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -151,13 +155,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: South1
+      name: DragonBossIdle
       rect:
         serializedVersion: 2
         x: 0
-        y: 165
-        width: 64
-        height: 55
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,19 +169,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72c866c0c5a69924ea5b5c3a676705f3
+      spriteID: d35967aaddc7c0d4a84b2f4338e6526e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SouthIdle
+      name: dragon1_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 165
-        width: 64
-        height: 55
+        x: 96
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,19 +189,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d8102f5159c5fd429d563969adbd94f
+      spriteID: bbeddbd24fa848a4bbe903b4748fae8b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: South3
+      name: dragon1_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 165
-        width: 64
-        height: 55
+        x: 192
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,19 +209,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8990f16aa04a3734697d6b6cbfdef286
+      spriteID: d5938419df3e4c54fb7a903393fb40d4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: West1
+      name: dragon1_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 110
-        width: 64
-        height: 55
+        x: 288
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,59 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cab8aab3bcf47fd42a200e4995836e87
+      spriteID: 81a9dd0a387698c4e9c7c32a11643431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WestIdle
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 111
-        width: 64
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97440c8e4813e234fb0c843114690282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: West3
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 109
-        width: 64
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14a46e0f5b8a5c446abdac7e24349f2b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: East1
+      name: dragon1_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 55
-        width: 64
-        height: 55
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,19 +249,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9d838a896974a04e9479039bf2d1d46
+      spriteID: 279f6077d1f3a53448d926f26861045b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EastIdle
+      name: dragon1_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 55
-        width: 64
-        height: 55
+        x: 96
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,19 +269,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faea1c1945100b049908dfa92cb10ce2
+      spriteID: b7e97b1f76c937049a68805ea50c351b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: East3
+      name: dragon1_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 55
-        width: 64
-        height: 55
+        x: 192
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,19 +289,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa00440b349497143812b4f5291f1ae5
+      spriteID: 403d27b765650044886fab6c129d9ee7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: North1
+      name: dragon1_7
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658a6a955e2e2e7468835c1ec6b9b8b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b66a9888015e1945a72a9ababab9709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80299bf039b3ac43935ab4b5a3a36ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3216317bba3d7a74d8f7cf69581dd196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d68b69262efa54d995943b327d9270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 55
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,19 +409,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96bd5a71a99030d4f8763cfc28f62b37
+      spriteID: deace311f038a374bbffa77c01d67ba0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthIdle
+      name: dragon1_13
       rect:
         serializedVersion: 2
-        x: 64
+        x: 96
         y: 0
-        width: 64
-        height: 55
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,19 +429,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bd63b7ca81279a45932fa021e0e709a
+      spriteID: 4bcd82a647c03714ba4ab1a22ab0529a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: North3
+      name: dragon1_14
       rect:
         serializedVersion: 2
-        x: 128
+        x: 192
         y: 0
-        width: 64
-        height: 55
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,7 +449,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d85d40a6c10a44342913f8989738fd0b
+      spriteID: 9cd2d95cfafcc5a4e8affe7a391b4f5c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon1_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5b26cab8c66a244add857fa02a078b
       vertices: []
       indices: 
       edges: []
@@ -393,7 +477,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: fadacb5216adf784aba56620b18c3bc4
+    spriteID: 8f8b6d40ff5f96a4492ed995652b4c6a
     vertices: []
     indices: 
     edges: []

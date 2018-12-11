@@ -112,21 +112,18 @@ public class UnitLoader : MonoBehaviour {
         ArcherLoader.NewClass();
         RogueLoader.NewClass();
         MageLoader.NewClass();
-        AssassinLoader.NewClass();
-        SniperLoader.NewClass();
-        KnightLoader.NewClass();
-        ChargerLoader.NewClass();
-        BardLoader.NewClass();
 
         FusilierLoader.NewClass();
         ShadowLoader.NewClass();
         DreadLoader.NewClass();
         ShrikeLoader.NewClass();
         SwashbucklerLoader.NewClass();
+
         DarkKnightLoader.NewClass();
         DemonRiderLoader.NewClass();
         DuelistLoader.NewClass();
         NightBladeLoader.NewClass();
+
 
         Unit me = new Unit();
 
@@ -136,13 +133,14 @@ public class UnitLoader : MonoBehaviour {
         me.unitInfo.human = true;
         me.idx = me.unitID + IDMaker.NewID();
         me.unitInfo.mugName = "ActJeorge";
-    
+        me.unitActor.neutralPortrait.personalID = "JeorgeIdle";
+
         //  me.unitActor.mapActor.groupName = "sdsjkhsd";
         //   me.unitActor.mapActor.personalID = "goblin";
 
 
         me.unitClass.main.human.warrior.powerLevel = 1;
-  ;
+
       
         me.unitClass.main.human.warrior = CurrentGame.game.memoryGeneral.humanClassProgress.warrior;
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Add(me.unitID);
@@ -157,7 +155,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.human.mage.unlocked = true;
         me.unitClass.main.human.priest.unlocked = true;
         me.unitInfo.main = me.unitClass.main.human.warrior;
-      
+     
         // str, def, spd, skill, magic, will
         int[] bases = { 7, 5, 3, 5, 2, 1 };
         me.unitInfo.bases.AddRange(bases);
@@ -183,6 +181,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.mainClass = "Warrior";
         newMe.unitInfo.mugName = "ActMelvin";
         newMe.unitClass.main.race = "Human";
+        newMe.unitActor.neutralPortrait.personalID = "MelvinIdle";
         newMe.unitInfo.human = true;
         newMe.unitClass.main.human.warrior.powerLevel = 1;
         
@@ -227,8 +226,9 @@ public class UnitLoader : MonoBehaviour {
         newMe2.unitClass.main.race = "Human";
         newMe2.unitInfo.human = true;
         newMe2.unitInfo.mugName = "ActJesel";
-        newMe2.unitActor.mapActor.personalID = "";
-        newMe2.unitActor.mapActor.groupName = "";
+        newMe2.unitActor.neutralPortrait.personalID = "JeselIdle";
+        //newMe2.unitActor.mapActor.personalID = "";
+        //newMe2.unitActor.mapActor.groupName = "";
         newMe2.idx = me.unitID + IDMaker.NewID();
   
 
@@ -278,6 +278,7 @@ public class UnitLoader : MonoBehaviour {
         newMe3.unitClass.main.mainClass = "Priest";
         newMe3.unitInfo.mugName = "ActAlice";
         newMe3.unitClass.main.race = "Human";
+        newMe3.unitActor.neutralPortrait.personalID = "AliceIdle";
         newMe3.unitInfo.human = true;
         newMe3.unitClass.main.human.priest.powerLevel = 1;
         
@@ -327,6 +328,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.mainClass = "Fusilier";
         newMe4.unitInfo.mugName = "ActSascha";
         newMe4.unitClass.main.race = "Imp";
+        newMe4.unitActor.neutralPortrait.personalID = "SaschaIdle";
         newMe4.unitInfo.imp = true;
         newMe4.unitClass.main.imp.fusilier.powerLevel = 1;
 
@@ -367,6 +369,56 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.storeroom.units.Add(newMe4);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe4);
         CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe4);
+
+
+        Unit newMe5 = new Unit();
+
+        newMe5.unitID = "D'voe";
+        newMe5.idx = newMe.unitID + IDMaker.NewID();
+        newMe5.unitClass.main.mainClass = "Dark Knight";
+        newMe5.unitInfo.mugName = "ActDvoe";
+        newMe5.unitClass.main.race = "Imp";
+        newMe5.unitActor.neutralPortrait.personalID = "DvoeIdle";
+        newMe5.unitInfo.imp = true;
+        newMe5.unitClass.main.imp.darkknight.powerLevel = 1;
+
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Add(newMe5.unitID);
+
+        newMe5.unitClass.main.imp.darkknight = CurrentGame.game.memoryGeneral.impClassProgress.darkknight;
+        newMe5.unitClass.main.imp.darkknight.caps = Fusilier.Caplist();
+        newMe5.unitInfo.currentMods = DarkKnight.ModList();
+        DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill);
+        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill);
+        DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill);
+        //DarkKnightLoader.AssignSkill("Deadeye", newMe5.unitClass.sub.imp.darkknight.pickSkill);
+        //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        // FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        //FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        newMe5.unitClass.main.imp.swashbuckler.unlocked = true;
+        newMe5.unitClass.main.imp.shrike.unlocked = true;
+        newMe5.unitClass.main.imp.shadow.unlocked = true;
+        newMe5.unitClass.main.imp.dread.unlocked = true;
+        newMe5.unitClass.main.imp.fusilier.unlocked = true;
+
+        newMe5.unitInfo.main = newMe4.unitClass.main.imp.darkknight;
+
+        // str, def, spd, skill, magic, will
+        int[] bases6 = { 2, 4, 6, 8, 3, 3 };
+        newMe5.unitInfo.bases.AddRange(bases6);
+        newMe5.unitInfo.nature = "Quick";
+        newMe5.inventory.invSlot1.holding = "Demon Axe";
+        newMe5.inventory.invSlot1.weapon.equipped = true;
+        newMe5.inventory.invSlot1.weapon.name = "Demon Axe";
+        newMe5.inventory.invSlot1.weapon.inSlot = true;
+        newMe5.inventory.invSlot1.weapon.cost = 300;
+        newMe5.inventory.invSlot1.weapon.idx = "Demon Axe" + IDMaker.NewID();
+        SwordLoader.AssignSword("Demon Axe", newMe5.inventory.invSlot1.weapon);
+
+        CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe5.inventory.invSlot1.weapon);
+        CurrentGame.game.storeroom.units.Add(newMe5);
+        CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe5);
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe5);
 
 
 
@@ -625,6 +677,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Goblin";
         me.unitClass.main.race = "Goblin";
+        me.unitActor.neutralPortrait.personalID = "GoblinIdle";
         me.unitClass.main.monster.goblinCharger.level = level;
         me.unitClass.main.monster.goblinCharger.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -658,6 +711,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Slime";
         me.unitClass.main.race = "Blue Slime";
+        me.unitActor.neutralPortrait.personalID = "BlueSlimeIdle";
         me.unitClass.main.monster.blueSlime.level = level;
         me.unitClass.main.monster.blueSlime.movement = 3;
         //yield return new WaitForSeconds(0.01f);      
@@ -690,6 +744,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Slime";
         me.unitClass.main.race = "Green Slime";
+        me.unitActor.neutralPortrait.personalID = "GreenSlimeIdle";
         me.unitClass.main.monster.greenSlime.level = level;
         me.unitClass.main.monster.greenSlime.movement = 3;
         //yield return new WaitForSeconds(0.01f);      
@@ -722,6 +777,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Devil";
         me.unitClass.main.race = "Baby Devil";
+        me.unitActor.neutralPortrait.personalID = "BabyDevilIdle";
         me.unitClass.main.monster.babyDevil.level = level;
         me.unitClass.main.monster.babyDevil.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -754,6 +810,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Dragon";
         me.unitClass.main.race = "Baby Green Dragon";
+        me.unitActor.neutralPortrait.personalID = "BabyGreenDragonIdle";
         me.unitClass.main.monster.babyGreenDragon.level = level;
         me.unitClass.main.monster.babyGreenDragon.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -786,6 +843,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Dragon";
         me.unitClass.main.race = "Baby Red Dragon";
+        me.unitActor.neutralPortrait.personalID = "BabyRedDragonIdle";
         me.unitClass.main.monster.babyRedDragon.level = level;
         me.unitClass.main.monster.babyRedDragon.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -818,6 +876,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Vinetrap";
         me.unitClass.main.race = "Blue Vinetrap";
+        me.unitActor.neutralPortrait.personalID = "BlueVinetrapIdle";
         me.unitClass.main.monster.blueVineTrap.level = level;
         me.unitClass.main.monster.blueVineTrap.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -850,6 +909,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Vinetrap";
         me.unitClass.main.race = "Red Vinetrap";
+        me.unitActor.neutralPortrait.personalID = "RedVinetrapIdle";
         me.unitClass.main.monster.redVineTrap.level = level;
         me.unitClass.main.monster.redVineTrap.movement = 3;
         //yield return new WaitForSeconds(0.01f);      
@@ -882,6 +942,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Devil";
         me.unitClass.main.race = "Devil";
+        me.unitActor.neutralPortrait.personalID = "DevilIdle";
         me.unitClass.main.monster.devil.level = level;
         me.unitClass.main.monster.devil.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -914,6 +975,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Efree";
         me.unitClass.main.race = "Efreet";
+        me.unitActor.neutralPortrait.personalID = "EfreetIdle";
         me.unitClass.main.monster.efreet.level = level;
         me.unitClass.main.monster.efreet.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -946,12 +1008,14 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Undead";
         me.unitClass.main.race = "Ghost";
+        me.unitActor.neutralPortrait.personalID = "GhostIdle";
         me.unitClass.main.monster.ghost.level = level;
         me.unitClass.main.monster.ghost.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
         me.unitID = "Ghost" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
+
         int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
@@ -978,12 +1042,14 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Undead";
         me.unitClass.main.race = "Reaper";
+        me.unitActor.neutralPortrait.personalID = "ReaperIdle";
         me.unitClass.main.monster.reaper.level = level;
         me.unitClass.main.monster.reaper.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
         me.unitID = "Reaper" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
+
         int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
@@ -1010,6 +1076,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Undead";
         me.unitClass.main.race = "Skeleton";
+        me.unitActor.neutralPortrait.personalID = "SkeletonIdle";
         me.unitClass.main.monster.skeleton.level = level;
         me.unitClass.main.monster.skeleton.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
@@ -1043,6 +1110,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Ogre";
         me.unitClass.main.race = "Ogre";
+        me.unitActor.neutralPortrait.personalID = "OgreBossIdle";
         me.unitClass.main.monster.Ogre.level = level;
         me.unitClass.main.monster.Ogre.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -1075,6 +1143,7 @@ public class UnitLoader : MonoBehaviour {
         }
         me.unitClass.main.mainClass = "Dragon";
         me.unitClass.main.race = "Dragon";
+        me.unitActor.neutralPortrait.personalID = "DragonBossIdle";
         me.unitClass.main.monster.Dragon.level = level;
         me.unitClass.main.monster.Dragon.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -1100,13 +1169,14 @@ public class UnitLoader : MonoBehaviour {
         Unit me = new Unit();
         for (int i = 0; i < level; i++)
         {
-            Skeleton.LevelUp();
+            NinetailsBoss.LevelUp();
             me.unitClass.main.monster.NineTails.modifiers = NinetailsBoss.ModList();
             me.unitClass.main.monster.NineTails.caps = NinetailsBoss.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.NineTails;
         }
         me.unitClass.main.mainClass = "Nine Tails";
         me.unitClass.main.race = "Nine Tails";
+        me.unitActor.neutralPortrait.personalID = "NinetailsBossIdle";
         me.unitClass.main.monster.NineTails.level = level;
         me.unitClass.main.monster.NineTails.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -1132,13 +1202,14 @@ public class UnitLoader : MonoBehaviour {
         Unit me = new Unit();
         for (int i = 0; i < level; i++)
         {
-            Skeleton.LevelUp();
+            NagaBoss.LevelUp();
             me.unitClass.main.monster.Naga.modifiers = NagaBoss.ModList();
             me.unitClass.main.monster.Naga.caps = NagaBoss.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.Naga;
         }
         me.unitClass.main.mainClass = "Naga";
         me.unitClass.main.race = "Naga";
+        me.unitActor.neutralPortrait.personalID = "NagaBossIdle";
         me.unitClass.main.monster.Naga.level = level;
         me.unitClass.main.monster.Naga.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
@@ -1164,13 +1235,14 @@ public class UnitLoader : MonoBehaviour {
         Unit me = new Unit();
         for (int i = 0; i < level; i++)
         {
-            Skeleton.LevelUp();
+            LichBoss.LevelUp();
             me.unitClass.main.monster.DemonKing.modifiers = LichBoss.ModList();
             me.unitClass.main.monster.DemonKing.caps = LichBoss.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.DemonKing;
         }
         me.unitClass.main.mainClass = "Lich";
         me.unitClass.main.race = "Lich";
+        me.unitActor.neutralPortrait.personalID = "LichBossIdle";
         me.unitClass.main.monster.DemonKing.level = level;
         me.unitClass.main.monster.DemonKing.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
