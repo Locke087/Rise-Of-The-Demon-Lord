@@ -75,11 +75,27 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Clear();
         CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Clear();
         Warrior.Clear();
-        Archer.Clear();
-        Rogue.Clear();
-        Fusilier.Clear();
         Priest.Clear();
         Cavalier.Clear();
+        Archer.Clear();
+        Rogue.Clear();
+        Mage.Clear();
+        Paladin.Clear();
+        Sniper.Clear();
+        Knight.Clear();
+        Charger.Clear();
+        Assassin.Clear();
+
+        Fusilier.Clear();
+        Shadow.Clear();
+        Dread.Clear();
+        Shrike.Clear();
+        Swashbuckler.Clear();
+        Duelist.Clear();
+        DarkKnight.Clear();
+        DemonRider.Clear();
+        Duelist.Clear();
+        Nightblade.Clear();
 
         CurrentGame.game.memoryGeneral.humanClassProgress.warrior.subbed.Clear();
         CurrentGame.game.memoryGeneral.humanClassProgress.cavalier.subbed.Clear();
