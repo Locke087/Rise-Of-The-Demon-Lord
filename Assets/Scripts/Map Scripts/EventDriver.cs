@@ -198,10 +198,10 @@ public class EventDriver : MonoBehaviour
         return tiles;
     }
 
-    public List<GridTiles> FindBossSpawns()
+    public GridTiles FindBossSpawns()
     {
         MapLocation map = GameObject.FindObjectOfType<MapLocation>();
-        List<GridTiles> tiles = new List<GridTiles>();
+        GridTiles tiles = new GridTiles();
     
         foreach (Rows row in map.allRows)
         {
@@ -210,7 +210,7 @@ public class EventDriver : MonoBehaviour
             {
                 if (tile.bossSpawn && tile.walkable)
                 {
-                    tiles.Add(tile);
+                    return tile;
                 }
             }
         }

@@ -39,7 +39,7 @@ public class DemonDeployment : MonoBehaviour {
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
-        GUILayout.Box("The Frozen Tundra");
+        GUILayout.Box("His Terrible Kingdom");
         GUILayout.FlexibleSpace();
         GUILayout.EndVertical();
         GUILayout.FlexibleSpace();

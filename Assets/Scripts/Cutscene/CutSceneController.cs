@@ -30,7 +30,6 @@ public class CutSceneController : MonoBehaviour {
 
     public IEnumerator StartScene()
     {
-
         foreach (CurrentSceneInfo currentScene in sceneInfos)
         {        
             foreach (CurrentSceneActorInfo actorInfo in currentScene.actors)
@@ -57,7 +56,7 @@ public class CutSceneController : MonoBehaviour {
             yield return new WaitUntil(() => allDone >= currentScene.order.Count);
             allDone = 0;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.01f);
         SceneManager.LoadScene("Town");
     }
 }

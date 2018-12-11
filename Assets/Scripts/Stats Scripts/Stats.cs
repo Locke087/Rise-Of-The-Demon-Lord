@@ -298,7 +298,7 @@ public class Stats : MonoBehaviour
         Unit me = new Unit();
         foreach (Unit u in CurrentGame.game.storeroom.units)
         {
-            if (unitIdx == u.unitID) me = u;
+            if (unitID == u.unitID) me = u;
         }
         return me;
     }
@@ -1501,8 +1501,8 @@ public class Stats : MonoBehaviour
         allClassesMods = new List<TheClassesMod>();
         allClassesMaster = new List<TheClassesMaster>();
 
-      //  StatRange(me.unitInfo.bases);
-      
+        //  StatRange(me.unitInfo.bases);
+        Debug.Log(me.unitInfo.bases.Count + " frhhfkewnf");
         allClassesBase.Add(new TheClassesBase(me.unitInfo.bases[0], me.unitInfo.bases[1], me.unitInfo.bases[2], me.unitInfo.bases[3], me.unitInfo.bases[4], me.unitInfo.bases[5], 15, me.unitInfo.main.movement));
    
         allClassesCaps.Add(new TheClassesCap(me.unitInfo.main.caps));

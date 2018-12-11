@@ -2470,7 +2470,7 @@ MonoBehaviour:
   move: {fileID: 114846457752143444}
   attack: {fileID: 114864160561956082}
   endTurn: {fileID: 114072334449796902}
-  image: {fileID: 0}
+  image: {fileID: 114223040931997072}
   sprite: {fileID: 0}
   menuActive: 0
   attackFinished: 0

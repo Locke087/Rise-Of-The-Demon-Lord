@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: dfd98de8df6854ec9a785698029332e2
   - enabled: 1
+    path: Assets/Scenes/CutScene.unity
+    guid: 85b021b924ae3d042a95858b3892c354
+  - enabled: 1
     path: Assets/Scenes/Town.unity
     guid: fe9468f42981329418d4fa67a0cf588f
   - enabled: 1
@@ -26,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UserEndMapEditor.unity
     guid: 7beffa076d25e4e428dfa3d7c0b1fb0e
-  - enabled: 1
-    path: Assets/Scenes/CutScene.unity
-    guid: 85b021b924ae3d042a95858b3892c354
   - enabled: 1
     path: Assets/Scenes/SWBossMap.unity
     guid: 41697de04c35fa74b991eb6df02420d9

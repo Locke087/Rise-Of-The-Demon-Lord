@@ -40,7 +40,7 @@ public class TownGeneralMenu : MonoBehaviour {
 
     void Demon()
     {
-      
+        demonKingMenu.SetActive(true);
     }
     void ShopMenu()
     {

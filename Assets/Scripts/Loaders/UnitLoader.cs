@@ -159,7 +159,8 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(me.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(me);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(me);
-     
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(me);
+
         // str, def, spd, skill, magic, will
 
         Unit newMe = new Unit();
@@ -202,7 +203,8 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe);
-     
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe);
+
 
         Unit newMe2 = new Unit();
 
@@ -252,7 +254,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe2.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe2);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe2);
-    
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe2);
 
 
         Unit newMe3 = new Unit();
@@ -299,7 +301,8 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe3.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe3);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe3);
-    
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe3);
+
 
 
 
@@ -349,7 +352,7 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.itemsOwned.weapons.Add(newMe4.inventory.invSlot1.weapon);
         CurrentGame.game.storeroom.units.Add(newMe4);
         CurrentGame.game.memoryGeneral.unitsInRoster.Add(newMe4);
-       
+        CurrentGame.game.memoryGeneral.unitsInParty.Add(newMe4);
 
 
 
@@ -606,14 +609,15 @@ public class UnitLoader : MonoBehaviour {
             me.unitClass.main.monster.goblinCharger.caps = Goblin.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.goblinCharger;
         }
-        me.unitClass.main.mainClass = "Warrior";
+        me.unitClass.main.mainClass = "Goblin";
         me.unitClass.main.race = "Goblin";
         me.unitClass.main.monster.goblinCharger.level = level;
         me.unitClass.main.monster.goblinCharger.movement = 5;
         //yield return new WaitForSeconds(0.01f);      
         me.unitID = "Goblin" + IDMaker.NewID();
-      
+
         // str, def, spd, skill, magic, will
+        int[] bases5 = { 2, 4, 6, 8, 3, 3 };
         int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
@@ -1012,12 +1016,13 @@ public class UnitLoader : MonoBehaviour {
 
     void Ogre(int level, Unit enemiesInMap)
     {
+        OgreBoss.Clear();
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
         for (int i = 0; i < level; i++)
         {
-            Skeleton.LevelUp();
+            OgreBoss.LevelUp();
             me.unitClass.main.monster.Ogre.modifiers = OgreBoss.ModList();
             me.unitClass.main.monster.Ogre.caps = OgreBoss.Caplist();
             me.unitInfo.main = me.unitClass.main.monster.Ogre;
@@ -1039,11 +1044,12 @@ public class UnitLoader : MonoBehaviour {
 
         enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-        OgreBoss.Clear();
+       
     }
 
     void Dragon(int level, Unit enemiesInMap)
     {
+        DragonBoss.Clear();
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
@@ -1071,11 +1077,12 @@ public class UnitLoader : MonoBehaviour {
 
         enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-        DragonBoss.Clear();
+       
     }
 
     void NineTails(int level, Unit enemiesInMap)
     {
+        NinetailsBoss.Clear();
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
@@ -1103,11 +1110,12 @@ public class UnitLoader : MonoBehaviour {
 
         enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-        NinetailsBoss.Clear();
+       
     }
 
     void Naga(int level, Unit enemiesInMap)
     {
+        NagaBoss.Clear();
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
@@ -1135,11 +1143,12 @@ public class UnitLoader : MonoBehaviour {
 
         enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-        NagaBoss.Clear();
+      
     }
 
     void DemonKing(int level, Unit enemiesInMap)
     {
+        LichBoss.Clear();
         int amin = 3;
         int amax = 10;
         Unit me = new Unit();
@@ -1167,7 +1176,7 @@ public class UnitLoader : MonoBehaviour {
 
         enemiesInMap = me ;
         CurrentGame.game.storeroom.units.Add(me);
-        LichBoss.Clear();
+       
     }
 
     public static int RB(int min, int max, int alt)

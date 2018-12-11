@@ -211,7 +211,14 @@ public class SpeedCenterTurns : MonoBehaviour {
             Debug.Log("You Win");
             if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
         }
-       
+        if (GameObject.FindObjectOfType<TheBoss>() != null)
+        {
+            if (GameObject.FindObjectOfType<TheBoss>().tag == "Dead")
+            {
+                Debug.Log("You Win");
+                if (GameObject.FindObjectOfType<Rout>() != null) GameObject.FindObjectOfType<Rout>().Win();
+            }
+        }
         if (!stopped)
         {
            

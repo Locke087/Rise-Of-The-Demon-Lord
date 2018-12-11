@@ -40,6 +40,7 @@ public class PlayerUnitMenu : MonoBehaviour {
     {
         unitfFor = unit;
         sprite = Resources.Load<Sprite>(unit.GetComponent<Stats>().FindMyself().unitInfo.mugName); 
+
         if(sprite != null) image.sprite = sprite;
     }
 
