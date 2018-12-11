@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114227765253399570}
   - component: {fileID: 114641385255928904}
   m_Layer: 0
-  m_Name: EnemyCopy
+  m_Name: Baby Green Dragon307613.82066Tuesday, December 11, 20182:07:03 AM
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114264914214728258}
-  unitID: Baby Devil837356.72247Monday, December 10, 201811:40:36 PM
+  unitID: Baby Green Dragon307613.82066Tuesday, December 11, 20182:07:03 AM
   unitIdx: 
   hp: 0
   str: 0

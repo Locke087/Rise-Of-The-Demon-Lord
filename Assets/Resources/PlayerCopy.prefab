@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114525751420389088}
   - component: {fileID: 54522093013849196}
   m_Layer: 0
-  m_Name: PlayerCopy
+  m_Name: Melvin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,8 +299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 114981297170187514}
-  unitID: Sascha
-  unitIdx: Melvin84056.70586Monday, December 10, 201811:40:36 PM
+  unitID: Melvin
+  unitIdx: Melvin69813.78795Tuesday, December 11, 20182:07:03 AM
   hp: 0
   str: 0
   def: 0
