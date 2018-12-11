@@ -9,6 +9,7 @@ public class Stats : MonoBehaviour
     public InfoForUnit info;
     public string unitID;
     public string unitIdx;
+    public Image mapImage;
     public int hp;
     public int str;
     public int def;
@@ -307,6 +308,7 @@ public class Stats : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         classesRefresh();
+        ActivateAssessories();
         ReflectStat();
         UpdateHp();
     }
@@ -336,7 +338,8 @@ public class Stats : MonoBehaviour
         baseSkill = sk + allNatures[key].isSkill;
         baseMagic = m + allNatures[key].isMag;
         baseWill = w + allNatures[key].isWill;
-        movement = mo;  
+        movement = mo;
+      
     } 
 
 
@@ -492,7 +495,7 @@ public class Stats : MonoBehaviour
         }
         else
         {
-            UnitWeapon bWeapon = gameObject.GetComponent<MapPlayerAttack>().weapon;
+            UnitWeapon bWeapon = gameObject.GetComponent<MapEnemyMove>().weapon;
             UnitWeapon aWeapon = attacker.GetComponent<MapPlayerAttack>().weapon;
             attackedControl(attacker, aWeapon, bWeapon);
         }

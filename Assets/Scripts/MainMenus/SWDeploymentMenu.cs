@@ -69,8 +69,9 @@ public class SWDeploymentMenu : MonoBehaviour {
                     if (GUILayout.Button(level.name))
                     {
                         CurrentGame.game.memoryGeneral.currentLevel = level;
-                        newLevel = level;
+                        newLevel = level;           
                         CurrentGame.game.memoryGeneral.enemiesInMaps = level.enemiesInMap;
+                        CurrentGame.game.memoryGeneral.enemiesInMaps.boss = level.enemiesInMap.boss;
                         currentMenu = Menu.unitSelect;
                     }
                     GUILayout.Label("Enemy Power Level of " + level.powerRanking.ToString() + " Stars");

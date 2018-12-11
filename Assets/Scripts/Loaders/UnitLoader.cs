@@ -70,6 +70,10 @@ public class UnitLoader : MonoBehaviour {
         CurrentGame.game.memoryGeneral.unitsInRoster.Clear();
         CurrentGame.game.memoryGeneral.unitsInParty.Clear();
         CurrentGame.game.memoryGeneral.enemiesInMaps.units.Clear();
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Clear();
+        CurrentGame.game.memoryGeneral.levelHolder.gdLevels.currentLevels.Clear();
+        CurrentGame.game.memoryGeneral.levelHolder.ogLevels.currentLevels.Clear();
+        CurrentGame.game.memoryGeneral.levelHolder.ftLevels.currentLevels.Clear();
         Warrior.Clear();
         Archer.Clear();
         Rogue.Clear();
@@ -187,7 +191,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.mage.unlocked = true;
         newMe.unitClass.main.human.priest.unlocked = true;
         newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
-
+      
         // str, def, spd, skill, magic, will
         int[] bases2 = { 8, 4, 2, 6, 1, 2 };
         newMe.unitInfo.bases.AddRange(bases2);
@@ -618,7 +622,7 @@ public class UnitLoader : MonoBehaviour {
 
         // str, def, spd, skill, magic, will
         int[] bases5 = { 2, 4, 6, 8, 3, 3 };
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -650,7 +654,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Blue Slime" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -682,7 +686,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Green Slime" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -714,7 +718,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Baby Devil" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -746,7 +750,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Baby Green Dragon" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -778,7 +782,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Baby Red Dragon" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -810,7 +814,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Blue Vinetrap" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -842,7 +846,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Red Vinetrap" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -874,7 +878,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Devil" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -906,7 +910,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Efreet" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -938,7 +942,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Ghost" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -970,7 +974,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Reaper" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -1002,7 +1006,7 @@ public class UnitLoader : MonoBehaviour {
         me.unitID = "Skeleton" + IDMaker.NewID();
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1), RB(amin, amax, 1) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
@@ -1014,7 +1018,7 @@ public class UnitLoader : MonoBehaviour {
         Skeleton.Clear();
     }
 
-    void Ogre(int level, Unit enemiesInMap)
+    Unit Ogre(int level)
     {
         OgreBoss.Clear();
         int amin = 3;
@@ -1032,22 +1036,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.monster.Ogre.level = level;
         me.unitClass.main.monster.Ogre.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Ogre" + IDMaker.NewID();
+        me.unitID = "Ogre";
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
-
-        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-       
+        return me;
+
     }
 
-    void Dragon(int level, Unit enemiesInMap)
+    Unit Dragon(int level)
     {
         DragonBoss.Clear();
         int amin = 3;
@@ -1065,22 +1068,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.monster.Dragon.level = level;
         me.unitClass.main.monster.Dragon.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Dragon" + IDMaker.NewID();
+        me.unitID = "Dragon";
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
-
-        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-       
+        return me;
+
     }
 
-    void NineTails(int level, Unit enemiesInMap)
+    Unit NineTails(int level)
     {
         NinetailsBoss.Clear();
         int amin = 3;
@@ -1098,22 +1100,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.monster.NineTails.level = level;
         me.unitClass.main.monster.NineTails.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Nine Tails" + IDMaker.NewID();
+        me.unitID = "Nine Tails";
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
-
-        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-       
+        return me;
+
     }
 
-    void Naga(int level, Unit enemiesInMap)
+    Unit Naga(int level)
     {
         NagaBoss.Clear();
         int amin = 3;
@@ -1131,22 +1132,21 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.monster.Naga.level = level;
         me.unitClass.main.monster.Naga.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Naga" + IDMaker.NewID();
+        me.unitID = "Naga";
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3), RB(amin, amax, 3) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
-
-        enemiesInMap = me;
         CurrentGame.game.storeroom.units.Add(me);
-      
+        return me;
+
     }
 
-    void DemonKing(int level, Unit enemiesInMap)
+    Unit DemonKing(int level)
     {
         LichBoss.Clear();
         int amin = 3;
@@ -1164,18 +1164,18 @@ public class UnitLoader : MonoBehaviour {
         me.unitClass.main.monster.DemonKing.level = level;
         me.unitClass.main.monster.DemonKing.movement = 4;
         //yield return new WaitForSeconds(0.01f);      
-        me.unitID = "Demon King" + IDMaker.NewID();
+        me.unitID = "Demon King";
 
         // str, def, spd, skill, magic, will
-        int[] bases = { RB(amin, amax, 2), RB(amin, amax, 3), RB(amin, amax, -2), RB(amin, amax, 2), RB(amin, amax, 0), RB(amin, amax, -1) };
+        int[] bases = { RB(amin, amax, 5), RB(amin, amax, 5), RB(amin, amax, 5), RB(amin, amax, 5), RB(amin, amax, 5), RB(amin, amax, 5) };
         me.unitInfo.bases.AddRange(bases);
         me.unitInfo.nature = ARandomNature.RandomNature();
         me.inventory.invSlot1.weapon = SwordLoader.RandomWeapon();
         me.inventory.invSlot1.weapon.inSlot = true;
         me.inventory.invSlot1.weapon.equipped = true;
-
-        enemiesInMap = me ;
         CurrentGame.game.storeroom.units.Add(me);
+        return me ;
+      
        
     }
 
@@ -1231,12 +1231,13 @@ public class UnitLoader : MonoBehaviour {
         level3.chestPool.assessories.AddRange(AssessoryLoader.ChestAssessories());
         level3.chestPool.gold = 75;
 
-      
+        CurrentGame.game.memoryGeneral.levelHolder.swLevels.currentLevels.Add(level3);
+
         CurrentLevel level5 = new CurrentLevel();
         level5.deployLimit = 8;
         level5.powerRanking = 5;
         level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
-        Dragon(5, level5.enemiesInMap.boss);
+        level5.enemiesInMap.boss = Dragon(12);
         level5.name = "The Sandy Dracofiend";
         level5.idx = "5" + IDMaker.NewID();
         level5.sceneName = "SWBossMap";
@@ -1299,7 +1300,7 @@ public class UnitLoader : MonoBehaviour {
         level5.deployLimit = 8;
         level5.powerRanking = 5;
         level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
-        Ogre(5, level5.enemiesInMap.boss);
+        level5.enemiesInMap.boss = Ogre(12);
         level5.name = "The Ogre's Falls";
         level5.idx = "5" + IDMaker.NewID();
         level5.sceneName = "OGLBossMap";
@@ -1365,7 +1366,7 @@ public class UnitLoader : MonoBehaviour {
         level5.deployLimit = 8;
         level5.powerRanking = 7;
         level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
-        Naga(7, level5.enemiesInMap.boss);
+        level5.enemiesInMap.boss = Naga(15);
         level5.name = "Naga's Flame";
         level5.idx = "5" + IDMaker.NewID();
         level5.sceneName = "GDBossMap";
@@ -1428,7 +1429,7 @@ public class UnitLoader : MonoBehaviour {
         level6.deployLimit = 8;
         level6.powerRanking = 7;
         level6.enemiesInMap.units = LoadEnemies(level6.powerRanking);
-        NineTails(7, level6.enemiesInMap.boss);
+        level6.enemiesInMap.boss = NineTails(15);
         level6.name = "The Ninetailed Throne";
         level6.idx = "5" + IDMaker.NewID();
         level6.sceneName = "FTBossMap";
@@ -1443,7 +1444,7 @@ public class UnitLoader : MonoBehaviour {
         level5.deployLimit = 8;
         level5.powerRanking = 8;
         level5.enemiesInMap.units = LoadEnemies(level5.powerRanking);
-        DemonKing(8, level5.enemiesInMap.boss);
+        level5.enemiesInMap.boss = DemonKing(20);
         level5.name = "True Evil";
         level5.idx = "5" + IDMaker.NewID();
         level5.sceneName = "DemonKingMap";

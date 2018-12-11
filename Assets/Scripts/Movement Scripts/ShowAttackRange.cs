@@ -111,6 +111,16 @@ public class ShowAttackRange : MonoBehaviour {
                         process.Enqueue(tile);
                     }
                 }
+                foreach (GridTiles tile in t.attackList)
+                {
+                    if (!tile.visited)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.distance = 1 + t.distance;
+                        process.Enqueue(tile);
+                    }
+                }
             }
 
         }
