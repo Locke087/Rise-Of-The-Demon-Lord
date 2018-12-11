@@ -112,13 +112,18 @@ public class UnitLoader : MonoBehaviour {
         ArcherLoader.NewClass();
         RogueLoader.NewClass();
         MageLoader.NewClass();
+        PaladinLoader.NewClass();
+        SniperLoader.NewClass();
+        KnightLoader.NewClass();
+        ChargerLoader.NewClass();
+        AssassinLoader.NewClass();
 
         FusilierLoader.NewClass();
         ShadowLoader.NewClass();
         DreadLoader.NewClass();
         ShrikeLoader.NewClass();
         SwashbucklerLoader.NewClass();
-
+        DuelistLoader.NewClass();
         DarkKnightLoader.NewClass();
         DemonRiderLoader.NewClass();
         DuelistLoader.NewClass();

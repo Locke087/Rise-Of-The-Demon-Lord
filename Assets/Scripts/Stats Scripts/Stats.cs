@@ -919,23 +919,43 @@ public class Stats : MonoBehaviour
         EffectiveStats();
         if (currentAttack.effects.poison)
         {
-            if(StatusHitEnemy(attacker))poison = true;
+            if (StatusHitEnemy(attacker))
+            {
+                activeEffects.Add(new ActiveEffects("poison", 3));
+                poison = true;
+            }
         }
         if (currentAttack.effects.sleep)
         {
-            if (StatusHitEnemy(attacker)) sleep = true;
+            if (StatusHitEnemy(attacker))
+            {
+                activeEffects.Add(new ActiveEffects("sleep", 3));
+                sleep = true;
+            }
         }
         if (currentAttack.effects.movementDown)
         {
-            if (StatusHitEnemy(attacker)) hobble = true;
+            if (StatusHitEnemy(attacker))
+            {
+                activeEffects.Add(new ActiveEffects("hobble", 3));
+                hobble = true;
+            }
         }
         if (currentAttack.effects.reduceAttack) 
         {
-            if (StatusHitEnemy(attacker)) strReduce = 0.15f;
+            if (StatusHitEnemy(attacker))
+            {
+                activeEffects.Add(new ActiveEffects("strReduce", 3));
+                strReduce = 0.15f;
+            }
         }
         if (currentAttack.effects.reduceDefense)
         {
-            if (StatusHitEnemy(attacker)) defReduce = 0.15f;
+            if (StatusHitEnemy(attacker))
+            {
+                activeEffects.Add(new ActiveEffects("defReduce", 3));
+                defReduce = 0.15f;
+            }
         }
       /*  if (currentAttack.effects.)
         {
