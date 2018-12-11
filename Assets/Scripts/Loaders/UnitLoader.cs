@@ -123,7 +123,10 @@ public class UnitLoader : MonoBehaviour {
         DreadLoader.NewClass();
         ShrikeLoader.NewClass();
         SwashbucklerLoader.NewClass();
-
+        DarkKnightLoader.NewClass();
+        DemonRiderLoader.NewClass();
+        DuelistLoader.NewClass();
+        NightBladeLoader.NewClass();
 
         Unit me = new Unit();
 
@@ -196,6 +199,7 @@ public class UnitLoader : MonoBehaviour {
         newMe.unitClass.main.human.archer.unlocked = true;
         newMe.unitClass.main.human.mage.unlocked = true;
         newMe.unitClass.main.human.priest.unlocked = true;
+        newMe.unitClass.main.human.paladin.unlocked = true;
         newMe.unitInfo.main = newMe.unitClass.main.human.warrior;
       
         // str, def, spd, skill, magic, will
@@ -344,7 +348,7 @@ public class UnitLoader : MonoBehaviour {
         newMe4.unitClass.main.imp.shadow.unlocked = true;
         newMe4.unitClass.main.imp.dread.unlocked = true;
         newMe4.unitClass.main.imp.fusilier.unlocked = true;
-
+        newMe4.unitClass.main.imp.darkknight.unlocked = true;
         newMe4.unitInfo.main = newMe4.unitClass.main.imp.fusilier;
 
         // str, def, spd, skill, magic, will
