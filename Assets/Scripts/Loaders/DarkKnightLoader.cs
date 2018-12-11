@@ -18,8 +18,8 @@ public class DarkKnightLoader : MonoBehaviour {
     }
     public static void NewClass()
     {
-      //  DarkKnight.Clear();
-      //  DarkKnight.level = 0;
+        DarkKnight.Clear();
+        DarkKnight.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level = 0;
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.name = "Dark Knight";
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.movement = 5;
@@ -34,9 +34,9 @@ public class DarkKnightLoader : MonoBehaviour {
 
     public static void LevelUpClass()
     {
-        //DarkKnight.LevelUp();
+        DarkKnight.LevelUp();
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level = CurrentGame.game.memoryGeneral.impClassProgress.darkknight.level + 1;
-       // CurrentGame.game.memoryGeneral.impClassProgress.darkknight.modifiers = DarkKnight.ModList();
+        CurrentGame.game.memoryGeneral.impClassProgress.darkknight.modifiers = DarkKnight.ModList();
 
         foreach (string id in CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed)
         {

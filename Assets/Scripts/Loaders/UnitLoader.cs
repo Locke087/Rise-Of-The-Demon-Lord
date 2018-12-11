@@ -357,7 +357,7 @@ public class UnitLoader : MonoBehaviour {
 
         newMe4.unitClass.main.imp.fusilier = CurrentGame.game.memoryGeneral.impClassProgress.fusilier;
         newMe4.unitClass.main.imp.fusilier.caps = Fusilier.Caplist();
-        newMe4.unitInfo.currentMods = Priest.ModList();
+        newMe4.unitInfo.currentMods = Fusilier.ModList();
         FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.main.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Pistol-Whip", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         FusilierLoader.AssignSkill("Deadeye", newMe4.unitClass.main.imp.fusilier.pickSkill);
@@ -405,24 +405,26 @@ public class UnitLoader : MonoBehaviour {
 
         CurrentGame.game.memoryGeneral.impClassProgress.darkknight.subbed.Add(newMe5.unitID);
 
-        newMe5.unitClass.main.imp.darkknight = CurrentGame.game.memoryGeneral.impClassProgress.darkknight;
+    
         newMe5.unitClass.main.imp.darkknight.caps = DarkKnight.Caplist();
         newMe5.unitInfo.currentMods = DarkKnight.ModList();
+        newMe5.unitClass.main.imp.darkknight = CurrentGame.game.memoryGeneral.impClassProgress.darkknight;
         DarkKnightLoader.AssignSkill("Darkness", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
-        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.sub.imp.darkknight.pickSkill, newMe5);
+        DarkKnightLoader.AssignSkill("Darkrift", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
         DarkKnightLoader.AssignSkill("Demon Armor", newMe5.unitClass.main.imp.darkknight.pickSkill, newMe5);
         //DarkKnightLoader.AssignSkill("Deadeye", newMe5.unitClass.sub.imp.darkknight.pickSkill);
         //FusilierLoader.AssignSkill("Cauterize", newMe4.unitClass.main.imp.fusilier.pickSkill);
         //FusilierLoader.AssignSkill("Backblast", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         // FusilierLoader.AssignSkill("Flash and Fire", newMe4.unitClass.sub.imp.fusilier.pickSkill);
         //FusilierLoader.AssignSkill("Targeting", newMe4.unitClass.sub.imp.fusilier.pickSkill);
+        newMe5.unitClass.main.imp.darkknight.unlocked = true;
         newMe5.unitClass.main.imp.swashbuckler.unlocked = true;
         newMe5.unitClass.main.imp.shrike.unlocked = true;
         newMe5.unitClass.main.imp.shadow.unlocked = true;
         newMe5.unitClass.main.imp.dread.unlocked = true;
         newMe5.unitClass.main.imp.fusilier.unlocked = true;
 
-        newMe5.unitInfo.main = newMe4.unitClass.main.imp.darkknight;
+        newMe5.unitInfo.main = newMe5.unitClass.main.imp.darkknight;
 
         // str, def, spd, skill, magic, will
         int[] bases6 = { 2, 4, 6, 8, 3, 3 };

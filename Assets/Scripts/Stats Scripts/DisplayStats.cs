@@ -864,6 +864,8 @@ public class DisplayStats : MonoBehaviour {
 
         allClassesBase.Add(new TheClassesBase(me.unitInfo.bases[0], me.unitInfo.bases[1], me.unitInfo.bases[2], me.unitInfo.bases[3], me.unitInfo.bases[4], me.unitInfo.bases[5], 15, me.unitInfo.main.movement));
         //allClassesInc.Add(new TheClassesInc("Warrior", Warrior.IncList()));
+        Debug.Log(me.unitInfo.main.caps.Count + " hooooow");
+
         allClassesCaps.Add(new TheClassesCap(me.unitInfo.main.caps));
         allClassesMods.Add(new TheClassesMod(me.unitInfo.main.modifiers));
 
